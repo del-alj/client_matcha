@@ -9,7 +9,7 @@ const Login = () => {
     <Content>
       <Block>{/* picture */}</Block>
       <Block>
-        <h2>Log in</h2>
+        <h2>Login</h2>
         <form>
           <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">
@@ -40,7 +40,11 @@ const Login = () => {
               Check me out
             </label>
           </div>
-          <Button>Submit</Button>
+          <div class="d-grid col-6 mx-auto">
+            <button type="button" class="btn btn-dark">
+              Login
+            </button>
+          </div>
         </form>
       </Block>
     </Content>

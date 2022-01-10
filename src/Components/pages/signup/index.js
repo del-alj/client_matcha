@@ -42,7 +42,11 @@ export const Signup = () => {
               id="exampleInputPassword1"
             />
           </div>
-          <Button>Submit</Button>
+          <div class="d-grid col-6 mx-auto">
+            <button type="button" class="btn btn-dark">
+              Sign up
+            </button>
+          </div>
         </form>
       </Block>
       <Block>{/* picture */}</Block>
