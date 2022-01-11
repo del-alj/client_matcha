@@ -21,16 +21,15 @@ const Login = () => {
           </Div>
           <Div>
             <Input placeholder="Password" type="password" id="Password" />
-            <Link href="https://www.w3schools.com">Forgot password?</Link>
+            <Link href="change-password">Forgot password?</Link>
           </Div>
           <Div>
             <Button type="button">Login</Button>
           </Div>
         </Form>
       </Block>
-
       <Block>
-        <img src={venus} alt="" />
+        <img src={venus} alt="Login" />
       </Block>
     </Content>
   );

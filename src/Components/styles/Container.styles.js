@@ -1,19 +1,19 @@
 import styled from "styled-components";
 
 export const Content = styled.div`
+  text-align: center;
+
   width: 100%;
   height: 100%;
-  /* margin: 0 auto; */
   display: flex;
-  border: 1px solid yellow;
   font-family: "Electrolize", sans-serif;
+  margin: 0;
+  min-height: 100vh;
   h1 {
     font-size: 44px;
   }
   align-items: center;
   justify-content: center;
-  /* align-content: space-around; */
-  /* border: 1px solid black; */
   @media screen and (max-width: 1440px) {
     width: auto;
     align-items: center;
@@ -23,9 +23,7 @@ export const Content = styled.div`
 
 export const Block = styled.div`
   width: 50%;
-  /* height: 100%; */
   display: flex;
-  /* justify-content: center; */
   flex-direction: column;
   justify-content: space-around;
   img {
@@ -38,13 +36,12 @@ export const Block = styled.div`
       display: none;
     }
     width: auto;
-    align-items: center;
     justify-content: center;
+    align-items: center;
   }
 `;
 
 export const Div = styled.div`
-  /* width: 65%; */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -70,6 +67,9 @@ export const Input = styled.input`
   padding: 0 15px;
   margin: 13px 0;
   @media screen and (max-width: 1440px) {
+    width: 50%;
+  }
+  @media screen and (max-width: 768px) {
     width: 100%;
   }
 `;
@@ -86,8 +86,6 @@ export const Form = styled.form`
   height: 80%;
   display: flex;
   flex-direction: column;
-  /* align-items: center;
-  justify-content: center; */
   align-content: space-around;
 `;
 
@@ -104,6 +102,9 @@ export const Button = styled.button`
   margin: 13px 0;
   font-family: "Electrolize", sans-serif;
   @media screen and (max-width: 1440px) {
+    width: 50%;
+  }
+  @media screen and (max-width: 768px) {
     width: 100%;
   }
 `;
