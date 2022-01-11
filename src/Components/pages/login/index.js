@@ -1,51 +1,36 @@
 import React from "react";
-import { Button } from "react-bootstrap";
-import bootstrap from "bootstrap";
 
-import { Content, Block } from "../../styles/Container.styles";
-
+import {
+  Content,
+  Block,
+  Input,
+  Link,
+  Div,
+  Form,
+  Button,
+} from "../../styles/Container.styles";
+import venus from "../../../images/venus.jpg";
 const Login = () => {
   return (
     <Content>
-      <Block>{/* picture */}</Block>
       <Block>
-        <h2>Login</h2>
-        <form>
-          <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">
-              User Name
-            </label>
-            <input type="userName" class="form-control" id="userName" />
-          </div>
-          <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label">
-              Password
-            </label>
-            <input
-              type="password"
-              class="form-control"
-              id="exampleInputPassword1"
-            />
-            <div id="emailHelp" class="form-text">
-              We'll never share your email with anyone else.
-            </div>
-          </div>
-          <div class="mb-3 form-check">
-            <input
-              type="checkbox"
-              class="form-check-input"
-              id="exampleCheck1"
-            />
-            <label class="form-check-label" for="exampleCheck1">
-              Check me out
-            </label>
-          </div>
-          <div class="d-grid col-6 mx-auto">
-            <button type="button" class="btn btn-dark">
-              Login
-            </button>
-          </div>
-        </form>
+        <h1>Login</h1>
+        <Form>
+          <Div>
+            <Input placeholder="User Name" type="userName" id="userName" />
+          </Div>
+          <Div>
+            <Input placeholder="Password" type="password" id="Password" />
+            <Link href="https://www.w3schools.com">Forgot password?</Link>
+          </Div>
+          <Div>
+            <Button type="button">Login</Button>
+          </Div>
+        </Form>
+      </Block>
+
+      <Block>
+        <img src={venus} alt="" />
       </Block>
     </Content>
   );
