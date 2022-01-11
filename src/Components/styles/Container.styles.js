@@ -90,8 +90,9 @@ export const Form = styled.form`
 `;
 
 export const Button = styled.button`
-  width: 33%;
   height: 60px;
+  width: 30%;
+  font-size: 1em;
   display: flex;
   flex-direction: column;
   align-content: space-around;
