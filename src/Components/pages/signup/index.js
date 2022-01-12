@@ -12,12 +12,10 @@ import mars from "../../../images/mars.jpg";
 const Signup = () => {
   return (
     <Content>
+      <Block picture={mars}>{/* <img src={mars} alt="Signup" /> */}</Block>
       <Block>
-        <img src={mars} alt="Signup" />
-      </Block>
-      <Block>
-        <h1>Sign up</h1>
         <Form>
+          <h1>Sign up</h1>
           <Div>
             <Input placeholder="User Name" type="userName" id="userName" />
           </Div>

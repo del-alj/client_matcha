@@ -14,8 +14,8 @@ const Login = () => {
   return (
     <Content>
       <Block>
-        <h1>Login</h1>
         <Form>
+        <h1>Login</h1>
           <Div>
             <Input placeholder="User Name" type="userName" id="userName" />
           </Div>
@@ -28,11 +28,15 @@ const Login = () => {
           </Div>
         </Form>
       </Block>
-      <Block>
-        <img src={venus} alt="Login" />
+      <Block picture={venus} color="yellow" >
+        {/* <img src={venus} alt="Login" /> */}
       </Block>
     </Content>
   );
 };
 
 export { Login };
+
+// height: 100vh;
+//     background-image:  `url(${props.pictur})`;
+//     background-size: cover;

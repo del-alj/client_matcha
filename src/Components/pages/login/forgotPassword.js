@@ -12,12 +12,12 @@ import forgot from "../../../images/forgot.jpg";
 const ForgotPassword = () => {
   return (
     <Content>
-      <Block>
-        <img src={forgot} alt="forgot" />
+      <Block picture={forgot} color="yellow">
+        {/* <img src={forgot} alt="forgot" /> */}
       </Block>
       <Block>
-        <h1>Forgot passward</h1>
         <Form>
+          <h1>Forgot passward</h1>
           <Div>
             <Input
               placeholder="New Password"
