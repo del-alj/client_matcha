@@ -1,7 +1,10 @@
 import React from "react";
+import {
+  Content,
+  Homebackground,
+} from "../../Components/styles/Container.styles";
 
-import { Content, Homebackground } from "../../styles/Container.styles";
-import home from "../../../images/home.png";
+import home from "../../images/home.png";
 const Home = () => {
   return (
     <Content>

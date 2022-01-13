@@ -8,8 +8,8 @@ import {
   Div,
   Form,
   Button,
-} from "../../styles/Container.styles";
-import venus from "../../../images/venus.jpg";
+} from "../../Components/styles/Container.styles";
+import venus from "../../images/venus.jpg";
 const Login = () => {
   return (
     <Content>

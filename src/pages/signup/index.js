@@ -7,8 +7,8 @@ import {
   Div,
   Form,
   Button,
-} from "../../styles/Container.styles";
-import mars from "../../../images/mars.jpg";
+} from "../../Components/styles/Container.styles";
+import mars from "../../images/mars.jpg";
 const Signup = () => {
   return (
     <Content>

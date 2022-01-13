@@ -1,11 +1,11 @@
 import React from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 
-import { Login } from "../Components/pages/login/index.js";
-import { ForgotPassword } from "../Components/pages/login/forgotPassword";
-import { Signup } from "../Components/pages/signup/index.js";
-import { Home } from "../Components/pages/home/index.js";
-import { UserProfile } from "../Components/pages/userProfile/index.js";
+import { Login } from "../pages/login/index.js";
+import { ForgotPassword } from "../pages/login/forgotPassword";
+import { Signup } from "../pages/signup/index.js";
+import { Home } from "../pages/home/index.js";
+import { UserProfile } from "../pages/userProfile/index.js";
 
 const Routes = () => {
   return (

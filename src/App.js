@@ -1,19 +1,17 @@
-// import "./App.css";
 import React from "react";
 import GlobalStyle from "./Components/styles/globalStyle";
 import { AppDiv } from "./Components/styles/style";
-
-import { HomeHeader } from "./Components/header/header";
-import { HomeFooter } from "./Components/footer/footer";
 import { Routes } from "./routes/routes";
+import { Layout } from "./layouts/signinLayout";
+
 function App() {
   return (
     <>
       <GlobalStyle />
       <AppDiv>
-        <HomeHeader />
-        <Routes />
-        <HomeFooter />
+        <Layout>
+          <Routes />
+        </Layout>
       </AppDiv>
     </>
   );

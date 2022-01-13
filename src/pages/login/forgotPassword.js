@@ -7,8 +7,8 @@ import {
   Div,
   Form,
   Button,
-} from "../../styles/Container.styles";
-import forgot from "../../../images/forgot.jpg";
+} from "../../Components/styles/Container.styles";
+import forgot from "../../images/forgot.jpg";
 const ForgotPassword = () => {
   return (
     <Content>
