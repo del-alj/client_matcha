@@ -8,7 +8,6 @@ const Home = () => {
       <Homebackground picture={home}>
         <h1>Matcha</h1>
         <p>find the one, in the hole universe</p>
-        {/* <img src={home} alt="Home" /> */}
       </Homebackground>
     </Content>
   );

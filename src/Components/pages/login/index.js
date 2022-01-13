@@ -15,8 +15,12 @@ const Login = () => {
     <Content>
       <Block>
         <Form>
-        <h1>Login</h1>
+          <h1>Login</h1>
           <Div>
+            <p>
+              Need a Matcha account?
+              <Link href="signup">Create an account</Link>
+            </p>
             <Input placeholder="User Name" type="userName" id="userName" />
           </Div>
           <Div>
@@ -28,7 +32,7 @@ const Login = () => {
           </Div>
         </Form>
       </Block>
-      <Block picture={venus} color="yellow" >
+      <Block picture={venus} color="yellow">
         {/* <img src={venus} alt="Login" /> */}
       </Block>
     </Content>
