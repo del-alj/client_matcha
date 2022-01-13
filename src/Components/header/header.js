@@ -1,21 +1,20 @@
 import React from "react";
 
-import { Header, Menu, Link } from "../styles/Container.styles";
-
+import { Header, Menu, StyledLink } from "../styles/Container.styles";
 const HomeHeader = ({ displayRightSide }) => {
   return (
     <Header>
-      <Link href="/home" color="black" inline="none">
+      <StyledLink to="/home" color="black" inline="none">
         Matcha
-      </Link>
+      </StyledLink>
       {displayRightSide && (
         <Menu>
-          <Link href="/login" color="black" inline="none">
+          <StyledLink to="/login" color="black" inline="none">
             Login
-          </Link>
-          <Link href="/signup" color="black" inline="none">
+          </StyledLink>
+          <StyledLink to="/signup" color="black" inline="none">
             Sign up
-          </Link>
+          </StyledLink>
         </Menu>
       )}
     </Header>

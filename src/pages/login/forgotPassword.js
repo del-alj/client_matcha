@@ -8,7 +8,7 @@ import {
   Form,
   Button,
 } from "../../Components/styles/Container.styles";
-import forgot from "../../images/forgot.jpg";
+import forgot from "../../assets/forgot.jpg";
 const ForgotPassword = () => {
   return (
     <Content>

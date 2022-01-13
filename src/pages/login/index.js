@@ -1,41 +1,46 @@
 import React from "react";
 
+import { Link } from "react-router-dom";
 import {
   Content,
   Block,
   Input,
-  Link,
+  StyledLink,
   Div,
   Form,
   Button,
 } from "../../Components/styles/Container.styles";
-import venus from "../../images/venus.jpg";
+import venus from "../../assets/venus.jpg";
+import { Layout } from "../../layouts/signinLayout";
+
 const Login = () => {
   return (
-    <Content>
-      <Block>
-        <Form>
-          <h1>Login</h1>
-          <Div>
-            <p>
-              Need a Matcha account?
-              <Link href="signup">Create an account</Link>
-            </p>
-            <Input placeholder="User Name" type="userName" id="userName" />
-          </Div>
-          <Div>
-            <Input placeholder="Password" type="password" id="Password" />
-            <Link href="change-password">Forgot password?</Link>
-          </Div>
-          <Div>
-            <Button type="button">Login</Button>
-          </Div>
-        </Form>
-      </Block>
-      <Block picture={venus} color="yellow">
-        {/* <img src={venus} alt="Login" /> */}
-      </Block>
-    </Content>
+    <Layout>
+      <Content>
+        <Block>
+          <Form method="POST" action="http://localhost:7000/login">
+            <h1>Login</h1>
+            <Div>
+              <p>
+                Need a Matcha account?
+                <StyledLink to="signup">Create an account</StyledLink>
+              </p>
+              <Input placeholder="User Name" type="userName" id="userName" />
+            </Div>
+            <Div>
+              <Input placeholder="Password" type="password" id="Password" />
+              <StyledLink to="change-password">Forgot password?</StyledLink>
+            </Div>
+            <Div>
+              <Button type="submit">Login</Button>
+            </Div>
+          </Form>
+        </Block>
+        <Block picture={venus} color="yellow">
+          {/* <img src={venus} alt="Login" /> */}
+        </Block>
+      </Content>
+    </Layout>
   );
 };
 

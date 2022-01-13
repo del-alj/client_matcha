@@ -5,7 +5,7 @@ import { Footer } from "../styles/Container.styles";
 const HomeFooter = () => {
   return (
     <Footer>
-      <p>Copyright Matcha © 2022 by del-alj</p>
+      <p>Copyright Matcha ©{new Date().getFullYear()} by del-alj</p>
     </Footer>
   );
 };

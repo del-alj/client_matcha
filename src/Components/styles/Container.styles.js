@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 export const Header = styled.header`
   display: flex;
@@ -112,7 +113,7 @@ export const Input = styled.input`
   }
 `;
 
-export const Link = styled.a`
+export const StyledLink = styled(Link)`
   font-size: 0.8em;
   font-family: "Electrolize", sans-serif;
   color: #535353;
