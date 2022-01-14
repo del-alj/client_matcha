@@ -6,7 +6,7 @@ import { ForgotPassword } from "../pages/login/forgotPassword";
 import { Signup } from "../pages/signup/index.js";
 import { Home } from "../pages/home/index.js";
 import { UserProfile } from "../pages/userProfile/index.js";
-
+import { ConfirmSignup } from "../pages/signup/confirmSignup";
 const Routes = () => {
   return (
     <BrowserRouter>
@@ -25,6 +25,9 @@ const Routes = () => {
         </Route>
         <Route path="/profile">
           <UserProfile />
+        </Route>
+        <Route path="/confirmSignup">
+          <ConfirmSignup />
         </Route>
       </Switch>
     </BrowserRouter>

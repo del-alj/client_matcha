@@ -65,7 +65,8 @@ export const Block = styled.div`
   flex-direction: column;
   justify-content: space-around;
   min-height: 100vh;
-
+  justify-content: ${(props) =>
+    props.justifyContent ? `${props.justifyContent}` : "none"};
   width: 50%;
   background-image: ${(props) =>
     props.picture ? `url(${props.picture})` : "none"};

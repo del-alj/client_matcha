@@ -10,7 +10,7 @@ import {
 } from "../../Components/styles/Container.styles";
 import mars from "../../assets/mars.jpg";
 import { Layout } from "../../layouts/signinLayout";
-import { axios } from "axios";
+import axios from "axios";
 
 const Signup = () => {
   const url = "http://localhost:7000/registration";
@@ -22,18 +22,28 @@ const Signup = () => {
     Password: "",
   });
 
+  const param = {
+    user_name: data.userName,
+    password: data.Password,
+    last_name: data.lastName,
+    first_name: data.firstName,
+    email: data.email,
+  };
+  const headers = {
+    headers: {
+      "content-Type": "application/json",
+    },
+  };
+
   const submit = (e) => {
     e.preventDefault();
     axios
-      .post(url, {
-        userName: data.userName,
-        firstName: data.firstName,
-        lastName: data.lastName,
-        email: data.email,
-        Password: data.Password,
-      })
+      .post(url, param, headers)
       .then((res) => {
-        console.log(res.data);
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
       });
   };
 
@@ -43,7 +53,6 @@ const Signup = () => {
     setData(newData);
     console.log(newData);
   };
-
   return (
     <Layout>
       <Content>
