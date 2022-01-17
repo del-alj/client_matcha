@@ -1,5 +1,8 @@
 import React, { useState } from "react";
+import axios from "axios";
+import { useHistory } from "react-router-dom";
 
+import mars from "../../assets/mars.jpg";
 import {
   Content,
   Block,
@@ -8,12 +11,12 @@ import {
   Form,
   Button,
 } from "../../Components/styles/Container.styles";
-import mars from "../../assets/mars.jpg";
 import { Layout } from "../../layouts/signinLayout";
-import axios from "axios";
 
+const BASE_URL = process.env.REACT_APP_BASE_URL;
 const Signup = () => {
-  const url = "http://localhost:7000/registration";
+  let history = useHistory();
+  const url = `${BASE_URL}/registration`;
   const [data, setData] = useState({
     userName: "",
     firstName: "",
@@ -29,6 +32,7 @@ const Signup = () => {
     first_name: data.firstName,
     email: data.email,
   };
+
   const headers = {
     headers: {
       "content-Type": "application/json",
@@ -40,6 +44,7 @@ const Signup = () => {
     axios
       .post(url, param, headers)
       .then((res) => {
+        history.push("/confirmSignup");
         console.log(res);
       })
       .catch((err) => {
@@ -53,10 +58,11 @@ const Signup = () => {
     setData(newData);
     console.log(newData);
   };
+
   return (
     <Layout>
       <Content>
-        <Block picture={mars}>{/* <img src={mars} alt="Signup" /> */}</Block>
+        <Block picture={mars} />
         <Block>
           <Form onSubmit={(e) => submit(e)}>
             <h1>Sign up</h1>

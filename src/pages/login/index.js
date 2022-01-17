@@ -13,12 +13,13 @@ import {
 import venus from "../../assets/venus.jpg";
 import { Layout } from "../../layouts/signinLayout";
 
+const BASE_URL = process.env.REACT_APP_BASE_URL;
 const Login = () => {
   return (
     <Layout>
       <Content>
         <Block>
-          <Form method="POST" action="http://localhost:7000/login">
+          <Form method="POST" action={`${BASE_URL}/login`}>
             <h1>Login</h1>
             <Div>
               <p>
@@ -45,7 +46,3 @@ const Login = () => {
 };
 
 export { Login };
-
-// height: 100vh;
-//     background-image:  `url(${props.pictur})`;
-//     background-size: cover;
