@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
+import axios from "axios";
+import { useHistory } from "react-router-dom";
 
-import { Link } from "react-router-dom";
 import {
   Content,
   Block,
@@ -15,21 +16,68 @@ import { Layout } from "../../layouts/signinLayout";
 
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 const Login = () => {
+  let history = useHistory();
+  const url = `http://localhost:7000/login`;
+  const [data, setData] = useState({
+    userName: "",
+
+    Password: "",
+  });
+
+  const param = {
+    user_name: data.userName,
+    password: data.Password,
+  };
+
+  const headers = {
+    headers: {
+      "content-Type": "application/json",
+    },
+  };
+  const submit = (e) => {
+    e.preventDefault();
+    axios
+      .post(url, param, headers)
+      .then((res) => {
+        history.push("/home");
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  const handelChange = (e) => {
+    const newData = { ...data };
+    newData[e.target.id] = e.target.value;
+    setData(newData);
+    console.log(newData);
+  };
   return (
     <Layout>
       <Content>
         <Block>
-          <Form method="POST" action={`${BASE_URL}/login`}>
+          <Form onSubmit={(e) => submit(e)}>
             <h1>Login</h1>
             <Div>
               <p>
                 Need a Matcha account?
                 <StyledLink to="signup">Create an account</StyledLink>
               </p>
-              <Input placeholder="User Name" type="userName" id="userName" />
+              <Input
+                onChange={(e) => handelChange(e)}
+                placeholder="User Name"
+                type="userName"
+                id="userName"
+              />
             </Div>
             <Div>
-              <Input placeholder="Password" type="password" id="Password" />
+              <Input
+                onChange={(e) => handelChange(e)}
+                placeholder="Password"
+                type="password"
+                id="Password"
+              />
               <StyledLink to="change-password">Forgot password?</StyledLink>
             </Div>
             <Div>
@@ -37,9 +85,7 @@ const Login = () => {
             </Div>
           </Form>
         </Block>
-        <Block picture={venus} color="yellow">
-          {/* <img src={venus} alt="Login" /> */}
-        </Block>
+        <Block picture={venus}></Block>
       </Content>
     </Layout>
   );
