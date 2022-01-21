@@ -29,7 +29,7 @@ const Login = () => {
     password: data.Password,
   };
 
-  const headers = {
+  const config = {
     headers: {
       "content-Type": "application/json",
     },
@@ -37,7 +37,7 @@ const Login = () => {
   const submit = (e) => {
     e.preventDefault();
     axios
-      .post(url, param, headers)
+      .post(url, param, config)
       .then((res) => {
         history.push("/home");
         console.log(res);
