@@ -7,8 +7,8 @@ const Routes = () => {
   return (
     <BrowserRouter>
       <Switch>
-        {routes.map(({ path, component: Component }) => (
-          <Route path={path}>
+        {routes.map(({ path, component: Component }, index) => (
+          <Route path={path} key={index} exact>
             <Component />
           </Route>
         ))}

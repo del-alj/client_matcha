@@ -8,7 +8,7 @@ import { Confirmation } from "../pages/login/confirmation";
 
 const routes = [
   {
-    path: "/home",
+    path: "/",
     component: Home,
   },
   {

@@ -17,7 +17,7 @@ import { Layout } from "../../layouts/signinLayout";
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 const Login = () => {
   let history = useHistory();
-  const url = `http://localhost:7000/login`;
+  const url = `${BASE_URL}/login`;
   const [data, setData] = useState({
     userName: "",
 
