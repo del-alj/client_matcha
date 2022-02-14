@@ -1,13 +1,26 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
 
-import { Header, Menu, StyledLink } from "../styles/Container.styles";
+import {
+  Header,
+  Menu,
+  StyledLink,
+  StyledLinkLogout,
+} from "../styles/Container.styles";
+import { Logout } from "../LogoutButton/Logout";
+
 const HomeHeader = ({ displayRightSide }) => {
+  let history = useHistory();
+
+  const handleClick = () => {
+    Logout(history);
+  };
   return (
     <Header>
-      <StyledLink to="/home" color="black" inline="none">
+      <StyledLink to="/" color="black" inline="none">
         Matcha
       </StyledLink>
-      {displayRightSide && (
+      {displayRightSide ? (
         <Menu>
           <StyledLink to="/login" color="black" inline="none">
             Login
@@ -15,6 +28,12 @@ const HomeHeader = ({ displayRightSide }) => {
           <StyledLink to="/signup" color="black" inline="none">
             Sign up
           </StyledLink>
+        </Menu>
+      ) : (
+        <Menu>
+          <StyledLinkLogout onClick={handleClick} color="black" inline="none">
+            Logout
+          </StyledLinkLogout>
         </Menu>
       )}
     </Header>

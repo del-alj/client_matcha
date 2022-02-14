@@ -13,9 +13,15 @@ import {
 } from "../../Components/styles/Container.styles";
 import venus from "../../assets/venus.jpg";
 import { Layout } from "../../layouts/signinLayout";
+import { UserProfile } from "../userProfile";
 
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 const Login = () => {
+  const token = localStorage.getItem("Token");
+
+  if (token) {
+    console.log("done");
+  }
   let history = useHistory();
   const url = `${BASE_URL}/login`;
   const [data, setData] = useState({
@@ -39,7 +45,9 @@ const Login = () => {
     axios
       .post(url, param, config)
       .then((res) => {
-        history.push("/home");
+        history.push("/profile");
+        // setToken in localstorage
+        localStorage.setItem("Token", JSON.stringify(res.data));
         console.log(res);
       })
       .catch((err) => {
@@ -54,40 +62,46 @@ const Login = () => {
     console.log(newData);
   };
   return (
-    <Layout>
-      <Content>
-        <Block>
-          <Form onSubmit={(e) => submit(e)}>
-            <h1>Login</h1>
-            <Div>
-              <p>
-                Need a Matcha account?
-                <StyledLink to="signup">Create an account</StyledLink>
-              </p>
-              <Input
-                onChange={(e) => handelChange(e)}
-                placeholder="User Name"
-                type="userName"
-                id="userName"
-              />
-            </Div>
-            <Div>
-              <Input
-                onChange={(e) => handelChange(e)}
-                placeholder="Password"
-                type="password"
-                id="Password"
-              />
-              <StyledLink to="change-password">Forgot password?</StyledLink>
-            </Div>
-            <Div>
-              <Button type="submit">Login</Button>
-            </Div>
-          </Form>
-        </Block>
-        <Block picture={venus}></Block>
-      </Content>
-    </Layout>
+    <>
+      {token ? (
+        <UserProfile />
+      ) : (
+        <Layout>
+          <Content>
+            <Block>
+              <Form onSubmit={(e) => submit(e)}>
+                <h1>Login</h1>
+                <Div>
+                  <p>
+                    Need a Matcha account?
+                    <StyledLink to="signup">Create an account</StyledLink>
+                  </p>
+                  <Input
+                    onChange={(e) => handelChange(e)}
+                    placeholder="User Name"
+                    type="userName"
+                    id="userName"
+                  />
+                </Div>
+                <Div>
+                  <Input
+                    onChange={(e) => handelChange(e)}
+                    placeholder="Password"
+                    type="password"
+                    id="Password"
+                  />
+                  <StyledLink to="change-password">Forgot password?</StyledLink>
+                </Div>
+                <Div>
+                  <Button type="submit">Login</Button>
+                </Div>
+              </Form>
+            </Block>
+            <Block picture={venus}></Block>
+          </Content>
+        </Layout>
+      )}
+    </>
   );
 };
 

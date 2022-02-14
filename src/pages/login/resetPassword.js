@@ -15,13 +15,14 @@ import forgot from "../../assets/forgot.jpg";
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 const ForgotPassword = () => {
   let history = useHistory();
-  const url = `${BASE_URL}/reset`;
+  const url = `${BASE_URL}/changepwd`;
   const [data, setData] = useState({
-    email: "",
+    newPassword: "",
+    confirmNewPassword: "",
   });
 
   const param = {
-    email: data.email,
+    password: data.newPassword === data.confirmNewPassword && data.newPassword,
   };
 
   const headers = {
@@ -36,7 +37,7 @@ const ForgotPassword = () => {
     axios
       .post(url, param, headers)
       .then((res) => {
-        history.push("/reset");
+        history.push("/confirmSignup");
         console.log(res);
       })
       .catch((err) => {
@@ -61,9 +62,17 @@ const ForgotPassword = () => {
           <Div>
             <Input
               onChange={(e) => handelChange(e)}
-              placeholder="Email"
-              type="email"
-              id="email"
+              placeholder="New Password"
+              type="password"
+              id="newPassword"
+            />
+          </Div>
+          <Div>
+            <Input
+              onChange={(e) => handelChange(e)}
+              placeholder="Confirm New Password"
+              type="password"
+              id="confirmNewPassword"
             />
           </Div>
           <Div>

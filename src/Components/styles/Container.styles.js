@@ -124,6 +124,19 @@ export const StyledLink = styled(Link)`
   text-decoration: ${(props) => (props.inline ? props.inline : "")}; ;
 `;
 
+
+export const StyledLinkLogout = styled.button`
+  font-size: 0.8em;
+  font-family: "Electrolize", sans-serif;
+  color: #535353;
+  text-align: right;
+  margin: 13px 0;
+  color: ${(props) => (props.color ? props.color : "")};
+  text-decoration: ${(props) => (props.inline ? props.inline : "")};
+  border: none;
+  background: none;
+`;
+
 export const Form = styled.form`
   height: 50%;
   display: flex;
