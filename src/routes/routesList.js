@@ -5,6 +5,7 @@ import { Home } from "../pages/home/index.js";
 import { UserProfile } from "../pages/userProfile/index.js";
 import { ConfirmSignup } from "../pages/signup/confirmSignup";
 import { Confirmation } from "../pages/login/confirmation";
+import { ResetPassword } from "../pages/login/resetPassword";
 
 const routes = [
   {
@@ -34,6 +35,10 @@ const routes = [
   {
     path: "/confirmation/:token",
     component: Confirmation,
+  },
+  {
+    path: "/reset/:token",
+    component: ResetPassword,
   },
 ];
 

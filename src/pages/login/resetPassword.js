@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 import {
   Content,
@@ -13,9 +14,10 @@ import {
 import forgot from "../../assets/forgot.jpg";
 
 const BASE_URL = process.env.REACT_APP_BASE_URL;
-const ForgotPassword = () => {
+const ResetPassword = () => {
   let history = useHistory();
-  const url = `${BASE_URL}/changepwd`;
+  let { token } = useParams();
+  const url = `${BASE_URL}/reset/${token}`;
   const [data, setData] = useState({
     newPassword: "",
     confirmNewPassword: "",
@@ -35,9 +37,9 @@ const ForgotPassword = () => {
     console.log("test", param);
     e.preventDefault();
     axios
-      .post(url, param, headers)
+      .put(url, param, headers)
       .then((res) => {
-        history.push("/confirmSignup");
+        history.push("/login");
         console.log(res);
       })
       .catch((err) => {
@@ -84,4 +86,4 @@ const ForgotPassword = () => {
   );
 };
 
-export { ForgotPassword };
+export { ResetPassword };
