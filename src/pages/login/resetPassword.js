@@ -26,7 +26,6 @@ const ResetPassword = () => {
   const param = {
     password:
       data.newPassword === data.confirmNewPassword ? data.newPassword : null,
-    email: "douae.elalj@gmail.com",
   };
 
   const headers = {
