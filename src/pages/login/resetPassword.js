@@ -3,6 +3,7 @@ import axios from "axios";
 import { useHistory } from "react-router-dom";
 import { useParams } from "react-router-dom";
 
+import { validation } from "../../assets/validationSchema/registration";
 import {
   Content,
   Block,
@@ -68,6 +69,7 @@ const ResetPassword = () => {
               placeholder="New Password"
               type="password"
               id="newPassword"
+              {...validation["password"]}
             />
           </Div>
           <Div>
@@ -76,6 +78,7 @@ const ResetPassword = () => {
               placeholder="Confirm New Password"
               type="password"
               id="confirmNewPassword"
+              {...validation["password"]}
             />
           </Div>
           <Div>

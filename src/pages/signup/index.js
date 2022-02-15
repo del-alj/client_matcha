@@ -12,10 +12,11 @@ import {
   Button,
 } from "../../Components/styles/Container.styles";
 import { Layout } from "../../layouts/signinLayout";
-
+import { validation } from "../../assets/validationSchema/registration";
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 const Signup = () => {
   let history = useHistory();
+
   const url = `${BASE_URL}/registration`;
   const [data, setData] = useState({
     userName: "",
@@ -72,6 +73,7 @@ const Signup = () => {
                 placeholder="User Name"
                 type="userName"
                 id="userName"
+                {...validation["userName"]}
               />
             </Div>
             <Div>
@@ -80,6 +82,7 @@ const Signup = () => {
                 placeholder="First Name"
                 type="firstName"
                 id="firstName"
+                {...validation["firstName"]}
               />
             </Div>
             <Div>
@@ -88,6 +91,7 @@ const Signup = () => {
                 placeholder="Last Name"
                 type="lastName"
                 id="lastName"
+                {...validation["lastName"]}
               />
             </Div>
             <Div>
@@ -96,6 +100,7 @@ const Signup = () => {
                 placeholder="Email"
                 type="email"
                 id="email"
+                {...validation["email"]}
               />
             </Div>
             <Div>
@@ -104,6 +109,7 @@ const Signup = () => {
                 placeholder="Password"
                 type="password"
                 id="Password"
+                {...validation["password"]}
               />
             </Div>
             <Div>

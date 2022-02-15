@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
-
+import { validation } from "../../assets/validationSchema/registration";
 import {
   Content,
   Block,
@@ -81,6 +81,7 @@ const Login = () => {
                     placeholder="User Name"
                     type="userName"
                     id="userName"
+                    {...validation["userName"]}
                   />
                 </Div>
                 <Div>
@@ -89,6 +90,7 @@ const Login = () => {
                     placeholder="Password"
                     type="password"
                     id="Password"
+                    {...validation["password"]}
                   />
                   <StyledLink to="change-password">Forgot password?</StyledLink>
                 </Div>

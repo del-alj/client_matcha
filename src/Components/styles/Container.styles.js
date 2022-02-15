@@ -89,7 +89,9 @@ export const Div = styled.div`
   align-content: space-around;
 `;
 
-export const Input = styled.input`
+export const Input = styled.input.attrs((props) => ({
+  ...props,
+}))`
   font-size: 1em;
   font-family: "Electrolize", sans-serif;
   ::placeholder {

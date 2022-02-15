@@ -11,6 +11,7 @@ import {
   Button,
 } from "../../Components/styles/Container.styles";
 import forgot from "../../assets/forgot.jpg";
+import { validation } from "../../assets/validationSchema/registration";
 
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 const ForgotPassword = () => {
@@ -64,6 +65,7 @@ const ForgotPassword = () => {
               placeholder="Email"
               type="email"
               id="email"
+              {...validation["email"]}
             />
           </Div>
           <Div>
