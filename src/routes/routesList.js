@@ -6,6 +6,7 @@ import { UserProfile } from "../pages/userProfile/index.js";
 import { ConfirmSignup } from "../pages/signup/confirmSignup";
 import { Confirmation } from "../pages/login/confirmation";
 import { ResetPassword } from "../pages/login/resetPassword";
+import { ConfirmForgotPassword } from "../pages/login/confirmForgotPassword";
 
 const routes = [
   {
@@ -39,6 +40,10 @@ const routes = [
   {
     path: "/reset/:token",
     component: ResetPassword,
+  },
+  {
+    path: "/reset",
+    component: ConfirmForgotPassword,
   },
 ];
 
