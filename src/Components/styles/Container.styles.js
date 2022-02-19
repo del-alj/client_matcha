@@ -89,6 +89,8 @@ export const Div = styled.div`
   align-content: space-around;
 `;
 
+
+
 export const Input = styled.input.attrs((props) => ({
   ...props,
 }))`
@@ -115,6 +117,40 @@ export const Input = styled.input.attrs((props) => ({
     width: 100%;
   }
 `;
+
+export const Search = styled.input.attrs((props) => ({
+  ...props,
+}))`
+  font-size: 0.7em;
+  font-family: "Electrolize", sans-serif;
+  ::placeholder {
+    font-size: 0.9em;
+    color: #535353;
+    opacity: 0.5;
+    font-family: "Electrolize", sans-serif;
+  }
+  color: black;
+  background: #f8f8f8;
+  border: 0;
+  outline: 0;
+  height: 40px;
+  width: 100%;
+  padding: 0 15px;
+  margin: 13px 0;
+
+  @media screen and (max-width: 425px) {
+    ::placeholder {
+      font-size: 0.7em;
+    }
+  }
+`;
+
+export const SearchDiv = styled.div`
+  justify-content: center;
+  width: 30%;
+  margin: 0;
+`;
+
 
 export const StyledLink = styled(Link)`
   font-size: 0.8em;
