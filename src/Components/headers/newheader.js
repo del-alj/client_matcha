@@ -8,10 +8,13 @@ import {
   SearchDiv,
   Search,
 } from "../styles/Container.styles";
+import { List } from "./style";
+
 import { Logout } from "../LogoutButton/Logout";
-
-const envelope = "../../assets/icons/envelope.png";
-
+import { Icon } from "../icon";
+import envelope from "../../assets/icons/envelope.png";
+import love from "../../assets/icons/love.png";
+import profileImg from "../../assets/venus.jpg";
 const NewHeader = ({ display }) => {
   let history = useHistory();
 
@@ -28,20 +31,11 @@ const NewHeader = ({ display }) => {
       <SearchDiv>
         <Search placeholder="Search" />
       </SearchDiv>
-      <Menu>
-        {/* <div style={{ background: " url(envelope) no-repeat 10px center" }}>
-          <img url={envelope} alt="test" />
-        </div> */}
-        <button class="btn">
-          <i class="fa fa-bars"></i>
-        </button>
-        <button class="btn">
-          <i class="fa fa-bars"></i>
-        </button>
-        <button class="btn">
-          <i class="fa fa-trash"></i>
-        </button>
-      </Menu>
+      <List>
+        <Icon img={envelope} alt="Messages" />
+        <Icon img={love} alt="like" />
+        <Icon img={profileImg} alt="Profile" type="profile" />
+      </List>
     </Header>
   );
 };

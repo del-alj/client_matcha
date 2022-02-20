@@ -6,13 +6,15 @@ export const Header = styled.header`
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  min-height: 100px;
+  min-height: 80px;
   padding: 0px 30px;
   font-size: 1.5em;
   font-family: "Electrolize", sans-serif;
   z-index: 1;
   overflow: hidden;
   position: fixed;
+  border-bottom: 1px solid #535353;
+  background: white;
 `;
 
 export const Footer = styled.footer`
@@ -184,23 +186,24 @@ export const Form = styled.form`
 `;
 
 export const Button = styled.button`
-  height: 60px;
-  width: 30%;
+  /* height: 60px; */
+  padding: 20px 60px;
   font-size: 1em;
   display: flex;
   flex-direction: column;
-  align-content: space-around;
+  /* align-content: space-around; */
   align-items: center;
   justify-content: center;
   background-color: black;
+  border: none;
   color: white;
   margin: 13px 0;
   font-family: "Electrolize", sans-serif;
   @media screen and (max-width: 1440px) {
-    width: 50%;
+    /* width: 50%; */
   }
   @media screen and (max-width: 768px) {
-    width: 100%;
+    /* width: 100%; */
   }
 `;
 
@@ -244,3 +247,8 @@ export const Homebackground = styled.div`
     }
   }
 `;
+
+// export const Icon = styled.button`
+//   background: none;
+//   border: none;
+// `;

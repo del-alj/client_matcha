@@ -1,0 +1,44 @@
+import React from "react";
+
+// import useLocalStorage from '../../hooks/useLocaleStorage';
+import { Tag, Tags } from "../../Components/tag/style";
+import { Flex, PhotoProfile } from "./style";
+import { DefinitionSection } from "./tools/definition";
+import { MiniSection } from "./tools/miniSection";
+
+import venus from "../../assets/venus.jpg";
+
+const data = {
+  userName: "Diana",
+  firstName: "Ama",
+  lastName: "Diana",
+  bio: "This space gives you more room to expound on your message. Remember that writing effectively is an art. Start by using simple, everyday words people can easily understand.",
+};
+
+export const FirstSection = () => {
+  // const [name, setName] = useLocalStorage("name", () => "");
+  return (
+    <Flex height="500px" direction="row">
+      <Flex width="50%" direction="row">
+        <Flex
+          width="auto"
+          direction="column"
+          // style={{ border: "1px solid yellow" }}
+        >
+          <div>
+            <PhotoProfile src={venus} alt="Photo Profile"></PhotoProfile>
+            {/* <h5>Online</h5> */}
+          </div>
+          {/* tags */}
+          <Tags>
+            <Tag link={"#"} titel="piercing" />
+            <Tag link={"#"} titel="geek" />
+            <Tag link={"#"} titel="vegan" />
+          </Tags>
+        </Flex>
+        <DefinitionSection data={data} />
+      </Flex>
+      <MiniSection />
+    </Flex>
+  );
+};
