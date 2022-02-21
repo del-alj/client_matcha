@@ -9,14 +9,14 @@ export const Content = styled.div`
   display: flex;
   flex-direction: column;
   /* padding: 0 200px; */
-  padding-top: 80px;
-  justify-content: center;
+  /* padding-top: 80px; */
+  /* justify-content: center; */
 
-  border: 1px solid black;
+  /* border: 1px solid black; */
 
   @media screen and (max-width: 1024px) {
-    padding: 0 10px;
-    padding-top: 80px;
+    /* padding: 0 10px;
+    padding-top: 80px; */
 
     /* flex-direction: column; */
 
@@ -30,18 +30,21 @@ export const Content = styled.div`
 export const Flex = styled.div`
   background-color: ${(props) =>
     props.background ? `${props.background}` : "none"};
-  min-height: ${(props) => (props.height ? `${props.height}` : "100%")};
-  min-width: ${(props) => (props.width ? `${props.width}` : "100%")};
+  min-height: ${(props) => (props.height ? `${props.height}` : "none")};
   align-items: ${(props) =>
     props.alignItems ? `${props.alignItems}` : "none"};
   display: flex;
-  justify-content: center;
+  justify-content: ${(props) =>
+    props.justifyContent ? `${props.justifyContent}` : "none"};
   flex-direction: ${(props) =>
     props.direction ? `${props.direction}` : "none"};
+  padding-top: ${(props) =>
+    props.paddingTop ? `${props.paddingTop}` : "none"};
   @media screen and (max-width: 768px) {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding-top: ${(props) => (props.paddingTop ? "2rem" : "none")};
   }
 `;
 
@@ -59,16 +62,17 @@ export const PhotoProfile = styled.img`
 `;
 
 export const H1 = styled.h1`
-  margin: 0 10px;
-  padding-left: 20px;
+  margin: 0 0.5rem;
+  padding-left: 1rem;
 `;
 
 export const H4 = styled.h4`
-  margin: 0 10px;
-  padding-left: 20px;
+  margin: 0 0.5rem;
+  padding-left: 1rem;
 `;
 export const P = styled.p`
   text-align: left;
+  margin-left: 0.5rem;
   max-width: 500px;
-  padding-left: 15px;
+  padding-left: 1rem;
 `;

@@ -18,16 +18,12 @@ const data = {
 export const FirstSection = () => {
   // const [name, setName] = useLocalStorage("name", () => "");
   return (
-    <Flex height="500px" direction="row">
-      <Flex width="50%" direction="row">
-        <Flex
-          width="auto"
-          direction="column"
-          // style={{ border: "1px solid yellow" }}
-        >
+    <Flex height="500px" direction="row" justifyContent="center">
+      <Flex direction="row">
+        <Flex direction="column">
           <div>
             <PhotoProfile src={venus} alt="Photo Profile"></PhotoProfile>
-            {/* <h5>Online</h5> */}
+            <h5>Online</h5>
           </div>
           {/* tags */}
           <Tags>

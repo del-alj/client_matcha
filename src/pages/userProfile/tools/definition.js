@@ -2,16 +2,18 @@ import React from "react";
 
 // import useLocalStorage from '../../hooks/useLocaleStorage';
 import { Flex, H1, H4, P } from "../style";
+import { Button } from "../../../Components/styles/Container.styles";
 
 export const DefinitionSection = (props) => {
   const data = props.data;
   return (
-    <Flex width="auto" direction="column" alignItems="flex-start">
+    <Flex direction="column" alignItems="flex-start" paddingTop="5rem">
       <H1>{data?.userName}</H1>
       <H4>
         {data?.firstName} {data?.lastName}
       </H4>
       <P>{data?.bio}</P>
+      <Button>Edit Profile</Button>
     </Flex>
   );
 };
