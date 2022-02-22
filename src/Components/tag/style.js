@@ -1,7 +1,5 @@
 import styled from "styled-components";
 
-import { TagDiv } from "./index";
-
 export const Li = styled.li`
   float: left;
 
@@ -60,7 +58,3 @@ export const Ul = styled.ul`
   justify-content: center;
   padding: 20px 0 0;
 `;
-
-// export const Tag = styled(TagDiv)`
-//   border: 1px solid black;
-// `;

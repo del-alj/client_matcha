@@ -45,7 +45,7 @@ export const Flex = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding-top: ${(props) => (props.paddingTop ? "2rem" : "none")};
+    /* padding-top: ${(props) => (props.paddingTop ? "2rem" : "none")}; */
   }
 `;
 

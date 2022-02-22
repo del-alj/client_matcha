@@ -3,7 +3,8 @@ import React from 'react';
 import { Layout } from '../../layouts/signinLayout';
 import { SecondSection } from "./secondSection";
 import { FirstSection } from "./firstSection";
-// import useLocalStorage from '../../hooks/useLocaleStorage';
+import home from "../../assets/home.png";
+
 import { Content } from "./style";
 
 const tags = [
@@ -22,13 +23,11 @@ const tags = [
 ];
 
 export const UserProfile = () => {
-  // const [name, setName] = useLocalStorage("name", () => "");
   return (
     <Layout>
       <Content>
-        {/* <div style={{ marginTop: "100px" }}>User profile</div> */}
         <FirstSection status="online" tags={tags} />
-        {/* <SecondSection /> */}
+        <SecondSection photos={home} />
       </Content>
     </Layout>
   );

@@ -1,22 +1,19 @@
 import React from "react";
 
-import { Layout } from "../../layouts/signinLayout";
-// import useLocalStorage from '../../hooks/useLocaleStorage';
-import { Content, Flex } from "./style";
+import { Flex } from "../../Components/styles/Container.styles";
+import { Slider } from "../../Components/slider";
 
-export const SecondSection = () => {
-  // const [name, setName] = useLocalStorage("name", () => "");
+export const SecondSection = (props) => {
+  const { photos } = props;
+
   return (
-    <Flex background="red" height="700px" direction="row">
-      <Flex
-        background="blue"
-        width="70%"
-        direction="row"
-        justifyContent="center"
-      >
-        {" "}
-        test
-      </Flex>
+    <Flex
+      // style={{ border: "1px solid black" }}
+      height="700px"
+      direction="row"
+      justifyContent="center"
+    >
+      <Slider potos={photos} />
     </Flex>
   );
 };

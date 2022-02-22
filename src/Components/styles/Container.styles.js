@@ -248,7 +248,23 @@ export const Homebackground = styled.div`
   }
 `;
 
-// export const Icon = styled.button`
-//   background: none;
-//   border: none;
-// `;
+export const Flex = styled.div`
+  background-color: ${(props) =>
+    props.background ? `${props.background}` : "none"};
+  min-height: ${(props) => (props.height ? `${props.height}` : "none")};
+  align-items: ${(props) =>
+    props.alignItems ? `${props.alignItems}` : "none"};
+  display: flex;
+  justify-content: ${(props) =>
+    props.justifyContent ? `${props.justifyContent}` : "none"};
+  flex-direction: ${(props) =>
+    props.direction ? `${props.direction}` : "none"};
+  padding-top: ${(props) =>
+    props.paddingTop ? `${props.paddingTop}` : "none"};
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* padding-top: ${(props) => (props.paddingTop ? "2rem" : "none")}; */
+  }
+`;

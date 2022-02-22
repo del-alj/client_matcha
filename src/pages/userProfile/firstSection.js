@@ -3,8 +3,8 @@ import React from "react";
 // import useLocalStorage from '../../hooks/useLocaleStorage';
 // import { Tags } from "../../Components/tag/style";
 import { Tags } from "../../Components/tag";
-
-import { Flex, PhotoProfile } from "./style";
+import { Flex } from "../../Components/styles/Container.styles";
+import { PhotoProfile } from "./style";
 import { DefinitionSection } from "./tools/definition";
 import { MiniSection } from "./tools/miniSection";
 import { Visibility } from "../../Components/visibility";
@@ -25,7 +25,7 @@ export const FirstSection = (props) => {
   const { status, tags } = props;
 
   return (
-    <Flex height="500px" direction="row" justifyContent="center">
+    <Flex direction="row" justifyContent="center">
       <Flex direction="row">
         <Flex direction="column">
           <div>
