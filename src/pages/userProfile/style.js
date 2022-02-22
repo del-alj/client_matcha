@@ -1,5 +1,6 @@
 import styled from "styled-components";
 
+import { MoreInfoDiv } from "./tools/moreInfo";
 export const Content = styled.div`
   text-align: center;
   font-family: "Electrolize", sans-serif;
@@ -74,5 +75,11 @@ export const P = styled.p`
   text-align: left;
   margin-left: 0.5rem;
   max-width: 500px;
+  padding-left: 1rem;
+`;
+
+export const MoreInfo = styled(MoreInfoDiv)`
+  border: 1px solid black;
+  margin: 0 0.5rem;
   padding-left: 1rem;
 `;

@@ -52,7 +52,7 @@ export const Li = styled.li`
   }
 `;
 
-export const Tags = styled.ul`
+export const Ul = styled.ul`
   list-style: none;
   margin: 0;
   overflow: hidden;
@@ -61,6 +61,6 @@ export const Tags = styled.ul`
   padding: 20px 0 0;
 `;
 
-export const Tag = styled(TagDiv)`
-  border: 1px solid black;
-`;
+// export const Tag = styled(TagDiv)`
+//   border: 1px solid black;
+// `;

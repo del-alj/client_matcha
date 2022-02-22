@@ -1,10 +1,10 @@
 import React from "react";
 
 // import useLocalStorage from '../../hooks/useLocaleStorage';
-import { Flex, H1, H4, P } from "../style";
+import { Flex, H1, H4, P, MoreInfo } from "../style";
 import { Button } from "../../../Components/styles/Container.styles";
-
 export const DefinitionSection = (props) => {
+  const { visibility } = props;
   const data = props.data;
   return (
     <Flex direction="column" alignItems="flex-start" paddingTop="5rem">
@@ -13,7 +13,11 @@ export const DefinitionSection = (props) => {
         {data?.firstName} {data?.lastName}
       </H4>
       <P>{data?.bio}</P>
-      <Button>Edit Profile</Button>
+      {visibility ? (
+        <Button>Edit Profile</Button>
+      ) : (
+        <MoreInfo info={props.data} />
+      )}
     </Flex>
   );
 };
