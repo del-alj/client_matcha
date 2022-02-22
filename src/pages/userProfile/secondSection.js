@@ -13,7 +13,7 @@ export const SecondSection = (props) => {
       direction="row"
       justifyContent="center"
     >
-      <Slider potos={photos} />
+      <Slider potos={photos} numberOfPictures="2" />
     </Flex>
   );
 };
