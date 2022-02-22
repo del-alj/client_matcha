@@ -5,7 +5,7 @@ import { Tag, Tags } from "../../Components/tag/style";
 import { Flex, PhotoProfile } from "./style";
 import { DefinitionSection } from "./tools/definition";
 import { MiniSection } from "./tools/miniSection";
-
+import { Visibility } from "../../Components/visibility";
 import venus from "../../assets/venus.jpg";
 
 const data = {
@@ -23,7 +23,7 @@ export const FirstSection = () => {
         <Flex direction="column">
           <div>
             <PhotoProfile src={venus} alt="Photo Profile"></PhotoProfile>
-            <h5>Online</h5>
+            <Visibility status="online" />
           </div>
           {/* tags */}
           <Tags>
