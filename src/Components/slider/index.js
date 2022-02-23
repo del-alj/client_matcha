@@ -1,12 +1,18 @@
 import React, { useState } from "react";
 
 import { Flex } from "../styles/Container.styles";
-import { SliderPicture, SliderButton, IconSlid } from "./style";
+import { Content } from "./style";
+import {
+  SliderPicture,
+  SliderButton,
+  IconSlid,
+  SliderDiv,
+  SliderPictureDiv,
+} from "./style";
 import left from "../../assets/left.png";
 import right from "../../assets/right.png";
 import home from "../../assets/home.png";
 import mars from "../../assets/mars.jpg";
-import { width } from "dom-helpers";
 
 export const Slider = (props) => {
   const [index, setIndex] = useState(0);
@@ -30,20 +36,25 @@ export const Slider = (props) => {
   // const { photos } = props;
   const numberOfPictures = props.numberOfPictures;
   return (
-    <Flex
-      paddingTop="5rem"
+    <Content
+      paddingTop="2rem"
       direction="row"
       justifyContent="center"
       alignContent="center"
-      style={{ paddingBlockEnd: "5rem" }}
     >
-      <SliderButton onClick={slideToLeft}>
-        <IconSlid src={left} />
-      </SliderButton>
-      <SliderPicture src={photos[index]} alt="{props.alt}" />
-      <SliderButton onClick={slideToRight}>
-        <IconSlid src={right} />
-      </SliderButton>
-    </Flex>
+      <SliderPictureDiv order={2}>
+        <SliderPicture src={photos[index]} alt="{props.alt}" />{" "}
+      </SliderPictureDiv>
+      <SliderDiv order={1}>
+        <SliderButton onClick={slideToLeft}>
+          <IconSlid src={left} />
+        </SliderButton>
+      </SliderDiv>
+      <SliderDiv order={2}>
+        <SliderButton onClick={slideToRight}>
+          <IconSlid src={right} />
+        </SliderButton>
+      </SliderDiv>
+    </Content>
   );
 };

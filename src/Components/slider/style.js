@@ -1,4 +1,18 @@
 import styled from "styled-components";
+import { Flex } from "../styles/Container.styles";
+export const SliderDiv = styled.div`
+  /* padding                                        : 0px; */
+  /* font-size: 3rem; */
+  background: transparent;
+  border: none;
+  display: flex;
+  order: ${(props) => (props.order ? `${props.order}` : "none")};
+  /* border: 1px solid black; */
+  align-items: center;
+  @media screen and (max-width: 770px) {
+    order: 1};
+  }
+`;
 
 export const SliderButton = styled.button.attrs((props) => ({
   ...props,
@@ -19,18 +33,31 @@ export const SliderPicture = styled.img`
   width: 42rem;
   height: auto;
   @media screen and (max-width: 770px) {
-    width: 21rem;
+    width: 100%;
   }
 `;
 
 export const IconSlid = styled.img.attrs((props) => ({
   ...props,
 }))`
-  margin: 0px 7rem;
+  margin: 0px 2rem;
   width: 2rem;
   :active {
      {
       opacity: 0.7;
     }
   }
+`;
+
+export const Content = styled(Flex)`
+  padding-block-end: 5rem;
+  flex-wrap: wrap;
+  flex-direction: row;
+`;
+
+export const SliderPictureDiv = styled(SliderDiv)`
+  @media screen and (max-width: 770px) {
+    width: 100%;
+    justify-content: center;
+  } ;
 `;
