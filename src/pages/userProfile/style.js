@@ -51,6 +51,7 @@ export const Flex = styled.div`
 
 export const Features = styled.div`
   font-size: 8px;
+  padding: 0.5rem;
   h1 {
     margin: 0px;
   }

@@ -6,7 +6,7 @@ export const Button = styled.button`
 `;
 
 export const Img = styled.img`
-  width: 20px;
-  height: 20px;
+  width: 1.5rem;
+  height: 1.5rem;
   border-radius: ${(props) => (props.type === "profile" ? "50px" : "none")};
 `;
