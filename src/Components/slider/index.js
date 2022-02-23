@@ -13,6 +13,7 @@ import left from "../../assets/left.png";
 import right from "../../assets/right.png";
 import home from "../../assets/home.png";
 import mars from "../../assets/mars.jpg";
+import venus from "../../assets/venus.jpg";
 
 export const Slider = (props) => {
   const [index, setIndex] = useState(0);
@@ -31,7 +32,33 @@ export const Slider = (props) => {
       setIndex(index - 1);
     } else setIndex(numberOfPictures - 1);
   };
-  const photos = [home, mars];
+
+  const swipe = (e) => {
+    // e.preventDefault();
+    e.preventDefault();
+    const touch = e;
+    console.log("CLICKED", touch.nativeEvent.x, touch.nativeEvent.offsetX);
+    const width = touch.target.offsetWidth;
+    if (
+      touch.nativeEvent.x < width &&
+      touch.nativeEvent.offsetX < width / 2 &&
+      touch.nativeEvent.x > touch.nativeEvent.offsetX
+    ) {
+      if (index > 0) {
+        setIndex(index - 1);
+      } else setIndex(numberOfPictures - 1);
+    } else if (
+      touch.nativeEvent.x > width &&
+      touch.nativeEvent.offsetX > width / 2 &&
+      touch.nativeEvent.x > touch.nativeEvent.offsetX
+    ) {
+      if (index < numberOfPictures - 1) {
+        setIndex(index + 1);
+      } else setIndex(0);
+    }
+  };
+
+  const photos = [venus, home, mars];
 
   // const { photos } = props;
   const numberOfPictures = props.numberOfPictures;
@@ -42,8 +69,16 @@ export const Slider = (props) => {
       justifyContent="center"
       alignContent="center"
     >
-      <SliderPictureDiv order={2}>
-        <SliderPicture src={photos[index]} alt="{props.alt}" />{" "}
+      <SliderPictureDiv
+        order={2}
+        // style={{ border: "1px solid black", width: "400px" }}
+        // onClick={swipeToRight}
+      >
+        <SliderPicture
+          onMouseDown={swipe}
+          src={photos[index]}
+          alt="{props.alt}"
+        ></SliderPicture>
       </SliderPictureDiv>
       <SliderDiv order={1}>
         <SliderButton onClick={slideToLeft}>
