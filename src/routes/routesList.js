@@ -7,7 +7,7 @@ import { ConfirmSignup } from "../pages/signup/confirmSignup";
 import { Confirmation } from "../pages/login/confirmation";
 import { ResetPassword } from "../pages/login/resetPassword";
 import { ConfirmForgotPassword } from "../pages/login/confirmForgotPassword";
-
+import { EditProfile } from "../pages/editProfile/index";
 const routes = [
   {
     path: "/",
@@ -28,6 +28,10 @@ const routes = [
   {
     path: "/profile",
     component: UserProfile,
+  },
+  {
+    path: "/EditProfile",
+    component: EditProfile,
   },
   {
     path: "/confirmSignup",
