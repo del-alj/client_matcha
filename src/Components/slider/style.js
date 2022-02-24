@@ -9,7 +9,7 @@ export const SliderDiv = styled.div`
   order: ${(props) => (props.order ? `${props.order}` : "none")};
   /* border: 1px solid black; */
   align-items: center;
-  @media screen and (max-width: 770px) {
+  @media screen and (max-width: 930px) {
     order: 1};
   }
 `;
@@ -33,7 +33,7 @@ export const SliderPicture = styled.img`
   width: 42rem;
   height: auto;
   position: relative;
-  @media screen and (max-width: 770px) {
+  @media screen and (max-width: 930px) {
     width: 100%;
   }
 `;
@@ -48,7 +48,7 @@ export const IconSlid = styled.img.attrs((props) => ({
       opacity: 0.7;
     }
   }
-  @media screen and (max-width: 770px) {
+  @media screen and (max-width: 900px) {
     margin: 2rem;
   }
 `;
@@ -60,8 +60,7 @@ export const Content = styled(Flex)`
 `;
 
 export const SliderPictureDiv = styled(SliderDiv)`
-  border: 1px solid red;
-  @media screen and (max-width: 770px) {
+  @media screen and (max-width: 930px) {
     width: 100%;
     justify-content: center;
   } ;
