@@ -8,6 +8,7 @@ import { Confirmation } from "../pages/login/confirmation";
 import { ResetPassword } from "../pages/login/resetPassword";
 import { ConfirmForgotPassword } from "../pages/login/confirmForgotPassword";
 import { EditProfile } from "../pages/editProfile/index";
+import { AddPicture } from "../pages/editProfile/addPicture";
 const routes = [
   {
     path: "/",
@@ -48,6 +49,10 @@ const routes = [
   {
     path: "/reset",
     component: ConfirmForgotPassword,
+  },
+  {
+    path: "/addPicture",
+    component: AddPicture,
   },
 ];
 

@@ -30,6 +30,8 @@ export const Textarea = styled.textarea`
   padding: 0.8rem 1rem;
   margin: 13px 0;
   line-height: 1.6;
+  /* overflow-y: hidden; */
+  resize: none;
 
   background: #f8f8f8;
   font-size: 1em;
@@ -43,6 +45,18 @@ export const Textarea = styled.textarea`
   color: black;
   border: 0;
   outline: 0;
+  /* ::-webkit-scrollbar-track {
+    background-color: #f8f8f8;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+    background-color: #f8f8f8;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: #5f5f5f;
+  } */
 `;
 
 export const Label = styled.label``;

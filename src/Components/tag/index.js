@@ -1,14 +1,41 @@
 import React from "react";
 
-import { Li, Ul } from "./style";
+import { Li, Ul, EditLi, DeleteButton } from "./style";
+
+import del from "../../assets/icons/del.png";
 
 const Tag = (props) => {
   return (
     <Li>
-      <a href={props.link} className="tag">
-        {props.titel}
-      </a>
+      <a href={props.link}>{props.titel}</a>
     </Li>
+  );
+};
+
+const EditTag = (props) => {
+  return (
+    <EditLi>
+      <div style={{ position: "relative" }}>
+        <a
+          href={props.link}
+          style={{
+            background: "none",
+          }}
+        >
+          {props.titel}
+        </a>
+        <DeleteButton>
+          <img
+            src={del}
+            alt=""
+            style={{
+              width: "0.6rem",
+              height: "auto",
+            }}
+          />
+        </DeleteButton>
+      </div>
+    </EditLi>
   );
 };
 
@@ -23,4 +50,15 @@ const Tags = (props) => {
   );
 };
 
-export { Tags };
+const EditTags = (props) => {
+  const { tags } = props;
+  return (
+    <Ul>
+      {tags.map((tag) => (
+        <EditTag link={tag.link} titel={tag.titel} />
+      ))}
+    </Ul>
+  );
+};
+
+export { Tags, EditTags };

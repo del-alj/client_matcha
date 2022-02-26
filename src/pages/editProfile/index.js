@@ -5,7 +5,7 @@ import { FirstSection } from "./firstSection";
 import { SecondSection } from "./secondSection";
 import { ThirdSection } from "./thirdSection";
 
-import { Content } from "./style";
+import { Content, Blurry } from "./style";
 import { Button, Flex } from "../../Components/styles/Container.styles";
 
 const tags = [
@@ -44,10 +44,12 @@ export const EditProfile = () => {
         justifyContent="center"
         alignItems="center"
         height="100vh"
-        // style={{
-        //   border: "1px solid black",
-        // }}
+        style={{
+          // border: "1px solid black",
+          position: "relative",
+        }}
       >
+        {/* <Blurry /> */}
         <Content>
           <FirstSection tags={tags} />
           <SecondSection info={info} />

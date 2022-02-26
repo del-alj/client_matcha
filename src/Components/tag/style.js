@@ -2,22 +2,21 @@ import styled from "styled-components";
 
 export const Li = styled.li`
   float: left;
-
-  .tag {
-    background: #e6e6e6;
-    border-radius: 3px 0 0 3px;
+  a {
     color: #535353;
-    display: inline-block;
-    height: 26px;
-    line-height: 26px;
-    padding: 0 20px 0 23px;
-    position: relative;
-    margin: 0 10px 10px 0;
     text-decoration: none;
-    -webkit-transition: color 0.2s;
   }
+  background: #e6e6e6;
+  border-radius: 3px 0 0 3px;
+  display: inline-block;
+  height: 26px;
+  line-height: 26px;
+  padding: 0 20px 0 23px;
+  position: relative;
+  margin: 0 10px 10px 0;
+  -webkit-transition: color 0.2s;
 
-  .tag::before {
+  ::before {
     /* background: #fff; */
     border-radius: 10px;
     box-shadow: inset 0 1px rgba(0, 0, 0, 0.25);
@@ -29,7 +28,7 @@ export const Li = styled.li`
     top: 10px;
   }
 
-  .tag::after {
+  ::after {
     background: #fff;
     border-bottom: 13px solid transparent;
     border-left: 10px solid #e6e6e6;
@@ -40,14 +39,17 @@ export const Li = styled.li`
     top: 0;
   }
 
-  .tag:hover {
+  :hover {
     background-color: black;
-    color: white;
+    a {
+      color: white;
+    }
   }
 
-  .tag:hover::after {
+  :hover::after {
     border-left-color: Black;
   }
+  clip-path: polygon(0% 0%, 100% 0, 100% 100%, 0 100%, 20px 50%);
 `;
 
 export const Ul = styled.ul`
@@ -57,4 +59,45 @@ export const Ul = styled.ul`
   max-width: 350px;
   justify-content: center;
   padding: 20px 0 0;
+`;
+
+export const EditLi = styled.li`
+  /* float: left; */
+  a {
+    color: #535353;
+    text-decoration: none;
+  }
+  background: #e6e6e6;
+  border-radius: 3px 0 0 3px;
+  display: inline-block;
+  height: 26px;
+  line-height: 26px;
+  padding: 0 20px 0 23px;
+  position: relative;
+  margin: 0 10px 10px 0;
+  /* -webkit-transition: color 0.2s; */
+
+  ::before {
+    /* box-shadow: inset 0 1px rgba(0, 0, 0, 0.25);
+    content: "";
+    height: 6px;
+    left: 10px;
+    position: absolute;
+    width: 6px;
+    top: 10px; */
+  }
+  clip-path: polygon(0% 0%, 100% 0, 100% 100%, 0 100%, 20px 50%);
+`;
+
+export const DeleteButton = styled.button`
+  background: none;
+  border: none;
+  position: absolute;
+  z-index: 10;
+  margin: 0px;
+  padding: 0;
+  right: -20px;
+  :hover {
+    background: white;
+  }
 `;
