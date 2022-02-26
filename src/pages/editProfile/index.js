@@ -45,7 +45,7 @@ const local = "khouribga, Morocco";
 
 export const EditProfile = () => {
   return (
-    <Layout>
+    <Layout login={true}>
       <Flex
         direction="column"
         justifyContent="center"
