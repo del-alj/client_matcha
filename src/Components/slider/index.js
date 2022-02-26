@@ -57,8 +57,8 @@ export const Slider = (props) => {
     >
       <SliderPictureDiv order={2}>
         <SliderPicture
-          onMouseDown={test}
-          onMouseUp={swipe}
+          // onMouseDown={test}
+          // onMouseUp={swipe}
           src={photos[index]}
           alt="{props.alt}"
         ></SliderPicture>
