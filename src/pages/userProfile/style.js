@@ -4,28 +4,9 @@ import { MoreInfoDiv } from "./tools/moreInfo";
 export const Content = styled.div`
   text-align: center;
   font-family: "Electrolize", sans-serif;
-  /* width: 100%;
-  height: 100%; */
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  /* padding: 0 200px; */
-  /* padding-top: 80px; */
-  /* justify-content: center; */
-
-  /* border: 1px solid black; */
-
-  @media screen and (max-width: 1024px) {
-    /* padding: 0 10px;
-    padding-top: 80px; */
-
-    /* flex-direction: column; */
-
-    /* width: 100%;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center; */
-  }
 `;
 
 export const Flex = styled.div`
@@ -45,7 +26,6 @@ export const Flex = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    /* padding-top: ${(props) => (props.paddingTop ? "2rem" : "none")}; */
   }
 `;
 

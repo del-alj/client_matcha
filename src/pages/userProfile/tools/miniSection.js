@@ -1,21 +1,13 @@
 import React from "react";
 
-// import useLocalStorage from '../../hooks/useLocaleStorage';
 import { Icon } from "../../../Components/icon";
 import { Flex, Features } from "../style";
-import { Button } from "../../../Components/styles/Container.styles";
 import crown from "../../../assets/icons/crown.png";
 import heart from "../../../assets/icons/heart.png";
 import eye from "../../../assets/icons/eye.png";
 
-const data = {
-  ranting: "5",
-  liked: "100",
-  looked: "170",
-};
-
-export const MiniSection = () => {
-  // const [name, setName] = useLocalStorage("name", () => "");
+export const MiniSection = (props) => {
+  const { data } = props;
   return (
     <Flex
       direction="column"
@@ -29,7 +21,7 @@ export const MiniSection = () => {
       <Flex height="none" direction="row !important">
         <Features>
           <Icon img={crown} alt="rantion" />
-          <h1>{data.ranting}</h1>
+          <h1>{data.rating}</h1>
         </Features>
         <Features>
           <Icon img={heart} alt="like" />
@@ -40,9 +32,6 @@ export const MiniSection = () => {
           <h1>{data.looked}</h1>
         </Features>
       </Flex>
-      {/* <Flex width="auto" height="none">
-        <Button>Edit Profile</Button>
-      </Flex> */}
     </Flex>
   );
 };

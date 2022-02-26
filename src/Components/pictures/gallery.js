@@ -1,7 +1,7 @@
 import React from "react";
 
-import { Div, Img } from "./style";
 import { AddNew } from "./addNew";
+import { Div, Img } from "./style";
 
 export const Gallery = (props) => {
   const { pictures } = props;

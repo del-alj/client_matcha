@@ -50,10 +50,6 @@ const routes = [
     path: "/reset",
     component: ConfirmForgotPassword,
   },
-  {
-    path: "/addPicture",
-    component: AddPicture,
-  },
 ];
 
 export { routes };

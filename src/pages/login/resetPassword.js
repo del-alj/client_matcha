@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { useHistory } from "react-router-dom";
-import { useParams } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 
 import { validation } from "../../assets/validationSchema/registration";
 import {
@@ -12,6 +11,8 @@ import {
   Form,
   Button,
 } from "../../Components/styles/Container.styles";
+
+//
 import forgot from "../../assets/forgot.jpg";
 
 const BASE_URL = process.env.REACT_APP_BASE_URL;
@@ -57,9 +58,7 @@ const ResetPassword = () => {
   };
   return (
     <Content>
-      <Block picture={forgot} color="yellow">
-        {/* <img src={forgot} alt="forgot" /> */}
-      </Block>
+      <Block picture={forgot} color="yellow"></Block>
       <Block>
         <Form onSubmit={(e) => submit(e)}>
           <h1>Forgot password</h1>

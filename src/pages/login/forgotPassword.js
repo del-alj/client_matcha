@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
 
+import { validation } from "../../assets/validationSchema/registration";
 import {
   Content,
   Block,
@@ -10,8 +11,9 @@ import {
   Form,
   Button,
 } from "../../Components/styles/Container.styles";
+
+//
 import forgot from "../../assets/forgot.jpg";
-import { validation } from "../../assets/validationSchema/registration";
 
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 const ForgotPassword = () => {

@@ -10,7 +10,7 @@ import useReqHook from '../../hooks/useReqHook';
 const Confirmation = () => {
   // const [status, setStatus] = useState(false);
   let { token } = useParams();
-  console.log('test000000000')
+  console.log("test000000000");
 
   // useEffect(async () => {
   //   const temp = await confirm(token);
@@ -20,8 +20,8 @@ const Confirmation = () => {
   //     setStatus(true);
   //   }
   // }, []);
-  const { data, isPending, Error } = useReqHook(`confirm/${token}`, 'put');
-  console.log('test', data, isPending, Error)
+  const { data, isPending, Error } = useReqHook(`confirm/${token}`, "put");
+  console.log("test", data, isPending, Error);
   return data ? (
     <UserProfile />
   ) : (
@@ -34,5 +34,4 @@ const Confirmation = () => {
     </Layout>
   );
 };
-//background="red"
 export { Confirmation };

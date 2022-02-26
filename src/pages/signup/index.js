@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
 
-import mars from "../../assets/mars.jpg";
+import { validation } from "../../assets/validationSchema/registration";
 import {
   Content,
   Block,
@@ -12,7 +12,9 @@ import {
   Button,
 } from "../../Components/styles/Container.styles";
 import { Layout } from "../../layouts/signinLayout";
-import { validation } from "../../assets/validationSchema/registration";
+//
+import mars from "../../assets/mars.jpg";
+
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 const Signup = () => {
   let history = useHistory();

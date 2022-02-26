@@ -55,7 +55,6 @@ export const Content = styled.div`
   }
 
   @media screen and (max-width: 768px) {
-    /* width: 100%; */
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -90,8 +89,6 @@ export const Div = styled.div`
   justify-content: center;
   align-content: space-around;
 `;
-
-
 
 export const Input = styled.input.attrs((props) => ({
   ...props,
@@ -153,7 +150,6 @@ export const SearchDiv = styled.div`
   margin: 0;
 `;
 
-
 export const StyledLink = styled(Link)`
   font-size: 0.8em;
   font-family: "Electrolize", sans-serif;
@@ -163,7 +159,6 @@ export const StyledLink = styled(Link)`
   color: ${(props) => (props.color ? props.color : "")};
   text-decoration: ${(props) => (props.inline ? props.inline : "")}; ;
 `;
-
 
 export const StyledLinkLogout = styled.button`
   font-size: 0.8em;
@@ -186,12 +181,10 @@ export const Form = styled.form`
 `;
 
 export const Button = styled.button`
-  /* height: 60px; */
   padding: 20px 60px;
   font-size: 1em;
   display: flex;
   flex-direction: column;
-  /* align-content: space-around; */
   align-items: center;
   justify-content: center;
   background-color: black;
@@ -199,12 +192,6 @@ export const Button = styled.button`
   color: white;
   margin: 13px 0;
   font-family: "Electrolize", sans-serif;
-  @media screen and (max-width: 1440px) {
-    /* width: 50%; */
-  }
-  @media screen and (max-width: 768px) {
-    /* width: 100%; */
-  }
 `;
 
 export const Homebackground = styled.div`

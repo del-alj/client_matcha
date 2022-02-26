@@ -1,11 +1,12 @@
 import React from "react";
 
+import { Layout } from "../../layouts/signinLayout";
 import {
   Content,
   Homebackground,
 } from "../../Components/styles/Container.styles";
+
 import home from "../../assets/home.png";
-import { Layout } from "../../layouts/signinLayout";
 
 const Home = () => {
   return (

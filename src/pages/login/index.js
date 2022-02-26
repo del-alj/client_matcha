@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
+
 import { validation } from "../../assets/validationSchema/registration";
+import { Layout } from "../../layouts/signinLayout";
+import { UserProfile } from "../userProfile";
 import {
   Content,
   Block,
@@ -11,9 +14,8 @@ import {
   Form,
   Button,
 } from "../../Components/styles/Container.styles";
+
 import venus from "../../assets/venus.jpg";
-import { Layout } from "../../layouts/signinLayout";
-import { UserProfile } from "../userProfile";
 
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 const Login = () => {

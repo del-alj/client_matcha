@@ -3,7 +3,6 @@ import { useHistory } from "react-router-dom";
 
 import {
   Header,
-  Menu,
   StyledLink,
   SearchDiv,
   Search,
@@ -23,11 +22,9 @@ const NewHeader = ({ display }) => {
   };
   return (
     <Header>
-      {/* <div> */}
       <StyledLink to="/" color="black" inline="none">
         Matcha
       </StyledLink>
-      {/* </div> */}
       <SearchDiv>
         <Search placeholder="Search" />
       </SearchDiv>

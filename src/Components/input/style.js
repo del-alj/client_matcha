@@ -2,8 +2,6 @@ import styled from "styled-components";
 
 export const Input = styled.input`
   width: 21rem;
-  /* height: 150px; */
-
   height: 60px;
   padding: 0 15px;
   margin: 13px 0;
@@ -20,8 +18,6 @@ export const Input = styled.input`
   color: black;
   border: 0;
   outline: 0;
-  /* box-sizing: border-box;
-  resize: none; */
 `;
 
 export const Textarea = styled.textarea`
@@ -30,7 +26,6 @@ export const Textarea = styled.textarea`
   padding: 0.8rem 1rem;
   margin: 13px 0;
   line-height: 1.6;
-  /* overflow-y: hidden; */
   resize: none;
 
   background: #f8f8f8;
@@ -45,26 +40,12 @@ export const Textarea = styled.textarea`
   color: black;
   border: 0;
   outline: 0;
-  /* ::-webkit-scrollbar-track {
-    background-color: #f8f8f8;
-  }
-
-  ::-webkit-scrollbar {
-    width: 6px;
-    background-color: #f8f8f8;
-  }
-
-  ::-webkit-scrollbar-thumb {
-    background-color: #5f5f5f;
-  } */
 `;
 
 export const Label = styled.label``;
 
 export const Div = styled.div`
   display: flex;
-  /* border: 1px solid black; */
-  /* padding: 0 2rem; */
   flex-direction: column;
   align-items: flex-start;
   margin-top: 2rem;

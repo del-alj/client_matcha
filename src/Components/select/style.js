@@ -30,6 +30,4 @@ export const Select = styled.select`
   background: #f8f8f8;
   border-color: #f4f4f4;
   outline: 0;
-
-  /* display: none; */
 `;

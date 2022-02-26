@@ -1,25 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 
 import { EditTags } from "../../Components/tag";
+import { AddPicture } from "./addPicture";
 import { Flex } from "../../Components/styles/Container.styles";
 import { PhotoProfile } from "../userProfile/style";
-import { AddPicture } from "./addPicture";
-import venus from "../../assets/venus.jpg";
-import { useHistory } from "react-router-dom";
 
 export const FirstSection = (props) => {
-  // const [name, setName] = useLocalStorage("name", () => "");
-  const { status, tags } = props;
+  const { tags, photoProfile, pictures } = props;
 
-  const editPicture = () => {
-    return <AddPicture />;
-  };
-
-  let history = useHistory();
-
+  const [display, setDisplay] = useState(false);
   const handleClick = () => {
-    // setChangepicture()
-    history.push("/addPicture");
+    setDisplay(true);
   };
 
   return (
@@ -27,9 +18,9 @@ export const FirstSection = (props) => {
       <Flex direction="row">
         <Flex direction="column">
           <div>
-            <PhotoProfile src={venus} alt="Photo Profile"></PhotoProfile>
+            <PhotoProfile src={photoProfile} alt="Photo Profile"></PhotoProfile>
           </div>
-          <a
+          <h2
             href="#"
             style={{
               fontSize: "1.1rem",
@@ -39,11 +30,11 @@ export const FirstSection = (props) => {
             onClick={handleClick}
           >
             Change Profile Photo
-          </a>
+          </h2>
           <EditTags tags={tags} />
         </Flex>
       </Flex>
-      <AddPicture />
+      {display && <AddPicture pictures={pictures} />}
     </Flex>
   );
 };

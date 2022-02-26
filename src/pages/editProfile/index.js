@@ -8,6 +8,12 @@ import { ThirdSection } from "./thirdSection";
 import { Content, Blurry } from "./style";
 import { Button, Flex } from "../../Components/styles/Container.styles";
 
+import forgot from "../../assets/forgot.jpg";
+import home from "../../assets/home.png";
+import mars from "../../assets/mars.jpg";
+import venus from "../../assets/venus.jpg";
+
+const photoProfile = venus;
 const tags = [
   {
     link: "#",
@@ -23,7 +29,7 @@ const tags = [
   },
 ];
 
-const info = {
+const personaleInfo = {
   userName: "Diana",
   firstName: "Ama",
   lastName: "Diana",
@@ -33,6 +39,7 @@ const info = {
   age: "24",
   email: "Diana@gmail.com",
 };
+const pictures = [forgot, home, home, mars, venus];
 
 const local = "khouribga, Morocco";
 
@@ -51,9 +58,13 @@ export const EditProfile = () => {
       >
         {/* <Blurry /> */}
         <Content>
-          <FirstSection tags={tags} />
-          <SecondSection info={info} />
-          <ThirdSection info={info} local={local} />
+          <FirstSection
+            tags={tags}
+            photoProfile={photoProfile}
+            pictures={pictures}
+          />
+          <SecondSection personaleInfo={personaleInfo} />
+          <ThirdSection personaleInfo={personaleInfo} local={local} />
         </Content>
         <Button style={{ width: "15rem" }}>Edit</Button>
       </Flex>

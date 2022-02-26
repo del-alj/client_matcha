@@ -1,13 +1,10 @@
 import styled from "styled-components";
 import { Flex } from "../styles/Container.styles";
 export const SliderDiv = styled.div`
-  /* padding                                        : 0px; */
-  /* font-size: 3rem; */
   background: transparent;
   border: none;
   display: flex;
   order: ${(props) => (props.order ? `${props.order}` : "none")};
-  /* border: 1px solid black; */
   align-items: center;
   @media screen and (max-width: 930px) {
     order: 1};
@@ -21,14 +18,9 @@ export const SliderButton = styled.button.attrs((props) => ({
   border: none;
   padding: 0px;
   font-size: 3rem;
-  /* :hover {
-    background-color: black;
-    color: white;
-  } */
 `;
 
 export const SliderPicture = styled.img`
-  /* border: 0.2rem solid black; */
   outline: black solid 0.2rem;
   width: 42rem;
   height: auto;
