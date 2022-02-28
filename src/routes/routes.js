@@ -1,17 +1,27 @@
 import React from "react";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { BrowserRouter, Switch } from "react-router-dom";
 
-import { routes } from "./routesList.js";
+import ContextProvider from "../Components/contexts/usecontext";
+import PrivateRoute from "./privateRoute";
+import PublicRoute from "./publicRoute";
+import { Login } from "../pages/login";
+import { Home } from "../pages/home";
+import { UserProfile } from "../pages/userProfile";
 
 const Routes = () => {
   return (
     <BrowserRouter>
       <Switch>
-        {routes.map(({ path, component: Component }, index) => (
-          <Route path={path} key={index} exact>
-            <Component />
-          </Route>
-        ))}
+        <ContextProvider>
+          <PublicRoute restricted={false} component={Home} path="/" exact />
+          <PublicRoute
+            restricted={true}
+            component={Login}
+            path="/login"
+            exact
+          />
+          <PrivateRoute component={UserProfile} path="/profile" exact />
+        </ContextProvider>
       </Switch>
     </BrowserRouter>
   );

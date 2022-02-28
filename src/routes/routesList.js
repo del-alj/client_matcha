@@ -9,7 +9,7 @@ import { ResetPassword } from "../pages/login/resetPassword";
 import { ConfirmForgotPassword } from "../pages/login/confirmForgotPassword";
 import { EditProfile } from "../pages/editProfile/index";
 import { AddPicture } from "../pages/editProfile/addPicture";
-const routes = [
+const publicRoutes = [
   {
     path: "/",
     component: Home,
@@ -26,12 +26,15 @@ const routes = [
     path: "/signup",
     component: Signup,
   },
+];
+
+const privateRoutes = [
   {
     path: "/profile",
     component: UserProfile,
   },
   {
-    path: "/EditProfile",
+    path: "/editprofile",
     component: EditProfile,
   },
   {
@@ -52,4 +55,4 @@ const routes = [
   },
 ];
 
-export { routes };
+export { publicRoutes, privateRoutes };

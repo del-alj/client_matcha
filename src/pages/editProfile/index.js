@@ -29,6 +29,9 @@ const tags = [
   },
 ];
 
+
+
+
 const personaleInfo = {
   userName: "Diana",
   firstName: "Ama",
@@ -43,7 +46,8 @@ const pictures = [forgot, home, home, mars, venus];
 
 const local = "khouribga, Morocco";
 
-export const EditProfile = () => {
+export const EditProfile = (props) => {
+  console.log("data", props.data);
   return (
     <Layout login={true}>
       <Flex

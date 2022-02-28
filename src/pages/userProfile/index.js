@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useContext } from "react";
 
-import { Layout } from '../../layouts/signinLayout';
+import { Layout } from "../../layouts/signinLayout";
 import { SecondSection } from "./secondSection";
 import { FirstSection } from "./firstSection";
 import { Content } from "./style";
@@ -9,6 +9,7 @@ import { Content } from "./style";
 import home from "../../assets/home.png";
 import mars from "../../assets/mars.jpg";
 import venus from "../../assets/venus.jpg";
+import { autontication } from "../../Components/contexts/usecontext";
 
 const tags = [
   {
@@ -24,6 +25,7 @@ const tags = [
     titel: "vegan",
   },
 ];
+
 const photos = [venus, home, mars];
 
 const photoProfile = photos[1];
@@ -33,6 +35,7 @@ const ratings = {
   liked: "100",
   looked: "170",
 };
+
 const personaleInfo = {
   userName: "Diana",
   firstName: "Ama",
@@ -45,6 +48,8 @@ const personaleInfo = {
 };
 
 export const UserProfile = () => {
+  const data = useContext(autontication);
+  console.log("Context api .", data._currentValue2);
   return (
     <Layout>
       <Content>

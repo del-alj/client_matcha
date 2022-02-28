@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 
 import { Tags } from "../../Components/tag";
 import { Visibility } from "../../Components/visibility";
@@ -7,7 +7,14 @@ import { PhotoProfile } from "./style";
 import { DefinitionSection } from "./tools/definition";
 import { MiniSection } from "./tools/miniSection";
 
+import Context from "../../Components/contexts/usecontext";
+
 export const FirstSection = (props) => {
+  // const data = useContext(Context);
+  // console.log(data);
+  // const token = localStorage.getItem("Token");
+  // console.log(token);
+
   const { status, tags, personaleInfo, ratings, photoProfile } = props;
   return (
     <Flex direction="row" justifyContent="center">

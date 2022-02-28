@@ -3,9 +3,9 @@ import { useParams } from "react-router-dom";
 
 import { Layout } from "../../layouts/signinLayout";
 import { Banner } from "../../Components/banner/index.js";
-import { UserProfile } from "../userProfile/index";
+import { EditProfile } from "../editProfile/index";
 // import { confirm } from "../../api/confirmationApi.js";
-import useReqHook from '../../hooks/useReqHook';
+import useReqHook from "../../hooks/useReqHook";
 
 const Confirmation = () => {
   // const [status, setStatus] = useState(false);
@@ -21,9 +21,9 @@ const Confirmation = () => {
   //   }
   // }, []);
   const { data, isPending, Error } = useReqHook(`confirm/${token}`, "put");
-  console.log("test", data, isPending, Error);
+  console.log("data11", data);
   return data ? (
-    <UserProfile />
+    <EditProfile data={data} />
   ) : (
     <Layout>
       <Banner
