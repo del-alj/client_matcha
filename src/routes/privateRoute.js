@@ -6,7 +6,7 @@ import { autontication } from "../Components/contexts/usecontext";
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
   const token = useContext(autontication);
-  const isAuthenticated = token;
+  const isAuthenticated = token._currentValue2;
   return (
     <>
       {privateRoutes.map(({ path, component: Component }, index) => (

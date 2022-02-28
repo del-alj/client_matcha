@@ -50,7 +50,7 @@ const Login = () => {
         history.push("/profile");
         // setToken in localstorage
         localStorage.setItem("Token", JSON.stringify(res.data));
-        console.log(res);
+        console.log("from login", res);
       })
       .catch((err) => {
         console.log(err);

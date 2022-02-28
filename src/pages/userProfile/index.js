@@ -48,8 +48,8 @@ const personaleInfo = {
 };
 
 export const UserProfile = () => {
-  const data = useContext(autontication);
-  console.log("Context api .", data._currentValue2);
+  // const data = useContext(autontication);
+  // console.log("Context api .", data._currentValue2);
   return (
     <Layout>
       <Content>

@@ -1,9 +1,7 @@
-import React, { createContext, useState, useMemo } from "react";
+import React, { createContext } from "react";
 
 export const autontication = createContext(localStorage.getItem("Token"));
-// export const token = createContext(localStorage.getItem("Token"));
-
-// const accessToken = token.accessToken;
+// export const autontication1 = createContext(localStorage.getItem("Token"));
 
 const ContextProvider = (props) => {
   return (
