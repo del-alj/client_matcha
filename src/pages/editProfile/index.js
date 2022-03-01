@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 
 import { Layout } from "../../layouts/signinLayout";
 import { FirstSection } from "./firstSection";
@@ -12,8 +12,10 @@ import forgot from "../../assets/forgot.jpg";
 import home from "../../assets/home.png";
 import mars from "../../assets/mars.jpg";
 import venus from "../../assets/venus.jpg";
+import { UserContext } from "../../Components/contexts/usercontext";
 
 const photoProfile = venus;
+
 const tags = [
   {
     link: "#",
@@ -28,9 +30,6 @@ const tags = [
     titel: "vegan",
   },
 ];
-
-
-
 
 const personaleInfo = {
   userName: "Diana",
@@ -47,7 +46,11 @@ const pictures = [forgot, home, home, mars, venus];
 const local = "khouribga, Morocco";
 
 export const EditProfile = (props) => {
-  console.log("data", props.data);
+  console.log("data", props?.data);
+  const value = useContext(UserContext);
+  console.log("data", value);
+
+  const personaleInfo = value["value"];
   return (
     <Layout login={true}>
       <Flex
