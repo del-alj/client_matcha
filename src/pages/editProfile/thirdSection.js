@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 
 import { InputFull } from "../../Components/input/inputFull";
 import { Flex } from "../../Components/styles/Container.styles";
@@ -6,9 +6,11 @@ import { Localisation } from "./style";
 import { Icon } from "../../Components/icon";
 import gps from "../../assets/icons/gps.png";
 
-export const ThirdSection = (props) => {
-  const { personaleInfo, local } = props;
+import { UserContext } from "../../Components/contexts/usercontext";
 
+export const ThirdSection = (props) => {
+  const { local } = props;
+  const [userdetails, setUserDetails] = useContext(UserContext);
   return (
     <Flex justifyContent="center" style={{ padding: "0rem 2rem" }}>
       <Flex direction="row">
@@ -20,28 +22,28 @@ export const ThirdSection = (props) => {
           <InputFull
             name="firstName"
             label="First Name"
-            text={personaleInfo.firstName}
+            text={userdetails?.firstName}
           />
           <InputFull
             name="lastName"
             label="Last Name"
-            text={personaleInfo.lastName}
+            text={userdetails?.lastName}
           />
           <InputFull
             name="userName"
             label="username"
-            text={personaleInfo.userName}
+            text={userdetails?.userName}
           />
           <InputFull
             name="email"
             label="Email"
-            text={personaleInfo.email}
+            text={userdetails?.email}
             type="mail"
           />
           <InputFull
             name="age"
             label="Age"
-            text={personaleInfo.age}
+            text={userdetails?.age}
             type="number"
           />
         </Flex>

@@ -11,11 +11,7 @@ import { Content } from "./style";
 import home from "../../assets/home.png";
 import mars from "../../assets/mars.jpg";
 import venus from "../../assets/venus.jpg";
-import { autontication } from "../../Components/contexts/usecontext";
-
 import { UserContext } from "../../Components/contexts/usercontext";
-import useGetReqHook from "../../hooks/useGetReqHook";
-import { ThemeProvider } from "styled-components";
 
 const tags = [
   {
@@ -42,16 +38,7 @@ const ratings = {
   looked: "170",
 };
 
-const personaleInfo = {
-  userName: "Diana",
-  firstName: "Ama",
-  lastName: "Diana",
-  bio: "This space gives you more room to expound on your message. Remember that writing effectively is an art. Start by using simple, everyday words people can easily understand.",
-  gender: "woman",
-  preferences: "Man",
-  age: "24",
-  email: "Diana@gmail.com",
-};
+
 
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 

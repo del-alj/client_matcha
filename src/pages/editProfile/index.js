@@ -1,4 +1,5 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
+import axios from "axios";
 
 import { Layout } from "../../layouts/signinLayout";
 import { FirstSection } from "./firstSection";
@@ -45,12 +46,48 @@ const pictures = [forgot, home, home, mars, venus];
 
 const local = "khouribga, Morocco";
 
-export const EditProfile = (props) => {
-  console.log("data", props?.data);
-  const value = useContext(UserContext);
-  console.log("data", value);
+const BASE_URL = process.env.REACT_APP_BASE_URL;
 
-  const personaleInfo = value["value"];
+const user_id = localStorage.getItem("userId");
+const url = `${BASE_URL}/user/${user_id}`;
+
+const token = JSON.parse(localStorage.getItem("Token"));
+const config = {
+  headers: {
+    "content-Type": "application/json",
+    Authorization: `Bearer ${token}`,
+  },
+};
+
+export const EditProfile = (props) => {
+  const [userData, setUserData] = useState({});
+  const [userdetails, setUserDetails] = useContext(UserContext);
+
+  const getUser = async (url, config) => {
+    const dataUser = await axios
+      .get(url, config)
+      .then((res) => {
+        setUserData(res.data);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+    return dataUser;
+  };
+
+  useEffect(() => {
+    getUser(url, config);
+    setUserDetails({
+      userName: userData?.user_name,
+      firstName: userData?.first_name,
+      lastName: userData?.last_name,
+      email: userData?.email,
+      id: userData?.id,
+    });
+  }, []);
+
+  console.log("test");
+
   return (
     <Layout login={true}>
       <Flex
@@ -71,7 +108,7 @@ export const EditProfile = (props) => {
             pictures={pictures}
           />
           <SecondSection personaleInfo={personaleInfo} />
-          <ThirdSection personaleInfo={personaleInfo} local={local} />
+          <ThirdSection local={local} />
         </Content>
         <Button style={{ width: "15rem" }}>Edit</Button>
       </Flex>

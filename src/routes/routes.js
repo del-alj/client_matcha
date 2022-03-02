@@ -5,6 +5,8 @@ import PrivateRoute from "./privateRoute";
 import PublicRoute from "./publicRoute";
 import { Login } from "../pages/login";
 import { UserProfile } from "../pages/userProfile";
+import { EditProfile } from "../pages/editProfile";
+
 import { Home } from "../pages/home";
 
 const Routes = () => {
@@ -14,6 +16,7 @@ const Routes = () => {
         {/* <PublicRoute restricted={false} component={Home} path="/" exact /> */}
         <PublicRoute restricted={true} component={Login} path="/login" exact />
         <PrivateRoute component={UserProfile} path="/profile" exact />
+        <PrivateRoute component={EditProfile} path="/editprofile" exact />
       </Switch>
     </BrowserRouter>
   );
