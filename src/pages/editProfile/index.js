@@ -51,7 +51,7 @@ const BASE_URL = process.env.REACT_APP_BASE_URL;
 
 const user_id = localStorage.getItem("userId");
 const url = `${BASE_URL}/user/${user_id}`;
-
+const urledit = `${BASE_URL}/user/edit/${user_id}`;
 const token = JSON.parse(localStorage.getItem("Token"));
 const config = {
   headers: {
@@ -62,70 +62,65 @@ const config = {
 
 export const EditProfile = (props) => {
   let history = useHistory();
-  const [userData, setUserData] = useState({});
   const [userdetails, setUserDetails] = useContext(UserContext);
 
   const getUser = async (url, config) => {
-    const dataUser = await axios
+    await axios
       .get(url, config)
       .then((res) => {
-        setUserData(res.data);
+        setUserDetails({
+          userName: res.data?.user_name,
+          firstName: res.data?.first_name,
+          lastName: res.data?.last_name,
+          email: res.data?.email,
+          id: res.data?.id,
+          bio: res.data?.bio,
+          age: res.data?.age,
+          gender: res.data?.gender,
+          preferences: res.data?.preferences,
+        });
       })
       .catch((err) => {
         console.error(err);
       });
-    return dataUser;
   };
 
   const updateUser = async (url, param, config) => {
-    const dataUser = await axios
+    await axios
       .put(url, param, config)
       .then((res) => {
-        setUserData(res.data);
+        setUserDetails({
+          userName: res.data?.user_name,
+          firstName: res.data?.first_name,
+          lastName: res.data?.last_name,
+          email: res.data?.email,
+          id: res.data?.id,
+          bio: res.data?.bio,
+          age: res.data?.age,
+          gender: res.data?.gender,
+          preferences: res.data?.preferences,
+        });
         history.push("/profile");
       })
       .catch((err) => {
         console.error(err);
       });
-    return dataUser;
   };
 
   useEffect(() => {
     getUser(url, config);
-    setUserDetails({
-      userName: userData?.user_name,
-      firstName: userData?.first_name,
-      lastName: userData?.last_name,
-      email: userData?.email,
-      id: userData?.id,
-      bio: userData?.bio,
-      age: userData?.age,
-      gender: userData?.gender,
-      preferences: userData?.preferences,
-    });
   }, []);
-
-  const [data, setData] = useState(userdetails);
-
-  const param = {
-    bio: data?.bio,
-    firstName: data.firstName,
-    lastName: data?.lastName,
-    userName: data?.userName,
-    email: data?.email,
-    age: data?.age,
-  };
 
   const submit = (e) => {
     e.preventDefault();
-    // maybe ned put it in useEffect
-    updateUser(url, param, config);
+
+    updateUser(urledit, userdetails, config);
   };
 
   const handelChange = (e) => {
-    const newData = { ...data };
+    const newData = { ...userdetails };
     newData[e.target.id] = e.target.value;
-    setData(newData);
+    setUserDetails(newData);
     console.log(newData);
   };
 
