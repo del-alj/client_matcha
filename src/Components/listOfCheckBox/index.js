@@ -13,8 +13,8 @@ export const ListCheckBox = (props) => {
         Preferences
       </h5>
       <Flex direction="row">
-        {element.map((elem) => (
-          <CheckBox>
+        {element.map((elem, index) => (
+          <CheckBox key={index}>
             <Input
               type="checkbox"
               id={`checkbox${elem}`}
@@ -23,7 +23,7 @@ export const ListCheckBox = (props) => {
               // onChange={() => `setChecked${index}`((prev) => !prev)}
             />
             <div>
-              <label for={`checkbox${elem}`}>{elem}</label>
+              <label htmlFor={`checkbox${elem}`}>{elem}</label>
             </div>
           </CheckBox>
         ))}

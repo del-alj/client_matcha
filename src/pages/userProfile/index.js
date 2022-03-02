@@ -45,23 +45,34 @@ const BASE_URL = process.env.REACT_APP_BASE_URL;
 const user_id = localStorage.getItem("userId");
 const url = `${BASE_URL}/user/${user_id}`;
 
-const token = JSON.parse(localStorage.getItem("Token"));
+const token = `Bearer ${JSON.parse(localStorage.getItem("Token"))}`;
 const config = {
   headers: {
     "content-Type": "application/json",
-    Authorization: `Bearer ${token}`,
+    authorization: token,
   },
 };
 
 export const UserProfile = (props) => {
-  const [userData, setUserData] = useState({});
   const [userdetails, setUserDetails] = useContext(UserContext);
+  const [userData, setUserData] = useState({});
 
   const getUser = async (url, config) => {
     const dataUser = await axios
       .get(url, config)
       .then((res) => {
         setUserData(res.data);
+        console.log(res.data);
+        setUserDetails({
+          userName: res.data?.user_name,
+          firstName: res.data?.first_name,
+          lastName: res.data?.last_name,
+          email: res.data?.email,
+          bio: res.data?.bio,
+          age: res.data?.age,
+          gender: res.data?.gender,
+          preferences: res.data?.preferences,
+        });
       })
       .catch((err) => {
         console.error(err);
@@ -71,13 +82,6 @@ export const UserProfile = (props) => {
 
   useEffect(() => {
     getUser(url, config);
-    setUserDetails({
-      userName: userData?.user_name,
-      firstName: userData?.first_name,
-      lastName: userData?.last_name,
-      email: userData?.email,
-      id: userData?.id,
-    });
   }, []);
 
   return (

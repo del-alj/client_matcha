@@ -1,23 +1,29 @@
-import React from "react";
+import React, { useContext, useState, useEffect } from "react";
 
 import { InputFull } from "../../Components/input/inputFull";
 import { ListCheckBox } from "../../Components/listOfCheckBox";
 import { Flex } from "../../Components/styles/Container.styles";
 import { Select } from "./style";
+import { UserContext } from "../../Components/contexts/usercontext";
+import { validation } from "../../assets/validationSchema/editProfile";
+
+const genders = ["Woman", "Man"];
 
 export const SecondSection = (props) => {
-  const { personaleInfo } = props;
+  const { handelChange } = props;
+  const [userdetails, setUserDetails] = useContext(UserContext);
 
-  const genders = ["Woman", "Man"];
   return (
     <Flex justifyContent="center" style={{ padding: "7rem 2rem 2rem 0" }}>
       <Flex direction="row">
         <Flex direction="column" alignItems="flex-start">
-          <h1 style={{ margin: "0px" }}>{personaleInfo.userName}</h1>
+          <h1 style={{ margin: "0px" }}>{userdetails?.userName}</h1>
           <InputFull
+            onChange={handelChange}
+            placeholder="bio"
             name="bio"
             label="Bio"
-            text={personaleInfo.bio}
+            text={userdetails?.bio}
             type="textarea"
           />
           <Select name="gender" title="Gender" list={genders} />

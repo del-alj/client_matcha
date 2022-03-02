@@ -54,8 +54,8 @@ const EditTags = (props) => {
   const { tags } = props;
   return (
     <Ul>
-      {tags.map((tag) => (
-        <EditTag link={tag.link} titel={tag.titel} />
+      {tags.map((tag, index) => (
+        <EditTag key={index} link={tag.link} titel={tag.titel} />
       ))}
     </Ul>
   );

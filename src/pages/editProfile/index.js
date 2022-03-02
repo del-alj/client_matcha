@@ -14,6 +14,7 @@ import home from "../../assets/home.png";
 import mars from "../../assets/mars.jpg";
 import venus from "../../assets/venus.jpg";
 import { UserContext } from "../../Components/contexts/usercontext";
+import { useHistory } from "react-router-dom";
 
 const photoProfile = venus;
 
@@ -60,6 +61,7 @@ const config = {
 };
 
 export const EditProfile = (props) => {
+  let history = useHistory();
   const [userData, setUserData] = useState({});
   const [userdetails, setUserDetails] = useContext(UserContext);
 
@@ -75,6 +77,19 @@ export const EditProfile = (props) => {
     return dataUser;
   };
 
+  const updateUser = async (url, param, config) => {
+    const dataUser = await axios
+      .put(url, param, config)
+      .then((res) => {
+        setUserData(res.data);
+        history.push("/profile");
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+    return dataUser;
+  };
+
   useEffect(() => {
     getUser(url, config);
     setUserDetails({
@@ -83,10 +98,36 @@ export const EditProfile = (props) => {
       lastName: userData?.last_name,
       email: userData?.email,
       id: userData?.id,
+      bio: userData?.bio,
+      age: userData?.age,
+      gender: userData?.gender,
+      preferences: userData?.preferences,
     });
   }, []);
 
-  console.log("test");
+  const [data, setData] = useState(userdetails);
+
+  const param = {
+    bio: data?.bio,
+    firstName: data.firstName,
+    lastName: data?.lastName,
+    userName: data?.userName,
+    email: data?.email,
+    age: data?.age,
+  };
+
+  const submit = (e) => {
+    e.preventDefault();
+    // maybe ned put it in useEffect
+    updateUser(url, param, config);
+  };
+
+  const handelChange = (e) => {
+    const newData = { ...data };
+    newData[e.target.id] = e.target.value;
+    setData(newData);
+    console.log(newData);
+  };
 
   return (
     <Layout login={true}>
@@ -101,16 +142,18 @@ export const EditProfile = (props) => {
         }}
       >
         {/* <Blurry /> */}
-        <Content>
+        <Content onSubmit={(e) => submit(e)}>
           <FirstSection
             tags={tags}
             photoProfile={photoProfile}
             pictures={pictures}
           />
-          <SecondSection personaleInfo={personaleInfo} />
-          <ThirdSection local={local} />
+          <SecondSection handelChange={handelChange} />
+          <ThirdSection handelChange={handelChange} local={local} />
+          <Button type="submit" style={{ width: "15rem" }}>
+            Edit
+          </Button>
         </Content>
-        <Button style={{ width: "15rem" }}>Edit</Button>
       </Flex>
     </Layout>
   );
