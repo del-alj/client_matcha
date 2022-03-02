@@ -6,7 +6,7 @@ const ContextUser = (props) => {
   const [userDetails, setUserDetails] = useState({});
 
   return (
-    <UserContext.Provider value={{ userDetails, setUserDetails }}>
+    <UserContext.Provider value={[userDetails, setUserDetails]}>
       {props.children}
     </UserContext.Provider>
   );

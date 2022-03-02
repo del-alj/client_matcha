@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
 
@@ -15,6 +15,7 @@ import { autontication } from "../../Components/contexts/usecontext";
 
 import { UserContext } from "../../Components/contexts/usercontext";
 import useGetReqHook from "../../hooks/useGetReqHook";
+import { ThemeProvider } from "styled-components";
 
 const tags = [
   {
@@ -51,55 +52,53 @@ const personaleInfo = {
   age: "24",
   email: "Diana@gmail.com",
 };
+
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 
+const user_id = localStorage.getItem("userId");
+const url = `${BASE_URL}/user/${user_id}`;
+
+const token = JSON.parse(localStorage.getItem("Token"));
+const config = {
+  headers: {
+    "content-Type": "application/json",
+    Authorization: `Bearer ${token}`,
+  },
+};
+
 export const UserProfile = (props) => {
-  // const data = useContext(autontication);
-  const { userdetails, setUserDetails } = useContext(UserContext);
-  const token = localStorage.getItem("Token");
+  const [userData, setUserData] = useState({});
+  const [userdetails, setUserDetails] = useContext(UserContext);
 
-  let history = useHistory();
-  const user_id = localStorage.getItem("userId");
-  const url = `user/${user_id}`;
-
-  const config = {
-    headers: {
-      "content-Type": "application/json",
-      Authorization: `Bearer ${token}`,
-    },
+  const getUser = async (url, config) => {
+    const dataUser = await axios
+      .get(url, config)
+      .then((res) => {
+        setUserData(res.data);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+    return dataUser;
   };
 
-  const { data, isPending, Error } = useGetReqHook(url, "get", config);
-  console.log(data, isPending, Error);
-  // axios
-  //   .get(url, config)
-  //   .then((res) => {
-  //     console.log("from userprofile : ", res?.data);
-  //     res.json(res?.data);
-  //   })
-  //   .catch((err) => {
-  //     console.log(err);
-  //   });
-  console.log("prps", props);
-  // setUserDetails({
-  //   userName: res?.data?.user?.user_name,
-  //   firstName: res?.data?.user?.first_name,
-  //   lastName: res?.data?.user?.last_name,
-  //   email: res?.data?.user?.email,
-  //   id: res?.data?.user?.id,
-  // });
+  useEffect(() => {
+    getUser(url, config);
+    setUserDetails({
+      userName: userData?.user_name,
+      firstName: userData?.first_name,
+      lastName: userData?.last_name,
+      email: userData?.email,
+      id: userData?.id,
+    });
+  }, []);
 
-  // const value = useContext(UserContext);
-  // setValue("ok");
-  // const user = value["value"];
-  // console.log("from profile :", user);
   return (
     <Layout>
       <Content>
         <FirstSection
           status="online"
           tags={tags}
-          personaleInfo={personaleInfo}
           ratings={ratings}
           photoProfile={photoProfile}
         />

@@ -15,7 +15,7 @@ export const FirstSection = (props) => {
   // const token = localStorage.getItem("Token");
   // console.log(token);
 
-  const { status, tags, personaleInfo, ratings, photoProfile } = props;
+  const { status, tags, ratings, photoProfile } = props;
   return (
     <Flex direction="row" justifyContent="center">
       <Flex direction="row">
@@ -26,7 +26,7 @@ export const FirstSection = (props) => {
           </div>
           <Tags tags={tags} />
         </Flex>
-        <DefinitionSection personaleInfo={personaleInfo} visibility={true} />
+        <DefinitionSection visibility={true} />
       </Flex>
       <MiniSection data={ratings} />
     </Flex>

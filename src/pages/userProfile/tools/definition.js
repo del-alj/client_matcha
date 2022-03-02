@@ -10,11 +10,9 @@ import { UserContext } from "../../../Components/contexts/usercontext";
 // console.log(token);
 
 export const DefinitionSection = (props) => {
-  const userdetails = useContext(UserContext);
+  const [ userdetails, setUserDetails ] = useContext(UserContext);
   let history = useHistory();
-  // const { visibility, personaleInfo } = props;
   const { visibility } = props;
-
   const handleClick = () => {
     history.push("/editProfile");
   };
@@ -34,4 +32,4 @@ export const DefinitionSection = (props) => {
       )}
     </Flex>
   );
-};
+};;
