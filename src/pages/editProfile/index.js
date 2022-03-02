@@ -33,16 +33,6 @@ const tags = [
   },
 ];
 
-const personaleInfo = {
-  userName: "Diana",
-  firstName: "Ama",
-  lastName: "Diana",
-  bio: "This space gives you more room to expound on your message. Remember that writing effectively is an art. Start by using simple, everyday words people can easily understand.",
-  gender: "woman",
-  preferences: "Man",
-  age: "24",
-  email: "Diana@gmail.com",
-};
 const pictures = [forgot, home, home, mars, venus];
 
 const local = "khouribga, Morocco";
