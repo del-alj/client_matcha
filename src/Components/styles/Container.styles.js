@@ -13,8 +13,9 @@ export const Header = styled.header`
   z-index: 1;
   overflow: hidden;
   position: fixed;
-  border-bottom: 1px solid #535353;
-  background: white;
+  border-bottom: ${(props) =>
+    props.backgroundColor ? " 1px solid #535353" : "none"};
+  background: ${(props) => (props.backgroundColor ? "white" : "none")};
 `;
 
 export const Footer = styled.footer`
@@ -163,13 +164,19 @@ export const StyledLink = styled(Link)`
 export const StyledLinkLogout = styled.button`
   font-size: 0.8em;
   font-family: "Electrolize", sans-serif;
-  color: #535353;
+  color: #333333;
   text-align: right;
   margin: 13px 0;
   color: ${(props) => (props.color ? props.color : "")};
   text-decoration: ${(props) => (props.inline ? props.inline : "")};
   border: none;
   background: none;
+  :hover {
+    color: #555555;
+  }
+  :active {
+    color: #888888;
+  }
 `;
 
 export const Form = styled.form`

@@ -6,6 +6,7 @@ import {
   StyledLink,
   SearchDiv,
   Search,
+  StyledLinkLogout,
 } from "../styles/Container.styles";
 import { List } from "./style";
 
@@ -18,10 +19,11 @@ const NewHeader = ({ display }) => {
   let history = useHistory();
 
   const handleClick = () => {
-    Logout(history);
+    Logout();
+    history.push("/");
   };
   return (
-    <Header>
+    <Header backgroundColor>
       <StyledLink to="/" color="black" inline="none">
         Matcha
       </StyledLink>
@@ -32,6 +34,7 @@ const NewHeader = ({ display }) => {
         <Icon img={envelope} alt="Messages" />
         <Icon img={love} alt="like" />
         <Icon img={profileImg} alt="Profile" type="profile" />
+        <StyledLinkLogout onClick={handleClick}>Logout</StyledLinkLogout>
       </List>
     </Header>
   );
