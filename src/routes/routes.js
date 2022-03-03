@@ -16,7 +16,7 @@ const Routes = () => {
         {/* <PublicRoute restricted={false} component={Home} path="/" exact /> */}
         <PublicRoute restricted={true} component={Login} path="/login" exact />
         <PrivateRoute component={UserProfile} path="/profile" exact />
-        <PrivateRoute component={EditProfile} path="/editprofile" exact />
+        <PrivateRoute component={EditProfile} path="/profile/edit" exact />
       </Switch>
     </BrowserRouter>
   );

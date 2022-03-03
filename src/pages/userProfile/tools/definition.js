@@ -14,7 +14,7 @@ export const DefinitionSection = (props) => {
   let history = useHistory();
   const { visibility } = props;
   const handleClick = () => {
-    history.push("/editprofile");
+    history.push("/profile/edit");
   };
 
   console.log("use > ", userdetails);
