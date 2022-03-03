@@ -130,16 +130,30 @@ export const EditProfile = (props) => {
       >
         {/* <Blurry /> */}
         <Content onSubmit={(e) => submit(e)}>
-          <FirstSection
-            tags={tags}
-            photoProfile={photoProfile}
-            pictures={pictures}
-          />
-          <SecondSection handelChange={handelChange} />
-          <ThirdSection handelChange={handelChange} local={local} />
-          <Button type="submit" style={{ width: "15rem" }}>
-            Edit
-          </Button>
+          <div
+            style={{
+              display: "block",
+              justifyContent: "center",
+              paddingBottom: "9rem",
+            }}
+          >
+            <Content
+              style={{
+                display: "flex",
+              }}
+            >
+              <FirstSection
+                tags={tags}
+                photoProfile={photoProfile}
+                pictures={pictures}
+              />
+              <SecondSection handelChange={handelChange} />
+              <ThirdSection handelChange={handelChange} local={local} />
+            </Content>
+            <Button type="submit" style={{ width: "15rem", margin: "auto" }}>
+              Edit
+            </Button>
+          </div>
         </Content>
       </Flex>
     </Layout>

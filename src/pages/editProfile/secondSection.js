@@ -16,7 +16,7 @@ export const SecondSection = (props) => {
   return (
     <Flex justifyContent="center" style={{ padding: "7rem 2rem 2rem 0" }}>
       <Flex direction="row">
-        <Flex direction="column" alignItems="flex-start">
+        <Flex direction="column" alignItems="baseline !important">
           <h1 style={{ margin: "0px" }}>{userdetails?.userName}</h1>
           <InputFull
             onChange={handelChange}

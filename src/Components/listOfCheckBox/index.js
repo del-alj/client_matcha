@@ -23,7 +23,7 @@ export const ListCheckBox = (props) => {
       >
         Preferences
       </h5>
-      <Flex direction="row">
+      <Flex direction="row" flexDirection="initial">
         {element.map((elem, index) => (
           <CheckBox key={index} value={index[index]}>
             <Input
