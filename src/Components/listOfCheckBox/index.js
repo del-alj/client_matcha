@@ -13,6 +13,7 @@ export const ListCheckBox = (props) => {
     const newData = { ...userdetails };
     newData["preference"] = e.target.checked ? e.target.value : "";
     setUserDetails(newData);
+    // console.log(newData);
   };
 
   return (
@@ -30,13 +31,9 @@ export const ListCheckBox = (props) => {
               id={`Preference${elem}`}
               name={elem}
               defaultValue={elem}
-              // onChange={onChange}
               {...validation[elem[index]]}
               onChange={handelChange}
               checked={elem === userdetails?.preference ? true : false}
-              autofocus={false}
-
-              // onChange={() => `setChecked${index}`((prev) => !prev)}
             />
             <div>
               <label htmlFor={`checkbox${elem}`}>{elem}</label>

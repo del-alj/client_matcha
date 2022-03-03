@@ -15,20 +15,20 @@ export const validation = {
     pattern: "^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+$",
     title: "Email should only contain lowercase letters.",
   },
+  bio: {
+    pattern: "[A-Za-z][A-Za-z0-9_]{3,100}",
+    title: "bio too long.",
+  },
   age: {
     pattern: "[0-9]{1,2}",
     title: "age not logic.",
   },
-  bio: {
-    pattern: "[A-Za-z]{3,100}",
-    title: "bio too long.",
-  },
   gender: {
-    pattern: "^Man$?^Womman$",
+    pattern: "^Man$?^Woman$",
     title: "gender not correct.",
   },
-  preferences: {
-    pattern: "^Man$?^Womman$",
+  preference: {
+    pattern: "^Man$?^Woman$",
     title: "gender not correct.",
   },
 };

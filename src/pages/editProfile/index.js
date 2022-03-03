@@ -63,11 +63,11 @@ export const EditProfile = (props) => {
           firstName: res.data?.first_name,
           lastName: res.data?.last_name,
           email: res.data?.email,
-          id: res.data?.id,
+          // id: res.data?.id,
           bio: res.data?.bio,
           age: res.data?.age,
           gender: res.data?.gender,
-          preferences: res.data?.preferences,
+          preference: res.data?.preference,
         });
       })
       .catch((err) => {
@@ -76,6 +76,8 @@ export const EditProfile = (props) => {
   };
 
   const updateUser = async (url, param, config) => {
+    console.info("param", param);
+
     await axios
       .put(url, param, config)
       .then((res) => {
@@ -84,11 +86,11 @@ export const EditProfile = (props) => {
           firstName: res.data?.first_name,
           lastName: res.data?.last_name,
           email: res.data?.email,
-          id: res.data?.id,
+          // id: res.data?.id,
           bio: res.data?.bio,
           age: res.data?.age,
           gender: res.data?.gender,
-          preferences: res.data?.preferences,
+          preference: res.data?.preference,
         });
         history.push("/profile");
       })
@@ -103,7 +105,7 @@ export const EditProfile = (props) => {
 
   const submit = (e) => {
     e.preventDefault();
-
+    console.log(userdetails);
     updateUser(urledit, userdetails, config);
   };
 

@@ -71,7 +71,7 @@ export const UserProfile = (props) => {
           bio: res.data?.bio,
           age: res.data?.age,
           gender: res.data?.gender,
-          preferences: res.data?.preferences,
+          preference: res.data?.preference,
         });
       })
       .catch((err) => {
