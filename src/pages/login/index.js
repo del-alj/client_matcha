@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
 
@@ -14,11 +14,15 @@ import {
   Form,
   Button,
 } from "../../Components/styles/Container.styles";
+import { UserContext } from "../../Components/contexts/usercontext";
 
 import venus from "../../assets/venus.jpg";
 
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 const Login = () => {
+  // const [user, setUser] = useState();
+  const { userDetails, setUserDetails } = useContext(UserContext);
+
   const token = localStorage.getItem("Token");
 
   if (token) {
@@ -47,10 +51,18 @@ const Login = () => {
     axios
       .post(url, param, config)
       .then((res) => {
-        history.push("/profile");
+        // history.push("/profile");
         // setToken in localstorage
-        localStorage.setItem("Token", JSON.stringify(res.data));
+        localStorage.setItem("Token", JSON.stringify(res.data.accessToken));
+        localStorage.setItem("userId", JSON.stringify(res.data?.user?.user_id));
         console.log("from login", res);
+        setUserDetails({
+          userName: res.data.user.user_name,
+          firstName: res.data.user.first_name,
+          lastName: res.data.user.last_name,
+          email: res.data.user.email,
+        });
+        console.log("from user", userDetails);
       })
       .catch((err) => {
         console.log(err);
@@ -66,7 +78,7 @@ const Login = () => {
   return (
     <>
       {token ? (
-        <UserProfile />
+        <UserProfile user={userDetails} />
       ) : (
         <Layout>
           <Content>

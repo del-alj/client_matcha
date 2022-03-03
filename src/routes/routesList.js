@@ -34,7 +34,7 @@ const privateRoutes = [
     component: UserProfile,
   },
   {
-    path: "/editprofile",
+    path: "/profile/edit",
     component: EditProfile,
   },
   {
