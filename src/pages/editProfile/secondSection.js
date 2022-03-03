@@ -26,8 +26,15 @@ export const SecondSection = (props) => {
             text={userdetails?.bio}
             type="textarea"
           />
-          <Select name="gender" title="Gender" list={genders} />
+          <Select
+            name="gender"
+            title="Gender"
+            list={genders}
+            onChange={handelChange}
+            value={userdetails?.gender}
+          />
           <ListCheckBox
+            onChange={handelChange}
             titel="Preferences"
             element={genders}
             style={{

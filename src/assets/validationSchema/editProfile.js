@@ -23,4 +23,12 @@ export const validation = {
     pattern: "[A-Za-z]{3,100}",
     title: "bio too long.",
   },
+  gender: {
+    pattern: "^Man$?^Womman$",
+    title: "gender not correct.",
+  },
+  preferences: {
+    pattern: "^Man$?^Womman$",
+    title: "gender not correct.",
+  },
 };

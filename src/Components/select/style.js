@@ -23,7 +23,9 @@ export const Li = styled.li`
   }
 `;
 
-export const Select = styled.select`
+export const Select = styled.select.attrs((props) => ({
+  ...props,
+}))`
   width: ${(props) => (props.width ? props.width : "auto")};
   padding: 1rem;
   margin-top: 0.5rem;
