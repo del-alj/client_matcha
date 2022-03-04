@@ -85,7 +85,7 @@ export const UserProfile = (props) => {
   }, []);
 
   return (
-    <Layout>
+    <Layout login={true}>
       <Content>
         <FirstSection
           status="online"

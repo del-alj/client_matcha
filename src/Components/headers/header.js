@@ -10,11 +10,6 @@ import {
 import { Logout } from "../LogoutButton/Logout";
 
 const HomeHeader = ({ displayRightSide }) => {
-  let history = useHistory();
-
-  const handleClick = () => {
-    Logout(history);
-  };
   return (
     <Header>
       <StyledLink to="/" color="black" inline="none">

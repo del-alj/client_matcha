@@ -53,7 +53,7 @@ const config = {
 export const EditProfile = (props) => {
   let history = useHistory();
   const [userdetails, setUserDetails] = useContext(UserContext);
-
+  const [disable, setDisable] = useState(true);
   const getUser = async (url, config) => {
     await axios
       .get(url, config)
@@ -110,11 +110,14 @@ export const EditProfile = (props) => {
   };
 
   const handelChange = (e) => {
+    setDisable(false);
+    console.log("disable handel :", disable);
     const newData = { ...userdetails };
     newData[e.target.id] = e.target.value;
     setUserDetails(newData);
     console.log(newData);
   };
+  console.log("disable :", disable);
 
   return (
     <Layout login={true}>
@@ -150,7 +153,12 @@ export const EditProfile = (props) => {
               <SecondSection handelChange={handelChange} />
               <ThirdSection handelChange={handelChange} local={local} />
             </Content>
-            <Button type="submit" style={{ width: "15rem", margin: "auto" }}>
+            <Button
+              // disable={disable}
+              disabled={disable}
+              type="submit"
+              style={{ width: "15rem", margin: "auto" }}
+            >
               Edit
             </Button>
           </div>

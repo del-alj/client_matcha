@@ -199,6 +199,26 @@ export const Button = styled.button`
   color: white;
   margin: 13px 0;
   font-family: "Electrolize", sans-serif;
+  &:hover:not(:disabled) {
+    opacity: 0.8;
+    /* color: red; */
+  }
+
+  &:focus {
+    outline: none;
+    box-shadow: hsl(27deg 39% 95%) 0 0 0 2px hsl(27deg 100% 56%) 0 0 0 4px;
+  }
+
+  &:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+  }
+
+  &:active {
+    outline-color: transparent;
+    outline-style: solid;
+    box-shadow: 0 0 0 1px black;
+  }
 `;
 
 export const Homebackground = styled.div`

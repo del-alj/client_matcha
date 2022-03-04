@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
 
@@ -51,18 +51,17 @@ const Login = () => {
     axios
       .post(url, param, config)
       .then((res) => {
-        history.push("/profile");
         // setToken in localstorage
         localStorage.setItem("Token", JSON.stringify(res.data.accessToken));
         localStorage.setItem("userId", JSON.stringify(res.data?.user?.user_id));
-        console.log("from login", res);
         setUserDetails({
           userName: res.data?.user?.user_name,
           firstName: res.data?.user?.first_name,
           lastName: res.data?.user?.last_name,
           email: res.data?.user?.email,
         });
-        console.log("from user", userDetails);
+        //not work
+        history.push("/profile");
       })
       .catch((err) => {
         console.log(err);
@@ -75,6 +74,7 @@ const Login = () => {
     setData(newData);
     console.log(newData);
   };
+
   return (
     <>
       {token ? (
@@ -88,7 +88,7 @@ const Login = () => {
                 <Div>
                   <p>
                     Need a Matcha account?
-                    <StyledLink to="signup">Create an account</StyledLink>
+                    <StyledLink to="/signup">Create an account</StyledLink>
                   </p>
                   <Input
                     onChange={(e) => handelChange(e)}
