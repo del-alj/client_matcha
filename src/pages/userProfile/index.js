@@ -12,6 +12,7 @@ import home from "../../assets/home.png";
 import mars from "../../assets/mars.jpg";
 import venus from "../../assets/venus.jpg";
 import { UserContext } from "../../Components/contexts/usercontext";
+import { autontication } from "../../Components/contexts/usecontext";
 
 const tags = [
   {
@@ -38,19 +39,14 @@ const ratings = {
   looked: "170",
 };
 
-
-
 const BASE_URL = process.env.REACT_APP_BASE_URL;
-
-
 
 export const UserProfile = (props) => {
   const [_, setUserDetails] = useContext(UserContext);
+  const { auth } = useContext(autontication);
 
-  const user_id = localStorage.getItem("userId");
-  const url = `${BASE_URL}/user/${user_id}`;
-
-  const token = `Bearer ${JSON.parse(localStorage.getItem("Token"))}`;
+  const url = `${BASE_URL}/user/${auth.userId}`;
+  const token = `Bearer ${auth.token}`;
   const config = {
     headers: {
       "content-Type": "application/json",
