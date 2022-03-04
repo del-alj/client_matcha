@@ -16,22 +16,10 @@ const Routes = () => {
   return (
     <BrowserRouter>
       <Switch>
-        <PublicRoute restricted={false} component={Home} path="/" exact />
-        <PublicRoute restricted={true} component={Login} path="/login" exact />
-        <PublicRoute
-          restricted={true}
-          component={Signup}
-          path="/signup"
-          exact
-        />
-        <PublicRoute
-          restricted={true}
-          component={ForgotPassword}
-          path="/change-password"
-          exact
-        />
-        <PrivateRoute component={UserProfile} path="/profile" exact />
-        <PrivateRoute component={EditProfile} path="/profile/edit" exact />
+        <>
+          <PrivateRoute />
+          <PublicRoute />
+        </>
       </Switch>
     </BrowserRouter>
   );

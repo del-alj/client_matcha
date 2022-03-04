@@ -9,10 +9,10 @@ import { UserContext } from "../../../Components/contexts/usercontext";
 // const token = localStorage.getItem("Token");
 // console.log(token);
 
-export const DefinitionSection = (props) => {
-  const [ userdetails, setUserDetails ] = useContext(UserContext);
+export const DefinitionSection = ({ visibility }) => {
+  const [userdetails] = useContext(UserContext);
   let history = useHistory();
-  const { visibility } = props;
+
   const handleClick = () => {
     history.push("/profile/edit");
   };

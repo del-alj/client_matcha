@@ -4,14 +4,14 @@ import { Route, Redirect } from "react-router-dom";
 import { privateRoutes } from "./routesList.js";
 import { autontication } from "../Components/contexts/usecontext";
 
-const PrivateRoute = ({ component: Component, ...rest }) => {
-  const token = useContext(autontication);
-  const isAuthenticated = token._currentValue2;
+const PrivateRoute = () => {
+  const { auth } = useContext(autontication);
+
   return (
     <>
-      {privateRoutes.map(({ path, component: Component }, index) => (
+      {privateRoutes.map(({ component: Component, path }, index) => (
         <Route path={path} key={index} exact>
-          {isAuthenticated ? <Component /> : <Redirect to="/login" />}
+          {auth.token ? <Component /> : <Redirect to="/login" />}
         </Route>
       ))}
     </>

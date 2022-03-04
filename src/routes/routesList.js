@@ -17,14 +17,17 @@ const publicRoutes = [
   {
     path: "/login",
     component: Login,
+    restricted: true,
   },
   {
     path: "/change-password",
     component: ForgotPassword,
+    restricted: true,
   },
   {
     path: "/signup",
     component: Signup,
+    restricted: true,
   },
 ];
 

@@ -20,7 +20,7 @@ export const Img = styled.img`
   padding: 2rem;
 `;
 
-export const Add = styled.div`
+export const Add = styled.button`
   width: 5rem;
   height: 5rem;
   align-items: center;

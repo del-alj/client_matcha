@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 import { InitSelect } from "../../Components/select";
 
-export const Content = styled.form`
+export const Content = styled.div`
   text-align: center;
   font-family: "Electrolize", sans-serif;
   width: 100%;

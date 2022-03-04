@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useHistory } from "react-router-dom";
 
+import { autontication } from "../contexts/usecontext";
 import {
   Header,
   StyledLink,
@@ -9,17 +10,18 @@ import {
   StyledLinkLogout,
 } from "../styles/Container.styles";
 import { List } from "./style";
-
 import { Logout } from "../LogoutButton/Logout";
 import { Icon } from "../icon";
 import envelope from "../../assets/icons/envelope.png";
 import love from "../../assets/icons/love.png";
 import profileImg from "../../assets/venus.jpg";
+
 const NewHeader = ({ display }) => {
   let history = useHistory();
+  const { setAuth } = useContext(autontication);
 
   const handleClick = () => {
-    Logout();
+    Logout(setAuth);
     history.push("/");
   };
   return (

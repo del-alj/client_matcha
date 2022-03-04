@@ -42,27 +42,26 @@ const ratings = {
 
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 
-const user_id = localStorage.getItem("userId");
-const url = `${BASE_URL}/user/${user_id}`;
 
-const token = `Bearer ${JSON.parse(localStorage.getItem("Token"))}`;
-const config = {
-  headers: {
-    "content-Type": "application/json",
-    authorization: token,
-  },
-};
 
 export const UserProfile = (props) => {
-  const [userdetails, setUserDetails] = useContext(UserContext);
-  const [userData, setUserData] = useState({});
+  const [_, setUserDetails] = useContext(UserContext);
+
+  const user_id = localStorage.getItem("userId");
+  const url = `${BASE_URL}/user/${user_id}`;
+
+  const token = `Bearer ${JSON.parse(localStorage.getItem("Token"))}`;
+  const config = {
+    headers: {
+      "content-Type": "application/json",
+      authorization: token,
+    },
+  };
 
   const getUser = async (url, config) => {
-    const dataUser = await axios
+    await axios
       .get(url, config)
       .then((res) => {
-        setUserData(res.data);
-        console.log(res.data);
         setUserDetails({
           userName: res.data?.user_name,
           firstName: res.data?.first_name,
@@ -77,7 +76,6 @@ export const UserProfile = (props) => {
       .catch((err) => {
         console.error(err);
       });
-    return dataUser;
   };
 
   useEffect(() => {
