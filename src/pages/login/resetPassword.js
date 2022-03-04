@@ -37,7 +37,6 @@ const ResetPassword = () => {
   };
 
   const submit = (e) => {
-    console.log("test", param);
     e.preventDefault();
     axios
       .put(url, param, headers)

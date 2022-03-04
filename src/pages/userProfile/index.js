@@ -8,7 +8,7 @@ import { FirstSection } from "./firstSection";
 import { Content } from "./style";
 
 //
-import home from "../../assets/home.png";
+import home from "../../assets/home.jpg";
 import mars from "../../assets/mars.jpg";
 import venus from "../../assets/venus.jpg";
 import { UserContext } from "../../Components/contexts/usercontext";

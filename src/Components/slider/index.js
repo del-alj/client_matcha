@@ -18,11 +18,9 @@ export const Slider = (props) => {
     if (index < numberOfPictures - 1) {
       setIndex(index + 1);
     } else setIndex(0);
-    console.log("slideToRight", index);
   };
 
   const slideToLeft = (e) => {
-    console.log("slideToLeft", index);
     if (index > 0) {
       setIndex(index - 1);
     } else setIndex(numberOfPictures - 1);

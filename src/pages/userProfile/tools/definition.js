@@ -17,7 +17,6 @@ export const DefinitionSection = ({ visibility }) => {
     history.push("/profile/edit");
   };
 
-  console.log("use > ", userdetails);
   return (
     <Flex direction="column" alignItems="flex-start" paddingTop="5rem">
       <H1>{userdetails?.userName}</H1>

@@ -40,8 +40,6 @@ export const AddPicture = (props) => {
       ) : (
         <Gallery pictures={pictures}></Gallery>
       )}
-
-      <PicButton>Submit</PicButton>
     </Box>
   );
 };

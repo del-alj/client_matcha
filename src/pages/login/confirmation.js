@@ -10,7 +10,6 @@ import useReqHook from "../../hooks/useReqHook";
 const Confirmation = () => {
   // const [status, setStatus] = useState(false);
   let { token } = useParams();
-  console.log("test000000000");
 
   // useEffect(async () => {
   //   const temp = await confirm(token);
@@ -21,7 +20,6 @@ const Confirmation = () => {
   //   }
   // }, []);
   const { data, isPending, Error } = useReqHook(`confirm/${token}`, "put");
-  console.log("data11", data);
   return data ? (
     <EditProfile data={data} />
   ) : (

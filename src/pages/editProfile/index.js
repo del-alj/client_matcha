@@ -10,7 +10,7 @@ import { Content, Blurry } from "./style";
 import { Button, Flex } from "../../Components/styles/Container.styles";
 
 import forgot from "../../assets/forgot.jpg";
-import home from "../../assets/home.png";
+import home from "../../assets/home.jpg";
 import mars from "../../assets/mars.jpg";
 import venus from "../../assets/venus.jpg";
 import { UserContext } from "../../Components/contexts/usercontext";
@@ -105,19 +105,16 @@ export const EditProfile = (props) => {
 
   const submit = (e) => {
     e.preventDefault();
-    console.log(userdetails);
     updateUser(urledit, userdetails, config);
   };
 
   const handelChange = (e) => {
     setDisable(false);
-    console.log("disable handel :", disable);
     const newData = { ...userdetails };
     newData[e.target.id] = e.target.value;
     setUserDetails(newData);
     console.log(newData);
   };
-  console.log("disable :", disable);
 
   return (
     <Layout login={true}>
@@ -154,7 +151,6 @@ export const EditProfile = (props) => {
               <ThirdSection handelChange={handelChange} local={local} />
             </Content>
             <Button
-              // disable={disable}
               disabled={disable}
               type="submit"
               style={{ width: "15rem", margin: "auto" }}

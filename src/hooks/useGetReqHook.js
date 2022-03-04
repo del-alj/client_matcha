@@ -42,14 +42,12 @@ const useGetReqHook = (url, method, headers) => {
   axios
     .get(url, headers)
     .then((res) => {
-      console.log("from userprofile : ", res?.data);
       setData(res.data);
       setIsPending(false);
       setError(null);
       return res?.data;
     })
     .catch((err) => {
-      console.log("from userprofile : im error ", url);
       setIsPending(false);
       //     setError(err.message);
       console.log(err);
