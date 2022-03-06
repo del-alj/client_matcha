@@ -36,7 +36,10 @@ export const Slider = (props) => {
       alignContent="center"
     >
       <SliderPictureDiv order={2}>
-        <SliderPicture src={photos[index]} alt=""></SliderPicture>
+        <SliderPicture
+          src={photos[index]?.image_path}
+          alt={photos[index]?.image_name}
+        ></SliderPicture>
       </SliderPictureDiv>
       <SliderDiv order={1}>
         <SliderButton onClick={slideToLeft}>

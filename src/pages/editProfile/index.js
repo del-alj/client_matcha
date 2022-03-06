@@ -9,14 +9,11 @@ import { ThirdSection } from "./thirdSection";
 import { Content, Blurry } from "./style";
 import { Button, Flex } from "../../Components/styles/Container.styles";
 
-import forgot from "../../assets/forgot.jpg";
-import home from "../../assets/home.jpg";
-import mars from "../../assets/mars.jpg";
-import venus from "../../assets/venus.jpg";
+
 import { UserContext } from "../../Components/contexts/usercontext";
 import { useHistory } from "react-router-dom";
-
-const photoProfile = venus;
+import { autontication } from "../../Components/contexts/usecontext";
+import { ImageContext } from "../../Components/contexts/imageContext";
 
 const tags = [
   {
@@ -33,14 +30,13 @@ const tags = [
   },
 ];
 
-const pictures = [forgot, home, home, mars, venus];
-
 const local = "khouribga, Morocco";
 
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 
 const user_id = localStorage.getItem("userId");
 const url = `${BASE_URL}/user/${user_id}`;
+
 const urledit = `${BASE_URL}/user/edit/${user_id}`;
 const token = JSON.parse(localStorage.getItem("Token"));
 const config = {
@@ -52,8 +48,13 @@ const config = {
 
 export const EditProfile = (props) => {
   let history = useHistory();
+  const { auth } = useContext(autontication);
   const [userdetails, setUserDetails] = useContext(UserContext);
+  const [imageDetails, setImageDetails] = useContext(ImageContext);
+
   const [disable, setDisable] = useState(true);
+  const urlImages = `${BASE_URL}/picture/${auth.userId}`;
+
   const getUser = async (url, config) => {
     await axios
       .get(url, config)
@@ -69,6 +70,17 @@ export const EditProfile = (props) => {
           gender: res.data?.gender,
           preference: res.data?.preference,
         });
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  };
+
+  const getUserImages = async (url, config) => {
+    await axios
+      .get(url, config)
+      .then((res) => {
+        setImageDetails(res?.data);
       })
       .catch((err) => {
         console.error(err);
@@ -103,6 +115,10 @@ export const EditProfile = (props) => {
     getUser(url, config);
   }, []);
 
+  useEffect(() => {
+    getUserImages(urlImages, config);
+  }, [auth?.userId]);
+
   const submit = (e) => {
     e.preventDefault();
     updateUser(urledit, userdetails, config);
@@ -115,6 +131,7 @@ export const EditProfile = (props) => {
     setUserDetails(newData);
     console.log(newData);
   };
+  const photoProfile = imageDetails[0]?.image_path;
 
   return (
     <Layout login={true}>
@@ -142,11 +159,7 @@ export const EditProfile = (props) => {
                 display: "flex",
               }}
             >
-              <FirstSection
-                tags={tags}
-                photoProfile={photoProfile}
-                pictures={pictures}
-              />
+              <FirstSection tags={tags} photoProfile={photoProfile} />
               <SecondSection handelChange={handelChange} />
               <ThirdSection handelChange={handelChange} local={local} />
             </Content>

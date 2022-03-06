@@ -7,12 +7,9 @@ import { SecondSection } from "./secondSection";
 import { FirstSection } from "./firstSection";
 import { Content } from "./style";
 
-//
-import home from "../../assets/home.jpg";
-import mars from "../../assets/mars.jpg";
-import venus from "../../assets/venus.jpg";
 import { UserContext } from "../../Components/contexts/usercontext";
 import { autontication } from "../../Components/contexts/usecontext";
+import { ImageContext } from "../../Components/contexts/imageContext";
 
 const tags = [
   {
@@ -29,10 +26,6 @@ const tags = [
   },
 ];
 
-const photos = [venus, home, mars];
-
-const photoProfile = photos[1];
-
 const ratings = {
   rating: "5",
   liked: "100",
@@ -42,10 +35,14 @@ const ratings = {
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 
 export const UserProfile = (props) => {
+  const [userImages, setUserImages] = useState([]);
   const [_, setUserDetails] = useContext(UserContext);
+  const [imageDetails, setImageDetails] = useContext(ImageContext);
   const { auth } = useContext(autontication);
 
   const url = `${BASE_URL}/user/${auth.userId}`;
+  const urlImages = `${BASE_URL}/picture/${auth.userId}`;
+
   const token = `Bearer ${auth.token}`;
   const config = {
     headers: {
@@ -53,7 +50,6 @@ export const UserProfile = (props) => {
       authorization: token,
     },
   };
-
   const getUser = async (url, config) => {
     await axios
       .get(url, config)
@@ -74,10 +70,24 @@ export const UserProfile = (props) => {
       });
   };
 
+  const getUserImages = async (url, config) => {
+    await axios
+      .get(url, config)
+      .then((res) => {
+        setImageDetails(res?.data);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  };
+
   useEffect(() => {
     getUser(url, config);
   }, []);
-
+  useEffect(() => {
+    getUserImages(urlImages, config);
+  }, [auth?.userId]);
+  const photoProfile = imageDetails[0]?.image_path;
   return (
     <Layout login={true}>
       <Content>
@@ -87,7 +97,7 @@ export const UserProfile = (props) => {
           ratings={ratings}
           photoProfile={photoProfile}
         />
-        <SecondSection photos={photos} />
+        <SecondSection />
       </Content>
     </Layout>
   );

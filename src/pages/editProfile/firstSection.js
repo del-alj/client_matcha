@@ -34,7 +34,7 @@ export const FirstSection = (props) => {
           <EditTags tags={tags} />
         </Flex>
       </Flex>
-      {display && <AddPicture pictures={pictures} />}
+      {display && <AddPicture />}
     </Flex>
   );
 };

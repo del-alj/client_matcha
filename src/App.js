@@ -5,6 +5,7 @@ import { Routes } from "./routes/routes";
 
 import ContextProvider from "./Components/contexts/usecontext";
 import ContextUser from "./Components/contexts/usercontext";
+import ContextImage from "./Components/contexts/imageContext";
 
 function App() {
   return (
@@ -13,7 +14,9 @@ function App() {
       <AppDiv>
         <ContextProvider>
           <ContextUser>
-            <Routes />
+            <ContextImage>
+              <Routes />
+            </ContextImage>
           </ContextUser>
         </ContextProvider>
       </AppDiv>

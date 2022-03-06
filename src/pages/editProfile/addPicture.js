@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 
 import { Box, Tabs, Title, PicButton, Blurry } from "./style";
 import { Gallery, EditGallery } from "../../Components/pictures/gallery.js";
+import { ImageContext } from "../../Components/contexts/imageContext";
 
 export const AddPicture = (props) => {
-  const { pictures } = props;
+  const [imageDetails] = useContext(ImageContext);
+
   const [addStatus, setAddStatus] = useState(true);
   const [changeStatus, setChangeStatus] = useState(false);
 
@@ -36,9 +38,9 @@ export const AddPicture = (props) => {
       </Tabs>
       {/* <Blurry /> */}
       {addStatus ? (
-        <EditGallery pictures={pictures}></EditGallery>
+        <EditGallery pictures={imageDetails}></EditGallery>
       ) : (
-        <Gallery pictures={pictures}></Gallery>
+        <Gallery pictures={imageDetails}></Gallery>
       )}
     </Box>
   );

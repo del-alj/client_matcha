@@ -1,14 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
 
 import { Slider } from "../../Components/slider";
 import { Flex } from "../../Components/styles/Container.styles";
 
-export const SecondSection = (props) => {
-  const { photos } = props;
+import { ImageContext } from "../../Components/contexts/imageContext";
 
+export const SecondSection = (props) => {
+  const [imageDetails] = useContext(ImageContext);
+
+  console.log("this is list of pictures", imageDetails);
   return (
     <Flex height="700px" direction="row" justifyContent="center">
-      <Slider photos={photos} />
+      <Slider photos={imageDetails} />
     </Flex>
   );
 };

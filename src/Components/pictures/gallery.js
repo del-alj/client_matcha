@@ -14,7 +14,7 @@ export const Gallery = (props) => {
     <>
       <Div>
         {pictures.map((picture, index) => (
-          <Img key={index} src={picture} />
+          <Img key={index} src={picture?.image_path} />
         ))}
       </Div>
       <PicButton onClick={updateImgProfile}>Submit</PicButton>
@@ -47,7 +47,7 @@ export const EditGallery = (props) => {
     <>
       <Div status={status}>
         {pictures.map((picture, index) => (
-          <Img key={index} src={picture} />
+          <Img key={index} src={picture?.image_path} />
         ))}
         <AddNew
           files={files}
