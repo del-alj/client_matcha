@@ -16,8 +16,9 @@ export const Div = styled.div`
 `;
 
 export const Img = styled.img`
-  width: 33.33%;
-  padding: 2rem;
+  width: 80%;
+  margin: 15px 5px;
+  /* padding: 2rem; */
   :hover {
     -webkit-transform: scale(1);
     transform: scale(1);
@@ -98,4 +99,25 @@ export const PicButton = styled.button`
     outline-style: solid;
     box-shadow: 0 0 0 1px black;
   }
+`;
+
+export const DeleteButton = styled.button`
+  background: none;
+  border: none;
+  position: absolute;
+  z-index: 1000;
+  margin: 0px;
+  padding: 0;
+  top: 10px;
+  right: 23px;
+  background: white;
+
+  :hover {
+    background: "red";
+  }
+`;
+
+export const DeleteIcon = styled.img`
+  width: 0.6rem;
+  height: auto;
 `;
