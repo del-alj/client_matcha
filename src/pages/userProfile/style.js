@@ -37,10 +37,19 @@ export const Features = styled.div`
   }
 `;
 
-export const PhotoProfile = styled.img`
+export const PhotoProfile = styled.div`
+  /* width: 300px;
+  height: 300px;
+  border-radius: 150px; */
   width: 300px;
   height: 300px;
-  border-radius: 150px;
+  /* border: 7px solid; */
+  border-radius: 50%;
+  overflow: hidden;
+  background-image: ${(props) => props?.src ?? `${props?.src}`};
+
+  background-size: cover;
+  background-position: center;
 `;
 
 export const H1 = styled.h1`

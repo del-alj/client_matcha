@@ -18,6 +18,25 @@ export const Div = styled.div`
 export const Img = styled.img`
   width: 33.33%;
   padding: 2rem;
+  :hover {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    -webkit-transition: 0.3s ease-in-out;
+    transition: 0.3s ease-in-out;
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+  }
+
+  :active {
+    opacity: 0.3;
+  }
+  //mabratch tkhedem
+  /* :focus {
+    border: 1px solid black;
+  } */
+  :focus {
+    border: 1px solid black;
+  }
 `;
 
 export const Add = styled.div`

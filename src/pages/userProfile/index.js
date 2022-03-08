@@ -11,6 +11,7 @@ import { UserContext } from "../../Components/contexts/usercontext";
 import { autontication } from "../../Components/contexts/usecontext";
 import { ImageContext } from "../../Components/contexts/imageContext";
 
+import { get_photoprofile } from "../../tools/get_photoprofle";
 const tags = [
   {
     link: "#",
@@ -36,7 +37,8 @@ const BASE_URL = process.env.REACT_APP_BASE_URL;
 
 export const UserProfile = (props) => {
   const [userImages, setUserImages] = useState([]);
-  const [_, setUserDetails] = useContext(UserContext);
+  const [photoProfile, setPhotoProfile] = useState();
+  const [userDetails, setUserDetails] = useContext(UserContext);
   const [imageDetails, setImageDetails] = useContext(ImageContext);
   const { auth } = useContext(autontication);
 
@@ -63,6 +65,7 @@ export const UserProfile = (props) => {
           age: res.data?.age,
           gender: res.data?.gender,
           preference: res.data?.preference,
+          photoProfileId: res.data?.photo_profile_id,
         });
       })
       .catch((err) => {
@@ -87,7 +90,11 @@ export const UserProfile = (props) => {
   useEffect(() => {
     getUserImages(urlImages, config);
   }, [auth?.userId]);
-  const photoProfile = imageDetails[0]?.image_path;
+
+  useEffect(() => {
+    get_photoprofile(imageDetails, userDetails, setPhotoProfile);
+  }, [auth?.userId, imageDetails, userDetails]);
+
   return (
     <Layout login={true}>
       <Content>
@@ -95,7 +102,7 @@ export const UserProfile = (props) => {
           status="online"
           tags={tags}
           ratings={ratings}
-          photoProfile={photoProfile}
+          photoProfile={photoProfile?.image_path}
         />
         <SecondSection />
       </Content>

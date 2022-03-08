@@ -15,6 +15,8 @@ import { useHistory } from "react-router-dom";
 import { autontication } from "../../Components/contexts/usecontext";
 import { ImageContext } from "../../Components/contexts/imageContext";
 
+import { get_photoprofile } from "../../tools/get_photoprofle";
+
 const tags = [
   {
     link: "#",
@@ -49,6 +51,7 @@ const config = {
 export const EditProfile = (props) => {
   let history = useHistory();
   const { auth } = useContext(autontication);
+  const [photoProfile, setPhotoProfile] = useState();
   const [userdetails, setUserDetails] = useContext(UserContext);
   const [imageDetails, setImageDetails] = useContext(ImageContext);
 
@@ -64,11 +67,11 @@ export const EditProfile = (props) => {
           firstName: res.data?.first_name,
           lastName: res.data?.last_name,
           email: res.data?.email,
-          // id: res.data?.id,
           bio: res.data?.bio,
           age: res.data?.age,
           gender: res.data?.gender,
           preference: res.data?.preference,
+          photoProfileId: res.data?.photo_profile_id,
         });
       })
       .catch((err) => {
@@ -103,6 +106,7 @@ export const EditProfile = (props) => {
           age: res.data?.age,
           gender: res.data?.gender,
           preference: res.data?.preference,
+          photoProfileId: res.data?.photo_profile_id,
         });
         history.push("/profile");
       })
@@ -118,6 +122,9 @@ export const EditProfile = (props) => {
   useEffect(() => {
     getUserImages(urlImages, config);
   }, [auth?.userId]);
+  useEffect(() => {
+    get_photoprofile(imageDetails, userdetails, setPhotoProfile);
+  }, [auth?.userId, imageDetails, userdetails]);
 
   const submit = (e) => {
     e.preventDefault();
@@ -131,7 +138,6 @@ export const EditProfile = (props) => {
     setUserDetails(newData);
     console.log(newData);
   };
-  const photoProfile = imageDetails[0]?.image_path;
 
   return (
     <Layout login={true}>
@@ -159,7 +165,10 @@ export const EditProfile = (props) => {
                 display: "flex",
               }}
             >
-              <FirstSection tags={tags} photoProfile={photoProfile} />
+              <FirstSection
+                tags={tags}
+                photoProfile={photoProfile?.image_path}
+              />
               <SecondSection handelChange={handelChange} />
               <ThirdSection handelChange={handelChange} local={local} />
             </Content>

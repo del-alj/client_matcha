@@ -21,7 +21,10 @@ export const FirstSection = (props) => {
       <Flex direction="row">
         <Flex direction="column">
           <div>
-            <PhotoProfile src={photoProfile} alt="Photo Profile"></PhotoProfile>
+            <PhotoProfile
+              src={`url(${photoProfile})`}
+              alt="Photo Profile"
+            ></PhotoProfile>
             <Visibility status={status} />
           </div>
           <Tags tags={tags} />
