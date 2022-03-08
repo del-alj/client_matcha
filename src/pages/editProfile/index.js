@@ -147,7 +147,6 @@ export const EditProfile = (props) => {
         alignItems="center"
         height="100vh"
         style={{
-          // border: "1px solid black",
           position: "relative",
         }}
       >

@@ -80,20 +80,13 @@ export const PicButton = styled.button`
 `;
 
 export const Blurry = styled.div`
-  
+  position: absolute;
   width: 100%;
   height: 100vh;
-  position: absolute;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.63), rgba(0, 0, 0, 0.623)), url(img/000333.jpg);
-  background-attachment: fixed;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  z-index: -1;
-  ::before {
-    content: "";
-    position: absolute;
-    width: 100%;
-    height: 100vh;
-    /* filter: blur(8px); */
+  background: white;
+  opacity: 0.95;
+  border: 1px solid #535353;
+  filter: blur(8px);
+  -webkit-filter: blur(8px);
+  z-index: 1;
 `;

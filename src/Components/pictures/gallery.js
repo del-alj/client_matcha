@@ -3,18 +3,11 @@ import axios from "axios";
 import { useHistory } from "react-router-dom";
 
 import { AddNew } from "./addNew";
-import {
-  Div,
-  Img,
-  PicButton,
-  Add,
-  Text,
-  Uploadpicture,
-  DeleteButton,
-  DeleteIcon,
-} from "./style";
+import { Div, Img, PicButton, DeleteButton, DeleteIcon } from "./style";
 
 import del from "../../assets/icons/del.png";
+
+import { ImageContext } from "../../Components/contexts/imageContext";
 
 // On file select (from the pop up)
 const BASE_URL = process.env.REACT_APP_BASE_URL;
@@ -92,9 +85,11 @@ export const EditGallery = (props) => {
   const { pictures } = props;
   const status = pictures.length !== 0 ? false : true;
 
+  const [imageDetails, setImageDetails] = useContext(ImageContext);
+
   const [files, setFiles] = useState([]);
   const [disable, setDisable] = useState(true);
-
+  const [display, setDisplay] = useState(true);
   const uploadFile = (e) => {
     // Create an object of formData
     const formData = new FormData();
@@ -108,17 +103,28 @@ export const EditGallery = (props) => {
     console.log(formData.getAll("Picture"));
   };
 
-  const constdeleteImg = async (url, param, config) => {
+  const deleteImg = async (url, param, config) => {
     await axios
       .delete(`${url}/${param}`, config)
       .then((res) => {
         console.log("delete photo!!");
+        setImageDetails(
+          [...imageDetails].filter(
+            (imageDetail) => imageDetail?.image_id !== param
+          )
+        );
+
         //khesni ndire update n context image
       })
       .catch((err) => {
         console.error(err);
       });
   };
+  useEffect(() => {
+    console.log("imageDetails", imageDetails);
+    pictures?.length < 5 ? setDisplay(true) : setDisplay(false);
+    console.log("tets", display);
+  }, [imageDetails]);
 
   return (
     <>
@@ -133,20 +139,23 @@ export const EditGallery = (props) => {
             <Img key={index} src={picture?.image_path} />
             <DeleteButton
               onClick={() => {
-                constdeleteImg(urldelete, picture?.image_id, config);
-                console.log("here delete picture");
+                deleteImg(urldelete, picture?.image_id, config);
               }}
             >
               <DeleteIcon src={del} alt="" />
             </DeleteButton>
           </div>
         ))}
-        <AddNew
-          files={files}
-          setFiles={setFiles}
-          setDisable={setDisable}
-          style={{ width: "500px" }}
-        ></AddNew>
+        {display ? (
+          <AddNew
+            files={files}
+            setFiles={setFiles}
+            setDisable={setDisable}
+            style={{ width: "500px" }}
+          ></AddNew>
+        ) : (
+          <></>
+        )}
       </Div>
       <PicButton disabled={disable} onClick={uploadFile}>
         Submit
