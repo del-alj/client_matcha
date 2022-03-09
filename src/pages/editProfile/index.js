@@ -162,7 +162,7 @@ export const EditProfile = (props) => {
               <ThirdSection handelChange={handelChange} local={local} />
             </Content>
             <Button
-              // disabled={disable}
+              disabled={disable}
               // type="submit"
               style={{ width: "15rem", margin: "auto" }}
               onClick={() => {
