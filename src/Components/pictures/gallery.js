@@ -1,5 +1,5 @@
 import React, { useEffect, useContext, useState } from "react";
-import axios from "axios";
+import axiosInstance from "../../services/AxiosInstance";
 import { useHistory } from "react-router-dom";
 
 import { AddNew } from "./addNew";
@@ -10,20 +10,11 @@ import del from "../../assets/icons/del.png";
 import { ImageContext } from "../../Components/contexts/imageContext";
 
 // On file select (from the pop up)
-const BASE_URL = process.env.REACT_APP_BASE_URL;
 
 const user_id = localStorage.getItem("userId");
 
-const url = `${BASE_URL}/user/edit/photoprofile/${user_id}`;
-const urldelete = `${BASE_URL}/picture/${user_id}`;
-
-const token = JSON.parse(localStorage.getItem("Token"));
-const config = {
-  headers: {
-    "content-Type": "application/json",
-    Authorization: `Bearer ${token}`,
-  },
-};
+const url = `/user/edit/photoprofile/${user_id}`;
+const urldelete = `/picture/${user_id}`;
 
 export const Gallery = (props) => {
   let history = useHistory();
@@ -32,9 +23,9 @@ export const Gallery = (props) => {
 
   const { pictures } = props;
 
-  const updateImgProfile = async (url, param, config) => {
-    await axios
-      .put(url, param, config)
+  const updateImgProfile = async (url, param) => {
+    await axiosInstance
+      .put(url, param)
       .then((res) => {
         console.log("photo  profile updated !!");
         history.push("/profile");
@@ -72,7 +63,7 @@ export const Gallery = (props) => {
       <PicButton
         disabled={disable}
         onClick={() => {
-          updateImgProfile(url, profilePicture, config);
+          updateImgProfile(url, profilePicture);
         }}
       >
         Submit
@@ -103,9 +94,9 @@ export const EditGallery = (props) => {
     console.log(formData.getAll("Picture"));
   };
 
-  const deleteImg = async (url, param, config) => {
-    await axios
-      .delete(`${url}/${param}`, config)
+  const deleteImg = async (url, param) => {
+    await axiosInstance
+      .delete(`${url}/${param}`)
       .then((res) => {
         console.log("delete photo!!");
         setImageDetails(
@@ -139,7 +130,7 @@ export const EditGallery = (props) => {
             <Img key={index} src={picture?.image_path} />
             <DeleteButton
               onClick={() => {
-                deleteImg(urldelete, picture?.image_id, config);
+                deleteImg(urldelete, picture?.image_id);
               }}
             >
               <DeleteIcon src={del} alt="" />

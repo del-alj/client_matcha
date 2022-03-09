@@ -15,11 +15,10 @@ import { Layout } from "../../layouts/signinLayout";
 //
 import mars from "../../assets/mars.jpg";
 
-const BASE_URL = process.env.REACT_APP_BASE_URL;
 const Signup = () => {
   let history = useHistory();
 
-  const url = `${BASE_URL}/registration`;
+  const url = `/registration`;
   const [data, setData] = useState({
     userName: "",
     firstName: "",
@@ -36,16 +35,10 @@ const Signup = () => {
     email: data.email,
   };
 
-  const headers = {
-    headers: {
-      "content-Type": "application/json",
-    },
-  };
-
   const submit = (e) => {
     e.preventDefault();
     axios
-      .post(url, param, headers)
+      .post(url, param)
       .then((res) => {
         history.push("/confirmSignup");
         console.log(res);

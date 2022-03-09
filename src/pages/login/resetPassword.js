@@ -15,11 +15,10 @@ import {
 //
 import forgot from "../../assets/forgot.jpg";
 
-const BASE_URL = process.env.REACT_APP_BASE_URL;
 const ResetPassword = () => {
   let history = useHistory();
   let { token } = useParams();
-  const url = `${BASE_URL}/reset/${token}`;
+  const url = `/reset/${token}`;
   const [data, setData] = useState({
     newPassword: "",
     confirmNewPassword: "",
@@ -30,16 +29,10 @@ const ResetPassword = () => {
       data.newPassword === data.confirmNewPassword ? data.newPassword : null,
   };
 
-  const headers = {
-    headers: {
-      "content-Type": "application/json",
-    },
-  };
-
   const submit = (e) => {
     e.preventDefault();
     axios
-      .put(url, param, headers)
+      .put(url, param)
       .then((res) => {
         history.push("/login");
         console.log(res);

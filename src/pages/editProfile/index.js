@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import axios from "axios";
-
+import axiosInstance from "../../services/AxiosInstance";
 import { Layout } from "../../layouts/signinLayout";
 import { FirstSection } from "./firstSection";
 import { SecondSection } from "./secondSection";
@@ -8,7 +7,6 @@ import { ThirdSection } from "./thirdSection";
 
 import { Content, Blurry } from "./style";
 import { Button, Flex } from "../../Components/styles/Container.styles";
-
 
 import { UserContext } from "../../Components/contexts/usercontext";
 import { useHistory } from "react-router-dom";
@@ -34,19 +32,10 @@ const tags = [
 
 const local = "khouribga, Morocco";
 
-const BASE_URL = process.env.REACT_APP_BASE_URL;
-
 const user_id = localStorage.getItem("userId");
-const url = `${BASE_URL}/user/${user_id}`;
+const url = `/user/${user_id}`;
 
-const urledit = `${BASE_URL}/user/edit/${user_id}`;
-const token = JSON.parse(localStorage.getItem("Token"));
-const config = {
-  headers: {
-    "content-Type": "application/json",
-    Authorization: `Bearer ${token}`,
-  },
-};
+const urledit = `/user/edit/${user_id}`;
 
 export const EditProfile = (props) => {
   let history = useHistory();
@@ -56,11 +45,11 @@ export const EditProfile = (props) => {
   const [imageDetails, setImageDetails] = useContext(ImageContext);
 
   const [disable, setDisable] = useState(true);
-  const urlImages = `${BASE_URL}/picture/${auth.userId}`;
+  const urlImages = `/picture/${auth.userId}`;
 
-  const getUser = async (url, config) => {
-    await axios
-      .get(url, config)
+  const getUser = async (url) => {
+    await axiosInstance
+      .get(url)
       .then((res) => {
         setUserDetails({
           userName: res.data?.user_name,
@@ -79,9 +68,9 @@ export const EditProfile = (props) => {
       });
   };
 
-  const getUserImages = async (url, config) => {
-    await axios
-      .get(url, config)
+  const getUserImages = async (url) => {
+    await axiosInstance
+      .get(url)
       .then((res) => {
         setImageDetails(res?.data);
       })
@@ -90,11 +79,11 @@ export const EditProfile = (props) => {
       });
   };
 
-  const updateUser = async (url, param, config) => {
+  const updateUser = async (url, param) => {
     console.info("param", param);
 
-    await axios
-      .put(url, param, config)
+    await axiosInstance
+      .put(url, param)
       .then((res) => {
         setUserDetails({
           userName: res.data?.user_name,
@@ -116,19 +105,20 @@ export const EditProfile = (props) => {
   };
 
   useEffect(() => {
-    getUser(url, config);
+    getUser(url);
   }, []);
 
   useEffect(() => {
-    getUserImages(urlImages, config);
+    getUserImages(urlImages);
   }, [auth?.userId]);
   useEffect(() => {
     get_photoprofile(imageDetails, userdetails, setPhotoProfile);
   }, [auth?.userId, imageDetails, userdetails]);
 
   const submit = (e) => {
+    console.log("urledit, userdetails");
     e.preventDefault();
-    updateUser(urledit, userdetails, config);
+    updateUser(urledit, userdetails);
   };
 
   const handelChange = (e) => {
@@ -146,9 +136,9 @@ export const EditProfile = (props) => {
         justifyContent="center"
         alignItems="center"
         height="100vh"
-        style={{
-          position: "relative",
-        }}
+        // style={{
+        //   position: "relative",
+        // }}
       >
         {/* <Blurry /> */}
         <Content onSubmit={(e) => submit(e)}>
@@ -172,9 +162,13 @@ export const EditProfile = (props) => {
               <ThirdSection handelChange={handelChange} local={local} />
             </Content>
             <Button
-              disabled={disable}
-              type="submit"
+              // disabled={disable}
+              // type="submit"
               style={{ width: "15rem", margin: "auto" }}
+              onClick={() => {
+                console.log("here button edite profile");
+                updateUser(urledit, userdetails);
+              }}
             >
               Edit
             </Button>

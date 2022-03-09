@@ -15,10 +15,9 @@ import {
 //
 import forgot from "../../assets/forgot.jpg";
 
-const BASE_URL = process.env.REACT_APP_BASE_URL;
 const ForgotPassword = () => {
   let history = useHistory();
-  const url = `${BASE_URL}/reset`;
+  const url = `/reset`;
   const [data, setData] = useState({
     email: "",
   });
@@ -27,16 +26,10 @@ const ForgotPassword = () => {
     email: data.email,
   };
 
-  const headers = {
-    headers: {
-      "content-Type": "application/json",
-    },
-  };
-
   const submit = (e) => {
     e.preventDefault();
     axios
-      .post(url, param, headers)
+      .post(url, param)
       .then((res) => {
         history.push("/reset");
         console.log(res);

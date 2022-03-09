@@ -3,7 +3,8 @@ import React, { createContext, useState } from "react";
 export const autontication = createContext();
 
 const initailValue = {
-  token: JSON.parse(localStorage.getItem("Token")) ?? null,
+  token: localStorage.getItem("Token") ?? null,
+  refreshToken: localStorage.getItem("refreshToken") ?? null,
   userId: localStorage?.getItem("userId") ?? null,
 };
 

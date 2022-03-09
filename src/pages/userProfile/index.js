@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import axios from "axios";
+import axiosInstance from "../../services/AxiosInstance";
 import { useHistory } from "react-router-dom";
 
 import { Layout } from "../../layouts/signinLayout";
@@ -33,8 +33,6 @@ const ratings = {
   looked: "170",
 };
 
-const BASE_URL = process.env.REACT_APP_BASE_URL;
-
 export const UserProfile = (props) => {
   const [userImages, setUserImages] = useState([]);
   const [photoProfile, setPhotoProfile] = useState();
@@ -42,19 +40,14 @@ export const UserProfile = (props) => {
   const [imageDetails, setImageDetails] = useContext(ImageContext);
   const { auth } = useContext(autontication);
 
-  const url = `${BASE_URL}/user/${auth.userId}`;
-  const urlImages = `${BASE_URL}/picture/${auth.userId}`;
+  const url = `/user/${auth.userId}`;
+  const urlImages = `/picture/${auth.userId}`;
 
   const token = `Bearer ${auth.token}`;
-  const config = {
-    headers: {
-      "content-Type": "application/json",
-      authorization: token,
-    },
-  };
-  const getUser = async (url, config) => {
-    await axios
-      .get(url, config)
+
+  const getUser = async (url) => {
+    await axiosInstance
+      .get(url)
       .then((res) => {
         setUserDetails({
           userName: res.data?.user_name,
@@ -73,9 +66,9 @@ export const UserProfile = (props) => {
       });
   };
 
-  const getUserImages = async (url, config) => {
-    await axios
-      .get(url, config)
+  const getUserImages = async (url) => {
+    await axiosInstance
+      .get(url)
       .then((res) => {
         setImageDetails(res?.data);
       })
@@ -85,10 +78,10 @@ export const UserProfile = (props) => {
   };
 
   useEffect(() => {
-    getUser(url, config);
+    getUser(url);
   }, []);
   useEffect(() => {
-    getUserImages(urlImages, config);
+    getUserImages(urlImages);
   }, [auth?.userId]);
 
   useEffect(() => {

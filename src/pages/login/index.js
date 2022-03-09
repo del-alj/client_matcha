@@ -16,11 +16,10 @@ import { autontication } from "../../Components/contexts/usecontext";
 
 import venus from "../../assets/venus.jpg";
 
-const BASE_URL = process.env.REACT_APP_BASE_URL;
 const Login = () => {
   const { setAuth } = useContext(autontication);
+  const url = `${process.env.REACT_APP_BASE_URL}/login`;
 
-  const url = `${BASE_URL}/login`;
   const [data, setData] = useState({
     userName: "",
 
@@ -32,18 +31,14 @@ const Login = () => {
     password: data.Password,
   };
 
-  const config = {
-    headers: {
-      "content-Type": "application/json",
-    },
-  };
   const submit = (e) => {
     e.preventDefault();
     axios
-      .post(url, param, config)
+      .post(url, param)
       .then((res) => {
         // setAuth in localstorage
-        localStorage.setItem("Token", JSON.stringify(res.data.accessToken));
+        localStorage.setItem("Token", res.data.accessToken);
+        localStorage.setItem("refreshToken", res.data.refreshToken);
         localStorage.setItem("userId", JSON.stringify(res.data?.user?.user_id));
         setAuth((prev) => ({
           ...prev,
