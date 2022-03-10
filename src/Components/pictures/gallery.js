@@ -111,7 +111,7 @@ export const EditGallery = (props) => {
 
   const deleteImg = async (url, param) => {
     await axiosInstance
-      .delete(`${url}/${param}`)
+      .delete(`${url}/${param.image_id}/${param.image_name}`)
       .then((res) => {
         console.log("delete photo!!");
         setImageDetails(
@@ -147,7 +147,11 @@ export const EditGallery = (props) => {
             <DeleteButton
               key={`but${index}`}
               onClick={() => {
-                deleteImg(urldelete, picture?.image_id);
+                const param = {
+                  image_id: picture?.image_id,
+                  image_name: picture?.image_path.split("/")[7].split(".")[0],
+                };
+                deleteImg(urldelete, param);
               }}
             >
               <DeleteIcon key={`delIco${index}`} src={del} alt="" />
