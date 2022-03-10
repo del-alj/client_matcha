@@ -6,7 +6,7 @@ import {
   Homebackground,
 } from "../../Components/styles/Container.styles";
 
-import home from "../../assets/home.jpg";
+import home from "../../assets/home.png";
 
 const Home = () => {
   return (
