@@ -3,7 +3,7 @@ import axiosInstance from "../../services/AxiosInstance";
 import { useHistory } from "react-router-dom";
 
 import { AddNew } from "./addNew";
-import { Div, Img, PicButton, DeleteButton, DeleteIcon } from "./style";
+import { Div, Img, PicButton, DeleteButton, DeleteIcon, Border } from "./style";
 
 import del from "../../assets/icons/del.png";
 
@@ -21,6 +21,7 @@ export const Gallery = (props) => {
   let history = useHistory();
   const [profilePicture, setprofilePicture] = useState();
   const [disable, setDisable] = useState(true);
+  const [border, setBorder] = useState(false);
 
   const { pictures } = props;
 
@@ -52,12 +53,15 @@ export const Gallery = (props) => {
             }}
           >
             <Img
+              status={border === index ?? true}
               key={`img${index}`}
               src={picture?.image_path}
               selected={picture?.image_id}
-              onClick={updateImgselect}
-              // classname={`photo_${index}`}
-              // focus={profilePicture}
+              onClick={(e) => {
+                updateImgselect(e);
+                setBorder(index);
+                console.log("im border", border);
+              }}
             />
           </div>
         ))}
