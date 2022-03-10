@@ -116,7 +116,7 @@ export const EditGallery = (props) => {
         console.log("delete photo!!");
         setImageDetails(
           [...imageDetails].filter(
-            (imageDetail) => imageDetail?.image_id !== param
+            (imageDetail) => imageDetail?.image_id !== param.image_id
           )
         );
 
