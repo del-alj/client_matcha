@@ -1,6 +1,6 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 
-import { Box, Tabs, Title, PicButton, Blurry } from "./style";
+import { Box, Tabs, Title, PicButton, Blurry, ExitButton } from "./style";
 import { Gallery, EditGallery } from "../../Components/pictures/gallery.js";
 import { ImageContext } from "../../Components/contexts/imageContext";
 import { UserContext } from "../../Components/contexts/usercontext";
@@ -11,13 +11,28 @@ export const AddPicture = (props) => {
 
   const [addStatus, setAddStatus] = useState(true);
   const [changeStatus, setChangeStatus] = useState(false);
+
+  const { display, setDisplay } = props;
   // console.log("from ", userdetails);
   const handelClick = (e) => {
     setAddStatus();
     setChangeStatus();
   };
+  useEffect(() => {
+    console.log("add picture file");
+  }, [display]);
   return (
     <Box>
+      <ExitButton
+        type="radio"
+        name="myRadios"
+        onClick={(e) => {
+          console.log("radio", e);
+          setDisplay(false);
+        }}
+      >
+        x
+      </ExitButton>
       <Tabs>
         <Title
           onClick={() => {

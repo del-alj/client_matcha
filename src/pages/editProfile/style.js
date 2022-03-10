@@ -90,3 +90,15 @@ export const Blurry = styled.div`
   -webkit-filter: blur(8px);
   z-index: 1;
 `;
+
+export const ExitButton = styled.div`
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: black;
+  color: #f3f3f3;
+  left: 95%;
+  top: 2%;
+  line-height: 15px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+`;

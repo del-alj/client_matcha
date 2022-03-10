@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import { EditTags } from "../../Components/tag";
 import { AddPicture } from "./addPicture";
@@ -37,7 +37,7 @@ export const FirstSection = (props) => {
           <EditTags tags={tags} />
         </Flex>
       </Flex>
-      {display && <AddPicture />}
+      {display && <AddPicture display={display} setDisplay={setDisplay} />}
     </Flex>
   );
 };
