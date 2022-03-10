@@ -11,7 +11,7 @@ export const AddPicture = (props) => {
 
   const [addStatus, setAddStatus] = useState(true);
   const [changeStatus, setChangeStatus] = useState(false);
-  console.log("from ", userdetails);
+  // console.log("from ", userdetails);
   const handelClick = (e) => {
     setAddStatus();
     setChangeStatus();

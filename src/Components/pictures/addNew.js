@@ -29,6 +29,7 @@ export const AddNew = ({ files, setFiles, setDisable }) => {
   // On file select (from the pop up)
   const onFileChange = (e) => {
     // Update the state
+    console.log("this is file :", e.target);
     setFiles(e.target.files);
     setDisable(false);
   };
@@ -37,13 +38,15 @@ export const AddNew = ({ files, setFiles, setDisable }) => {
     <>
       {imagesURLs?.map((imageSrc, index) => (
         <div
+          key={`div${index}`}
           style={{
             width: "33.33%",
             position: "relative",
           }}
         >
-          <Img key={index} src={imageSrc} />
+          <Img key={`img${index}`} src={imageSrc} />
           <DeleteButton
+            key={`but${index}`}
             onClick={() => {
               // need work on it after stor picture with god way
               // deleteImg(urldelete, picture?.image_id, config);
@@ -52,13 +55,14 @@ export const AddNew = ({ files, setFiles, setDisable }) => {
               // ));
             }}
           >
-            <DeleteIcon src={del} alt="" />
+            <DeleteIcon key={`delIco${index}`} src={del} alt="" />
           </DeleteButton>
         </div>
       ))}
 
       <Add>
-        <Uploadpicture type="file" onChange={onFileChange} multiple />
+        <Uploadpicture type="file" onChange={onFileChange} />
+        {/* <Uploadpicture type="file" onChange={onFileChange} multiple /> */}
         <Text>+</Text>
       </Add>
     </>

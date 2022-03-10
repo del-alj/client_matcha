@@ -15,6 +15,7 @@ const user_id = localStorage.getItem("userId");
 
 const url = `/user/edit/photoprofile/${user_id}`;
 const urldelete = `/picture/${user_id}`;
+const urladd = `/picture/upload/${user_id}`;
 
 export const Gallery = (props) => {
   let history = useHistory();
@@ -45,12 +46,13 @@ export const Gallery = (props) => {
       <Div>
         {pictures.map((picture, index) => (
           <div
+            key={`div${index}`}
             style={{
               width: "33.33%",
             }}
           >
             <Img
-              key={index}
+              key={`img${index}`}
               src={picture?.image_path}
               selected={picture?.image_id}
               onClick={updateImgselect}
@@ -74,6 +76,8 @@ export const Gallery = (props) => {
 
 export const EditGallery = (props) => {
   const { pictures } = props;
+  let history = useHistory();
+
   const status = pictures.length !== 0 ? false : true;
 
   const [imageDetails, setImageDetails] = useContext(ImageContext);
@@ -81,17 +85,28 @@ export const EditGallery = (props) => {
   const [files, setFiles] = useState([]);
   const [disable, setDisable] = useState(true);
   const [display, setDisplay] = useState(true);
-  const uploadFile = (e) => {
+  const uploadFile = async (url, param) => {
     // Create an object of formData
-    const formData = new FormData();
+    let formData = new FormData();
 
     // Update the formData object
-    [...files].map((file) => formData.append("Picture", file, file.name));
+    // [...files].map((file) => formData.append("Picture", file, file.name));
 
     // Request made to the backend api
     // Send formData object
-    console.log(files);
-    console.log(formData.getAll("Picture"));
+    formData.append("image", files[0], files[0].name);
+    console.log("test1", formData);
+    console.log("test2", formData.get("image"));
+
+    await axiosInstance
+      .post(url, formData)
+      .then((res) => {
+        console.log("photo  added !!");
+        history.push("/profile");
+      })
+      .catch((err) => {
+        console.error(err);
+      });
   };
 
   const deleteImg = async (url, param) => {
@@ -122,6 +137,7 @@ export const EditGallery = (props) => {
       <Div status={status}>
         {pictures.map((picture, index) => (
           <div
+            key={`div${index}`}
             style={{
               width: "33.33%",
               position: "relative",
@@ -129,11 +145,12 @@ export const EditGallery = (props) => {
           >
             <Img key={index} src={picture?.image_path} />
             <DeleteButton
+              key={`but${index}`}
               onClick={() => {
                 deleteImg(urldelete, picture?.image_id);
               }}
             >
-              <DeleteIcon src={del} alt="" />
+              <DeleteIcon key={`delIco${index}`} src={del} alt="" />
             </DeleteButton>
           </div>
         ))}
@@ -148,7 +165,12 @@ export const EditGallery = (props) => {
           <></>
         )}
       </Div>
-      <PicButton disabled={disable} onClick={uploadFile}>
+      <PicButton
+        disabled={disable}
+        onClick={() => {
+          uploadFile(urladd, files);
+        }}
+      >
         Submit
       </PicButton>
     </>
