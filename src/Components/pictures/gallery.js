@@ -1,5 +1,6 @@
 import React, { useEffect, useContext, useState } from "react";
 import axiosInstance from "../../services/AxiosInstance";
+import axios from "axios";
 import { useHistory } from "react-router-dom";
 
 import { AddNew } from "./addNew";
@@ -13,7 +14,7 @@ import { ImageContext } from "../../Components/contexts/imageContext";
 
 const user_id = localStorage.getItem("userId");
 
-const url = `/user/edit/photoprofile/${user_id}`;
+const url = `http://localhost:7000/user/edit/photoprofile/${user_id}`;
 const urldelete = `/picture/${user_id}`;
 const urladd = `/picture/upload/${user_id}`;
 
@@ -26,15 +27,11 @@ export const Gallery = (props) => {
   const { pictures } = props;
 
   const updateImgProfile = async (url, param) => {
-    await axiosInstance
-      .put(url, param)
-      .then((res) => {
-        console.log("photo  profile updated !!");
-        history.push("/profile");
-      })
-      .catch((err) => {
-        console.error(err);
-      });
+    const res = await axiosInstance.put(url, param).catch((err) => {
+      console.error(err);
+    });
+    console.log("photo  profile updated !!");
+    history.push("/profile");
   };
 
   const updateImgselect = (e) => {
@@ -60,7 +57,6 @@ export const Gallery = (props) => {
               onClick={(e) => {
                 updateImgselect(e);
                 setBorder(index);
-                console.log("im border", border);
               }}
             />
           </div>
@@ -68,7 +64,7 @@ export const Gallery = (props) => {
       </Div>
       <PicButton
         disabled={disable}
-        onClick={() => {
+        onClick={(e) => {
           updateImgProfile(url, profilePicture);
         }}
       >
