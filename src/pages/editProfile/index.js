@@ -14,100 +14,29 @@ import { autontication } from "../../Components/contexts/usecontext";
 import { ImageContext } from "../../Components/contexts/imageContext";
 
 import { get_photoprofile } from "../../tools/get_photoprofle";
-
-const tags = [
-  {
-    link: "#",
-    titel: "piercing",
-  },
-  {
-    link: "#",
-    titel: "geek",
-  },
-  {
-    link: "#",
-    titel: "vegan",
-  },
-];
+import { updateUser, getUserImages, getUser } from "./tools";
 
 const local = "khouribga, Morocco";
 
 const user_id = localStorage.getItem("userId");
 const url = `/user/${user_id}`;
-
 const urledit = `/user/edit/${user_id}`;
 
 export const EditProfile = (props) => {
   let history = useHistory();
   const { auth } = useContext(autontication);
   const [photoProfile, setPhotoProfile] = useState();
+  const [disable, setDisable] = useState(true);
   const [userdetails, setUserDetails] = useContext(UserContext);
   const [imageDetails, setImageDetails] = useContext(ImageContext);
-
-  const [disable, setDisable] = useState(true);
   const urlImages = `/picture/${auth.userId}`;
 
-  const getUser = async (url) => {
-    await axiosInstance
-      .get(url)
-      .then((res) => {
-        setUserDetails({
-          userName: res.data?.user_name,
-          firstName: res.data?.first_name,
-          lastName: res.data?.last_name,
-          email: res.data?.email,
-          bio: res.data?.bio,
-          age: res.data?.age,
-          gender: res.data?.gender,
-          preference: res.data?.preference,
-          photoProfileId: res.data?.photo_profile_id,
-        });
-      })
-      .catch((err) => {
-        console.error(err);
-      });
-  };
-
-  const getUserImages = async (url) => {
-    await axiosInstance
-      .get(url)
-      .then((res) => {
-        setImageDetails(res?.data);
-      })
-      .catch((err) => {
-        console.error(err);
-      });
-  };
-
-  const updateUser = async (url, param) => {
-    console.info("param", param);
-
-    const res = await axiosInstance.put(url, param).catch((err) => {
-      console.error(err);
-    });
-
-    setUserDetails({
-      userName: res.data?.user_name,
-      firstName: res.data?.first_name,
-      lastName: res.data?.last_name,
-      email: res.data?.email,
-      // id: res.data?.id,
-      bio: res.data?.bio,
-      age: res.data?.age,
-      gender: res.data?.gender,
-      preference: res.data?.preference,
-      photoProfileId: res.data?.photo_profile_id,
-    });
-    history.push("/profile");
-      
-  };
-
   useEffect(() => {
-    getUser(url);
+    getUser(url, setUserDetails);
   }, []);
 
   useEffect(() => {
-    getUserImages(urlImages);
+    getUserImages(urlImages, setImageDetails);
   }, [auth?.userId]);
   useEffect(() => {
     get_photoprofile(imageDetails, userdetails, setPhotoProfile);
@@ -116,7 +45,7 @@ export const EditProfile = (props) => {
   const submit = (e) => {
     console.log("urledit, userdetails");
     e.preventDefault();
-    updateUser(urledit, userdetails);
+    updateUser(urledit, userdetails, history);
   };
 
   const handelChange = (e) => {
@@ -134,9 +63,6 @@ export const EditProfile = (props) => {
         justifyContent="center"
         alignItems="center"
         height="100vh"
-        // style={{
-        //   position: "relative",
-        // }}
       >
         {/* <Blurry /> */}
         <Content onSubmit={(e) => submit(e)}>
@@ -152,10 +78,7 @@ export const EditProfile = (props) => {
                 display: "flex",
               }}
             >
-              <FirstSection
-                tags={tags}
-                photoProfile={photoProfile?.image_path}
-              />
+              <FirstSection photoProfile={photoProfile?.image_path} />
               <SecondSection handelChange={handelChange} />
               <ThirdSection handelChange={handelChange} local={local} />
             </Content>

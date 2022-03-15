@@ -1,9 +1,5 @@
 import axios from "axios";
 
-const newAccessToken = () => {
-  const refreshToken = localStorage.getItem("refreshToken");
-};
-
 const axiosInstance = axios.create({
   baseURL: process.env.REACT_APP_BASE_URL,
 });
@@ -13,9 +9,7 @@ axiosInstance.interceptors.request.use(
     const accessToken = localStorage.getItem("Token");
     req.headers["content-Type"] = "application/json";
     req.headers["Authorization"] = `Bearer ${accessToken}`;
-    // console.log("test", accessToken);
     req.params = req.params || {};
-    // console.log(req);
     return req;
   },
   (error) => {

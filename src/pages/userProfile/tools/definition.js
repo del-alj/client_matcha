@@ -5,10 +5,6 @@ import { Button } from "../../../Components/styles/Container.styles";
 import { Flex, H1, H4, P, MoreInfo } from "../style";
 import { UserContext } from "../../../Components/contexts/usercontext";
 
-// console.log(data);
-// const token = localStorage.getItem("Token");
-// console.log(token);
-
 export const DefinitionSection = ({ visibility }) => {
   const [userdetails] = useContext(UserContext);
   let history = useHistory();

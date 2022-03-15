@@ -47,9 +47,7 @@ const ForgotPassword = () => {
   };
   return (
     <Content>
-      <Block picture={forgot} color="yellow">
-        {/* <img src={forgot} alt="forgot" /> */}
-      </Block>
+      <Block picture={forgot} color="yellow"></Block>
       <Block>
         <Form onSubmit={(e) => submit(e)}>
           <h1>Forgot password</h1>

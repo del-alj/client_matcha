@@ -4,15 +4,23 @@ import { EditTags } from "../../Components/tag";
 import { AddPicture } from "./addPicture";
 import { Flex } from "../../Components/styles/Container.styles";
 import { PhotoProfile } from "../userProfile/style";
+import { getTags } from "./tools";
+
+const url = `/tag`;
 
 export const FirstSection = (props) => {
-  const { tags, photoProfile, pictures } = props;
-
+  const { photoProfile } = props;
+  const [tags, setTags] = useState([]);
   const [display, setDisplay] = useState(false);
   const handleClick = () => {
     setDisplay(true);
   };
 
+  useEffect(() => {
+    getTags(url, setTags);
+  }, []);
+
+  console.log(tags);
   return (
     <Flex justifyContent="center" style={{ padding: "0 2rem" }}>
       <Flex direction="row">

@@ -1,6 +1,4 @@
 import React, { useContext, useEffect, useState } from "react";
-import axiosInstance from "../../services/AxiosInstance";
-import { useHistory } from "react-router-dom";
 
 import { Layout } from "../../layouts/signinLayout";
 import { SecondSection } from "./secondSection";
@@ -12,6 +10,7 @@ import { autontication } from "../../Components/contexts/usecontext";
 import { ImageContext } from "../../Components/contexts/imageContext";
 
 import { get_photoprofile } from "../../tools/get_photoprofle";
+import { getUser, getUserImages } from "../editProfile/tools";
 const tags = [
   {
     link: "#",
@@ -34,7 +33,6 @@ const ratings = {
 };
 
 export const UserProfile = (props) => {
-  const [userImages, setUserImages] = useState([]);
   const [photoProfile, setPhotoProfile] = useState();
   const [userDetails, setUserDetails] = useContext(UserContext);
   const [imageDetails, setImageDetails] = useContext(ImageContext);
@@ -43,45 +41,11 @@ export const UserProfile = (props) => {
   const url = `/user/${auth.userId}`;
   const urlImages = `/picture/${auth.userId}`;
 
-  const token = `Bearer ${auth.token}`;
-
-  const getUser = async (url) => {
-    await axiosInstance
-      .get(url)
-      .then((res) => {
-        setUserDetails({
-          userName: res.data?.user_name,
-          firstName: res.data?.first_name,
-          lastName: res.data?.last_name,
-          email: res.data?.email,
-          bio: res.data?.bio,
-          age: res.data?.age,
-          gender: res.data?.gender,
-          preference: res.data?.preference,
-          photoProfileId: res.data?.photo_profile_id,
-        });
-      })
-      .catch((err) => {
-        console.error(err);
-      });
-  };
-
-  const getUserImages = async (url) => {
-    await axiosInstance
-      .get(url)
-      .then((res) => {
-        setImageDetails(res?.data);
-      })
-      .catch((err) => {
-        console.error(err);
-      });
-  };
-
   useEffect(() => {
-    getUser(url);
+    getUser(url, setUserDetails);
   }, []);
   useEffect(() => {
-    getUserImages(urlImages);
+    getUserImages(urlImages, setImageDetails);
   }, [auth?.userId]);
 
   useEffect(() => {
