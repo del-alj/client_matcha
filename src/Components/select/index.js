@@ -24,3 +24,26 @@ export const InitSelect = (props) => {
     </>
   );
 };
+
+
+export const ContrysSelect = (props) => {
+  const element = props.list;
+  const { onChange } = props;
+  return (
+    <>
+      {/* <label htmlFor={props.name}>{props.title}</label>
+      <Select
+        width="21rem"
+        id={props.name}
+        name={props.name}
+        onChange={onChange}
+      >
+        {element.map((elem, index) => (
+          <option key={index} value={elem}>
+            {elem.name}
+          </option>
+        ))}
+      </Select> */}
+    </>
+  );
+};

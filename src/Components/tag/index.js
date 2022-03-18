@@ -20,8 +20,7 @@ const Tag = (props) => {
         if (!status) setTagsDetails([...tagsDetails, props.id]);
         else {
           const tagIndex = tagsDetails.indexOf(props.id);
-          //remove tag from the tags array
-          console.log("=> ", tagIndex);
+          //this remove tag from the tags array
           tagsDetails.splice(tagIndex, 1);
           setTagsDetails([...tagsDetails]);
         }

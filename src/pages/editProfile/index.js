@@ -16,8 +16,6 @@ import { ImageContext } from "../../Components/contexts/imageContext";
 import { get_photoprofile } from "../../tools/get_photoprofle";
 import { updateUser, getUserImages, getUser } from "./tools";
 
-const local = "khouribga, Morocco";
-
 const user_id = localStorage.getItem("userId");
 const url = `/user/${user_id}`;
 const urledit = `/user/edit/${user_id}`;
@@ -80,7 +78,7 @@ export const EditProfile = (props) => {
             >
               <FirstSection photoProfile={photoProfile?.image_path} />
               <SecondSection handelChange={handelChange} />
-              <ThirdSection handelChange={handelChange} local={local} />
+              <ThirdSection handelChange={handelChange} />
             </Content>
             <Button
               disabled={disable}

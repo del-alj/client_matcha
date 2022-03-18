@@ -2,25 +2,20 @@ import React, { useContext, useState, useEffect } from "react";
 
 import { InputFull } from "../../Components/input/inputFull";
 import { Flex } from "../../Components/styles/Container.styles";
-import { Localisation } from "./style";
-import { Icon } from "../../Components/icon";
-import gps from "../../assets/icons/gps.png";
+import { Localisation } from "../../Components/localisation";
 import { validation } from "../../assets/validationSchema/editProfile";
 
 import { UserContext } from "../../Components/contexts/usercontext";
 
 export const ThirdSection = (props) => {
-  const { local, handelChange } = props;
+  const { handelChange } = props;
   const [userdetails, setUserDetails] = useContext(UserContext);
 
   return (
     <Flex justifyContent="center" style={{ padding: "0rem 2rem" }}>
       <Flex direction="row">
         <Flex direction="column">
-          <Localisation>
-            <Icon img={gps} alt="localisation" />
-            <h3 style={{ margin: "0px" }}>{local}</h3>
-          </Localisation>
+          <Localisation />
           <InputFull
             onChange={handelChange}
             placeholder="First Name"

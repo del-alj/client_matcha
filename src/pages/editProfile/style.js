@@ -16,15 +16,6 @@ export const Content = styled.div`
   }
 `;
 
-export const Localisation = styled.div`
-  display: flex;
-  padding: 2rem 0rem 5.5rem 0;
-
-  @media screen and (max-width: 900px) {
-    order: 2;
-  }
-`;
-
 export const Select = styled(InitSelect).attrs((props) => ({
   ...props,
 }))`
