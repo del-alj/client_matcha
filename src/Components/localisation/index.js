@@ -34,6 +34,7 @@ const getGeoLocal = (setGeolocal) => {
     setGeolocal({
       latitude: crd.latitude,
       longitude: crd.longitude,
+      authorized: true,
     });
   }
 
@@ -59,6 +60,7 @@ const getGeoLocal = (setGeolocal) => {
               setGeolocal({
                 latitude: res.data.latitude,
                 longitude: res.data.longitude,
+                authorized: false,
               });
             });
         }
