@@ -84,7 +84,6 @@ export const EditProfile = (props) => {
             </Content>
             <Button
               disabled={disable}
-              // type="submit"
               style={{ width: "15rem", margin: "auto" }}
               onClick={() => {
                 console.log("here button edite profile");

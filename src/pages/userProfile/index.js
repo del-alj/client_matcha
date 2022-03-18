@@ -11,20 +11,6 @@ import { ImageContext } from "../../Components/contexts/imageContext";
 
 import { get_photoprofile } from "../../tools/get_photoprofle";
 import { getUser, getUserImages } from "../editProfile/tools";
-const tags = [
-  {
-    link: "#",
-    titel: "piercing",
-  },
-  {
-    link: "#",
-    titel: "geek",
-  },
-  {
-    link: "#",
-    titel: "vegan",
-  },
-];
 
 const ratings = {
   rating: "5",
@@ -57,7 +43,6 @@ export const UserProfile = (props) => {
       <Content>
         <FirstSection
           status="online"
-          tags={tags}
           ratings={ratings}
           photoProfile={photoProfile?.image_path}
         />

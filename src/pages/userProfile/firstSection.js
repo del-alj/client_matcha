@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect, useContext } from "react";
 
 import { Tags } from "../../Components/tag";
 import { Visibility } from "../../Components/visibility";
@@ -7,8 +7,17 @@ import { PhotoProfile } from "./style";
 import { DefinitionSection } from "./tools/definition";
 import { MiniSection } from "./tools/miniSection";
 
+import { getUserTags } from "../editProfile/tools";
+import { autontication } from "../../Components/contexts/usecontext";
+
 export const FirstSection = (props) => {
-  const { status, tags, ratings, photoProfile } = props;
+  const { status, ratings, photoProfile } = props;
+  const { auth } = useContext(autontication);
+  const [userTags, setUserTags] = useState([""]);
+
+  useEffect(() => {
+    getUserTags(`/tag/${auth.userId}`, setUserTags);
+  }, []);
   return (
     <Flex direction="row" justifyContent="center">
       <Flex direction="row">
@@ -20,7 +29,7 @@ export const FirstSection = (props) => {
             ></PhotoProfile>
             <Visibility status={status} />
           </div>
-          <Tags tags={tags} />
+          <Tags tags={userTags} />
         </Flex>
         <DefinitionSection visibility={true} />
       </Flex>

@@ -3,10 +3,12 @@ import styled from "styled-components";
 export const Li = styled.li`
   float: left;
   a {
-    color: #535353;
+    /* color: #535353; */
+    color: ${(props) => (props.active ? "white" : "#535353")};
     text-decoration: none;
   }
-  background: #e6e6e6;
+  /* background: #e6e6e6; */
+  background: ${(props) => (props.active ? "black" : "#e6e6e6")};
   border-radius: 3px 0 0 3px;
   display: inline-block;
   height: 26px;
@@ -31,7 +33,10 @@ export const Li = styled.li`
   ::after {
     background: #fff;
     border-bottom: 13px solid transparent;
-    border-left: 10px solid #e6e6e6;
+    /* border-left: 10px solid #e6e6e6; */
+    //notwork white this
+    border-left: ${(props) =>
+      props.active ? "10px solid black" : "10px solid #e6e6e"};
     border-top: 13px solid transparent;
     content: "";
     position: absolute;
@@ -50,6 +55,18 @@ export const Li = styled.li`
     border-left-color: Black;
   }
   clip-path: polygon(0% 0%, 100% 0, 100% 100%, 0 100%, 20px 50%);
+
+  :active {
+    background-color: black;
+    a {
+      color: white;
+    }
+  }
+
+  :visited::after {
+    border-left-color: white;
+  }
+  /* clip-path: polygon(0% 0%, 100% 0, 100% 100%, 0 100%, 20px 50%); */
 `;
 
 export const Ul = styled.ul`

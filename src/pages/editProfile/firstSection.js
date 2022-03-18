@@ -1,26 +1,18 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
-import { EditTags } from "../../Components/tag";
 import { AddPicture } from "./addPicture";
 import { Flex } from "../../Components/styles/Container.styles";
 import { PhotoProfile } from "../userProfile/style";
-import { getTags } from "./tools";
-
-const url = `/tag`;
+import { TagsSection } from "./tagsSection";
 
 export const FirstSection = (props) => {
   const { photoProfile } = props;
-  const [tags, setTags] = useState([]);
   const [display, setDisplay] = useState(false);
+
   const handleClick = () => {
     setDisplay(true);
   };
 
-  useEffect(() => {
-    getTags(url, setTags);
-  }, []);
-
-  console.log(tags);
   return (
     <Flex justifyContent="center" style={{ padding: "0 2rem" }}>
       <Flex direction="row">
@@ -42,7 +34,7 @@ export const FirstSection = (props) => {
           >
             Change Profile Photo
           </h2>
-          <EditTags tags={tags} />
+          <TagsSection />
         </Flex>
       </Flex>
       {display && <AddPicture display={display} setDisplay={setDisplay} />}
