@@ -1,13 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 
 import { Local } from "./style";
 import { Icon } from "../icon";
 import gps from "../../assets/icons/gps.png";
-import { Select } from "./style";
 import axios from "axios";
+import axiosInstance from "../../services/AxiosInstance";
+import { autontication } from "../contexts/usecontext";
+import { Select } from "./style";
+const access_key = "55620d1f15bcca05c276bb2a59c3e768";
 
 const local = "khouribga, Morocco";
-const access_key = "55620d1f15bcca05c276bb2a59c3e768";
 // const getContry = async (setContry) => {
 //   const allContry = await axios.get(
 //     "https://countriesnow.space/api/v0.1/countries/iso"
@@ -16,7 +18,7 @@ const access_key = "55620d1f15bcca05c276bb2a59c3e768";
 //   setContry(allContry);
 // };
 
-const getGeoLocal = (setGeolocal) => {
+const getGeoLocal = async (setGeolocal) => {
   var options = {
     enableHighAccuracy: true,
     timeout: 5000,
@@ -73,12 +75,40 @@ const getGeoLocal = (setGeolocal) => {
   }
 };
 
+const addGeolocal = async (url, param) => {
+  await axiosInstance.post(url, param).catch((err) => {
+    console.error(err);
+  });
+};
+
+const getuserGeoLocal = async (url, setGeolocal) => {
+  await axiosInstance
+    .get(url)
+    .then((res) => {
+      setGeolocal(res.data[0]);
+    })
+    .catch((err) => {
+      console.error(err);
+    });
+};
+
 export const Localisation = (props) => {
   const [status, setStatus] = useState(false);
   const element = props.list;
   const { onChange } = props;
   const [contrys, setContrys] = useState();
   const [geolocal, setGeolocal] = useState(null);
+  const { auth } = useContext(autontication);
+
+  const url = `/localization/${auth.userId}`;
+
+  useEffect(() => {
+    getuserGeoLocal(url, setGeolocal);
+  });
+  //khesni l9a tari9a n bedel bayn tems dyal add localisation
+  // useEffect(() => {
+  //   setStatus(!status)
+  // });
 
   return (
     <>
@@ -92,6 +122,7 @@ export const Localisation = (props) => {
               href="#"
               onClick={(e) => {
                 getGeoLocal(setGeolocal);
+                addGeolocal(url, geolocal);
               }}
             >
               add Localisation

@@ -27,7 +27,7 @@ const Tag = (props) => {
       }}
       active={status}
     >
-      <a href={props.link}>{props.titel}</a>
+      <a href={props?.link}>{props?.titel}</a>
     </Li>
   );
 };
@@ -35,15 +35,15 @@ const Tag = (props) => {
 const EditTag = (props) => {
   return (
     <EditLi>
-      {/* <div style={{ position: "relative" }}> */}
       <div>
         <a
-          href={props.link}
+          href={props?.link}
           style={{
             background: "none",
           }}
         >
-          {props.titel}
+          {/* ma3raftx xwa9a3 hna */}
+          {props?.titel}
         </a>
       </div>
     </EditLi>
@@ -56,7 +56,12 @@ const Tags = (props) => {
     <Ul>
       {tags.map((tag, index) => {
         return (
-          <Tag key={index} link={tag.link} titel={tag.titel} id={tag.tagId} />
+          <Tag
+            key={index}
+            link={tag?.link}
+            titel={tag?.titel}
+            id={tag?.tagId}
+          />
         );
       })}
     </Ul>
@@ -68,7 +73,7 @@ const EditTags = (props) => {
   return (
     <Ul>
       {tags.map((tag, index) => (
-        <EditTag key={index} link={tag.link} titel={tag.titel} />
+        <EditTag key={index} link={tag?.link} titel={tag?.titel} />
       ))}
     </Ul>
   );
