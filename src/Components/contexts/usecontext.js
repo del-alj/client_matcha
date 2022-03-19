@@ -1,6 +1,6 @@
 import React, { createContext, useState } from "react";
 
-export const autontication = createContext();
+export const authentication = createContext();
 
 const initailValue = {
   token: localStorage.getItem("Token") ?? null,
@@ -11,9 +11,9 @@ const initailValue = {
 const ContextProvider = (props) => {
   const [auth, setAuth] = useState(initailValue);
   return (
-    <autontication.Provider value={{ auth, setAuth }}>
+    <authentication.Provider value={{ auth, setAuth }}>
       {props.children}
-    </autontication.Provider>
+    </authentication.Provider>
   );
 };
 

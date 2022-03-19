@@ -2,10 +2,10 @@ import React, { useContext } from "react";
 import { Route, Redirect } from "react-router-dom";
 
 import { publicRoutes } from "./routesList.js";
-import { autontication } from "../Components/contexts/usecontext";
+import { authentication } from "../Components/contexts/usecontext";
 
 const PublicRoute = () => {
-  const { auth } = useContext(autontication);
+  const { auth } = useContext(authentication);
 
   return (
     <>

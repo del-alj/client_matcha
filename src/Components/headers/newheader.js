@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { useHistory } from "react-router-dom";
 
-import { autontication } from "../contexts/usecontext";
+import { authentication } from "../contexts/usecontext";
 import {
   Header,
   StyledLink,
@@ -18,7 +18,7 @@ import profileImg from "../../assets/venus.jpg";
 
 const NewHeader = ({ display }) => {
   let history = useHistory();
-  const { setAuth } = useContext(autontication);
+  const { setAuth } = useContext(authentication);
 
   const handleClick = () => {
     Logout(setAuth);

@@ -10,7 +10,7 @@ import { Button, Flex } from "../../Components/styles/Container.styles";
 
 import { UserContext } from "../../Components/contexts/usercontext";
 import { useHistory } from "react-router-dom";
-import { autontication } from "../../Components/contexts/usecontext";
+import { authentication } from "../../Components/contexts/usecontext";
 import { ImageContext } from "../../Components/contexts/imageContext";
 
 import { get_photoprofile } from "../../tools/get_photoprofle";
@@ -22,7 +22,7 @@ const urledit = `/user/edit/${user_id}`;
 
 export const EditProfile = (props) => {
   let history = useHistory();
-  const { auth } = useContext(autontication);
+  const { auth } = useContext(authentication);
   const [photoProfile, setPhotoProfile] = useState();
   const [disable, setDisable] = useState(true);
   const [userdetails, setUserDetails] = useContext(UserContext);

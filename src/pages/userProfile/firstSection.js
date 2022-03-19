@@ -8,11 +8,11 @@ import { DefinitionSection } from "./tools/definition";
 import { MiniSection } from "./tools/miniSection";
 
 import { getUserTags } from "../editProfile/tools";
-import { autontication } from "../../Components/contexts/usecontext";
+import { authentication } from "../../Components/contexts/usecontext";
 
 export const FirstSection = (props) => {
   const { status, ratings, photoProfile } = props;
-  const { auth } = useContext(autontication);
+  const { auth } = useContext(authentication);
   const [userTags, setUserTags] = useState([""]);
 
   useEffect(() => {

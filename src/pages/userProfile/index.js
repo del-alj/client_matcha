@@ -6,7 +6,7 @@ import { FirstSection } from "./firstSection";
 import { Content } from "./style";
 
 import { UserContext } from "../../Components/contexts/usercontext";
-import { autontication } from "../../Components/contexts/usecontext";
+import { authentication } from "../../Components/contexts/usecontext";
 import { ImageContext } from "../../Components/contexts/imageContext";
 
 import { get_photoprofile } from "../../tools/get_photoprofle";
@@ -22,7 +22,7 @@ export const UserProfile = (props) => {
   const [photoProfile, setPhotoProfile] = useState();
   const [userDetails, setUserDetails] = useContext(UserContext);
   const [imageDetails, setImageDetails] = useContext(ImageContext);
-  const { auth } = useContext(autontication);
+  const { auth } = useContext(authentication);
 
   const url = `/user/${auth.userId}`;
   const urlImages = `/picture/${auth.userId}`;

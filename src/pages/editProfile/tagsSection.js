@@ -4,7 +4,7 @@ import { EditTags, Tags } from "../../Components/tag";
 import { getUserTags, getAllTags, updateTags } from "./tools";
 import { Button } from "../../Components/styles/Container.styles";
 import { tagsContext } from "../../Components/contexts/tagsContext";
-import { autontication } from "../../Components/contexts/usecontext";
+import { authentication } from "../../Components/contexts/usecontext";
 
 const url = `/tag`;
 export const TagsSection = () => {
@@ -13,7 +13,7 @@ export const TagsSection = () => {
   const [userTags, setUserTags] = useState([""]);
   const [tagsDetails, setTagsDetails] = useContext(tagsContext);
 
-  const { auth } = useContext(autontication);
+  const { auth } = useContext(authentication);
   const urledit = `/tag/add/tags/${auth.userId}`;
 
   useEffect(() => {

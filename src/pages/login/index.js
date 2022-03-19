@@ -12,12 +12,12 @@ import {
   Form,
   Button,
 } from "../../Components/styles/Container.styles";
-import { autontication } from "../../Components/contexts/usecontext";
+import { authentication } from "../../Components/contexts/usecontext";
 
 import venus from "../../assets/venus.jpg";
 
 const Login = () => {
-  const { setAuth } = useContext(autontication);
+  const { setAuth } = useContext(authentication);
   const url = `${process.env.REACT_APP_BASE_URL}/login`;
 
   const [data, setData] = useState({
