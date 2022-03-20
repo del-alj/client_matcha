@@ -13,6 +13,7 @@ export const Content = styled.div`
   align-items: center;
   text-align: center;
   padding: 1rem 0rem;
+  /* height: calc(100vh - 180px - 2rem); */
 `;
 
 export const Box = styled.div`
@@ -24,7 +25,6 @@ export const Box = styled.div`
   align-items: center;
   background: #f5f5f5;
   min-width: 70%;
-  /* border: 1px solid red; */
 
   @media screen and (max-width: 1440px) {
     width: 100%;
@@ -68,4 +68,62 @@ export const ButtonDiv = styled.div`
   display: flex;
   padding-top: 0.7rem;
   @media screen and (max-width: 930px) {
+  }
+`;
+
+export const CartInfo = styled.div`
+  width: 100%;
+  height: 10%;
+  position: absolute;
+  z-index: 9999;
+  top: 90%;
+  background: white;
+  opacity: 0.7;
+  display: flex;
+`;
+
+export const Card = styled.div`
+  position: relative;
+  /* border: 1px solid blue; */
+`;
+
+export const RatingDiv = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+`;
+
+export const InfoSection = styled.div`
+  display: flex;
+  flex-direction: column;
+  flex: 4;
+  text-align: left;
+  padding-left: 1rem;
+  line-height: 0px;
+`;
+
+export const CartTags = styled.div`
+  width: auto;
+  height: auto;
+  position: absolute;
+  z-index: 9999;
+  right: 100%;
+  top: 10%;
+  display: flex;
+  flex-direction: column;
+  /* border: 1px solid red; */
+  ul {
+    display: flex;
+    flex-direction: column;
+    li {
+      background: black;
+      margin-right: 0px;
+      /* width: max-content; */
+      align-self: flex-end;
+      a {
+        color: white;
+      }
+    }
+  }
 `;

@@ -34,7 +34,6 @@ export const Slider = (props) => {
       direction="row"
       justifyContent="center"
       alignContent="center"
-      style={{ background: "blue" }}
     >
       <SliderPictureDiv order={2}>
         <SliderPicture

@@ -14,7 +14,6 @@ export const FirstSection = (props) => {
   const { status, ratings, photoProfile } = props;
   const { auth } = useContext(authentication);
   const [userTags, setUserTags] = useState([""]);
-
   useEffect(() => {
     getUserTags(`/tag/${auth.userId}`, setUserTags);
   }, []);

@@ -69,7 +69,9 @@ export const Li = styled.li`
   /* clip-path: polygon(0% 0%, 100% 0, 100% 100%, 0 100%, 20px 50%); */
 `;
 
-export const Ul = styled.ul`
+export const Ul = styled.ul.attrs((props) => ({
+  ...props,
+}))`
   list-style: none;
   margin: 0;
   overflow: hidden;
