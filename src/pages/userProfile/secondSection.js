@@ -9,7 +9,12 @@ export const SecondSection = (props) => {
   const [imageDetails] = useContext(ImageContext);
 
   return (
-    <Flex height="700px" direction="row" justifyContent="center">
+    <Flex
+      height="700px"
+      direction="row"
+      justifyContent="center"
+      background="red"
+    >
       <Slider photos={imageDetails} />
     </Flex>
   );
