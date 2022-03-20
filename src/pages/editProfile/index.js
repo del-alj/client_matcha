@@ -84,7 +84,7 @@ export const EditProfile = (props) => {
               disabled={disable}
               style={{ width: "15rem", margin: "auto" }}
               onClick={() => {
-                console.log("here button edite profile");
+                console.log("here button edit profile");
                 updateUser(urledit, userdetails);
               }}
             >
