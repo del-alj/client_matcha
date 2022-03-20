@@ -48,7 +48,7 @@ export const TagsSection = () => {
         <>
           <EditTags tags={userTags} />
           <Button
-            style={{ width: "15rem", margin: "auto" }}
+            style={{ width: "15rem", margin: "auto", fontSize: "14px" }}
             onClick={() => {
               setDisabel(true);
             }}

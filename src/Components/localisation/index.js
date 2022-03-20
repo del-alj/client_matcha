@@ -1,29 +1,29 @@
 import React, { useState, useEffect, useContext } from "react";
 
-import { Local } from "./style";
+import { Local, LocalButton } from "./style";
 import { Icon } from "../icon";
 import gps from "../../assets/icons/gps.png";
 import { authentication } from "../contexts/usecontext";
-import { handelLocation, findCoord } from "./tools";
-import { Select } from "./style";
+import {
+  handelLocation,
+  getNewCoord,
+  VAlidationCity,
+  updateGeolocal,
+} from "./tools";
 import { InputFull } from "../input/inputFull";
-import { validation } from "../../assets/validationSchema/localization";
 
-const local = "khouribga, Morocco";
+const local = "Add you Localization";
 
 export const Localisation = (props) => {
   const [geolocal, setGeolocal] = useState(null);
+  const [newGeolocal, setNewGeolocal] = useState(null);
+
   const { auth } = useContext(authentication);
   const [city, setCity] = useState(null);
   const url = `/localization/${auth.userId}`;
   const [status, setStatus] = useState(false);
 
   const [disable, setDisable] = useState(true);
-
-  const getNewCoord = async (city) => {
-    const data = await findCoord(city);
-    setGeolocal(data.data);
-  };
 
   useEffect(() => {
     const getCoord = async () => {
@@ -35,25 +35,21 @@ export const Localisation = (props) => {
   }, []);
 
   useEffect(() => {
-    // const getNewCoord = async (city) => {
-    //   const data = await findCoord(city);
-    //   setGeolocal(data.data);
-    // };
-    // if (city) getNewCoord(city);
-  }, [city]);
+    const addNewCoord = async () => {
+      const data = await updateGeolocal(url, newGeolocal);
+      return data.status === 200 ? geolocal : null;
+    };
+    if (newGeolocal) addNewCoord();
+  }, [newGeolocal]);
 
   const handelChange = (e) => {
     setDisable(false);
     const newData = { ...city };
     newData[e.target.id] = e.target.value;
     console.log(newData);
-    setCity(newData);
+    setCity(newData.addLocalisation);
   };
 
-  console.log("coord ", geolocal);
-
-  //faba maradixi nhtaj xi tari9a nbedel binatom khesni ran nxof xdin radi ndir wax input awla select
-  //khesni n 9ad daba ui
   return (
     <>
       <Local>
@@ -66,22 +62,23 @@ export const Localisation = (props) => {
           <div style={{ width: "100%" }}>
             <InputFull
               onChange={handelChange}
-              placeholder="ex: khouribga"
+              placeholder="Name Of City"
               name="addLocalisation"
               label="Localisation"
               text={city}
-              {...validation["city"]}
             />
-            <button
+            <LocalButton
               disabled={disable}
               style={{ width: "100%", margin: "auto" }}
-              onClick={() => {
-                console.log("here button edit localisation", city);
-                if (city) getNewCoord(city);
+              onClick={async (e) => {
+                if (VAlidationCity(city) === true) {
+                  const coordinates = await getNewCoord(city);
+                  setNewGeolocal(coordinates);
+                }
               }}
             >
               Edit
-            </button>
+            </LocalButton>
           </div>
         )}
       </Local>

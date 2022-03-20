@@ -1,6 +1,8 @@
 import axios from "axios";
 import axiosInstance from "../../services/AxiosInstance";
 
+import { validation } from "../../assets/validationSchema/localization";
+
 // must put it in .env file
 const access_key = "55620d1f15bcca05c276bb2a59c3e768";
 
@@ -82,6 +84,13 @@ export const addGeolocal = async (url, param) => {
   return data;
 };
 
+export const updateGeolocal = async (url, param) => {
+  const data = await axiosInstance.put(url, param).catch((err) => {
+    console.error(err);
+  });
+  return data;
+};
+
 export const getuserGeoLocal = async (url) => {
   const temp = await axiosInstance
     .get(url)
@@ -114,4 +123,20 @@ export const findCoord = async (city) => {
   const temp = await axios.get(api_url_endpoint);
   console.log("im here findCoord");
   return temp;
+};
+
+export const VAlidationCity = (str) => {
+  if (!String(str).match(validation["city"].pattern)) {
+    return validation["city"].error;
+  } else return true;
+};
+
+export const getNewCoord = async (city) => {
+  const data = await findCoord(city);
+  const coordinates = data.data?.records[0]?.geometry?.coordinates;
+  return {
+    latitude: coordinates[1],
+    longitude: coordinates[0],
+    authorized: true,
+  };
 };

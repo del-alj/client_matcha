@@ -36,15 +36,7 @@ const EditTag = (props) => {
   return (
     <EditLi>
       <div>
-        <a
-          href={props?.link}
-          style={{
-            background: "none",
-          }}
-        >
-          {/* ma3raftx xwa9a3 hna */}
-          {props?.titel}
-        </a>
+        <a href={"#"}>{props?.titel}</a>
       </div>
     </EditLi>
   );
@@ -73,7 +65,12 @@ const EditTags = (props) => {
   return (
     <Ul>
       {tags.map((tag, index) => (
-        <EditTag key={index} link={tag?.link} titel={tag?.titel} />
+        <EditTag
+          key={index}
+          link={tag?.link}
+          titel={tag?.titel}
+          id={tag?.tagId}
+        />
       ))}
     </Ul>
   );
