@@ -30,15 +30,9 @@ export const Dashboard = (props) => {
   return (
     <Layout login={true}>
       <Content>
-        <Box
-        // style={{ height: "100%" }}
-        >
-          <SliderPictureDiv
-          //   style={{ height: "100%" }}
-          >
-            <Card
-            // style={{ height: "80%" }}
-            >
+        <Box>
+          <SliderPictureDiv>
+            <Card>
               <CartTags>
                 <Tags tags={tags} />
               </CartTags>
@@ -48,10 +42,7 @@ export const Dashboard = (props) => {
                 city={"khouribga"}
                 rating={"8"}
               />
-              <SliderPicture
-                // style={{ height: "auto", width: "70%" }}
-                src={venus}
-              ></SliderPicture>
+              <SliderPicture src={venus}></SliderPicture>
             </Card>
             <Buttons />
           </SliderPictureDiv>

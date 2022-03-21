@@ -1,8 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 
-import { CartInfo, RatingDiv, InfoSection } from "../style";
+import { CartInfo, RatingDiv, InfoSection, Features } from "../style";
 import { Icon } from "../../../Components/icon";
-import { Features } from "../../userProfile/style";
 import crown from "../../../assets/icons/crown.png";
 
 export const CartInfoDiv = (props) => {
@@ -12,13 +11,13 @@ export const CartInfoDiv = (props) => {
       <InfoSection>
         <p
           style={{
-            fontSize: "1.5rem",
+            fontSize: "1.5em",
           }}
         >
           {name},
           <span
             style={{
-              fontSize: "1rem",
+              fontSize: "1em",
             }}
           >
             {age}
@@ -26,7 +25,7 @@ export const CartInfoDiv = (props) => {
         </p>
         <p
           style={{
-            fontSize: "1rem",
+            fontSize: "1em",
           }}
         >
           {city}

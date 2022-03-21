@@ -30,13 +30,15 @@ export const Box = styled.div`
     width: 100%;
   }
   @media screen and (max-width: 555px) {
-    background: transparent;
+    /* background: transparent; */
+    padding: 3rem 3rem;
   }
 `;
 
 export const SliderPictureDiv = styled.div`
   display: flex;
   flex-direction: column;
+  /* height: 100%; */
 `;
 
 export const Button = styled.button`
@@ -70,7 +72,8 @@ export const Button = styled.button`
 export const ButtonDiv = styled.div`
   display: flex;
   padding-top: 0.7rem;
-  @media screen and (max-width: 930px) {
+  @media screen and (max-width: 425px) {
+    padding-top: 0px;
   }
 `;
 
@@ -83,7 +86,9 @@ export const CartInfo = styled.div`
   background: white;
   opacity: 0.7;
   display: flex;
-  /* border: 1px solid blue; */
+  @media screen and (max-width: 375px) {
+    top: 89.5%;
+  }
 `;
 
 export const Card = styled.div`
@@ -94,23 +99,29 @@ export const RatingDiv = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  flex: 1;
+  width: 20%;
 `;
 
 export const InfoSection = styled.div`
   display: flex;
   flex-direction: column;
-  flex: 4;
   text-align: left;
   padding-left: 1rem;
   line-height: 0px;
-  @media screen and (max-width: 930px) {
-    flex-direction: row;
-    /* text-align: center; */
-    align-items: center;
-  }
+  width: 80%;
   p {
     margin-left: 1rem;
+  }
+
+  @media screen and (max-width: 930px) {
+    flex-direction: row;
+    align-items: center;
+    p {
+      margin-left: 0.1rem;
+    }
+  }
+  @media screen and (max-width: 430px) {
+    font-size: 9px !important;
   }
 `;
 
@@ -118,19 +129,16 @@ export const CartTags = styled.div`
   width: auto;
   height: auto;
   position: absolute;
-  z-index: 9999;
   right: 100%;
   top: 10%;
   display: flex;
   flex-direction: column;
-  /* border: 1px solid red; */
   ul {
     display: flex;
     flex-direction: column;
     li {
       background: black;
       margin-right: 0px;
-      /* width: max-content; */
       align-self: flex-end;
       a {
         color: white;
@@ -139,5 +147,34 @@ export const CartTags = styled.div`
   }
   @media screen and (max-width: 555px) {
     display: none;
+  }
+`;
+
+export const Features = styled.div`
+  h1 {
+    margin: 0px;
+  }
+  img {
+    font-size: large;
+    width: 1.5em;
+    height: 1.5em;
+  }
+  @media screen and (max-width: 425px) {
+    font-size: smaller;
+
+    img {
+      font-size: smaller;
+      width: 1.5em;
+      height: 1.5em;
+    }
+  }
+  @media screen and (max-width: 320px) {
+    font-size: xx-small;
+
+    img {
+      font-size: xx-small;
+      width: 1.5em;
+      height: 1.5em;
+    }
   }
 `;

@@ -1,7 +1,8 @@
 import React from "react";
 
-import { Button, ButtonDiv } from "../style";
+import { ButtonDiv } from "../style";
 
+import { Button } from "./style";
 export const Buttons = () => {
   return (
     <ButtonDiv>
