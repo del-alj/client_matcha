@@ -29,6 +29,9 @@ export const Box = styled.div`
   @media screen and (max-width: 1440px) {
     width: 100%;
   }
+  @media screen and (max-width: 555px) {
+    background: transparent;
+  }
 `;
 
 export const SliderPictureDiv = styled.div`
@@ -76,15 +79,15 @@ export const CartInfo = styled.div`
   height: 10%;
   position: absolute;
   z-index: 9999;
-  top: 90%;
+  top: 89.5%;
   background: white;
   opacity: 0.7;
   display: flex;
+  /* border: 1px solid blue; */
 `;
 
 export const Card = styled.div`
   position: relative;
-  /* border: 1px solid blue; */
 `;
 
 export const RatingDiv = styled.div`
@@ -101,6 +104,14 @@ export const InfoSection = styled.div`
   text-align: left;
   padding-left: 1rem;
   line-height: 0px;
+  @media screen and (max-width: 930px) {
+    flex-direction: row;
+    /* text-align: center; */
+    align-items: center;
+  }
+  p {
+    margin-left: 1rem;
+  }
 `;
 
 export const CartTags = styled.div`
@@ -125,5 +136,8 @@ export const CartTags = styled.div`
         color: white;
       }
     }
+  }
+  @media screen and (max-width: 555px) {
+    display: none;
   }
 `;

@@ -9,24 +9,28 @@ export const CartInfoDiv = (props) => {
   const { name, age, city, rating } = props;
   return (
     <CartInfo>
-      <InfoSection
-        style={
-          {
-            // border: "1px solid yellow",
-          }
-        }
-      >
-        <h1>
+      <InfoSection>
+        <p
+          style={{
+            fontSize: "1.5rem",
+          }}
+        >
           {name},
           <span
             style={{
-              fontSize: "16px",
+              fontSize: "1rem",
             }}
           >
             {age}
           </span>
-        </h1>
-        <h3>{city}</h3>
+        </p>
+        <p
+          style={{
+            fontSize: "1rem",
+          }}
+        >
+          {city}
+        </p>
       </InfoSection>
       <RatingDiv>
         <Features>
