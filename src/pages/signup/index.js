@@ -18,7 +18,7 @@ import mars from "../../assets/mars.jpg";
 const Signup = () => {
   let history = useHistory();
 
-  const url = `/registration`;
+  const url = `${process.env.REACT_APP_BASE_URL}/registration`;
   const [data, setData] = useState({
     userName: "",
     firstName: "",

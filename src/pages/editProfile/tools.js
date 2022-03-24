@@ -1,4 +1,5 @@
 import axiosInstance from "../../services/AxiosInstance";
+import axios from "axios";
 
 /* get all tags */
 
@@ -37,11 +38,11 @@ export const getUser = async (url, setUserDetails) => {
         firstName: res.data?.first_name,
         lastName: res.data?.last_name,
         email: res.data?.email,
-        bio: res.data?.bio,
-        age: res.data?.age,
-        gender: res.data?.gender,
-        preference: res.data?.preference,
-        photoProfileId: res.data?.photo_profile_id,
+        bio: res?.data?.bio,
+        age: res?.data?.age,
+        gender: res?.data?.gender,
+        preference: res?.data?.preference,
+        photoProfileId: res?.data?.photo_profile_id,
       });
     })
     .catch((err) => {
@@ -98,5 +99,3 @@ export const updateUser = async (url, param, setUserDetails, history) => {
     });
 
 };
-
-
