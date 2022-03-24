@@ -57,6 +57,15 @@ export const Add = styled.div`
   margin-left: 3rem;
 `;
 
+export const AddPhoto = styled.div`
+  width: 5rem;
+  height: 5rem;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  text-shadow: 1px 1px #f8f8f8;
+`;
+
 export const Uploadpicture = styled.input`
   border: 1px solid black;
   width: 100%;

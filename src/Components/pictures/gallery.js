@@ -1,10 +1,9 @@
 import React, { useEffect, useContext, useState } from "react";
 import axiosInstance from "../../services/AxiosInstance";
-import axios from "axios";
 import { useHistory } from "react-router-dom";
 
 import { AddNew } from "./addNew";
-import { Div, Img, PicButton, DeleteButton, DeleteIcon, Border } from "./style";
+import { Div, Img, PicButton, DeleteButton, DeleteIcon } from "./style";
 
 import del from "../../assets/icons/del.png";
 

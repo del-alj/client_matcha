@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useState } from "react";
-import axiosInstance from "../../services/AxiosInstance";
 import { Layout } from "../../layouts/signinLayout";
 import { FirstSection } from "./firstSection";
 import { SecondSection } from "./secondSection";
@@ -84,8 +83,7 @@ export const EditProfile = (props) => {
               disabled={disable}
               style={{ width: "15rem", margin: "auto" }}
               onClick={() => {
-                console.log("here button edit profile");
-                updateUser(urledit, userdetails);
+                updateUser(urledit, userdetails, history);
               }}
             >
               Edit

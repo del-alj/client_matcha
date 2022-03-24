@@ -1,18 +1,18 @@
 import React, { useState } from "react";
 
 import { AddPicture } from "./addPicture";
+import { AddFirstPicture } from "./addFirstPicture";
 import { Flex } from "../../Components/styles/Container.styles";
 import { PhotoProfile } from "../userProfile/style";
 import { TagsSection } from "./tagsSection";
-
 export const FirstSection = (props) => {
   const { photoProfile } = props;
   const [display, setDisplay] = useState(false);
+  const [newUser, setNewUser] = useState(true);
 
   const handleClick = () => {
     setDisplay(true);
   };
-
   return (
     <Flex justifyContent="center" style={{ padding: "0 2rem" }}>
       <Flex direction="row">
@@ -38,6 +38,7 @@ export const FirstSection = (props) => {
         </Flex>
       </Flex>
       {display && <AddPicture display={display} setDisplay={setDisplay} />}
+      {newUser && <AddFirstPicture setDisplay={setNewUser} />}
     </Flex>
   );
 };
