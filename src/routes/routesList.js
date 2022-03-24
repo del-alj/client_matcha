@@ -29,6 +29,10 @@ const publicRoutes = [
     component: Signup,
     restricted: true,
   },
+  {
+    path: "/confirmation/:token",
+    component: Confirmation,
+  },
 ];
 
 const privateRoutes = [
@@ -43,10 +47,6 @@ const privateRoutes = [
   {
     path: "/confirmSignup",
     component: ConfirmSignup,
-  },
-  {
-    path: "/confirmation/:token",
-    component: Confirmation,
   },
   {
     path: "/reset/:token",

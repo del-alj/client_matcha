@@ -15,10 +15,9 @@ import { ImageContext } from "../../Components/contexts/imageContext";
 
 import { get_photoprofile } from "../../tools/get_photoprofle";
 import { updateUser, getUserImages, getUser } from "./tools";
+import { NewHeader } from "../../Components/headers/newheader";
 
-const user_id = localStorage.getItem("userId");
-const url = `/user/${user_id}`;
-const urledit = `/user/edit/${user_id}`;
+// const user_id = localStorage.getItem("userId");
 
 export const EditProfile = (props) => {
   let history = useHistory();
@@ -28,9 +27,14 @@ export const EditProfile = (props) => {
   const [userdetails, setUserDetails] = useContext(UserContext);
   const [imageDetails, setImageDetails] = useContext(ImageContext);
   const urlImages = `/picture/${auth.userId}`;
+  const url = `/user/${auth.userId}`;
+  const urledit = `/user/edit/${auth.userId}`;
 
   useEffect(() => {
+    console.log("useffect: beffor 1");
+
     getUser(url, setUserDetails);
+    console.log("useffect: last 1", userdetails);
   }, []);
 
   useEffect(() => {
@@ -43,6 +47,7 @@ export const EditProfile = (props) => {
   const submit = (e) => {
     console.log("urledit, userdetails");
     e.preventDefault();
+    setUserDetails({ ...userdetails, age: parseInt(userdetails.age) });
     updateUser(urledit, userdetails, history);
   };
 
@@ -50,9 +55,12 @@ export const EditProfile = (props) => {
     setDisable(false);
     const newData = { ...userdetails };
     newData[e.target.id] = e.target.value;
+    if (e.target.id === "age") newData[e.target.id] = parseInt(e.target.value);
     setUserDetails(newData);
     console.log(newData);
   };
+
+  console.log("userdetails last 2", userdetails, auth.userId);
 
   return (
     <Layout login={true}>

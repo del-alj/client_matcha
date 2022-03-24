@@ -54,9 +54,10 @@ export const ThirdSection = (props) => {
             placeholder="Age"
             name="age"
             label="Age"
-            text={userdetails?.age}
+            text={0}
+            value={userdetails?.age}
             type="number"
-            {...validation["age"]}
+            // {...validation["age"]}
           />
         </Flex>
       </Flex>

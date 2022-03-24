@@ -25,6 +25,7 @@ export const InputFull = (props) => {
           name={props.name}
           id={props.name}
           defaultValue={props.text}
+          value={props?.value}
           type={props.type}
         />
       )}
