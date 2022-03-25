@@ -74,7 +74,7 @@ export const updateTags = async (url, tagsDetails) => {
 
 /* update user */
 
-export const updateUser = async (url, param, setUserDetails, history) => {
+export const updateUser = async (url, param, setUserDetails) => {
   console.info("param", param);
 
   await axiosInstance
@@ -96,5 +96,4 @@ export const updateUser = async (url, param, setUserDetails, history) => {
     .catch((err) => {
       console.error(err);
     });
-
 };

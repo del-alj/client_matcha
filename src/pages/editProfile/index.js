@@ -42,7 +42,7 @@ export const EditProfile = (props) => {
   const submit = (e) => {
     console.log("urledit, userdetails");
     e.preventDefault();
-    updateUser(urledit, userdetails, history);
+    updateUser(urledit, userdetails);
   };
 
   const handelChange = (e) => {
@@ -80,10 +80,11 @@ export const EditProfile = (props) => {
               <ThirdSection handelChange={handelChange} />
             </Content>
             <Button
+              // type="submit"
               disabled={disable}
               style={{ width: "15rem", margin: "auto" }}
               onClick={() => {
-                updateUser(urledit, userdetails, history);
+                updateUser(urledit, userdetails);
                 history.push("/profile");
               }}
             >

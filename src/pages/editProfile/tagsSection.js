@@ -7,6 +7,11 @@ import { tagsContext } from "../../Components/contexts/tagsContext";
 import { authentication } from "../../Components/contexts/usecontext";
 
 const url = `/tag`;
+
+const tagsIsDisabel = (tagsDetails) => {
+  return tagsDetails.length >= 3 && tagsDetails.length <= 5 ? false : true;
+};
+
 export const TagsSection = () => {
   const [tags, setTags] = useState([]);
   const [disabel, setDisabel] = useState(false);
@@ -34,7 +39,7 @@ export const TagsSection = () => {
         <>
           <Tags tags={tags} />
           <Button
-            disabled={tagsDetails.length >= 3 ? false : true}
+            disabled={tagsIsDisabel(tagsDetails)}
             onClick={async () => {
               await updateTags(urledit, tagsDetails);
               setTagsDetails("");

@@ -8,6 +8,7 @@ import { UserContext } from "../../Components/contexts/usercontext";
 import { validation } from "../../assets/validationSchema/editProfile";
 
 const genders = ["Woman", "Man"];
+const preferences = ["Woman", "Man", "Bisex"];
 
 export const SecondSection = (props) => {
   const { handelChange } = props;
@@ -36,7 +37,7 @@ export const SecondSection = (props) => {
           <ListCheckBox
             onChange={handelChange}
             titel="Preferences"
-            element={genders}
+            element={preferences}
             style={{
               border: "1px solid red",
             }}
