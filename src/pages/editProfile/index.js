@@ -84,6 +84,7 @@ export const EditProfile = (props) => {
               style={{ width: "15rem", margin: "auto" }}
               onClick={() => {
                 updateUser(urledit, userdetails, history);
+                history.push("/profile");
               }}
             >
               Edit

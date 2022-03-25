@@ -92,7 +92,6 @@ export const updateUser = async (url, param, setUserDetails, history) => {
         preference: res.data?.preference,
         photoProfileId: res.data?.photo_profile_id,
       });
-      history.push("/profile");
     })
     .catch((err) => {
       console.error(err);
