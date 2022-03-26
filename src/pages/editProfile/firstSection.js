@@ -5,6 +5,7 @@ import { AddFirstPicture } from "./addFirstPicture";
 import { Flex } from "../../Components/styles/Container.styles";
 import { PhotoProfile } from "../userProfile/style";
 import { TagsSection } from "./tagsSection";
+import { Blurry } from "./style";
 export const FirstSection = (props) => {
   const { photoProfile } = props;
   const [display, setDisplay] = useState(false);
@@ -37,6 +38,7 @@ export const FirstSection = (props) => {
           <TagsSection />
         </Flex>
       </Flex>
+      {display || newUser ? <Blurry /> : <></>}
       {display && <AddPicture display={display} setDisplay={setDisplay} />}
       {newUser && <AddFirstPicture setDisplay={setNewUser} />}
     </Flex>
