@@ -9,6 +9,7 @@ import { ResetPassword } from "../pages/login/resetPassword";
 import { ConfirmForgotPassword } from "../pages/login/confirmForgotPassword";
 import { EditProfile } from "../pages/editProfile/index";
 import { Dashboard } from "../pages/dashboard/index";
+import { AdvanceSearch } from "../pages/advanceSearch/index.js";
 const publicRoutes = [
   {
     path: "/",
@@ -32,6 +33,10 @@ const publicRoutes = [
   {
     path: "/confirmation/:token",
     component: Confirmation,
+  },
+  {
+    path: "/advenceSearch",
+    component: AdvanceSearch,
   },
 ];
 
