@@ -1,9 +1,13 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Layout } from "../../layouts/signinLayout";
 import { Flex, Button } from "../../Components/styles/Container.styles";
-import { Cadre, Input } from "./style.js";
+import { Cadre, Div, Input } from "./style.js";
 import { useHistory } from "react-router-dom";
 import { authentication } from "../../Components/contexts/usecontext";
+import { AgeBar } from "./tools/ageBar";
+import { LocalizationBar } from "./tools/localizationbar";
+import { TagsBar } from "./tools/tagsbar";
+import { RatingBar } from "./tools/ratingBar";
 
 const url = `/Search`;
 
@@ -28,12 +32,12 @@ export const AdvanceSearch = () => {
         </Cadre> */}
 
         <Cadre>
-          <Input placeholder="Age" type="number" />
-          <Input placeholder="Localization" border={true} />
-          <Input placeholder="Tags" border={true} />
-          <Input placeholder="Ranting" border={true} />
+          <AgeBar title="Age" />
+          <LocalizationBar title="Localization" />
+          <TagsBar title="Tags" />
+          <RatingBar title="Rating" />
+          <Button>Search</Button>
         </Cadre>
-        <Button>Search</Button>
       </Flex>
     </Layout>
   );

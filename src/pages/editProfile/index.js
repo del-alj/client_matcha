@@ -43,6 +43,7 @@ export const EditProfile = (props) => {
     console.log("urledit, userdetails");
     e.preventDefault();
     updateUser(urledit, userdetails);
+    history.push("/profile");
   };
 
   const handelChange = (e) => {
@@ -62,6 +63,7 @@ export const EditProfile = (props) => {
         height="100vh"
       >
         {/* <Blurry /> */}
+
         <Content onSubmit={(e) => submit(e)}>
           <div
             style={{
