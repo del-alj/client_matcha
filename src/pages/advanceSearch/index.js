@@ -24,18 +24,12 @@ export const AdvanceSearch = () => {
         height="100vh"
       >
         <h5>Advance Search :</h5>
-        {/* <Cadre>
-          <h5>Age v</h5>
-          <h5>Localization v</h5>
-          <h5>Tags v</h5>
-          <h5>Ranting v</h5>
-        </Cadre> */}
 
         <Cadre>
           <AgeBar title="Age" />
           <LocalizationBar title="Localization" />
-          <TagsBar title="Tags" />
           <RatingBar title="Rating" />
+          <TagsBar title="Tags" />
           <Button>Search</Button>
         </Cadre>
       </Flex>

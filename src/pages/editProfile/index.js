@@ -64,7 +64,7 @@ export const EditProfile = (props) => {
       >
         {/* <Blurry /> */}
 
-        <Content onSubmit={(e) => submit(e)}>
+        <Content as="form" onSubmit={(e) => submit(e)}>
           <div
             style={{
               display: "block",

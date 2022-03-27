@@ -1,5 +1,6 @@
 import styled from "styled-components";
 
+
 export const Cadre = styled.div`
   min-width: 600px;
   height: 800px;
@@ -30,7 +31,6 @@ export const Div = styled.div`
 `;
 
 export const H5 = styled.h5`
-  /* padding-right: 20px; */
   padding: 0 0 0 20px;
   color: black;
 `;
@@ -38,17 +38,13 @@ export const H5 = styled.h5`
 export const SecDiv = styled.div`
   min-width: 80%;
   min-height: 100%;
-  /* background: blue; */
-  border: 1px solid #f1f1f1;
-  /* display: flex;
-  flex-direction: row; */
-  /* justify-content: space-around; */
+  display: flex;
   align-items: center;
 `;
 
 export const DivButton = styled.div`
-  width: 100px;
-  min-height: 50px;
+  width: 90px;
+  height: 35px;
   display: flex;
   background: #e6e6e6;
   justify-content: center;
@@ -57,11 +53,14 @@ export const DivButton = styled.div`
 
 export const Button = styled.button`
   width: 40px;
-  height: 40px;
+  height: 30px;
   color: white;
   border: none;
+  font-family: "Electrolize", sans-serif;
   background: ${(props) => (props.status ? "black" : "#e6e6e6")};
+  padding: 0px;
 `;
+
 export const Input = styled.input`
   font-size: 1em;
   font-family: "Electrolize", sans-serif;
@@ -76,7 +75,65 @@ export const Input = styled.input`
   outline: 0;
   border-left: ${(props) => props.border && "1px solid #535353"};
   height: 100%;
-  /* width: 30%; */
   padding: 0 15px;
   margin: 13px 0;
+`;
+
+export const SliderRange = styled.div`
+  width: 300px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  /* position: absolute; */
+  /* justify-content: space-between; */
+`;
+
+export const Slider = styled.input`
+  -webkit-appearance: none;
+  width: 100%;
+  height: 15px;
+  background: #d3d3d3;
+  outline: none;
+  opacity: 0.2;
+  transition: opacity 0.2s;
+  z-index: 1;
+  :hover {
+    /* z-index: 0; */
+    opacity: 0.5;
+  }
+  ::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 15px;
+    height: 15px;
+    z-index: 999999999999;
+    background: black;
+    opacity: 1;
+    cursor: pointer;
+    appearance: none;
+    pointer-events: all;
+  }
+  /* &::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 15px;
+    height: 15px;
+    background: black;
+    cursor: pointer;
+    pointer-events: all;
+
+    z-index: 999;
+    outline: 0;
+    border: none;
+  } */
+`;
+
+export const InitialeAgs = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+`;
+
+export const NewAgs = styled.div`
+  display: flex;
+  flex-direction: row;
 `;
