@@ -10,6 +10,7 @@ export const Cadre = styled.div`
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
+  margin-bottom: 20px;
   @media screen and (max-width: 425px) {
     align-items: flex-start;
     max-width: 200px;
