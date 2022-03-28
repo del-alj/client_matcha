@@ -7,7 +7,7 @@ export const Ul = styled.ul`
   justify-content: center;
   margin: 0;
   padding: 15px;
-  width: 60px;
+  min-width: 60px;
   z-index: 9999;
   position: fixed;
   top: 60px;
@@ -15,7 +15,8 @@ export const Ul = styled.ul`
   background: #f6f6f6;
   min-width: 100px;
   block-align: right;
-
+  /* border: 1px solid black; */
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
   /* right: -300; */
 `;
 
