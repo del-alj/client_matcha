@@ -35,7 +35,7 @@ const publicRoutes = [
     component: Confirmation,
   },
   {
-    path: "/advenceSearch",
+    path: "/advanceSearch",
     component: AdvanceSearch,
   },
 ];
