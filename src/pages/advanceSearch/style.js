@@ -84,56 +84,78 @@ export const SliderRange = styled.div`
   height: auto;
   display: flex;
   flex-direction: column;
-  /* position: absolute; */
-  /* justify-content: space-between; */
-`;
-
-export const Slider = styled.input`
-  -webkit-appearance: none;
-  width: 100%;
-  height: 15px;
-  background: #d3d3d3;
-  outline: none;
-  opacity: 0.2;
-  transition: opacity 0.2s;
-  z-index: 1;
-  :hover {
-    /* z-index: 0; */
-    opacity: 0.5;
-  }
-  ::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    width: 15px;
-    height: 15px;
-    z-index: 999999999999;
-    background: black;
-    opacity: 1;
-    cursor: pointer;
-    appearance: none;
-    pointer-events: all;
-  }
-  /* &::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 15px;
-    height: 15px;
-    background: black;
-    cursor: pointer;
-    pointer-events: all;
-
-    z-index: 999;
-    outline: 0;
-    border: none;
-  } */
-`;
-
-export const InitialeAgs = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
 `;
 
 export const NewAgs = styled.div`
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
+`;
+
+export const Slider = styled.span`
+  justify-content: center;
+  height: 15px;
+  input[type="range"] {
+    box-sizing: border-box;
+    appearance: none;
+    width: 300px;
+    margin: 0;
+    padding: 0 2px;
+    /* Add some L/R padding to ensure box shadow of handle is shown */
+    overflow: hidden;
+    border: 0;
+    border-radius: 1px;
+    outline: none;
+    background: linear-gradient(white, white) center;
+    /* Use a linear gradient to generate only the 2px height background */
+    background-size: 100% 2px;
+    pointer-events: none;
+
+    &:active,
+    &:focus {
+      outline: none;
+    }
+    //this moraba3
+    &::-webkit-slider-thumb {
+      height: 15px;
+      width: 15px;
+      background-color: white;
+      position: relative;
+      cursor: pointer;
+      appearance: none;
+      pointer-events: all;
+      background: black;
+
+      /* &::before {
+        content: " ";
+        display: block;
+        position: absolute;
+        top: 13px;
+        left: 100%;
+        width: 2000px;
+        height: 2px;
+      } */
+    }
+  }
+  background: #e6e6e6 !important;
+
+  position: relative;
+  height: 15px;
+  input[type="range"] {
+    position: absolute;
+
+    &:nth-child(1) {
+      &::-webkit-slider-thumb::before {
+        background-color: white;
+      }
+    }
+
+    &:nth-child(2) {
+      background: none;
+
+      &::-webkit-slider-thumb::before {
+        background-color: white;
+      }
+    }
+  }
 `;
