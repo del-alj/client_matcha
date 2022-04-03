@@ -17,6 +17,7 @@ export const Dashboard = (props) => {
   const [usersList, setUsersList] = useState({});
   const [next, setNext] = useState(false);
   const [index, setIndex] = useState(-1);
+  const [display, setDisplay] = useState(true);
 
   const { auth } = useContext(authentication);
 
@@ -33,35 +34,34 @@ export const Dashboard = (props) => {
   useEffect(() => {
     console.log("this is index", index);
     setIndex(index + 1);
+    if (index >= usersList?.length - 1) setDisplay(false);
   }, [next]);
 
-  const tags = [
-    { titel: "traveling", link: "#", tagId: 0 },
-    { titel: "exercise", link: "#", tagId: 0 },
-    { titel: "going to the theater", link: "#", tagId: 0 },
-  ];
-  console.log("tx", usersList);
-
   const user = usersList?.[index];
+  console.log(index, usersList?.length);
   return (
     <Layout login={true}>
       <Content>
         <Box>
-          <SliderPictureDiv>
-            <Card>
-              <CartTags>
-                <Tags tags={user?.tags} />
-              </CartTags>
-              <CartInfoDiv
-                name={user?.user_name}
-                age={user?.age}
-                city={`${user?.distance?.toFixed(1)}Km`}
-                rating={"8"}
-              />
-              <SliderPicture src={user?.image_path}></SliderPicture>
-            </Card>
-            <Buttons setNext={setNext} next={next} />
-          </SliderPictureDiv>
+          {display ? (
+            <SliderPictureDiv>
+              <Card>
+                <CartTags>
+                  <Tags tags={user?.tags} />
+                </CartTags>
+                <CartInfoDiv
+                  name={user?.user_name}
+                  age={user?.age}
+                  city={`${user?.distance?.toFixed(1)}Km`}
+                  rating={"8"}
+                />
+                <SliderPicture src={user?.image_path}></SliderPicture>
+              </Card>
+              <Buttons setNext={setNext} next={next} />
+            </SliderPictureDiv>
+          ) : (
+            <></>
+          )}
         </Box>
       </Content>
     </Layout>
