@@ -46,13 +46,13 @@ const Tags = (props) => {
   const { tags } = props;
   return (
     <Ul>
-      {tags.map((tag, index) => {
+      {tags?.map((tag, index) => {
         return (
           <Tag
             key={index}
-            link={tag?.link}
-            titel={tag?.titel}
-            id={tag?.tagId}
+            link={tag?.link || "#"}
+            titel={tag?.titel || tag}
+            id={tag?.tagId || 0}
           />
         );
       })}
