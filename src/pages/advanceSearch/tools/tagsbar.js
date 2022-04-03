@@ -17,9 +17,20 @@ export const TagsBar = (props) => {
     getAllTags(url, setTags);
   }, []);
   return (
-    <Div>
+    <Div
+      style={{
+        height: "auto",
+        alignItems: "normal",
+      }}
+    >
       <H5>{props.title}</H5>
-      <SecDiv>
+      <SecDiv
+        style={{
+          maxHeight: "300px",
+          overflowY: "scroll",
+          paddingTop: "40px",
+        }}
+      >
         <Tags tags={tags} />
       </SecDiv>
     </Div>
