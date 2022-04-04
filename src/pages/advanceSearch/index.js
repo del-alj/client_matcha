@@ -26,7 +26,7 @@ export const AdvanceSearch = () => {
         <h5>Advance Search :</h5>
 
         <Cadre>
-          {/* <AgeBar title="Age" /> */}
+          <AgeBar title="Age" />
           <LocalizationBar title="Localization" />
           <RatingBar title="Rating" />
           <TagsBar title="Tags" />

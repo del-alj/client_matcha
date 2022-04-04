@@ -40,6 +40,7 @@ export const SecDiv = styled.div`
   min-width: 80%;
   min-height: 100%;
   display: flex;
+  /* border: 1px solid black; */
   align-items: center;
 `;
 

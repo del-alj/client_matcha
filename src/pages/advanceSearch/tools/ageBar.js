@@ -9,39 +9,39 @@ export const AgeBar = (props) => {
   const [minAge, setMinAge] = useState(18);
   const [maxAge, setMaxAge] = useState(60);
 
-   const lowerSlider = document.querySelector("#lower");
-   const upperSlider = document.querySelector("#upper");
-   let lowerVal = parseInt(lowerSlider.value);
-   let upperVal = parseInt(upperSlider.value);
+  const lowerSlider = document.querySelector("#lower");
+  const upperSlider = document.querySelector("#upper");
+  const [lowerVal, setLowerVal] = useState();
+  const [upperVal, setUpperVal] = useState();
 
-   const onChangeMinAge = (e) => {
-     lowerVal = parseInt(lowerSlider.value);
-     upperVal = parseInt(upperSlider.value);
-     console.log(lowerSlider.value, e.target.value);
-     if (e.target.value > maxAge - 1) {
-       upperSlider.value = lowerVal + 1;
+  const onChangeMinAge = (e) => {
+    setLowerVal(parseInt(lowerSlider?.value));
+    setUpperVal(parseInt(upperSlider?.value));
+    console.log(lowerSlider.value, e.target.value);
+    if (e.target.value > maxAge - 1) {
+      upperSlider.value = lowerVal + 1;
 
-       if (upperVal === upperSlider.max) {
-         lowerSlider.value = parseInt(upperSlider.max) - 1;
-       }
-     }
-     setMinAge(e.target.value);
-     setMaxAge(upperSlider.value);
-   };
-   const onChangeMaxAge = (e) => {
-     lowerVal = parseInt(lowerSlider.value);
-     upperVal = parseInt(upperSlider.value);
+      if (upperVal === upperSlider.max) {
+        lowerSlider.value = parseInt(upperSlider.max) - 1;
+      }
+    }
+    setMinAge(e.target?.value);
+    setMaxAge(upperSlider?.value);
+  };
+  const onChangeMaxAge = (e) => {
+    setLowerVal(parseInt(lowerSlider.value));
+    setUpperVal(parseInt(upperSlider.value));
 
-     if (e.target.value < minAge + 1) {
-       lowerSlider.value = upperVal - 1;
+    if (e.target?.value < minAge + 1) {
+      lowerSlider.value = upperVal - 1;
 
-       if (lowerVal === lowerSlider.min) {
-         upperSlider.value = 1;
-       }
-     }
-     setMinAge(lowerSlider.value);
-     setMaxAge(upperSlider.value);
-   };
+      if (lowerVal === lowerSlider.min) {
+        upperSlider.value = 1;
+      }
+    }
+    setMinAge(lowerSlider.value);
+    setMaxAge(upperSlider.value);
+  };
 
   return (
     <Div>
@@ -76,4 +76,4 @@ export const AgeBar = (props) => {
       </SecDiv>
     </Div>
   );
-};
+};;;;;;;;
