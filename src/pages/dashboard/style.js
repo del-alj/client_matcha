@@ -80,10 +80,12 @@ export const ButtonDiv = styled.div`
 export const CartInfo = styled.div`
   width: 100%;
   height: 10%;
+  min-height: 4em;
   position: absolute;
   z-index: 9999;
-  top: 89.5%;
-  background: white;
+  /* top: 89.5%; */
+  background: black;
+  color: white
   opacity: 0.7;
   display: flex;
   @media screen and (max-width: 375px) {

@@ -10,9 +10,11 @@ export const CartInfoDiv = (props) => {
     <CartInfo>
       <InfoSection>
         <p
-          style={{
-            fontSize: "1.5em",
-          }}
+          style={
+            {
+              // fontSize: "1.5em",
+            }
+          }
         >
           {name},
           <span

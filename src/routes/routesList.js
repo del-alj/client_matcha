@@ -34,10 +34,6 @@ const publicRoutes = [
     path: "/confirmation/:token",
     component: Confirmation,
   },
-  {
-    path: "/advanceSearch",
-    component: AdvanceSearch,
-  },
 ];
 
 const privateRoutes = [
@@ -64,6 +60,10 @@ const privateRoutes = [
   {
     path: "/dashboard",
     component: Dashboard,
+  },
+  {
+    path: "/advanceSearch",
+    component: AdvanceSearch,
   },
 ];
 

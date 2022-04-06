@@ -9,15 +9,15 @@ export const AgeBar = (props) => {
   const [minAge, setMinAge] = useState(18);
   const [maxAge, setMaxAge] = useState(60);
 
-  const lowerSlider = document.querySelector("#lower");
-  const upperSlider = document.querySelector("#upper");
+  const lowerSlider = document.querySelector("#min");
+  const upperSlider = document.querySelector("#max");
   const [lowerVal, setLowerVal] = useState();
   const [upperVal, setUpperVal] = useState();
-
+  const { data, setData } = props;
   const onChangeMinAge = (e) => {
     setLowerVal(parseInt(lowerSlider?.value));
     setUpperVal(parseInt(upperSlider?.value));
-    console.log(lowerSlider.value, e.target.value);
+    // console.log(lowerSlider.value, e.target.value);
     if (e.target.value > maxAge - 1) {
       upperSlider.value = lowerVal + 1;
 
@@ -43,6 +43,13 @@ export const AgeBar = (props) => {
     setMaxAge(upperSlider.value);
   };
 
+  useEffect(() => {
+    const newData = { ...data };
+    newData["age"] = { min: minAge, max: maxAge };
+    setData(newData);
+    console.log(newData);
+  }, [minAge, maxAge]);
+
   return (
     <Div>
       <H5>{props.title}</H5>
@@ -53,14 +60,15 @@ export const AgeBar = (props) => {
             <p style={{ lineHeight: "0px" }}>{maxAge}</p>
           </NewAgs>
           <Slider>
-            <span class="multi-range">
+            <span className="multi-range">
               <input
                 type="range"
                 min="18"
                 max="60"
                 defaultValue={minAge}
                 onInput={onChangeMinAge}
-                id="lower"
+                id="min"
+                name="min"
               />
               <input
                 type="range"
@@ -68,7 +76,8 @@ export const AgeBar = (props) => {
                 max="60"
                 defaultValue={maxAge}
                 onInput={onChangeMaxAge}
-                id="upper"
+                id="max"
+                name="max"
               />
             </span>
           </Slider>
@@ -76,4 +85,4 @@ export const AgeBar = (props) => {
       </SecDiv>
     </Div>
   );
-};;;;;;;;
+};

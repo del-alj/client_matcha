@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 
-export const Cadre = styled.div`
+export const Cadre = styled.form`
   min-width: 600px;
   height: 800px;
   background: #f5f5f5;
@@ -160,4 +160,20 @@ export const Slider = styled.span`
       }
     }
   }
+`;
+
+export const DivImg = styled.div`
+  width: 100%;
+  height: auto;
+  padding: 5em;
+  background: #f5f5f5;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+`;
+export const Img = styled.img`
+  width: 20em;
+  height: 20em;
+  border: 6px solid black;
 `;

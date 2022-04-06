@@ -1,14 +1,17 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Div, SecDiv, H5, DivButton, Button } from "../style";
-import { useHistory } from "react-router-dom";
-import { authentication } from "../../../Components/contexts/usecontext";
 
 export const RatingBar = (props) => {
-  let history = useHistory();
-  const { auth } = useContext(authentication);
-
   const [rating, setRating] = useState(false);
 
+  useEffect(() => {
+    const newData = { ...data };
+    newData["rating"] = rating;
+    setData(newData);
+    console.log(newData);
+  }, [rating]);
+
+  const { data, setData } = props;
   return (
     <Div>
       <H5>{props.title}</H5>
