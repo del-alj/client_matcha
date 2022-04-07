@@ -179,15 +179,16 @@ export const Img = styled.img`
 `;
 
 export const Blur = styled.div`
- transition: .5s ease;
-  opacity: 0;
+  :hover img {
+    opacity: 0.5;
+  }
+`;
+export const Heart = styled.div`
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-  text-align: center;
-  .hover {
-    display: block;
+  top: 150px;
+  right: 150px;
+  display: ${(props) => (props?.display ? "block" : "none")};
+  :hover img {
+    opacity: 1;
   }
 `;

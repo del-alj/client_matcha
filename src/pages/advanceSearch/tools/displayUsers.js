@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 
-import { DivImg, Img, Blur } from "../style";
+import { DivImg, Img, Blur, Heart } from "../style";
 import { CartInfoDiv } from "./cardInfo";
-
+import heart from "../../../assets/icons/heart.png";
 export const DisplayUsers = (props) => {
   let history = useHistory();
 
@@ -13,7 +13,7 @@ export const DisplayUsers = (props) => {
     <>
       <DivImg>
         {users.map((elem, index) => (
-          <div
+          <Blur
             key={`div${index}`}
             style={{
               margin: "5em",
@@ -23,16 +23,17 @@ export const DisplayUsers = (props) => {
               console.log("test", elem?.user_id);
             }}
           >
-            <Blur> </Blur>
             <Img status={true} key={`img${index}`} src={elem?.image_path} />
-
+            <Heart display={true}>
+              <img src={heart} style={{ width: "50px", height: "auto" }} />
+            </Heart>
             <CartInfoDiv
               name={elem?.user_name}
               age={elem?.age}
               city={`${elem?.distance?.toFixed(1)}Km`}
               rating={"8"}
             />
-          </div>
+          </Blur>
         ))}
       </DivImg>
     </>
