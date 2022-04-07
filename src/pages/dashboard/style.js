@@ -80,17 +80,27 @@ export const ButtonDiv = styled.div`
 export const CartInfo = styled.div`
   width: 100%;
   height: 10%;
-  min-height: 4em;
   position: absolute;
   z-index: 9999;
-  /* top: 89.5%; */
-  background: black;
-  color: white
+  top: 89.5%;
+  background: white;
   opacity: 0.7;
   display: flex;
   @media screen and (max-width: 375px) {
     top: 89.5%;
   }
+`;
+
+export const MiniCartInfo = styled.div`
+  width: 100%;
+  height: 10%;
+  min-height: 4em;
+  /* z-index: 9999; */
+  background: black;
+  color: white
+  opacity: 0.7;
+  display: flex;
+
 `;
 
 export const Card = styled.div`
@@ -153,6 +163,7 @@ export const CartTags = styled.div`
 `;
 
 export const Features = styled.div`
+  text-align: center;
   h1 {
     margin: 0px;
   }

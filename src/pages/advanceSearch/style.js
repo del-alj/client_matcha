@@ -177,3 +177,17 @@ export const Img = styled.img`
   height: 20em;
   border: 6px solid black;
 `;
+
+export const Blur = styled.div`
+ transition: .5s ease;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  text-align: center;
+  .hover {
+    display: block;
+  }
+`;

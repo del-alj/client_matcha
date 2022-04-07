@@ -1,23 +1,29 @@
 import React, { useContext, useEffect, useState } from "react";
 
-import { CartInfo, RatingDiv, InfoSection, Features } from "../style";
-import { Icon } from "../../../Components/icon";
+import {
+  MiniCartInfo,
+  RatingDiv,
+  InfoSection,
+  Features,
+} from "../../dashboard/style";
+
 import crown from "../../../assets/icons/crown.png";
 
 export const CartInfoDiv = (props) => {
   const { name, age, city, rating } = props;
   return (
-    <CartInfo>
+    <MiniCartInfo>
       <InfoSection>
         <p
           style={{
-            fontSize: "1.5em",
+            color: "white",
           }}
         >
           {name},
           <span
             style={{
               fontSize: "1em",
+              color: "white",
             }}
           >
             {age}
@@ -26,6 +32,7 @@ export const CartInfoDiv = (props) => {
         <p
           style={{
             fontSize: "1em",
+            color: "white",
           }}
         >
           {city}
@@ -33,10 +40,24 @@ export const CartInfoDiv = (props) => {
       </InfoSection>
       <RatingDiv>
         <Features>
-          <Icon img={crown} alt="rantion" />
-          <h1>{rating}</h1>
+          <img
+            style={{
+              filter: "invert(100%)",
+            }}
+            src={crown}
+            alt={"rantion"}
+          />
+          <h1
+            style={{
+              fontSize: "1em",
+              color: "white",
+              justifyItems: "center",
+            }}
+          >
+            {rating}
+          </h1>
         </Features>
       </RatingDiv>
-    </CartInfo>
+    </MiniCartInfo>
   );
 };

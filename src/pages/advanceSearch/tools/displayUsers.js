@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 
-import { DivImg, Img } from "../style";
-import { CartInfoDiv } from "../../dashboard/tools/cardInfo";
+import { DivImg, Img, Blur } from "../style";
+import { CartInfoDiv } from "./cardInfo";
 
 export const DisplayUsers = (props) => {
   let history = useHistory();
@@ -23,7 +23,9 @@ export const DisplayUsers = (props) => {
               console.log("test", elem?.user_id);
             }}
           >
+            <Blur> </Blur>
             <Img status={true} key={`img${index}`} src={elem?.image_path} />
+
             <CartInfoDiv
               name={elem?.user_name}
               age={elem?.age}
