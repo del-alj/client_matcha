@@ -188,6 +188,9 @@ export const Heart = styled.div`
   top: 150px;
   right: 150px;
   display: ${(props) => (props?.display ? "block" : "none")};
+  img {
+    opacity: 0;
+  }
   :hover img {
     opacity: 1;
   }
