@@ -27,24 +27,28 @@ export const DisplayUsers = (props) => {
       <DivImg>
         {users.map((elem, index) => (
           <Blur
-          key={`div${index}`}
-          style={{
-            margin: "5em",
-            position: "relative",
-          }}
-          onClick={() => {
-            console.log("test", elem?.user_id);
-          }}
+            key={`div${index}`}
+            style={{
+              margin: "5em",
+              position: "relative",
+            }}
+            onClick={() => {
+              console.log("test", elem?.user_id);
+            }}
           >
             <Img status={true} key={`img${index}`} src={elem?.image_path} />
             <Heart display={true}>
-          <Bubbly onClick={(e)=>{likeAnimateButton(e)}} />
+              <Bubbly
+                onClick={(e) => {
+                  likeAnimateButton(e);
+                }}
+              />
               <img src={heart} style={{ width: "50px", height: "auto" }} />
             </Heart>
             <CartInfoDiv
               name={elem?.user_name}
               age={elem?.age}
-              city={`${elem?.distance?.toFixed(1)}Km`}
+              city={`${elem?.distance?.toFixed(1)}`}
               rating={"8"}
             />
           </Blur>

@@ -11,6 +11,7 @@ import crown from "../../../assets/icons/crown.png";
 
 export const CartInfoDiv = (props) => {
   const { name, age, city, rating } = props;
+  console.log(city);
   return (
     <MiniCartInfo>
       <InfoSection>
@@ -29,14 +30,16 @@ export const CartInfoDiv = (props) => {
             {age}
           </span>
         </p>
-        <p
-          style={{
-            fontSize: "1em",
-            color: "white",
-          }}
-        >
-          {city}
-        </p>
+        {city !== "undefined" && (
+          <p
+            style={{
+              fontSize: "1em",
+              color: "white",
+            }}
+          >
+            {city} km
+          </p>
+        )}
       </InfoSection>
       <RatingDiv>
         <Features>
