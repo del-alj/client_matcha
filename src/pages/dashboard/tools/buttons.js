@@ -3,15 +3,13 @@ import React from "react";
 import { ButtonDiv } from "../style";
 
 import { Button } from "./style";
-
+import { likeThisUser } from "../../../api/likes";
 const handelClick = (setNext, next) => {
   setNext(!next);
-  console.log("next", next);
 };
 
 export const Buttons = (props) => {
-  const { setNext, next } = props;
-  console.log("button", next);
+  const { setNext, next, ids } = props;
 
   return (
     <ButtonDiv>
@@ -25,6 +23,7 @@ export const Buttons = (props) => {
       <Button
         onClick={(e) => {
           handelClick(setNext, next);
+          likeThisUser(ids);
         }}
       >
         /3

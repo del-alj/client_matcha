@@ -14,7 +14,7 @@ const likeAnimateButton = (e) => {
 
   setTimeout(function () {
     e.target.classList.remove("animate");
-  }, 700);
+  }, 1000);
 };
 
 export const DisplayUsers = (props) => {

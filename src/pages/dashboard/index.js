@@ -18,9 +18,9 @@ export const Dashboard = (props) => {
   const [next, setNext] = useState(false);
   const [index, setIndex] = useState(-1);
   const [display, setDisplay] = useState(true);
-
+  const [ids, setIds] = useState({});
   const { auth } = useContext(authentication);
-
+  const [user, setUser] = useState(null);
   const url = `/user/${auth.userId}`;
 
   useEffect(() => {
@@ -32,13 +32,17 @@ export const Dashboard = (props) => {
   }, [auth]);
 
   useEffect(() => {
-    console.log("this is index", index);
+    setUser(usersList?.[index]);
     setIndex(index + 1);
     if (index >= usersList?.length - 1) setDisplay(false);
-  }, [next]);
-
-  const user = usersList?.[index];
-  console.log(index, usersList?.length);
+  }, [next, usersList]);
+  useEffect(() => {
+    setIndex(index + 1);
+    setIds({
+      user_id: parseInt(auth?.userId),
+      suggestion_user_id: user?.user_id,
+    });
+  }, [user]);
   return (
     <Layout login={true}>
       <Content>
@@ -57,7 +61,7 @@ export const Dashboard = (props) => {
                 />
                 <SliderPicture src={user?.image_path}></SliderPicture>
               </Card>
-              <Buttons setNext={setNext} next={next} />
+              <Buttons setNext={setNext} next={next} ids={ids} />
             </SliderPictureDiv>
           ) : (
             <></>

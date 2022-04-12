@@ -48,12 +48,7 @@ const Tags = (props) => {
     <Ul>
       {tags?.map((tag, index) => {
         return (
-          <Tag
-            key={index}
-            link={tag?.link || "#"}
-            titel={tag?.titel || tag}
-            id={tag?.tagId || 0}
-          />
+          <Tag key={index} titel={tag?.titel || tag} id={tag?.tagId || 0} />
         );
       })}
     </Ul>

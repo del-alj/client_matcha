@@ -178,6 +178,9 @@ export const Img = styled.img`
 `;
 
 export const Blur = styled.div`
+  img {
+    opacity: ${(props) => (props.like ? 0.5 : "none")};
+  }
   :hover img {
     opacity: 0.5;
   }
@@ -186,9 +189,9 @@ export const Heart = styled.div`
   position: absolute;
   top: 150px;
   right: 150px;
-  display: ${(props) => (props?.display ? 'block' : 'none')};
+  display: ${(props) => (props?.display ? "block" : "none")};
   img {
-    opacity: 0;
+    opacity: ${(props) => (props.like ? 1 : 0)};
   }
   :hover img {
     opacity: 1;
@@ -213,11 +216,11 @@ export const Bubbly = styled.div`
   ::before,
   ::after {
     position: absolute;
-    content: '';
+    content: "";
     display: block;
-    width: 150%;
-    height: 150%;
-    left: -20%;
+    width: 200%;
+    height: 200%;
+    left: -40%;
     z-index: 1000;
     transition: all ease-in-out 0.5s;
     background-repeat: no-repeat;
