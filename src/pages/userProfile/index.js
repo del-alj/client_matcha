@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-
+import { useParams } from "react-router-dom";
 import { Layout } from "../../layouts/signinLayout";
 import { SecondSection } from "./secondSection";
 import { FirstSection } from "./firstSection";
@@ -24,9 +24,9 @@ export const UserProfile = (props) => {
   const [imageDetails, setImageDetails] = useContext(ImageContext);
   const { auth } = useContext(authentication);
 
-  const url = `/user/${auth.userId}`;
-  const urlImages = `/picture/${auth.userId}`;
-
+  let { id } = useParams();
+  const url = `/user/${id ? id : auth.userId}`;
+  const urlImages = `/picture/${id ? id : auth.userId}`;
   useEffect(() => {
     getUser(url, setUserDetails);
   }, []);
@@ -36,8 +36,8 @@ export const UserProfile = (props) => {
 
   useEffect(() => {
     get_photoprofile(imageDetails, userDetails, setPhotoProfile);
-  }, [auth?.userId, imageDetails, userDetails]);
-
+  }, [id ? id : auth?.userId, imageDetails, userDetails]);
+console.log("im here", id)
   return (
     <Layout login={true}>
       <Content>

@@ -65,6 +65,10 @@ const privateRoutes = [
     path: "/advanceSearch",
     component: AdvanceSearch,
   },
+  {
+    path: "/user/:id",
+    component: UserProfile,
+  },
 ];
 
 export { publicRoutes, privateRoutes };
