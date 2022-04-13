@@ -10,17 +10,18 @@ import {
 import crown from "../../../assets/icons/crown.png";
 
 export const CartInfoDiv = (props) => {
-  const { name, age, city, rating } = props;
+  const { name, age, city, rating, id } = props;
   console.log(city);
   return (
     <MiniCartInfo>
       <InfoSection>
-        <p
+        <a href={`user/${id}`}
           style={{
             color: "white",
           }}
         >
           {name},
+        </a>
           <span
             style={{
               fontSize: "1em",
@@ -29,7 +30,6 @@ export const CartInfoDiv = (props) => {
           >
             {age}
           </span>
-        </p>
         {city !== "undefined" && (
           <p
             style={{

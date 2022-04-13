@@ -118,6 +118,7 @@ export const InfoSection = styled.div`
   display: flex;
   flex-direction: column;
   text-align: left;
+  justify-content: center;
   padding-left: 1rem;
   line-height: 0px;
   width: 80%;
