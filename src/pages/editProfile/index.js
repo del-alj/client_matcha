@@ -30,14 +30,15 @@ export const EditProfile = (props) => {
 
   useEffect(() => {
     getUser(url, setUserDetails);
-  }, []);
+    setPhotoProfile(userdetails?.photoProfile);
+  }, [auth?.userId]);
 
   useEffect(() => {
     getUserImages(urlImages, setImageDetails);
   }, [auth?.userId]);
-  useEffect(() => {
-    get_photoprofile(imageDetails, userdetails, setPhotoProfile);
-  }, [auth?.userId, imageDetails, userdetails]);
+  // useEffect(() => {
+  //   get_photoprofile(imageDetails, userdetails, setPhotoProfile);
+  // }, [auth?.userId, imageDetails, userdetails]);
 
   const submit = (e) => {
     console.log("urledit, userdetails");
@@ -77,7 +78,7 @@ export const EditProfile = (props) => {
                 display: "flex",
               }}
             >
-              <FirstSection photoProfile={photoProfile?.image_path} />
+              <FirstSection photoProfile={photoProfile} />
               <SecondSection handelChange={handelChange} />
               <ThirdSection handelChange={handelChange} />
             </Content>

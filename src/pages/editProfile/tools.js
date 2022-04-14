@@ -33,6 +33,7 @@ export const getUser = async (url, setUserDetails) => {
   await axiosInstance
     .get(url)
     .then((res) => {
+      console.log("tis is all user", res.data);
       setUserDetails({
         userName: res.data?.user_name,
         firstName: res.data?.first_name,
@@ -43,6 +44,7 @@ export const getUser = async (url, setUserDetails) => {
         gender: res?.data?.gender,
         preference: res?.data?.preference,
         photoProfileId: res?.data?.photo_profile_id,
+        photoProfile: res?.data?.photoprofile,
       });
     })
     .catch((err) => {
@@ -97,3 +99,18 @@ export const updateUser = async (url, param, setUserDetails) => {
       console.error(err);
     });
 };
+
+
+export const getLook = async (ids) => {
+  const url = "/vue";
+  const param = { user_id: ids?.user_id, looker_id: ids?.looker_user_id };
+
+    axiosInstance
+  .put(url, param)
+  .then((res) => {
+    console.log("this is data ", res.data);
+  })
+  .catch((err) => {
+    console.error(err);
+  });
+} 

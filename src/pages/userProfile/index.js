@@ -8,9 +8,7 @@ import { Content } from "./style";
 import { UserContext } from "../../Components/contexts/usercontext";
 import { authentication } from "../../Components/contexts/usecontext";
 import { ImageContext } from "../../Components/contexts/imageContext";
-
-import { get_photoprofile } from "../../tools/get_photoprofle";
-import { getUser, getUserImages } from "../editProfile/tools";
+import { getUser, getUserImages, getLook } from "../editProfile/tools";
 
 const ratings = {
   rating: "5",
@@ -29,14 +27,23 @@ export const UserProfile = (props) => {
   const urlImages = `/picture/${id ? id : auth.userId}`;
   useEffect(() => {
     getUser(url, setUserDetails);
-  }, []);
+    setPhotoProfile(userDetails?.photoProfile);
+  }, [id ? id : auth?.userId, imageDetails, userDetails]);
+
   useEffect(() => {
     getUserImages(urlImages, setImageDetails);
   }, [auth?.userId]);
 
+  // useEffect(() => {
+  //   get_photoprofile(imageDetails, userDetails, setPhotoProfile);
+  // }, [id ? id : auth?.userId, imageDetails, userDetails]);
   useEffect(() => {
-    get_photoprofile(imageDetails, userDetails, setPhotoProfile);
-  }, [id ? id : auth?.userId, imageDetails, userDetails]);
+    if (id && auth?.userId && id !== auth?.userId)
+   {
+     getLook({ 
+    user_id: id,
+    looker_user_id: parseInt(auth?.userId)})}
+  }, [id, auth.userId]);
 console.log("im here", id)
   return (
     <Layout login={true}>
@@ -44,7 +51,7 @@ console.log("im here", id)
         <FirstSection
           status="online"
           ratings={ratings}
-          photoProfile={photoProfile?.image_path}
+          photoProfile={photoProfile}
         />
         <SecondSection />
       </Content>
