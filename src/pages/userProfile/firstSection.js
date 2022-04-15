@@ -10,7 +10,7 @@ import { useParams } from "react-router-dom";
 import { UserContext } from "../../Components/contexts/usercontext";
 
 export const FirstSection = (props) => {
-  const { status, photoProfile } = props;
+  const { status } = props;
   const [userTags, setUserTags] = useState([""]);
   const [visibil, setVisibil] = useState(false);
   const [userDetails] = useContext(UserContext);
@@ -28,7 +28,7 @@ export const FirstSection = (props) => {
         <Flex direction="column">
           <div>
             <PhotoProfile
-              src={`url(${photoProfile})`}
+              src={`url(${userDetails?.photoProfile})`}
               alt="Photo Profile"
             ></PhotoProfile>
             <Visibility status={status} />

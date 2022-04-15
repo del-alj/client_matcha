@@ -11,7 +11,6 @@ import { ImageContext } from "../../Components/contexts/imageContext";
 import { getUser, getUserImages, getLook } from "../editProfile/tools";
 
 export const UserProfile = (props) => {
-  const [photoProfile, setPhotoProfile] = useState();
   const [userDetails, setUserDetails] = useContext(UserContext);
   const [imageDetails, setImageDetails] = useContext(ImageContext);
   const { auth } = useContext(authentication);
@@ -21,7 +20,6 @@ export const UserProfile = (props) => {
   const urlImages = `/picture/${id ? id : auth.userId}`;
   useEffect(() => {
     getUser(url, setUserDetails);
-    setPhotoProfile(userDetails?.photoProfile);
   }, [id ? id : auth?.userId]);
 
   useEffect(() => {
@@ -44,7 +42,6 @@ console.log("im here", id)
       <Content>
         <FirstSection
           status="online"
-          photoProfile={photoProfile}
         />
         <SecondSection />
       </Content>
