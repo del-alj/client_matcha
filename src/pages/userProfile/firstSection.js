@@ -7,15 +7,13 @@ import { PhotoProfile } from "./style";
 import { DefinitionSection } from "./tools/definition";
 import { MiniSection } from "./tools/miniSection";
 import { useParams } from "react-router-dom";
-import { authentication } from "../../Components/contexts/usecontext";
 import { UserContext } from "../../Components/contexts/usercontext";
 
 export const FirstSection = (props) => {
   const { status, photoProfile } = props;
-  const { auth } = useContext(authentication);
   const [userTags, setUserTags] = useState([""]);
   const [visibil, setVisibil] = useState(false);
-  const [userDetails, setUserDetails] = useContext(UserContext);
+  const [userDetails] = useContext(UserContext);
 
   let { id } = useParams();
   useEffect(() => {

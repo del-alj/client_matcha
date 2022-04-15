@@ -6,7 +6,7 @@ import { getAllTags } from "../../editProfile/tools";
 import { Tags } from "../../../Components/tag";
 const url = `/tag`;
 export const TagsBar = (props) => {
-  const [tagsDetails, setTagsDetails] = useContext(tagsContext);
+  const [tagsDetails] = useContext(tagsContext);
   const [tags, setTags] = useState([]);
   const { data, setData } = props;
   useEffect(() => {

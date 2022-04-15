@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import axiosInstance from "../../../services/AxiosInstance";
-import { useHistory } from "react-router-dom";
 
 import { AddImageFile } from "./addImageFile";
-import { Div, Img, PicButton } from "../../../Components/pictures/style";
+import { Div, PicButton } from "../../../Components/pictures/style";
 
 // On file select (from the pop up)
 

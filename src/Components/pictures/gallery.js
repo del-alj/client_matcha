@@ -26,7 +26,7 @@ export const Gallery = (props) => {
   const { pictures } = props;
 
   const updateImgProfile = async (url, param) => {
-    const res = await axiosInstance.put(url, param).catch((err) => {
+    await axiosInstance.put(url, param).catch((err) => {
       console.error(err);
     });
     console.log("photo  profile updated !!");

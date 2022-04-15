@@ -1,18 +1,17 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext } from "react";
 
 import { InputFull } from "../../Components/input/inputFull";
 import { ListCheckBox } from "../../Components/listOfCheckBox";
 import { Flex } from "../../Components/styles/Container.styles";
 import { Select } from "./style";
 import { UserContext } from "../../Components/contexts/usercontext";
-import { validation } from "../../assets/validationSchema/editProfile";
 
 const genders = ["Woman", "Man"];
 const preferences = ["Woman", "Man", "Bisex"];
 
 export const SecondSection = (props) => {
   const { handelChange } = props;
-  const [userdetails, setUserDetails] = useContext(UserContext);
+  const [userdetails] = useContext(UserContext);
 
   return (
     <Flex justifyContent="center" style={{ padding: "7rem 2rem 2rem 0" }}>

@@ -1,5 +1,4 @@
 import React, { useState, useContext } from "react";
-import { useHistory } from "react-router-dom";
 
 import { DivImg, Img, Blur, Heart, Bubbly } from "../style";
 import { CartInfoDiv } from "./cardInfo";
@@ -20,11 +19,10 @@ const likeAnimateButton = (e) => {
 };
 
 export const DisplayUsers = (props) => {
-  let history = useHistory();
   const { auth } = useContext(authentication);
 
   const { users } = props;
-  const [likeStatus, setLikeStatus] = useState(false);
+  const [likeStatus] = useState(false);
   console.log("this is : ", users);
 
   return (

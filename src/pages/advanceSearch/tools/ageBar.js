@@ -1,11 +1,7 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Div, SecDiv, H5, SliderRange, Slider, NewAgs } from "../style";
-import { useHistory } from "react-router-dom";
-import { authentication } from "../../../Components/contexts/usecontext";
 
 export const AgeBar = (props) => {
-  let history = useHistory();
-  const { auth } = useContext(authentication);
   const [minAge, setMinAge] = useState(18);
   const [maxAge, setMaxAge] = useState(60);
 

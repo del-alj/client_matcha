@@ -7,7 +7,7 @@ import { UserContext } from "../../Components/contexts/usercontext";
 
 export const AddPicture = (props) => {
   const [imageDetails] = useContext(ImageContext);
-  const [userdetails, setUserDetails] = useContext(UserContext);
+  const [userdetails] = useContext(UserContext);
 
   const [addStatus, setAddStatus] = useState(true);
   const [changeStatus, setChangeStatus] = useState(false);

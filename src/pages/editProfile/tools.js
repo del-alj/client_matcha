@@ -1,5 +1,4 @@
 import axiosInstance from "../../services/AxiosInstance";
-import axios from "axios";
 
 /* get all tags */
 

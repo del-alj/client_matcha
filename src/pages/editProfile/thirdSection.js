@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext } from "react";
 
 import { InputFull } from "../../Components/input/inputFull";
 import { Flex } from "../../Components/styles/Container.styles";
@@ -9,7 +9,7 @@ import { UserContext } from "../../Components/contexts/usercontext";
 
 export const ThirdSection = (props) => {
   const { handelChange } = props;
-  const [userdetails, setUserDetails] = useContext(UserContext);
+  const [userdetails] = useContext(UserContext);
 
   return (
     <Flex justifyContent="center" style={{ padding: "0rem 2rem" }}>
