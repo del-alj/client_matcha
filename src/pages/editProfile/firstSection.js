@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import { AddPicture } from "./addPicture";
 import { AddFirstPicture } from "./addFirstPicture";
@@ -9,11 +9,13 @@ import { Blurry } from "./style";
 export const FirstSection = (props) => {
   const { photoProfile } = props;
   const [display, setDisplay] = useState(false);
-  const [newUser, setNewUser] = useState(true);
-
+  const [newUser, setNewUser] = useState();
   const handleClick = () => {
     setDisplay(true);
   };
+  useEffect(() => {
+    setNewUser(photoProfile ? false : true)
+  }, [photoProfile]);
   return (
     <Flex justifyContent="center" style={{ padding: "0 2rem" }}>
       <Flex direction="row">

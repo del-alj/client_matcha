@@ -4,7 +4,7 @@ import { FirstSection } from "./firstSection";
 import { SecondSection } from "./secondSection";
 import { ThirdSection } from "./thirdSection";
 
-import { Content, Blurry } from "./style";
+import { Content } from "./style";
 import { Button, Flex } from "../../Components/styles/Container.styles";
 
 import { UserContext } from "../../Components/contexts/usercontext";
@@ -12,7 +12,6 @@ import { useHistory } from "react-router-dom";
 import { authentication } from "../../Components/contexts/usecontext";
 import { ImageContext } from "../../Components/contexts/imageContext";
 
-import { get_photoprofile } from "../../tools/get_photoprofle";
 import { updateUser, getUserImages, getUser } from "./tools";
 
 const user_id = localStorage.getItem("userId");
@@ -22,7 +21,6 @@ const urledit = `/user/edit/${user_id}`;
 export const EditProfile = (props) => {
   let history = useHistory();
   const { auth } = useContext(authentication);
-  const [photoProfile, setPhotoProfile] = useState();
   const [disable, setDisable] = useState(true);
   const [userdetails, setUserDetails] = useContext(UserContext);
   const [imageDetails, setImageDetails] = useContext(ImageContext);
@@ -30,31 +28,26 @@ export const EditProfile = (props) => {
 
   useEffect(() => {
     getUser(url, setUserDetails);
-    setPhotoProfile(userdetails?.photoProfile);
   }, [auth?.userId]);
-
+  
   useEffect(() => {
     getUserImages(urlImages, setImageDetails);
   }, [auth?.userId]);
-  // useEffect(() => {
-  //   get_photoprofile(imageDetails, userdetails, setPhotoProfile);
-  // }, [auth?.userId, imageDetails, userdetails]);
-
-  const submit = (e) => {
-    console.log("urledit, userdetails");
-    e.preventDefault();
-    updateUser(urledit, userdetails);
-    history.push("/profile");
-  };
-
-  const handelChange = (e) => {
-    setDisable(false);
-    const newData = { ...userdetails };
-    newData[e.target.id] = e.target.value;
-    setUserDetails(newData);
-    console.log(newData);
-  };
-
+    
+    const submit = (e) => {
+      console.log("urledit, userdetails");
+      e.preventDefault();
+      updateUser(urledit, userdetails);
+      history.push("/profile");
+    };
+    
+    const handelChange = (e) => {
+      setDisable(false);
+      const newData = { ...userdetails };
+      newData[e.target.id] = e.target.value;
+      setUserDetails(newData);
+      console.log(newData);
+    };
   return (
     <Layout login={true}>
       <Flex
@@ -63,8 +56,6 @@ export const EditProfile = (props) => {
         alignItems="center"
         height="100vh"
       >
-        {/* <Blurry /> */}
-
         <Content onSubmit={(e) => submit(e)}>
           <div
             style={{
@@ -78,7 +69,7 @@ export const EditProfile = (props) => {
                 display: "flex",
               }}
             >
-              <FirstSection photoProfile={photoProfile} />
+              <FirstSection photoProfile={userdetails?.photoProfile} />
               <SecondSection handelChange={handelChange} />
               <ThirdSection handelChange={handelChange} />
             </Content>

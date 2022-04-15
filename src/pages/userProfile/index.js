@@ -10,12 +10,6 @@ import { authentication } from "../../Components/contexts/usecontext";
 import { ImageContext } from "../../Components/contexts/imageContext";
 import { getUser, getUserImages, getLook } from "../editProfile/tools";
 
-const ratings = {
-  rating: "5",
-  liked: "100",
-  looked: "170",
-};
-
 export const UserProfile = (props) => {
   const [photoProfile, setPhotoProfile] = useState();
   const [userDetails, setUserDetails] = useContext(UserContext);
@@ -28,7 +22,7 @@ export const UserProfile = (props) => {
   useEffect(() => {
     getUser(url, setUserDetails);
     setPhotoProfile(userDetails?.photoProfile);
-  }, [id ? id : auth?.userId, imageDetails]);
+  }, [id ? id : auth?.userId]);
 
   useEffect(() => {
     getUserImages(urlImages, setImageDetails);
@@ -50,7 +44,6 @@ console.log("im here", id)
       <Content>
         <FirstSection
           status="online"
-          ratings={ratings}
           photoProfile={photoProfile}
         />
         <SecondSection />

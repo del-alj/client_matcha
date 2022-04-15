@@ -5,6 +5,7 @@ import { getUserTags, getAllTags, updateTags } from "./tools";
 import { Button } from "../../Components/styles/Container.styles";
 import { tagsContext } from "../../Components/contexts/tagsContext";
 import { authentication } from "../../Components/contexts/usecontext";
+import { UserContext } from "../../Components/contexts/usercontext";
 
 const url = `/tag`;
 
@@ -20,13 +21,15 @@ export const TagsSection = () => {
 
   const { auth } = useContext(authentication);
   const urledit = `/tag/add/tags/${auth.userId}`;
+  const [userDetails] = useContext(UserContext);
 
   useEffect(() => {
     getAllTags(url, setTags);
   }, []);
   useEffect(() => {
-    getUserTags(`${url}/${auth.userId}`, setUserTags);
-  }, [disabel]);
+    setUserTags(userDetails?.userTags);
+    // getUserTags(`${url}/${auth.userId}`, setUserTags);
+  }, [disabel, userDetails]);
   return (
     <div
       style={{

@@ -11,7 +11,7 @@ import { authentication } from "../../Components/contexts/usecontext";
 import { UserContext } from "../../Components/contexts/usercontext";
 
 export const FirstSection = (props) => {
-  const { status, ratings, photoProfile } = props;
+  const { status, photoProfile } = props;
   const { auth } = useContext(authentication);
   const [userTags, setUserTags] = useState([""]);
   const [visibil, setVisibil] = useState(false);
