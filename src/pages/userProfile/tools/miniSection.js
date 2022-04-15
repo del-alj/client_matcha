@@ -8,6 +8,7 @@ import eye from "../../../assets/icons/eye.png";
 
 export const MiniSection = (props) => {
   const { data } = props;
+  const rating = data?.like / data?.vue;
   return (
     <Flex
       direction="column"
@@ -21,15 +22,15 @@ export const MiniSection = (props) => {
       <Flex height="none" direction="row !important">
         <Features>
           <Icon img={crown} alt="rantion" />
-          <h1>{data.rating}</h1>
+          <h1>{rating}</h1>
         </Features>
         <Features>
           <Icon img={heart} alt="like" />
-          <h1>{data.liked}</h1>
+          <h1>{data?.like.length}</h1>
         </Features>
         <Features>
           <Icon img={eye} alt="vue" />
-          <h1>{data.looked}</h1>
+          <h1>{data?.vue.length}</h1>
         </Features>
       </Flex>
     </Flex>

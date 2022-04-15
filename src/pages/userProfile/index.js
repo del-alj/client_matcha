@@ -28,7 +28,7 @@ export const UserProfile = (props) => {
   useEffect(() => {
     getUser(url, setUserDetails);
     setPhotoProfile(userDetails?.photoProfile);
-  }, [id ? id : auth?.userId, imageDetails, userDetails]);
+  }, [id ? id : auth?.userId, imageDetails]);
 
   useEffect(() => {
     getUserImages(urlImages, setImageDetails);

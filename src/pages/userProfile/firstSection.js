@@ -7,20 +7,23 @@ import { PhotoProfile } from "./style";
 import { DefinitionSection } from "./tools/definition";
 import { MiniSection } from "./tools/miniSection";
 import { useParams } from "react-router-dom";
-import { getUserTags } from "../editProfile/tools";
 import { authentication } from "../../Components/contexts/usecontext";
+import { UserContext } from "../../Components/contexts/usercontext";
 
 export const FirstSection = (props) => {
   const { status, ratings, photoProfile } = props;
   const { auth } = useContext(authentication);
   const [userTags, setUserTags] = useState([""]);
   const [visibil, setVisibil] = useState(false);
+  const [userDetails, setUserDetails] = useContext(UserContext);
+
   let { id } = useParams();
   useEffect(() => {
-    getUserTags(`/tag/${id ? id : auth.userId}`, setUserTags);
+    setUserTags(userDetails?.userTags);
     if (!id)
       setVisibil(true);
-  }, []);
+  }, [userDetails]);
+  console.log("this is",userTags);
   return (
     <Flex direction="row" justifyContent="center">
       <Flex direction="row">
@@ -36,7 +39,7 @@ export const FirstSection = (props) => {
         </Flex>
         <DefinitionSection visibility={visibil} />
       </Flex>
-      <MiniSection data={ratings} />
+      <MiniSection data={{like: userDetails?.likesList, vue: userDetails?.vuesList}} />
     </Flex>
   );
 };

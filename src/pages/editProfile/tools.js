@@ -45,6 +45,9 @@ export const getUser = async (url, setUserDetails) => {
         preference: res?.data?.preference,
         photoProfileId: res?.data?.photo_profile_id,
         photoProfile: res?.data?.photoprofile,
+        userTags: res?.data?.tags,
+        likesList: res?.data?.likes_list,
+        vuesList: res?.data?.vues_list,
       });
     })
     .catch((err) => {
