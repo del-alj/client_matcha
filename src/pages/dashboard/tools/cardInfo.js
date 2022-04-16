@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React from "react";
 
 import { CartInfo, RatingDiv, InfoSection, Features } from "../style";
 import { Icon } from "../../../Components/icon";

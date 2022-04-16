@@ -1,10 +1,9 @@
 import React, { useEffect, useContext, useState } from "react";
 import axiosInstance from "../../services/AxiosInstance";
-import axios from "axios";
 import { useHistory } from "react-router-dom";
 
 import { AddNew } from "./addNew";
-import { Div, Img, PicButton, DeleteButton, DeleteIcon, Border } from "./style";
+import { Div, Img, PicButton, DeleteButton, DeleteIcon } from "./style";
 
 import del from "../../assets/icons/del.png";
 
@@ -27,7 +26,7 @@ export const Gallery = (props) => {
   const { pictures } = props;
 
   const updateImgProfile = async (url, param) => {
-    const res = await axiosInstance.put(url, param).catch((err) => {
+    await axiosInstance.put(url, param).catch((err) => {
       console.error(err);
     });
     console.log("photo  profile updated !!");
@@ -151,6 +150,10 @@ export const EditGallery = (props) => {
                   image_id: picture?.image_id,
                   image_name: picture?.image_path.split("/")[7].split(".")[0],
                 };
+    //  const param = {
+    //               image_id: picture?.image_id,
+    //               image_name: picture?.image_path,
+    //             };
                 deleteImg(urldelete, param);
               }}
             >

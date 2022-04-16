@@ -22,8 +22,8 @@ export const SliderButton = styled.button.attrs((props) => ({
 
 export const SliderPicture = styled.img`
   outline: black solid 0.2rem;
-  width: 42rem;
-  height: auto;
+  width: 37rem;
+  min-height: 42rem;
   position: relative;
   @media screen and (max-width: 930px) {
     width: 100%;

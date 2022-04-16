@@ -6,33 +6,38 @@ import { Flex } from "../../Components/styles/Container.styles";
 import { PhotoProfile } from "./style";
 import { DefinitionSection } from "./tools/definition";
 import { MiniSection } from "./tools/miniSection";
-
-import { getUserTags } from "../editProfile/tools";
-import { authentication } from "../../Components/contexts/usecontext";
+import { useParams } from "react-router-dom";
+import { UserContext } from "../../Components/contexts/usercontext";
 
 export const FirstSection = (props) => {
-  const { status, ratings, photoProfile } = props;
-  const { auth } = useContext(authentication);
+  const { status } = props;
   const [userTags, setUserTags] = useState([""]);
+  const [visibil, setVisibil] = useState(false);
+  const [userDetails] = useContext(UserContext);
+
+  let { id } = useParams();
   useEffect(() => {
-    getUserTags(`/tag/${auth.userId}`, setUserTags);
-  }, []);
+    setUserTags(userDetails?.userTags);
+    if (!id)
+      setVisibil(true);
+  }, [userDetails]);
+  console.log("this is",userTags);
   return (
     <Flex direction="row" justifyContent="center">
       <Flex direction="row">
         <Flex direction="column">
           <div>
             <PhotoProfile
-              src={`url(${photoProfile})`}
+              src={`url(${userDetails?.photoProfile})`}
               alt="Photo Profile"
             ></PhotoProfile>
             <Visibility status={status} />
           </div>
           <Tags tags={userTags} />
         </Flex>
-        <DefinitionSection visibility={true} />
+        <DefinitionSection visibility={visibil} />
       </Flex>
-      <MiniSection data={ratings} />
+      <MiniSection data={{like: userDetails?.likesList, vue: userDetails?.vuesList}} />
     </Flex>
   );
 };

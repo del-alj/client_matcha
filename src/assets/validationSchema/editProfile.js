@@ -20,7 +20,7 @@ export const validation = {
     title: "bio too long.",
   },
   age: {
-    pattern: "[0-9]{1,2}",
+    pattern: "1[89]|[2-9][0-9]",
     title: "age not logic.",
   },
   gender: {
@@ -28,7 +28,7 @@ export const validation = {
     title: "gender not correct.",
   },
   preference: {
-    pattern: "^Man$?^Woman$",
+    pattern: "^Man$?^Woman$?^Bisex$",
     title: "gender not correct.",
   },
 };

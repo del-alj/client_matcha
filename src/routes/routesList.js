@@ -9,6 +9,7 @@ import { ResetPassword } from "../pages/login/resetPassword";
 import { ConfirmForgotPassword } from "../pages/login/confirmForgotPassword";
 import { EditProfile } from "../pages/editProfile/index";
 import { Dashboard } from "../pages/dashboard/index";
+import { AdvanceSearch } from "../pages/advanceSearch/index.js";
 const publicRoutes = [
   {
     path: "/",
@@ -29,6 +30,10 @@ const publicRoutes = [
     component: Signup,
     restricted: true,
   },
+  {
+    path: "/confirmation/:token",
+    component: Confirmation,
+  },
 ];
 
 const privateRoutes = [
@@ -45,10 +50,6 @@ const privateRoutes = [
     component: ConfirmSignup,
   },
   {
-    path: "/confirmation/:token",
-    component: Confirmation,
-  },
-  {
     path: "/reset/:token",
     component: ResetPassword,
   },
@@ -59,6 +60,14 @@ const privateRoutes = [
   {
     path: "/dashboard",
     component: Dashboard,
+  },
+  {
+    path: "/advanceSearch",
+    component: AdvanceSearch,
+  },
+  {
+    path: "/user/:id",
+    component: UserProfile,
   },
 ];
 

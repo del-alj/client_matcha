@@ -11,6 +11,7 @@ export const Input = styled.input`
 `;
 
 export const CheckBox = styled.div`
+  flex-direction: initial !important;
   ${Input}[type="checkbox"]:checked ~ div {
     background: #535353;
     color: #e6e6e6;
@@ -28,9 +29,9 @@ export const CheckBox = styled.div`
   transition: 0.5s ease;
   background: #f8f8f8;
   color: #535353;
-  :first-child {
-    margin-right: 8px;
-  }
+  /* :first-child {
+  } */
+  margin-right: 8px;
   > div {
     width: 5rem;
     height: 3rem;

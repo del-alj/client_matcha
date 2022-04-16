@@ -3,11 +3,31 @@ import React from "react";
 import { ButtonDiv } from "../style";
 
 import { Button } from "./style";
-export const Buttons = () => {
+import { likeThisUser } from "../../../api/likes";
+const handelClick = (setNext, next) => {
+  setNext(!next);
+};
+
+export const Buttons = (props) => {
+  const { setNext, next, ids } = props;
+
   return (
     <ButtonDiv>
-      <Button>x</Button>
-      <Button>/3</Button>
+      <Button
+        onClick={(e) => {
+          handelClick(setNext, next);
+        }}
+      >
+        x
+      </Button>
+      <Button
+        onClick={(e) => {
+          handelClick(setNext, next);
+          likeThisUser(ids);
+        }}
+      >
+        /3
+      </Button>
     </ButtonDiv>
   );
 };

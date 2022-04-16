@@ -6,7 +6,7 @@ import { tagsContext } from "../../Components/contexts/tagsContext";
 const handelClick = (status, setStatus, props) => {
   setStatus(!status);
 
-  console.log(props);
+  // console.log(props);
 };
 
 const Tag = (props) => {
@@ -46,14 +46,9 @@ const Tags = (props) => {
   const { tags } = props;
   return (
     <Ul>
-      {tags.map((tag, index) => {
+      {tags?.map((tag, index) => {
         return (
-          <Tag
-            key={index}
-            link={tag?.link}
-            titel={tag?.titel}
-            id={tag?.tagId}
-          />
+          <Tag key={index} titel={tag?.titel || tag} id={tag?.tagId || 0} />
         );
       })}
     </Ul>
@@ -63,16 +58,14 @@ const Tags = (props) => {
 const EditTags = (props) => {
   const { tags } = props;
   return (
+
     <Ul>
-      {tags.map((tag, index) => (
-        <EditTag
-          key={index}
-          link={tag?.link}
-          titel={tag?.titel}
-          id={tag?.tagId}
-        />
-      ))}
-    </Ul>
+    {tags?.map((tag, index) => {
+      return (
+        <EditTag key={index} titel={tag?.titel || tag} id={tag?.tagId || 0} />
+      );
+    })}
+  </Ul>
   );
 };
 

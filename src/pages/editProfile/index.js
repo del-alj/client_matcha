@@ -1,49 +1,44 @@
-import React, { useContext, useEffect, useState } from "react";
-import axiosInstance from "../../services/AxiosInstance";
-import { Layout } from "../../layouts/signinLayout";
-import { FirstSection } from "./firstSection";
-import { SecondSection } from "./secondSection";
-import { ThirdSection } from "./thirdSection";
+import React, { useContext, useEffect, useState } from 'react';
+import { Layout } from '../../layouts/signinLayout';
+import { FirstSection } from './firstSection';
+import { SecondSection } from './secondSection';
+import { ThirdSection } from './thirdSection';
 
-import { Content, Blurry } from "./style";
-import { Button, Flex } from "../../Components/styles/Container.styles";
+import { Content } from './style';
+import { Button, Flex } from '../../Components/styles/Container.styles';
 
-import { UserContext } from "../../Components/contexts/usercontext";
-import { useHistory } from "react-router-dom";
-import { authentication } from "../../Components/contexts/usecontext";
-import { ImageContext } from "../../Components/contexts/imageContext";
+import { UserContext } from '../../Components/contexts/usercontext';
+import { useHistory } from 'react-router-dom';
+import { authentication } from '../../Components/contexts/usecontext';
+import { ImageContext } from '../../Components/contexts/imageContext';
 
-import { get_photoprofile } from "../../tools/get_photoprofle";
-import { updateUser, getUserImages, getUser } from "./tools";
+import { updateUser, getUserImages, getUser } from './tools';
 
-const user_id = localStorage.getItem("userId");
+const user_id = localStorage.getItem('userId');
 const url = `/user/${user_id}`;
 const urledit = `/user/edit/${user_id}`;
 
 export const EditProfile = (props) => {
   let history = useHistory();
   const { auth } = useContext(authentication);
-  const [photoProfile, setPhotoProfile] = useState();
   const [disable, setDisable] = useState(true);
   const [userdetails, setUserDetails] = useContext(UserContext);
-  const [imageDetails, setImageDetails] = useContext(ImageContext);
+  const [setImageDetails] = useContext(ImageContext);
   const urlImages = `/picture/${auth.userId}`;
 
   useEffect(() => {
     getUser(url, setUserDetails);
-  }, []);
+  }, [auth?.userId]);
 
   useEffect(() => {
     getUserImages(urlImages, setImageDetails);
   }, [auth?.userId]);
-  useEffect(() => {
-    get_photoprofile(imageDetails, userdetails, setPhotoProfile);
-  }, [auth?.userId, imageDetails, userdetails]);
 
   const submit = (e) => {
-    console.log("urledit, userdetails");
+    console.log('urledit, userdetails');
     e.preventDefault();
-    updateUser(urledit, userdetails, history);
+    updateUser(urledit, userdetails);
+    history.push('/profile');
   };
 
   const handelChange = (e) => {
@@ -53,7 +48,6 @@ export const EditProfile = (props) => {
     setUserDetails(newData);
     console.log(newData);
   };
-
   return (
     <Layout login={true}>
       <Flex
@@ -62,30 +56,30 @@ export const EditProfile = (props) => {
         alignItems="center"
         height="100vh"
       >
-        {/* <Blurry /> */}
         <Content onSubmit={(e) => submit(e)}>
           <div
             style={{
-              display: "block",
-              justifyContent: "center",
-              paddingBottom: "9rem",
+              display: 'block',
+              justifyContent: 'center',
+              paddingBottom: '9rem',
             }}
           >
             <Content
               style={{
-                display: "flex",
+                display: 'flex',
               }}
             >
-              <FirstSection photoProfile={photoProfile?.image_path} />
+              <FirstSection photoProfile={userdetails?.photoProfile} />
               <SecondSection handelChange={handelChange} />
               <ThirdSection handelChange={handelChange} />
             </Content>
             <Button
+              // type="submit"
               disabled={disable}
-              style={{ width: "15rem", margin: "auto" }}
+              style={{ width: '15rem', margin: 'auto' }}
               onClick={() => {
-                console.log("here button edit profile");
                 updateUser(urledit, userdetails);
+                history.push('/profile');
               }}
             >
               Edit

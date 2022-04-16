@@ -1,13 +1,10 @@
 import React from "react";
-import { useHistory } from "react-router-dom";
 
 import {
   Header,
   Menu,
   StyledLink,
-  StyledLinkLogout,
 } from "../styles/Container.styles";
-import { Logout } from "../LogoutButton/Logout";
 
 const HomeHeader = ({ displayRightSide }) => {
   return (

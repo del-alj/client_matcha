@@ -15,6 +15,7 @@ import { Icon } from "../icon";
 import envelope from "../../assets/icons/envelope.png";
 import love from "../../assets/icons/love.png";
 import profileImg from "../../assets/venus.jpg";
+import { settings } from "./tools/menusList";
 
 const NewHeader = ({ display }) => {
   let history = useHistory();
@@ -35,7 +36,12 @@ const NewHeader = ({ display }) => {
       <List>
         <Icon img={envelope} alt="Messages" />
         <Icon img={love} alt="like" />
-        <Icon img={profileImg} alt="Profile" type="profile" />
+        <Icon
+          img={profileImg}
+          alt="Profile"
+          type="profile"
+          listMenu={settings}
+        />
         <StyledLinkLogout onClick={handleClick}>Logout</StyledLinkLogout>
       </List>
     </Header>

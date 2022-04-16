@@ -1,7 +1,5 @@
 import styled from "styled-components";
 
-import { ContrysSelect } from "../select";
-
 export const Local = styled.div`
   display: flex;
   padding: 2rem 0rem 5.5rem 0;

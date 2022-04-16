@@ -71,15 +71,14 @@ export const PicButton = styled.button`
 `;
 
 export const Blurry = styled.div`
-  position: absolute;
-  width: 100%;
-  height: 100vh;
+  position: fixed;
+  width: 200%;
+  height: 200%;
   background: white;
   opacity: 0.95;
   border: 1px solid #535353;
   filter: blur(8px);
-  -webkit-filter: blur(8px);
-  z-index: 1;
+  z-index: 9999;
 `;
 
 export const ExitButton = styled.div`
