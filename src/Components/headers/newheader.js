@@ -30,9 +30,6 @@ const NewHeader = ({ display }) => {
       <StyledLink to="/" color="black" inline="none">
         Matcha
       </StyledLink>
-      <SearchDiv>
-        <Search placeholder="Search" />
-      </SearchDiv>
       <List>
         <Icon img={envelope} alt="Messages" />
         <Icon img={love} alt="like" />
