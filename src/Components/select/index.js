@@ -13,7 +13,11 @@ export const InitSelect = (props) => {
         id={props.name}
         name={props.name}
         onChange={onChange}
+
       >
+           <option key={"d0"} value={"none"} selected disabled hidden>
+            {"Select a Gender"}
+          </option>
         {element.map((elem, index) => (
           <option key={index} value={elem}>
             {elem}

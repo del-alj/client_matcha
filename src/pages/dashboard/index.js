@@ -13,7 +13,7 @@ import { getUser } from "../editProfile/tools";
 import { Buttons } from "./tools/buttons";
 
 export const Dashboard = (props) => {
-  const [userDetails, setUserDetails] = useContext(UserContext);
+  const [setUserDetails] = useContext(UserContext);
   const [usersList, setUsersList] = useState({});
   const [next, setNext] = useState(false);
   const [index, setIndex] = useState(-1);
@@ -57,7 +57,7 @@ export const Dashboard = (props) => {
                   name={user?.user_name}
                   age={user?.age}
                   city={`${user?.distance?.toFixed(1)}Km`}
-                  rating={"8"}
+                  rating={user?.rating || 0}
                 />
                 <SliderPicture src={user?.image_path}></SliderPicture>
               </Card>
