@@ -5,6 +5,7 @@ import { CartInfoDiv } from "./cardInfo";
 import heart from "../../../assets/icons/heart.png";
 import { likeThisUser } from "../../../api/likes";
 import { authentication } from "../../../Components/contexts/usecontext";
+import {calRating} from '../../../tools/calculeRating';
 
 const likeAnimateButton = (e) => {
   e.preventDefault(e);
@@ -23,8 +24,6 @@ export const DisplayUsers = (props) => {
 
   const { users } = props;
   const [likeStatus] = useState(false);
-  console.log("this is : ", users);
-
   return (
     <>
       <DivImg>
@@ -63,7 +62,7 @@ export const DisplayUsers = (props) => {
               name={elem?.user_name}
               age={elem?.age}
               city={`${elem?.distance?.toFixed(1)}`}
-              rating={"8"}
+              rating={calRating({vue: elem?.vues_list, like: elem?.likes_list})}
               id={elem?.user_id}
             />
           </div>
