@@ -5,11 +5,7 @@ import { Flex, Features } from '../style';
 import crown from '../../../assets/icons/crown.png';
 import heart from '../../../assets/icons/heart.png';
 import eye from '../../../assets/icons/eye.png';
-
-const calRating = (data) => {
-  const temp = data?.like?.length / data?.vue?.length;
-  return temp !== NaN ? temp : 0;
-};
+import {calRating} from '../../../tools/calculeRating';
 
 export const MiniSection = (props) => {
   const { data } = props;

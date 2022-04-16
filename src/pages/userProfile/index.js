@@ -26,9 +26,6 @@ export const UserProfile = (props) => {
     getUserImages(urlImages, setImageDetails);
   }, [auth?.userId]);
 
-  // useEffect(() => {
-  //   get_photoprofile(imageDetails, userDetails, setPhotoProfile);
-  // }, [id ? id : auth?.userId, imageDetails, userDetails]);
   useEffect(() => {
     if (id && auth?.userId && id !== auth?.userId)
    {
