@@ -78,6 +78,7 @@ export const EditProfile = (props) => {
               disabled={disable}
               style={{ width: '15rem', margin: 'auto' }}
               onClick={() => {
+                console.log("go to backe end edit profale test gender preference",userdetails);
                 updateUser(urledit, userdetails);
                 history.push('/profile');
               }}

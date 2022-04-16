@@ -6,10 +6,11 @@ import { validation } from '../../assets/validationSchema/editProfile';
 import { UserContext } from '../../Components/contexts/usercontext';
 
 export const ListCheckBox = (props) => {
-  const { element } = props;
+  const { element, onChange } = props;
   const [userdetails, setUserDetails] = useContext(UserContext);
 
   const handelChange = (e) => {
+    onChange(e);
     const newData = { ...userdetails };
     newData['preference'] = e.target.checked ? e.target.value : '';
     setUserDetails(newData);
@@ -28,7 +29,7 @@ export const ListCheckBox = (props) => {
           <CheckBox key={index} value={index[index]}>
             <Input
               type="checkbox"
-              id={`Preference${elem}`}
+              id={`preference`}
               name={elem}
               defaultValue={elem}
               {...validation[elem[index]]}
