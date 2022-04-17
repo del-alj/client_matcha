@@ -10,6 +10,7 @@ import { ConfirmForgotPassword } from "../pages/login/confirmForgotPassword";
 import { EditProfile } from "../pages/editProfile/index";
 import { Dashboard } from "../pages/dashboard/index";
 import { AdvanceSearch } from "../pages/advanceSearch/index.js";
+import {Messages} from "../pages/messages/index";
 const publicRoutes = [
   {
     path: "/",
@@ -69,6 +70,10 @@ const privateRoutes = [
     path: "/user/:id",
     component: UserProfile,
   },
+  {
+    path: "/messages",
+    component: Messages,
+  }
 ];
 
 export { publicRoutes, privateRoutes };
