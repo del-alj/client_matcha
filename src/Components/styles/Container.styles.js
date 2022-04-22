@@ -10,7 +10,7 @@ export const Header = styled.header`
   padding: 0px 30px;
   font-size: 1.5em;
   font-family: "Electrolize", sans-serif;
-  z-index: 1;
+  z-index: 9999;
   overflow: hidden;
   position: fixed;
   border-bottom: ${(props) =>
