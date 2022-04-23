@@ -79,6 +79,7 @@ export const Div = styled.div`
   justify-content: center;
   justify-items: center;
   align-items: center;
+
 `;
 
 export const MessageDiv = styled.div`
@@ -166,6 +167,7 @@ export const ChatsSection = styled.div`
   min-height: 549px;
   overflow-y: scroll;
   padding-right: 10px;
+  /* padding-top: 120px; */
   /* border: solid; */
 
   ::-webkit-scrollbar-track {
@@ -182,6 +184,7 @@ export const ChatsSection = styled.div`
     background-color: #555555;
     border: 2px solid #555555;
   }
+  "column-reverse"
 `;
 
 export const MessageInput = styled.input`
