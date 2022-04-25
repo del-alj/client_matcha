@@ -7,10 +7,11 @@ import { Message } from "./message";
 import { HeartSymbol } from "./heartSymbol";
 
 export const ChatsSectionDiv = (props) => {
-  const { messages } = props;
+  const { messages, socket } = props;
   const scroll = useRef();
   const [userDetails, setUserDetails] = useContext(UserContext);
   const [firstTime, setFirstTime] = useState(true);
+  const [messageso, setMessages] = useState({});
 
   // for scroll chat
   useEffect(() => {
@@ -25,11 +26,31 @@ export const ChatsSectionDiv = (props) => {
     }
   }, []);
 
+
+  useEffect(() => {
+    const messageListener = (message) => {
+      console.log("test effect")
+      setMessages((prevMessages) => {
+        const newMessages = {...prevMessages};
+        newMessages[message.id] = message;
+        return newMessages;
+      });
+    };
+  
+    socket?.on('message', messageListener);
+    socket?.emit('getMessages');
+
+    // return () => {
+    //   socket?.off('message', messageListener);
+    // };
+  }, [socket]);
+
   return (
     <ChatsSection ref={scroll}>
       <HeartSymbol />
-      {messages.map((m) => (
+      {messages.map((m, index) => (
         <Message
+        key={`Message${index}`}
           photoProfile={userDetails?.photoProfile}
           message={m}
           own={m?.sender === "user._id"}

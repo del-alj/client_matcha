@@ -13,8 +13,8 @@ export const ListMessagesDiv = (props) => {
     <ListMessages>
       {/* {conversations.map((c) => (
       <div onClick={() => setCurrentChat(c)}> */}
-      {conversations.map((c) => (
-        <Conversation conversation={"c"} currentUser={userDetails} />
+      {conversations.map((c, index) => (
+        <Conversation  key={`Conversation${index}`}  conversation={"c"} currentUser={userDetails} />
       ))}
       {/* </div>
     ))} */}

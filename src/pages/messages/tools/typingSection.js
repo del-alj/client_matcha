@@ -1,19 +1,34 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { MessageInput, TypingSection, Button } from "../style";
 
 export const TypingSectionDiv = (props) => {
-  const {currentChat} = props;
+  const { currentChat, socket } = props;
 
   const [newMessage, setNewMessage] = useState("");
 
+  useEffect(() => {
+    socket?.on("getMessage", (data) => {
+      console.log("getMessage", data);
+    });
+  }, [socket]);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const message = {
-      sender: "user._id",
-      text: newMessage,
-      conversationId: currentChat._id,
-    };
+    
+    if (newMessage) {
+      const message = {
+        senderId: "user._id",
+        receiverId: "receiverId",
+        text: newMessage,
+        conversationId: currentChat?._id,
+      };
+      console.log("this is msg", message, socket?.id);
+      //send message
+      socket?.emit("sendMessage", message);
+      setNewMessage("");
+    }
   };
+
   return (
     <TypingSection>
       <MessageInput
