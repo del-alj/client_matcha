@@ -6,7 +6,7 @@ export const getMessages = async (url, setMessages) => {
   await axiosInstance
     .get(url)
     .then((res) => {
-      console.log("tis is all user Messages", res.data);
+      console.log("this is all user Messages", res.data);
       setMessages(res?.data);
     })
     .catch((err) => {

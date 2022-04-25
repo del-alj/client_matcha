@@ -3,13 +3,9 @@ import React, { useContext, useEffect, useState, useRef } from "react";
 import { Layout } from "../../layouts/signinLayout";
 import { Content, Box } from "../dashboard/style";
 import {
-  ListMessages,
   Board,
   MessageDiv,
   ChatBox,
-  MessageInput,
-  TypingSection,
-  Button,
 } from "./style";
 
 import { UserContext } from "../../Components/contexts/usercontext";
@@ -57,7 +53,7 @@ export const Messages = (props) => {
 
   useEffect(() => {
     getUser(url, setUserDetails);
-    // getMessages(urlMsg, setMessages);
+    getMessages(urlMsg, setMessages);
   }, []);
 
   useEffect(() => {
