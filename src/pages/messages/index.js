@@ -67,7 +67,6 @@ export const Messages = (props) => {
       <Content>
         <Box>
           <ChatBox>
-            <input type="text" />
             <ListMessagesDiv conversations={conversations} />
             <Board>
               <StikyUser userName={"dina"} />
