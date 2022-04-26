@@ -79,7 +79,6 @@ export const Div = styled.div`
   justify-content: center;
   justify-items: center;
   align-items: center;
-
 `;
 
 export const MessageDiv = styled.div`
@@ -112,6 +111,7 @@ export const ConversationDiv = styled.div`
 `;
 
 export const FriendImg = styled.div`
+  display: ${(props) => (props?.own ? "none" : "block")};
   margin-right: 20px;
   border: 1px solid black;
   width: 40px;
@@ -226,7 +226,8 @@ export const MessageTop = styled.div`
 `;
 
 export const MessageBox = styled.div`
-  align-items: ${(props) => (props?.own ? "flex-end" : "flex-start")};
+  display: flex;
+  justify-content: ${(props) => (props?.own ? "flex-end" : "flex-start")};
 `;
 
 export const StikyDiv = styled.div`

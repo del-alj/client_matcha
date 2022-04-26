@@ -1,30 +1,31 @@
-import React, { useState, useEffect } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { MessageInput, TypingSection, Button } from "../style";
-
+import { authentication } from "../../../Components/contexts/usecontext";
 export const TypingSectionDiv = (props) => {
-  const { currentChat, socket } = props;
+  const { setMyNewmessage, currentChat, socket } = props;
 
   const [newMessage, setNewMessage] = useState("");
-
-  useEffect(() => {
-    socket?.on("getMessage", (data) => {
-      console.log("getMessage", data);
-    });
-  }, [socket]);
+  const { auth } = useContext(authentication);
+  // useEffect(() => {
+  //   socket?.on("getMessage", (data) => {
+  //     console.log("getMessage", data);
+  //   });
+  // }, [socket]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     
     if (newMessage) {
       const message = {
-        senderId: "user._id",
-        receiverId: "receiverId",
-        text: newMessage,
-        conversationId: currentChat?._id,
+        sender_id: auth?.userId,
+        receiver_id: (auth?.userId === '2603') ? 2613 : 2603,
+        message_text: newMessage,
+        conversation_id: 1,
       };
       console.log("this is msg", message, socket?.id);
       //send message
-      socket?.emit("sendMessage", message);
+      socket?.emit("message", message);
+      setMyNewmessage(message);
       setNewMessage("");
     }
   };

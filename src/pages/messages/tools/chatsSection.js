@@ -2,58 +2,59 @@ import React, { useContext, useEffect, useState, useRef } from "react";
 
 import { UserContext } from "../../../Components/contexts/usercontext";
 import { ChatsSection } from "../style";
-
+import { authentication } from "../../../Components/contexts/usecontext";
 import { Message } from "./message";
 import { HeartSymbol } from "./heartSymbol";
 
 export const ChatsSectionDiv = (props) => {
-  const { messages, socket } = props;
+  const { myNewmessage, messages, setMessages, socket } = props;
+  const { auth } = useContext(authentication);
   const scroll = useRef();
   const [userDetails, setUserDetails] = useContext(UserContext);
   const [firstTime, setFirstTime] = useState(true);
-  const [messageso, setMessages] = useState({});
+
+  const messageListener = (message) => {
+    if (message) {
+      setMessages((messages) => {
+        const newMessages = [...messages];
+        newMessages.push(message);
+        return newMessages;
+      });
+    }
+  };
 
   // for scroll chat
   useEffect(() => {
-    if (firstTime) {
-      scroll.current.scrollTop = scroll.current.scrollHeight;
-      setFirstTime(false);
-    } else if (
-      scroll.current.scrollTop + scroll.current.clientHeight ===
-      scroll.current.scrollHeight
-    ) {
-      scroll.current.scrollTop = scroll.current.scrollHeight;
-    }
-  }, []);
-
+    // if (firstTime) {
+    scroll.current.scrollTop = scroll.current.scrollHeight;
+    //   setFirstTime(false);
+    // } else if (
+    //   scroll.current.scrollTop + scroll.current.clientHeight ===
+    //   scroll.current.scrollHeight
+    // ) {
+    //   scroll.current.scrollTop = scroll.current.scrollHeight;
+    // }
+  }, [messages]);
 
   useEffect(() => {
-    const messageListener = (message) => {
-      console.log("test effect")
-      setMessages((prevMessages) => {
-        const newMessages = {...prevMessages};
-        newMessages[message.id] = message;
-        return newMessages;
-      });
-    };
-  
-    socket?.on('message', messageListener);
-    socket?.emit('getMessages');
-
-    // return () => {
-    //   socket?.off('message', messageListener);
-    // };
+    socket?.on("message", (data) => {
+      messageListener(data);
+    });
   }, [socket]);
 
+  useEffect(() => {
+    console.log();
+    messageListener(myNewmessage);
+  }, [myNewmessage]);
   return (
     <ChatsSection ref={scroll}>
       <HeartSymbol />
-      {messages.map((m, index) => (
+      {messages?.map((m, index) => (
         <Message
-        key={`Message${index}`}
+          key={`Message${index}`}
           photoProfile={userDetails?.photoProfile}
-          message={m}
-          own={m?.sender === "user._id"}
+          message={m?.message_text}
+          own={m?.sender_id == auth?.userId}
         />
       ))}
     </ChatsSection>

@@ -2,11 +2,7 @@ import React, { useContext, useEffect, useState, useRef } from "react";
 
 import { Layout } from "../../layouts/signinLayout";
 import { Content, Box } from "../dashboard/style";
-import {
-  Board,
-  MessageDiv,
-  ChatBox,
-} from "./style";
+import { Board, MessageDiv, ChatBox } from "./style";
 
 import { UserContext } from "../../Components/contexts/usercontext";
 import { authentication } from "../../Components/contexts/usecontext";
@@ -37,19 +33,15 @@ export const Messages = (props) => {
   ]);
 
   const [messages, setMessages] = useState([
-    "this id chat msg",
-    "this id chat msg",
-    "this id chat msg",
-    "this id chat msg",
-    "this id chat msg",
-    "this id chat msg this id chat msg vthis id chat msg this id chat msg",
-    "this id chat msg",
-    "this id chat msg",
-    "this id chat msg",
+    // { conversationId: 1, senderId: "2603", receiverId: 2613, text: "msg 1" },
+    // { conversationId: 1, senderId: "2603", receiverId: 2613, text: "msg 2" },
+    // { conversationId: 1, senderId: "2613", receiverId: 2603, text: "msg 3" },
+    // { conversationId: 1, senderId: "2613", receiverId: 2603, text: "msg 4" },
   ]);
 
   const [currentChat, setCurrentChat] = useState(null);
   const [socket, setSocket] = useState(null);
+  const [myNewmessage, setMyNewmessage] = useState(null);
 
   useEffect(() => {
     getUser(url, setUserDetails);
@@ -61,7 +53,9 @@ export const Messages = (props) => {
     setSocket(newSocket);
     return () => newSocket.close();
   }, [setSocket]);
-
+  useEffect(() => {
+    console.log("update", messages);
+  }, [messages]);
   if (socket) {
     socket?.on("connectToRoom", (data) => {
       console.log("connectToRoom", data?.roomName);
@@ -79,8 +73,16 @@ export const Messages = (props) => {
               <StikyUser userName={"dina"} />
               <MessageDiv>
                 {/* {currentChat ? ( */}
-                <ChatsSectionDiv messages={messages} socket={socket} />
-                <TypingSectionDiv currentChat={currentChat} socket={socket} />
+                <ChatsSectionDiv
+                  messages={messages}
+                  setMessages={setMessages}
+                  myNewmessage={myNewmessage}
+                  socket={socket}
+                />
+                <TypingSectionDiv
+                  setMyNewmessage={setMyNewmessage}
+                  socket={socket}
+                />
                 {/* ) : (
               <span className="noConversationText">
                 Open a conversation to start a chat.
