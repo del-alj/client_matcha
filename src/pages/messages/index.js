@@ -6,6 +6,8 @@ import { Board, MessageDiv, ChatBox } from "./style";
 
 import { UserContext } from "../../Components/contexts/usercontext";
 import { authentication } from "../../Components/contexts/usecontext";
+import { currentConversation } from "../../Components/contexts/currentConversation";
+
 import { getUser } from "../editProfile/tools";
 import { getMessages } from "../../api/chats";
 import { StikyUser } from "./tools/stikyUser";
@@ -17,27 +19,12 @@ import io from "socket.io-client";
 
 export const Messages = (props) => {
   const [userDetails, setUserDetails] = useContext(UserContext);
+  const [currentConversationDetails, setCurrentConversationDetails] = useContext(currentConversation);
   const { auth } = useContext(authentication);
   const url = `/user/${auth.userId}`;
   const urlMsg = `/chat/${auth.userId}`;
-  const [conversations, setConversations] = useState([
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-  ]);
 
-  const [messages, setMessages] = useState([
-    // { conversationId: 1, senderId: "2603", receiverId: 2613, text: "msg 1" },
-    // { conversationId: 1, senderId: "2603", receiverId: 2613, text: "msg 2" },
-    // { conversationId: 1, senderId: "2613", receiverId: 2603, text: "msg 3" },
-    // { conversationId: 1, senderId: "2613", receiverId: 2603, text: "msg 4" },
-  ]);
+  const [messages, setMessages] = useState([]);
 
   const [currentChat, setCurrentChat] = useState(null);
   const [socket, setSocket] = useState(null);
@@ -46,7 +33,7 @@ export const Messages = (props) => {
   useEffect(() => {
     getUser(url, setUserDetails);
     getMessages(urlMsg, setMessages);
-  }, []);
+  }, [currentConversationDetails]);
 
   useEffect(() => {
     const newSocket = io("localhost:7000");
@@ -67,9 +54,9 @@ export const Messages = (props) => {
       <Content>
         <Box>
           <ChatBox>
-            <ListMessagesDiv conversations={conversations} />
+            <ListMessagesDiv userId={auth.userId} />
             <Board>
-              <StikyUser userName={"dina"} />
+              <StikyUser userName={currentConversationDetails?.user_name} />
               <MessageDiv>
                 {/* {currentChat ? ( */}
                 <ChatsSectionDiv

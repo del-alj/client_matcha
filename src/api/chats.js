@@ -12,3 +12,14 @@ export const getMessages = async (url, setMessages) => {
       console.error(err);
     });
 };
+
+export const getListRooms = async (url, setConversations) => {
+  await axiosInstance
+    .get(url)
+    .then((res) => {
+      setConversations(res?.data);
+    })
+    .catch((err) => {
+      console.error(err);
+    });
+};

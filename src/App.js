@@ -7,6 +7,7 @@ import ContextProvider from "./Components/contexts/usecontext";
 import ContextUser from "./Components/contexts/usercontext";
 import ContextImage from "./Components/contexts/imageContext";
 import ContextTags from "./Components/contexts/tagsContext";
+import ContextConversation from "./Components/contexts/currentConversation";
 
 function App() {
   return (
@@ -17,7 +18,9 @@ function App() {
           <ContextUser>
             <ContextImage>
               <ContextTags>
+              <ContextConversation>
                 <Routes />
+              </ContextConversation>
               </ContextTags>
             </ContextImage>
           </ContextUser>
