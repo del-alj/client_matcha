@@ -14,16 +14,11 @@ export const ListMessagesDiv = (props) => {
   useEffect(() => {
     getListRooms(urlListRooms, setConversations);
   }, []);
-  console.log("test list rooms", conversations);
   return (
     <ListMessages>
-      {/* {conversations.map((c) => (
-      <div onClick={() => setCurrentChat(c)}> */}
       {conversations.map((c, index) => (
         <Conversation  key={`Conversation${index}`}  conversation={"c"} currentUser={c} />
       ))}
-      {/* </div>
-    ))} */}
     </ListMessages>
   );
 };

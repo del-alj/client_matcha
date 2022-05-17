@@ -8,7 +8,6 @@ import { UserContext } from "../../Components/contexts/usercontext";
 import { authentication } from "../../Components/contexts/usecontext";
 import { currentConversation } from "../../Components/contexts/currentConversation";
 
-import { getUser } from "../editProfile/tools";
 import { getMessages } from "../../api/chats";
 import { StikyUser } from "./tools/stikyUser";
 import { ChatsSectionDiv } from "./tools/chatsSection";
@@ -18,20 +17,16 @@ import { ListMessagesDiv } from "./tools/listmessages";
 import io from "socket.io-client";
 
 export const Messages = (props) => {
-  const [userDetails, setUserDetails] = useContext(UserContext);
   const [currentConversationDetails, setCurrentConversationDetails] = useContext(currentConversation);
   const { auth } = useContext(authentication);
-  const url = `/user/${auth.userId}`;
-  const urlMsg = `/chat/${auth.userId}`;
+  const urlMsg = `/chat/${currentConversationDetails?.conversation_id}`;
 
   const [messages, setMessages] = useState([]);
 
-  const [currentChat, setCurrentChat] = useState(null);
-  const [socket, setSocket] = useState(null);
+ const [socket, setSocket] = useState(null);
   const [myNewmessage, setMyNewmessage] = useState(null);
 
   useEffect(() => {
-    getUser(url, setUserDetails);
     getMessages(urlMsg, setMessages);
   }, [currentConversationDetails]);
 

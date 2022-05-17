@@ -4,9 +4,9 @@ import axiosInstance from "../services/AxiosInstance";
 
 export const getMessages = async (url, setMessages) => {
   await axiosInstance
-    .get(url)
-    .then((res) => {
-      setMessages(res?.data);
+  .get(url)
+  .then((res) => {
+    setMessages(res?.data);
     })
     .catch((err) => {
       console.error(err);
@@ -15,11 +15,11 @@ export const getMessages = async (url, setMessages) => {
 
 export const getListRooms = async (url, setConversations) => {
   await axiosInstance
-    .get(url)
-    .then((res) => {
-      setConversations(res?.data);
-    })
-    .catch((err) => {
-      console.error(err);
+  .get(url)
+  .then((res) => {
+    setConversations(res?.data);
+  })
+  .catch((err) => {
+    console.error(err);
     });
 };
