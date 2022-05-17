@@ -5,6 +5,7 @@ import { ChatsSection } from "../style";
 import { authentication } from "../../../Components/contexts/usecontext";
 import { Message } from "./message";
 import { HeartSymbol } from "./heartSymbol";
+import { currentConversation } from "../../../Components/contexts/currentConversation";
 
 export const ChatsSectionDiv = (props) => {
   const { myNewmessage, messages, setMessages, socket } = props;
@@ -12,6 +13,7 @@ export const ChatsSectionDiv = (props) => {
   const scroll = useRef();
   const [userDetails, setUserDetails] = useContext(UserContext);
   const [firstTime, setFirstTime] = useState(true);
+  const [currentConversationDetails] = useContext(currentConversation);
 
   const messageListener = (message) => {
     if (message) {
@@ -38,12 +40,14 @@ export const ChatsSectionDiv = (props) => {
 
   useEffect(() => {
     socket?.on("message", (data) => {
-      messageListener(data);
+
+        messageListener(data);
+      
     });
   }, [socket]);
 
   useEffect(() => {
-    console.log();
+    
     messageListener(myNewmessage);
   }, [myNewmessage]);
   return (

@@ -6,11 +6,7 @@ export const TypingSectionDiv = (props) => {
 
   const [newMessage, setNewMessage] = useState("");
   const { auth } = useContext(authentication);
-  // useEffect(() => {
-  //   socket?.on("getMessage", (data) => {
-  //     console.log("getMessage", data);
-  //   });
-  // }, [socket]);
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -20,9 +16,9 @@ export const TypingSectionDiv = (props) => {
         sender_id: auth?.userId,
         receiver_id: auth?.userId === "2603" ? 2613 : 2603,
         message_text: newMessage,
-        conversation_id: 1,
+        conversation_id: socket?.auth?.roomName,
       };
-      console.log("this is msg", message, socket?.id);
+      console.log("this is msg", socket?.id, socket?.auth);
       //send message
       socket?.emit("message", message);
       setMyNewmessage(message);

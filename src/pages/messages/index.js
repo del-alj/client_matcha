@@ -17,30 +17,38 @@ import { ListMessagesDiv } from "./tools/listmessages";
 import io from "socket.io-client";
 
 export const Messages = (props) => {
-  const [currentConversationDetails, setCurrentConversationDetails] = useContext(currentConversation);
+  const [currentConversationDetails, setCurrentConversationDetails] =
+    useContext(currentConversation);
   const { auth } = useContext(authentication);
   const urlMsg = `/chat/${currentConversationDetails?.conversation_id}`;
 
   const [messages, setMessages] = useState([]);
 
- const [socket, setSocket] = useState(null);
+  const [socket, setSocket] = useState(null);
   const [myNewmessage, setMyNewmessage] = useState(null);
 
   useEffect(() => {
-    getMessages(urlMsg, setMessages);
+    if (currentConversationDetails?.conversation_id)
+      getMessages(urlMsg, setMessages);
   }, [currentConversationDetails]);
 
   useEffect(() => {
-    const newSocket = io("localhost:7000");
+    const newSocket = io("localhost:7000", { autoConnect: false });
+
     setSocket(newSocket);
     return () => newSocket.close();
   }, [setSocket]);
   useEffect(() => {
     console.log("update", messages);
   }, [messages]);
-  if (socket) {
-    socket?.on("connectToRoom", (data) => {
-      console.log("connectToRoom", data?.roomName);
+  if (socket && currentConversationDetails?.conversation_id) {
+    socket.auth = {
+      roomName: currentConversationDetails?.conversation_id,
+    };
+    socket?.connect();
+
+    socket?.on("connectToRoom", (roomName) => {
+      console.log("connectToRoom", roomName);
     });
   }
 
