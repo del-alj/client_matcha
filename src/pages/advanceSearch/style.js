@@ -189,7 +189,7 @@ export const Heart = styled.div`
   position: absolute;
   top: 150px;
   right: 150px;
-  display: ${(props) => (props?.display ? "block" : "none")};
+  /* display: ${(props) => (props?.display ? "block" : "none")}; */
   img {
     opacity: ${(props) => (props.like ? 1 : 0)};
   }
