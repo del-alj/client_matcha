@@ -34,7 +34,8 @@ export const Messages = (props) => {
   }, [currentConversationDetails]);
 
   useEffect(() => {
-    const newSocket = io("localhost:7000", { autoConnect: false });
+    const env = `${process.env.REACT_APP__ENV}:7000`
+    const newSocket = io(env, { autoConnect: false });
     setSocket(newSocket);
     return () => newSocket.close();
   }, [setSocket]);

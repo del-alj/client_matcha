@@ -12,8 +12,8 @@ import { ImageContext } from "../../Components/contexts/imageContext";
 // On file select (from the pop up)
 
 const user_id = localStorage.getItem("userId");
-
-const url = `http://localhost:7000/user/edit/photoprofile/${user_id}`;
+const env = `${process.env.REACT_APP__ENV}:7000`;
+const url = `http://${env}/user/edit/photoprofile/${user_id}`;
 const urldelete = `/picture/${user_id}`;
 const urladd = `/picture/upload/${user_id}`;
 
@@ -150,10 +150,10 @@ export const EditGallery = (props) => {
                   image_id: picture?.image_id,
                   image_name: picture?.image_path.split("/")[7].split(".")[0],
                 };
-    //  const param = {
-    //               image_id: picture?.image_id,
-    //               image_name: picture?.image_path,
-    //             };
+                //  const param = {
+                //               image_id: picture?.image_id,
+                //               image_name: picture?.image_path,
+                //             };
                 deleteImg(urldelete, param);
               }}
             >
