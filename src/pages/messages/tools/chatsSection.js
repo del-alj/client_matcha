@@ -1,19 +1,21 @@
-import React, { useContext, useEffect, useState, useRef } from "react";
+import React, {
+  useContext,
+  useEffect,
+  useRef,
+  useCallback,
+} from "react";
 
 import { UserContext } from "../../../Components/contexts/usercontext";
 import { ChatsSection } from "../style";
 import { authentication } from "../../../Components/contexts/usecontext";
 import { Message } from "./message";
 import { HeartSymbol } from "./heartSymbol";
-import { currentConversation } from "../../../Components/contexts/currentConversation";
 
 export const ChatsSectionDiv = (props) => {
-  const { myNewmessage, messages, setMessages, socket } = props;
+  const { myNewmessage, messages, setMessages, socket, room } = props;
   const { auth } = useContext(authentication);
   const scroll = useRef();
   const [userDetails, setUserDetails] = useContext(UserContext);
-  const [firstTime, setFirstTime] = useState(true);
-  const [currentConversationDetails] = useContext(currentConversation);
 
   const messageListener = (message) => {
     if (message) {
@@ -27,27 +29,24 @@ export const ChatsSectionDiv = (props) => {
 
   // for scroll chat
   useEffect(() => {
-    // if (firstTime) {
     scroll.current.scrollTop = scroll.current.scrollHeight;
-    //   setFirstTime(false);
-    // } else if (
-    //   scroll.current.scrollTop + scroll.current.clientHeight ===
-    //   scroll.current.scrollHeight
-    // ) {
-    //   scroll.current.scrollTop = scroll.current.scrollHeight;
-    // }
   }, [messages]);
 
-  useEffect(() => {
-    socket?.on("message", (data) => {
+  const privateMessage = useCallback((message) => {
+    console.log("this is call back", message);
+    messageListener(message);
+  }, []);
 
-        messageListener(data);
-      
+  useEffect(() => {
+    // console.log("this is msg effect", socket?.id, socket?.auth);
+    socket?.on("private message", (message) => {
+      console.log("this info", message, room);
+      if (room === message?.message?.to)
+        privateMessage(message?.message?.content);
     });
-  }, [socket]);
+  }, [socket, myNewmessage, privateMessage]);
 
   useEffect(() => {
-    
     messageListener(myNewmessage);
   }, [myNewmessage]);
   return (

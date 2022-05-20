@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext, useState, useEffect, useCallback } from "react";
 import { MessageInput, TypingSection, Button } from "../style";
 import { authentication } from "../../../Components/contexts/usecontext";
 export const TypingSectionDiv = (props) => {
@@ -6,7 +6,6 @@ export const TypingSectionDiv = (props) => {
 
   const [newMessage, setNewMessage] = useState("");
   const { auth } = useContext(authentication);
-
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -18,9 +17,12 @@ export const TypingSectionDiv = (props) => {
         message_text: newMessage,
         conversation_id: socket?.auth?.roomName,
       };
-      console.log("this is msg", socket?.id, socket?.auth);
       //send message
-      socket?.emit("message", message);
+      socket?.emit("private message", {
+        content: message,
+        to: message?.conversation_id,
+      });
+      console.log("im here handel send msg 1");
       setMyNewmessage(message);
       setNewMessage("");
     }
