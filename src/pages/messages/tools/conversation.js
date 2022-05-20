@@ -6,7 +6,6 @@ export const Conversation = (props) => {
   const { conversation, currentUser } = props;
   const [currentConversationDetails, setCurrentConversationDetails] =
     useContext(currentConversation);
-  console.log(currentUser);
   return (
     <ConversationDiv
       onClick={(e) => {

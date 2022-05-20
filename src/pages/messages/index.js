@@ -39,13 +39,16 @@ export const Messages = (props) => {
     return () => newSocket.close();
   }, [setSocket]);
 
-  socket?.connect();
-  socket?.emit("connectRoo", {
-    conversations,
-  });
   useEffect(() => {
-  console.log("chhal mn mara kan dkhol hna");
-}, [setSocket]);
+    socket?.connect();
+    console.log("socket connect");
+  }, [socket]);
+
+  useEffect(() => {
+    socket?.emit("connectRoo", {
+      conversations,
+    });
+  }, [conversations]);
 
   if (socket && currentConversationDetails?.conversation_id) {
     socket.auth = {
@@ -61,25 +64,25 @@ export const Messages = (props) => {
             <Board>
               <StikyUser userName={currentConversationDetails?.user_name} />
               <MessageDiv>
-                 {currentConversationDetails?.conversation_id ? (
-                   <>
-                <ChatsSectionDiv
-                  room={currentConversationDetails?.conversation_id}
-                  messages={messages}
-                  setMessages={setMessages}
-                  myNewmessage={myNewmessage}
-                  socket={socket}
-                  />
-                  <TypingSectionDiv
-                    setMyNewmessage={setMyNewmessage}
-                    socket={socket}
+                {currentConversationDetails?.conversation_id ? (
+                  <>
+                    <ChatsSectionDiv
+                      room={currentConversationDetails?.conversation_id}
+                      messages={messages}
+                      setMessages={setMessages}
+                      myNewmessage={myNewmessage}
+                      socket={socket}
                     />
-                    </>
+                    <TypingSectionDiv
+                      setMyNewmessage={setMyNewmessage}
+                      socket={socket}
+                    />
+                  </>
                 ) : (
-              <span className="noConversationText">
-                Open a conversation to start a chat.
-              </span>
-            )} 
+                  <span className="noConversationText">
+                    Open a conversation to start a chat.
+                  </span>
+                )}
               </MessageDiv>
             </Board>
           </ChatBox>

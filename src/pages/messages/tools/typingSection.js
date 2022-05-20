@@ -22,7 +22,6 @@ export const TypingSectionDiv = (props) => {
         content: message,
         to: message?.conversation_id,
       });
-      console.log("im here handel send msg 1");
       setMyNewmessage(message);
       setNewMessage("");
     }

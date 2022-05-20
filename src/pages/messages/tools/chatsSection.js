@@ -1,22 +1,19 @@
-import React, {
-  useContext,
-  useEffect,
-  useRef,
-  useCallback,
-} from "react";
+import React, { useContext, useEffect, useRef, useCallback } from "react";
 
 import { UserContext } from "../../../Components/contexts/usercontext";
 import { ChatsSection } from "../style";
 import { authentication } from "../../../Components/contexts/usecontext";
 import { Message } from "./message";
 import { HeartSymbol } from "./heartSymbol";
+import { currentConversation } from "../../../Components/contexts/currentConversation";
 
 export const ChatsSectionDiv = (props) => {
   const { myNewmessage, messages, setMessages, socket, room } = props;
   const { auth } = useContext(authentication);
   const scroll = useRef();
   const [userDetails, setUserDetails] = useContext(UserContext);
-
+  const [currentConversationDetails, setCurrentConversationDetails] =
+    useContext(currentConversation);
   const messageListener = (message) => {
     if (message) {
       setMessages((messages) => {
@@ -38,13 +35,14 @@ export const ChatsSectionDiv = (props) => {
   }, []);
 
   useEffect(() => {
-    // console.log("this is msg effect", socket?.id, socket?.auth);
     socket?.on("private message", (message) => {
-      console.log("this info", message, room);
-      if (room === message?.message?.to)
+      if (
+        currentConversationDetails?.conversation_id === message?.message?.to
+      ) {
         privateMessage(message?.message?.content);
+      }
     });
-  }, [socket, myNewmessage, privateMessage]);
+  }, [socket, privateMessage, currentConversationDetails]);
 
   useEffect(() => {
     messageListener(myNewmessage);
@@ -53,12 +51,16 @@ export const ChatsSectionDiv = (props) => {
     <ChatsSection ref={scroll}>
       <HeartSymbol />
       {messages?.map((m, index) => (
-        <Message
-          key={`Message${index}`}
-          photoProfile={userDetails?.photoProfile}
-          message={m?.message_text}
-          own={m?.sender_id == auth?.userId}
-        />
+        <div  key={`div${index}`}>
+          {m?.conversation_id === currentConversationDetails?.conversation_id && (
+            <Message
+              key={`Message${index}`}
+              photoProfile={userDetails?.photoProfile}
+              message={m?.message_text}
+              own={m?.sender_id == auth?.userId}
+            />
+          )}
+        </div>
       ))}
     </ChatsSection>
   );
