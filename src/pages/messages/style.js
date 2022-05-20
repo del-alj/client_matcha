@@ -184,7 +184,6 @@ export const ChatsSection = styled.div`
     background-color: #555555;
     border: 2px solid #555555;
   }
-  "column-reverse"
 `;
 
 export const MessageInput = styled.input`

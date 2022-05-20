@@ -17,7 +17,11 @@ export const ListMessagesDiv = (props) => {
   return (
     <ListMessages>
       {conversations.map((c, index) => (
-        <Conversation  key={`Conversation${index}`}  conversation={"c"} currentUser={c} />
+        <Conversation
+          key={`Conversation${index}`}
+          conversation={"c"}
+          currentUser={c}
+        />
       ))}
     </ListMessages>
   );
