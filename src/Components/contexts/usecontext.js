@@ -1,11 +1,18 @@
 import React, { createContext, useState } from "react";
+import io from "socket.io-client";
 
 export const authentication = createContext();
 
+const env = `${process.env.REACT_APP__ENV}:7000`;
 const initailValue = {
   token: localStorage.getItem("Token") ?? null,
   refreshToken: localStorage.getItem("refreshToken") ?? null,
   userId: localStorage?.getItem("userId") ?? null,
+  socket: io(env, {
+      extraHeaders: {
+        Authorization: localStorage?.getItem("userId") ?? null,
+      }
+    })
 };
 
 const ContextProvider = (props) => {

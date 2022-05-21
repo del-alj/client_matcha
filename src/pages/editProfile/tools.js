@@ -32,7 +32,7 @@ export const getUser = async (url, setUserDetails) => {
   await axiosInstance
     .get(url)
     .then((res) => {
-      console.log("tis is all user", res.data);
+      // console.log("tis is all user", res.data);
       setUserDetails({
         userName: res.data?.user_name,
         firstName: res.data?.first_name,

@@ -21,7 +21,7 @@ export const FirstSection = (props) => {
     if (!id)
       setVisibil(true);
   }, [userDetails]);
-  console.log("this is",userTags);
+  // console.log("this is",userTags);
   return (
     <Flex direction="row" justifyContent="center">
       <Flex direction="row">
@@ -31,7 +31,7 @@ export const FirstSection = (props) => {
               src={`url(${userDetails?.photoProfile})`}
               alt="Photo Profile"
             ></PhotoProfile>
-            <Visibility status={status} />
+            <Visibility status={status}/>
           </div>
           <Tags tags={userTags} />
         </Flex>

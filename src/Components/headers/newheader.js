@@ -31,7 +31,7 @@ const NewHeader = ({ display }) => {
         Matcha
       </StyledLink>
       <List>
-        <Icon img={envelope} alt="Messages" history={history}/>
+        <Icon img={envelope} alt="Messages" history={history} />
         <Icon img={love} alt="like" />
         <Icon
           img={profileImg}
