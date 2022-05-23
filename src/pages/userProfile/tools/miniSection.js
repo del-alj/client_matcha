@@ -4,7 +4,8 @@ import { Icon, LikeIcon } from "../../../Components/icon";
 import { Flex, Features } from "../style";
 import { calRating } from "../../../tools/calculeRating";
 import { UserContext } from "../../../Components/contexts/usercontext";
-
+import { Burger } from "../../../Components/burger";
+import {settings} from "./menusList";
 import crown from "../../../assets/icons/crown.png";
 import heart from "../../../assets/icons/heart.png";
 import eye from "../../../assets/icons/eye.png";
@@ -36,6 +37,9 @@ export const MiniSection = (props) => {
         <Features>
           <Icon img={eye} alt="vue" />
           <h1>{userDetails?.vuesList?.length}</h1>
+        </Features>
+        <Features>
+          <Burger listMenu={settings}/>
         </Features>
       </Flex>
     </Flex>

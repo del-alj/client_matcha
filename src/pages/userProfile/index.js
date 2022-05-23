@@ -13,8 +13,8 @@ import { getUser, getUserImages, getLook } from "../editProfile/tools";
 import io from "socket.io-client";
 
 export const UserProfile = (props) => {
-  const [setUserDetails] = useContext(UserContext);
-  const [setImageDetails] = useContext(ImageContext);
+  const [userDetails, setUserDetails] = useContext(UserContext);
+  const [imageDetails, setImageDetails] = useContext(ImageContext);
   const { auth } = useContext(authentication);
 
   const env = `${process.env.REACT_APP__ENV}:7000`;

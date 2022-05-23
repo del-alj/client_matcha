@@ -11,7 +11,7 @@ const handelClick = (setNext, next) => {
 
 export const Buttons = (props) => {
   const { setNext, next, ids } = props;
-  const [setUserDetails] = useContext(UserContext);
+  const [userDetails, setUserDetails] = useContext(UserContext);
 
   return (
     <ButtonDiv>

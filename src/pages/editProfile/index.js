@@ -23,7 +23,7 @@ export const EditProfile = (props) => {
   const { auth } = useContext(authentication);
   const [disable, setDisable] = useState(true);
   const [userdetails, setUserDetails] = useContext(UserContext);
-  const [setImageDetails] = useContext(ImageContext);
+  const [imageDetails ,setImageDetails] = useContext(ImageContext);
   const urlImages = `/picture/${auth.userId}`;
 
   useEffect(() => {

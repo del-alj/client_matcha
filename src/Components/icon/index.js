@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useContext } from "react";
 import { useParams } from "react-router-dom";
 import { Button, Img } from "./style.js";
 import { authentication } from "../contexts/usecontext";
