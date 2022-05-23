@@ -6,7 +6,8 @@ export const getDisconnectAt = async (url, setStatus) => {
   await axiosInstance
     .get(url)
     .then((res) => {
-      const temp = moment().startOf(res?.data).fromNow();
+      let formatDate = new Date(res?.data);
+      const temp = moment(formatDate).startOf().fromNow();
       if (res?.data) setStatus(temp);
     })
     .catch((err) => {
