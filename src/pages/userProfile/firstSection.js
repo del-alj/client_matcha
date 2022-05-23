@@ -10,7 +10,6 @@ import { useParams } from "react-router-dom";
 import { UserContext } from "../../Components/contexts/usercontext";
 
 export const FirstSection = (props) => {
-  const { status } = props;
   const [userTags, setUserTags] = useState([""]);
   const [visibil, setVisibil] = useState(false);
   const [userDetails] = useContext(UserContext);
@@ -18,10 +17,8 @@ export const FirstSection = (props) => {
   let { id } = useParams();
   useEffect(() => {
     setUserTags(userDetails?.userTags);
-    if (!id)
-      setVisibil(true);
+    if (!id) setVisibil(true);
   }, [userDetails]);
-  // console.log("this is",userTags);
   return (
     <Flex direction="row" justifyContent="center">
       <Flex direction="row">
@@ -31,13 +28,13 @@ export const FirstSection = (props) => {
               src={`url(${userDetails?.photoProfile})`}
               alt="Photo Profile"
             ></PhotoProfile>
-            <Visibility status={status}/>
+            {id && <Visibility />}
           </div>
           <Tags tags={userTags} />
         </Flex>
         <DefinitionSection visibility={visibil} />
       </Flex>
-      <MiniSection data={{like: userDetails?.likesList, vue: userDetails?.vuesList}} />
+      <MiniSection />
     </Flex>
   );
 };

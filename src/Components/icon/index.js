@@ -1,9 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useContext, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import { Button, Img } from "./style.js";
-
+import { authentication } from "../contexts/usecontext";
 import { Menu } from "../headers/tools/menu";
+import { UserContext } from "../../Components/contexts/usercontext";
+
+import { likeThisUser, unLikeThisUser } from "../../api/likes";
 const Icon = (props) => {
-  const {history} = props;
+  const { history } = props;
   const [display, setDisplay] = useState(false);
 
   return (
@@ -11,8 +15,7 @@ const Icon = (props) => {
       <Button
         onClick={(e) => {
           setDisplay(!display);
-          if (props?.alt === "Messages")
-          history.push("/messages");
+          if (props?.alt === "Messages") history.push("/messages");
         }}
       >
         <Img src={props.img} alt={props.alt} type={props.type} />
@@ -22,4 +25,26 @@ const Icon = (props) => {
   );
 };
 
-export { Icon };
+const LikeIcon = (props) => {
+  const [userDetails, setUserDetails] = useContext(UserContext);
+  const { id } = useParams();
+  const  likerList  = userDetails?.likesList;
+  const { auth } = useContext(authentication);
+
+  const ids = { user_id: auth?.userId, suggestion_user_id: id };
+  return (
+    <>
+      <Button
+        onClick={(e) => {
+          const temp = likerList.includes(parseInt(auth?.userId));
+          temp
+            ? unLikeThisUser(ids, setUserDetails)
+            : likeThisUser(ids, setUserDetails);
+        }}
+      >
+        <Img src={props.img} alt={props.alt} type={props.type} />
+      </Button>
+    </>
+  );
+};
+export { Icon, LikeIcon };
