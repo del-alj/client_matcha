@@ -32,7 +32,11 @@ export const getUser = async (url, setUserDetails) => {
   await axiosInstance
     .get(url)
     .then((res) => {
-      // console.log("tis is all user", res.data);
+      console.log(res?.data?.length)
+      if (res?.data?.length === 0) {
+        setUserDetails(null)
+      }
+      else
       setUserDetails({
         userName: res.data?.user_name,
         firstName: res.data?.first_name,
@@ -47,6 +51,7 @@ export const getUser = async (url, setUserDetails) => {
         userTags: res?.data?.tags,
         likesList: res?.data?.likes_list,
         vuesList: res?.data?.vues_list,
+        bloked: res?.data?.bloked,
       });
     })
     .catch((err) => {

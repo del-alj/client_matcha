@@ -20,6 +20,7 @@ export const Menu = (props) => {
               console.log("im block")
               blockuser(id, auth?.userId);
             } else if (elem?.title === "Unblock") {
+              console.log("im unblock")
               unblockuser(id, auth?.userId);
             } else if (elem?.title === "Report") {
               reportuser(id, auth?.userId);

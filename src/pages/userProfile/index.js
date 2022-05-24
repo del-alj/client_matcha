@@ -20,10 +20,11 @@ export const UserProfile = (props) => {
   const env = `${process.env.REACT_APP__ENV}:7000`;
 
   let { id } = useParams();
-  const url = `/user/${id ? id : auth.userId}`;
+  const url = `/user/${id ? id : auth.userId}/${auth.userId}`;
   const urlImages = `/picture/${id ? id : auth.userId}`;
   useEffect(() => {
     getUser(url, setUserDetails);
+    console.log("this is user", userDetails);
   }, [id ? id : auth?.userId]);
 
   useEffect(() => {
@@ -61,10 +62,16 @@ export const UserProfile = (props) => {
 
   return (
     <Layout login={true}>
-      <Content>
-        <FirstSection />
-        <SecondSection />
-      </Content>
+      {userDetails ? (
+        <Content>
+          <FirstSection />
+          <SecondSection />
+        </Content>
+      ) : (
+        <Content>
+          <h1>error</h1>
+        </Content>
+      )}
     </Layout>
   );
 };
