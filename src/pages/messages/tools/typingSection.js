@@ -1,15 +1,18 @@
 import React, { useContext, useState, useEffect, useCallback } from "react";
 import { MessageInput, TypingSection, Button } from "../style";
+import { currentConversation } from "../../../Components/contexts/currentConversation";
+
 import { authentication } from "../../../Components/contexts/usecontext";
 export const TypingSectionDiv = (props) => {
   const { setMyNewmessage, currentChat, socket } = props;
-
+  const [currentConversationDetails, setCurrentConversationDetails] =
+    useContext(currentConversation);
   const [newMessage, setNewMessage] = useState("");
   const { auth } = useContext(authentication);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    //xni had l3abat
     if (newMessage) {
       const message = {
         sender_id: auth?.userId,
@@ -26,20 +29,23 @@ export const TypingSectionDiv = (props) => {
       setNewMessage("");
     }
   };
-
   return (
-    <TypingSection>
-      <MessageInput
-        onKeyPress={(e) => {
-          if (e.key === "Enter") {
-            handleSubmit(e);
-            e.target.value = "";
-          }
-        }}
-        placeholder="message ..."
-        onChange={(e) => setNewMessage(e.target.value)}
-      ></MessageInput>
-      <Button onClick={handleSubmit}>Send</Button>
-    </TypingSection>
+    <>
+      {currentConversationDetails?.case === "0" && (
+        <TypingSection>
+          <MessageInput
+            onKeyPress={(e) => {
+              if (e.key === "Enter") {
+                handleSubmit(e);
+                e.target.value = "";
+              }
+            }}
+            placeholder="message ..."
+            onChange={(e) => setNewMessage(e.target.value)}
+          ></MessageInput>
+          <Button onClick={handleSubmit}>Send</Button>
+        </TypingSection>
+      )}
+    </>
   );
 };

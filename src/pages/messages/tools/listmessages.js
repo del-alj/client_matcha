@@ -11,7 +11,7 @@ export const ListMessagesDiv = (props) => {
   const [userDetails, setUserDetails] = useContext(UserContext);
   const urlListRooms = `/chat/listRooms/${props.userId}`;
   const [conversations, setConversations] = useContext(conversationsContext);
-  
+
   useEffect(() => {
     getListRooms(urlListRooms, setConversations);
   }, []);
@@ -21,7 +21,6 @@ export const ListMessagesDiv = (props) => {
       {conversations.map((c, index) => (
         <Conversation
           key={`Conversation${index}`}
-          conversation={"c"}
           currentUser={c}
         />
       ))}

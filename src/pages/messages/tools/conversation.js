@@ -3,7 +3,7 @@ import { FriendImg, FriendName, ConversationDiv } from "../style";
 import { currentConversation } from "../../../Components/contexts/currentConversation";
 
 export const Conversation = (props) => {
-  const { conversation, currentUser } = props;
+  const { currentUser } = props;
   const [currentConversationDetails, setCurrentConversationDetails] =
     useContext(currentConversation);
   return (
