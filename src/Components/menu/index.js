@@ -7,7 +7,7 @@ import { blockuser, unblockuser, reportuser } from "../../api/reportAndblock";
 
 export const Menu = (props) => {
   const { auth } = useContext(authentication);
-  const { menuList } = props;
+  const { menuList, setDisplay } = props;
   const {id} = useParams();
   return (
     <Ul>
@@ -19,11 +19,14 @@ export const Menu = (props) => {
             if (elem?.title === "Block") {
               console.log("im block")
               blockuser(id, auth?.userId);
+              setDisplay(false);
             } else if (elem?.title === "Unblock") {
               console.log("im unblock")
               unblockuser(id, auth?.userId);
+              setDisplay(false);
             } else if (elem?.title === "Report") {
               reportuser(id, auth?.userId);
+              setDisplay(false);
             }
           }}
         >

@@ -21,7 +21,7 @@ export const Burger = (props) => {
           </svg>
         </span>
       </Button>
-      {display && props?.listMenu && <Menu menuList={props?.listMenu} />}
+      {display && props?.listMenu && <Menu menuList={props?.listMenu} setDisplay={setDisplay}/>}
     </>
   );
 };
