@@ -13,7 +13,7 @@ import { getUser } from "../editProfile/tools";
 import { Buttons } from "./tools/buttons";
 
 export const Dashboard = (props) => {
-  const [setUserDetails] = useContext(UserContext);
+  const [userDetails, setUserDetails] = useContext(UserContext);
   const [usersList, setUsersList] = useState({});
   const [next, setNext] = useState(false);
   const [index, setIndex] = useState(-1);
@@ -25,6 +25,7 @@ export const Dashboard = (props) => {
 
   useEffect(() => {
     getUser(url, setUserDetails);
+    console.log("dashboard", userDetails);
   }, []);
 
   useEffect(() => {

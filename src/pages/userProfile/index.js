@@ -24,7 +24,6 @@ export const UserProfile = (props) => {
   const urlImages = `/picture/${id ? id : auth.userId}`;
   useEffect(() => {
     getUser(url, setUserDetails);
-    console.log("this is user", userDetails);
   }, [id ? id : auth?.userId]);
 
   useEffect(() => {

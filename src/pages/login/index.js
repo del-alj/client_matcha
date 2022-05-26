@@ -40,10 +40,12 @@ const Login = () => {
         localStorage.setItem("Token", res.data.accessToken);
         localStorage.setItem("refreshToken", res.data.refreshToken);
         localStorage.setItem("userId", JSON.stringify(res.data?.user?.user_id));
+        localStorage.setItem("reported", res.data?.user?.reported);
         setAuth((prev) => ({
           ...prev,
           token: res.data.accessToken,
           userId: res.data?.user?.user_id,
+          reported: res.data?.user?.reported ?? false,
         }));
       })
       .catch((err) => {
@@ -55,7 +57,7 @@ const Login = () => {
     const newData = { ...data };
     newData[e.target.id] = e.target.value;
     setData(newData);
-    console.log(newData);
+    console.log("loging", newData);
   };
 
   return (

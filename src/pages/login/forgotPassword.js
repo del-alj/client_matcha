@@ -32,7 +32,7 @@ const ForgotPassword = () => {
       .post(url, param)
       .then((res) => {
         history.push("/reset");
-        console.log(res);
+        console.log("foget psw", res);
       })
       .catch((err) => {
         console.log(err);
@@ -43,7 +43,7 @@ const ForgotPassword = () => {
     const newData = { ...data };
     newData[e.target.id] = e.target.value;
     setData(newData);
-    console.log(newData);
+    console.log("login" ,newData);
   };
   return (
     <Content>

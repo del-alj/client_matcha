@@ -32,7 +32,7 @@ export const getUser = async (url, setUserDetails) => {
   await axiosInstance
     .get(url)
     .then((res) => {
-      console.log(res?.data?.length)
+      console.log("get user function", res?.data)
       if (res?.data?.length === 0) {
         setUserDetails(null)
       }
@@ -52,6 +52,7 @@ export const getUser = async (url, setUserDetails) => {
         likesList: res?.data?.likes_list,
         vuesList: res?.data?.vues_list,
         bloked: res?.data?.bloked,
+        reported: res?.data?.reported,
       });
     })
     .catch((err) => {
@@ -100,7 +101,9 @@ export const updateUser = async (url, param, setUserDetails) => {
         gender: res.data?.gender,
         preference: res.data?.preference,
         photoProfileId: res.data?.photo_profile_id,
+        reported: res?.data?.reported,
       });
+
     })
     .catch((err) => {
       console.error(err);

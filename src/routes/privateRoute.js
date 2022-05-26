@@ -6,12 +6,20 @@ import { authentication } from "../Components/contexts/usecontext";
 
 const PrivateRoute = () => {
   const { auth } = useContext(authentication);
-
+  console.log("auth", auth, "<<");
   return (
     <>
       {privateRoutes.map(({ component: Component, path }, index) => (
         <Route path={path} key={index} exact>
-          {auth.token ? <Component /> : <Redirect to="/login" />}
+          {auth?.token ? (
+            auth?.reported === false ? (
+              <Component />
+            ) : (
+              <Redirect to="/error" />
+            )
+          ) : (
+            <Redirect to="/login" />
+          )}
         </Route>
       ))}
     </>

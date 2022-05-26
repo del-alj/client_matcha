@@ -10,7 +10,9 @@ import { ConfirmForgotPassword } from "../pages/login/confirmForgotPassword";
 import { EditProfile } from "../pages/editProfile/index";
 import { Dashboard } from "../pages/dashboard/index";
 import { AdvanceSearch } from "../pages/advanceSearch/index.js";
-import {Messages} from "../pages/messages/index";
+import { Messages } from "../pages/messages/index";
+import { Report } from "../pages/report/index";
+
 const publicRoutes = [
   {
     path: "/",
@@ -34,6 +36,10 @@ const publicRoutes = [
   {
     path: "/confirmation/:token",
     component: Confirmation,
+  },
+  {
+    path: "/error",
+    component: Report,
   },
 ];
 
@@ -73,7 +79,7 @@ const privateRoutes = [
   {
     path: "/messages",
     component: Messages,
-  }
+  },
 ];
 
 export { publicRoutes, privateRoutes };

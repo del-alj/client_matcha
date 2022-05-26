@@ -9,10 +9,11 @@ const initailValue = {
   refreshToken: localStorage.getItem("refreshToken") ?? null,
   userId: localStorage?.getItem("userId") ?? null,
   socket: io(env, {
-      extraHeaders: {
-        Authorization: localStorage?.getItem("userId") ?? null,
-      }
-    })
+    extraHeaders: {
+      Authorization: localStorage?.getItem("userId") ?? null,
+    },
+  }),
+  reported: localStorage?.getItem("reported") === 'true',
 };
 
 const ContextProvider = (props) => {

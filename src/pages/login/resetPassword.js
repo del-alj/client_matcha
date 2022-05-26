@@ -35,7 +35,7 @@ const ResetPassword = () => {
       .put(url, param)
       .then((res) => {
         history.push("/login");
-        console.log(res);
+        console.log("res password", res);
       })
       .catch((err) => {
         console.log(err);

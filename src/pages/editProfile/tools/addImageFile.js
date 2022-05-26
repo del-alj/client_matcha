@@ -15,7 +15,6 @@ export const AddImageFile = ({ files, setFiles, setDisable }) => {
     const newImagesUrls = [];
 
     if (files?.length > 0) {
-      console.log();
       [...files].forEach((file) =>
         newImagesUrls.push(URL.createObjectURL(file))
       );
