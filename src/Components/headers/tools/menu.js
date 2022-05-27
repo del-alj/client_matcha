@@ -16,3 +16,21 @@ export const Menu = (props) => {
     </Ul>
   );
 };
+
+export const MenuNotification = (props) => {
+  const { menuList } = props;
+  return (
+    <Ul>
+      {menuList.map((elem, index) => (
+        <Li key={`li${index}`}>
+          <a key={`a${index}`} href={elem?.path}>
+            <h1>{elem?.title}</h1>
+            <p>{elem?.text}</p>
+          </a>
+        </Li>
+      ))}
+      <Li>
+      </Li>
+    </Ul>
+  );
+};

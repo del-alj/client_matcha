@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const Cadre = styled.form`
   min-width: 600px;
@@ -52,29 +52,33 @@ export const DivButton = styled.div`
   align-items: center;
 `;
 
-export const Button = styled.button`
+export const Button = styled.div`
   width: 40px;
   height: 30px;
   color: white;
   border: none;
-  font-family: 'Electrolize', sans-serif;
-  background: ${(props) => (props.status ? 'black' : '#e6e6e6')};
+  font-family: "Electrolize", sans-serif;
+  background: ${(props) => (props.status ? "black" : "#e6e6e6")};
   padding: 0px;
+  > p {
+    margin: 0;
+    text-align: center;
+  }
 `;
 
 export const Input = styled.input`
   font-size: 1em;
-  font-family: 'Electrolize', sans-serif;
+  font-family: "Electrolize", sans-serif;
   ::placeholder {
     font-size: 1em;
     color: #535353;
-    font-family: 'Electrolize', sans-serif;
+    font-family: "Electrolize", sans-serif;
   }
   color: black;
   background: #f8f8f8;
   border: 0;
   outline: 0;
-  border-left: ${(props) => props.border && '1px solid #535353'};
+  border-left: ${(props) => props.border && "1px solid #535353"};
   height: 100%;
   padding: 0 15px;
   margin: 13px 0;
@@ -96,7 +100,7 @@ export const NewAgs = styled.div`
 export const Slider = styled.span`
   justify-content: center;
   height: 15px;
-  input[type='range'] {
+  input[type="range"] {
     box-sizing: border-box;
     appearance: none;
     width: 300px;
@@ -142,7 +146,7 @@ export const Slider = styled.span`
 
   position: relative;
   height: 15px;
-  input[type='range'] {
+  input[type="range"] {
     position: absolute;
 
     &:nth-child(1) {

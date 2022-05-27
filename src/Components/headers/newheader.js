@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { useHistory } from "react-router-dom";
 
 import { authentication } from "../contexts/usecontext";
@@ -11,16 +11,64 @@ import {
 } from "../styles/Container.styles";
 import { List } from "./style";
 import { Logout } from "../LogoutButton/Logout";
-import { Icon } from "../icon";
+import { Icon, IconNotification } from "../icon";
 import envelope from "../../assets/icons/envelope.png";
 import love from "../../assets/icons/love.png";
 import profileImg from "../../assets/venus.jpg";
 import { settings } from "./tools/menusList";
 
+const notification = [{
+  title: "dina",
+  text: "blalbla blaba",
+  status: false,
+  path: "",
+}, {
+  title: "bani",
+  text: "Testblalbla blaba blalbla blaba blalbla blaba blalbla blaba blalbla blaba",
+  status: false,
+  path: "",
+},
+{
+  title: "nina",
+  text: "blalbla blaba",
+  status: false,
+  path: "",
+},
+{
+  title: "victoria",
+  text: "blalbla blaba",
+  status: false,
+  path: "",
+},]
+
+const  notificationMessages = [{
+  title: "dina",
+  text: "blalbla blaba",
+  status: false,
+  path: "",
+}, {
+  title: "bani",
+  text: "Testblalbla blaba msg blalbla blaba",
+  status: false,
+  path: "",
+},
+{
+  title: "nina",
+  text: "blalbla blaba",
+  status: false,
+  path: "",
+},
+{
+  title: "victoria",
+  text: "blalbla blaba",
+  status: false,
+  path: "",
+},]
+
 const NewHeader = ({ display }) => {
   let history = useHistory();
   const { setAuth } = useContext(authentication);
-
+  const [displayMenu, setDisplayMenu] = useState(false);
   const handleClick = () => {
     Logout(setAuth);
     history.push("/");
@@ -31,9 +79,9 @@ const NewHeader = ({ display }) => {
         Matcha
       </StyledLink>
       <List>
-        <Icon img={envelope} alt="Messages" history={history} />
-        <Icon img={love} alt="like" />
-        <Icon
+        <IconNotification displayMenu={displayMenu} setDisplayMenu={setDisplayMenu} img={envelope} alt="Messages" type="messages" listMenu={notificationMessages} history={history} />
+        <IconNotification displayMenu={displayMenu} setDisplayMenu={setDisplayMenu} img={love} alt="like" type="notification" listMenu={notification} history={history} />
+        <Icon 
           img={profileImg}
           alt="Profile"
           type="profile"

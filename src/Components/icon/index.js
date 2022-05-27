@@ -2,7 +2,7 @@ import React, { useState, useContext } from "react";
 import { useParams } from "react-router-dom";
 import { Button, Img } from "./style.js";
 import { authentication } from "../contexts/usecontext";
-import { Menu } from "../headers/tools/menu";
+import { Menu, MenuNotification } from "../headers/tools/menu";
 import { UserContext } from "../../Components/contexts/usercontext";
 
 import { likeThisUser, unLikeThisUser } from "../../api/likes";
@@ -25,10 +25,31 @@ const Icon = (props) => {
   );
 };
 
+const IconNotification = (props) => {
+  const { history, displayMenu, setDisplayMenu } = props;
+
+  return (
+    <>
+      <Button
+        onClick={(e) => {
+          if (displayMenu === false) setDisplayMenu(true);
+          else if (displayMenu === true) setDisplayMenu(false);
+          // if (props?.alt === "Messages") history.push("/messages");
+        }}
+      >
+        <Img src={props.img} alt={props.alt} type={props.type} />
+      </Button>
+      {displayMenu && props?.listMenu && (
+        <MenuNotification menuList={props?.listMenu} />
+      )}
+    </>
+  );
+};
+
 const LikeIcon = (props) => {
   const [userDetails, setUserDetails] = useContext(UserContext);
   const { id } = useParams();
-  const  likerList  = userDetails?.likesList;
+  const likerList = userDetails?.likesList;
   const { auth } = useContext(authentication);
 
   const ids = { user_id: auth?.userId, suggestion_user_id: id };
@@ -47,4 +68,4 @@ const LikeIcon = (props) => {
     </>
   );
 };
-export { Icon, LikeIcon };
+export { Icon, LikeIcon, IconNotification };

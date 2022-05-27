@@ -23,7 +23,7 @@ export const RatingBar = (props) => {
               setRating(true);
             }}
           >
-            Yes
+            <p>Yes</p>
           </Button>
           <Button
             status={!rating}
@@ -31,7 +31,7 @@ export const RatingBar = (props) => {
               setRating(false);
             }}
           >
-            No
+            <p>No</p>
           </Button>
         </DivButton>
       </SecDiv>
