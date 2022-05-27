@@ -10,3 +10,14 @@ export const Img = styled.img`
   height: 1.5em;
   border-radius: ${(props) => (props.type === "profile" ? "50px" : "none")};
 `;
+
+export const RedPoint = styled.div`
+  width: 10px;
+  height: 10px;
+  background: red;
+  border-radius: 25px;
+  position: relative;
+  top: 10px;
+  right: -30px;
+  display: ${(props) => (props.display === true ? "block" : "none")};
+`;

@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
 import { useParams } from "react-router-dom";
-import { Button, Img } from "./style.js";
+import { Button, Img, RedPoint } from "./style.js";
 import { authentication } from "../contexts/usecontext";
 import { Menu, MenuNotification } from "../headers/tools/menu";
 import { UserContext } from "../../Components/contexts/usercontext";
@@ -30,6 +30,7 @@ const IconNotification = (props) => {
 
   return (
     <>
+      <RedPoint display={true}/>
       <Button
         onClick={(e) => {
           if (displayMenu === false) setDisplayMenu(true);

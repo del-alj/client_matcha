@@ -13,7 +13,7 @@ import { List } from "./style";
 import { Logout } from "../LogoutButton/Logout";
 import { Icon, IconNotification } from "../icon";
 import envelope from "../../assets/icons/envelope.png";
-import love from "../../assets/icons/love.png";
+import notif from "../../assets/icons/notification.png";
 import profileImg from "../../assets/venus.jpg";
 import { settings } from "./tools/menusList";
 
@@ -80,7 +80,7 @@ const NewHeader = ({ display }) => {
       </StyledLink>
       <List>
         <IconNotification displayMenu={displayMenu} setDisplayMenu={setDisplayMenu} img={envelope} alt="Messages" type="messages" listMenu={notificationMessages} history={history} />
-        <IconNotification displayMenu={displayMenu} setDisplayMenu={setDisplayMenu} img={love} alt="like" type="notification" listMenu={notification} history={history} />
+        <IconNotification displayMenu={displayMenu} setDisplayMenu={setDisplayMenu} img={notif} alt="like" type="notification" listMenu={notification} history={history} />
         <Icon 
           img={profileImg}
           alt="Profile"
