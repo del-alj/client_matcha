@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect, useCallback } from "react";
 import { useParams } from "react-router-dom";
 import { Button, Img, RedPoint } from "./style.js";
 import { authentication } from "../contexts/usecontext";
@@ -26,22 +26,26 @@ const Icon = (props) => {
 };
 
 const IconNotification = (props) => {
-  const { history, displayMenu, setDisplayMenu } = props;
-
+  const { listMenu, notificationState, setNotificationState } = props;
+  const { auth } = useContext(authentication);
   return (
     <>
-      <RedPoint display={true}/>
+      <RedPoint display={notificationState?.notificationStatus || false} />
       <Button
         onClick={(e) => {
-          if (displayMenu === false) setDisplayMenu(true);
-          else if (displayMenu === true) setDisplayMenu(false);
+          if (notificationState?.displayMenu === false) {
+            setNotificationState({ ...notificationState, displayMenu: true });
+          } else if (notificationState?.displayMenu === true) {
+            setNotificationState({ ...notificationState, displayMenu: false });
+            console.log("notificationState:", notificationState, listMenu);
+          }
           // if (props?.alt === "Messages") history.push("/messages");
         }}
       >
         <Img src={props.img} alt={props.alt} type={props.type} />
       </Button>
-      {displayMenu && props?.listMenu && (
-        <MenuNotification menuList={props?.listMenu} />
+      {notificationState?.displayMenu && listMenu && (
+        <MenuNotification menuList={listMenu} />
       )}
     </>
   );
@@ -52,13 +56,18 @@ const LikeIcon = (props) => {
   const { id } = useParams();
   const likerList = userDetails?.likesList;
   const { auth } = useContext(authentication);
-
+  const { content } = props;
   const ids = { user_id: auth?.userId, suggestion_user_id: id };
   return (
     <>
       <Button
         onClick={(e) => {
           const temp = likerList.includes(parseInt(auth?.userId));
+          const NewContent = { ...content, status: !temp };
+          auth?.socket?.emit("notification", {
+            content: NewContent,
+            to: content?.to,
+          });
           temp
             ? unLikeThisUser(ids, setUserDetails)
             : likeThisUser(ids, setUserDetails);
