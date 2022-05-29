@@ -26,30 +26,34 @@ const Icon = (props) => {
 
 const temp = [
   {
-    title: "ok title",
+    title: "x title",
     text: "ok text",
     status: false,
   },
 ];
 
 const IconNotification = (props) => {
+
   const { history } = props;
-  const [notifications, setNotifications] = useState(temp);
+  // const [notifications, setNotifications] = useState(temp);
   const [status, setStatus] = useState(false);
   const { auth } = useContext(authentication);
 
-  const privateNotification = (data) => {
-    const newNotifications = [...notifications];
-    const temp = data?.notification;
-    newNotifications?.push(temp);
-    setNotifications(newNotifications);
-  };
+  // const privateNotification = (data) => {
+  //   const newNotifications = [...notifications];
+  //   const temp = data?.notification;
+  //   newNotifications?.push(temp);
+  // //   newNotifications.sort((obj1, obj2) => {
+  // //     return obj2.title - obj1.title;
+  // //  });
+  //   setNotifications(newNotifications);
+  // };
 
   useEffect(() => {
     //ma3raftx xni dirt
     auth.socket?.on(`${props?.type}`, (data) => {
       setStatus(true);
-      privateNotification(data);
+      // privateNotification(data);
     });
   }, []);
 
@@ -60,7 +64,7 @@ const IconNotification = (props) => {
         onClick={(e) => {
           if (props?.alt === "Messages") history.push("/messages");
           else if (props?.alt === "Notifications")
-            history.push("/notifications", notifications);
+            history.push("/notifications");
         }}
       >
         <Img src={props.img} alt={props.alt} type={props.type} />
