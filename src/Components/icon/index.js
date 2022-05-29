@@ -2,7 +2,7 @@ import React, { useState, useContext, useEffect, useCallback } from "react";
 import { useParams } from "react-router-dom";
 import { Button, Img, RedPoint } from "./style.js";
 import { authentication } from "../contexts/usecontext";
-import { Menu, MenuNotification } from "../headers/tools/menu";
+import { Menu } from "../headers/tools/menu";
 import { UserContext } from "../../Components/contexts/usercontext";
 
 import { likeThisUser, unLikeThisUser } from "../../api/likes";
@@ -15,7 +15,6 @@ const Icon = (props) => {
       <Button
         onClick={(e) => {
           setDisplay(!display);
-          if (props?.alt === "Messages") history.push("/messages");
         }}
       >
         <Img src={props.img} alt={props.alt} type={props.type} />
@@ -26,27 +25,53 @@ const Icon = (props) => {
 };
 
 const IconNotification = (props) => {
-  const { listMenu, notificationState, setNotificationState } = props;
+  const { history } = props;
+  const [notifications, setNotifications] = useState([]); // hdi li khess zkon fiha lista
+  const [notificationState, setNotificationState] = useState({
+    history: props?.history,
+    status: false,
+  });
   const { auth } = useContext(authentication);
+
+  const privateNotification = (data) => {
+    setNotifications((data) => {
+      const newNotifications = [...notifications];
+      if (data) {
+        const temp = {
+          ...data,
+          title: `${data?.name || data?.from}`,
+          text: `${data?.status ? "Like" : "Unlike"} you`,
+          status: false,
+          path: "",
+        };
+        newNotifications?.push(temp);
+      }
+      console.log("xhal m mara");
+
+      return newNotifications;
+    });
+  };
+
+  useEffect(() => {
+    //ma3raftx xni dirt
+    auth.socket?.on(`${props?.type}`, (data) => {
+      setNotificationState({ ...notificationState, status: true });
+      privateNotification(data);
+    });
+  }, []);
+
   return (
     <>
-      <RedPoint display={notificationState?.notificationStatus || false} />
+      <RedPoint display={notificationState?.status} />
       <Button
         onClick={(e) => {
-          if (notificationState?.displayMenu === false) {
-            setNotificationState({ ...notificationState, displayMenu: true });
-          } else if (notificationState?.displayMenu === true) {
-            setNotificationState({ ...notificationState, displayMenu: false });
-            console.log("notificationState:", notificationState, listMenu);
-          }
-          // if (props?.alt === "Messages") history.push("/messages");
+          if (props?.alt === "Messages") history.push("/messages");
+          else if (props?.alt === "Notifications")
+            history.push("/notifications");
         }}
       >
         <Img src={props.img} alt={props.alt} type={props.type} />
       </Button>
-      {notificationState?.displayMenu && listMenu && (
-        <MenuNotification menuList={listMenu} />
-      )}
     </>
   );
 };
@@ -62,15 +87,17 @@ const LikeIcon = (props) => {
     <>
       <Button
         onClick={(e) => {
-          const temp = likerList.includes(parseInt(auth?.userId));
-          const NewContent = { ...content, status: !temp };
-          auth?.socket?.emit("notification", {
-            content: NewContent,
-            to: content?.to,
-          });
-          temp
-            ? unLikeThisUser(ids, setUserDetails)
-            : likeThisUser(ids, setUserDetails);
+          if (auth?.userId && id && auth?.userId != id) {
+            const temp = likerList.includes(parseInt(auth?.userId));
+            const NewContent = { ...content, status: !temp };
+            auth?.socket?.emit("notification", {
+              content: NewContent,
+              to: content?.to,
+            });
+            temp
+              ? unLikeThisUser(ids, setUserDetails)
+              : likeThisUser(ids, setUserDetails);
+          }
         }}
       >
         <Img src={props.img} alt={props.alt} type={props.type} />
