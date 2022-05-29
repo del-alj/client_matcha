@@ -24,6 +24,10 @@ const NewHeader = ({ display }) => {
     history.push("/");
   };
 
+   useEffect(() => {
+    // ma3raftx xni dirt
+  }, []);
+
   return (
     <Header backgroundColor>
       <StyledLink to="/" color="black" inline="none">

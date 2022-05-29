@@ -4,7 +4,7 @@ import { Button, Img, RedPoint } from "./style.js";
 import { authentication } from "../contexts/usecontext";
 import { Menu } from "../headers/tools/menu";
 import { UserContext } from "../../Components/contexts/usercontext";
-
+import { NotificationsPage } from "../../pages/notifications";
 import { likeThisUser, unLikeThisUser } from "../../api/likes";
 const Icon = (props) => {
   const { history } = props;
@@ -24,50 +24,43 @@ const Icon = (props) => {
   );
 };
 
+const temp = [
+  {
+    title: "ok title",
+    text: "ok text",
+    status: false,
+  },
+];
+
 const IconNotification = (props) => {
   const { history } = props;
-  const [notifications, setNotifications] = useState([]); // hdi li khess zkon fiha lista
-  const [notificationState, setNotificationState] = useState({
-    history: props?.history,
-    status: false,
-  });
+  const [notifications, setNotifications] = useState(temp);
+  const [status, setStatus] = useState(false);
   const { auth } = useContext(authentication);
 
   const privateNotification = (data) => {
-    setNotifications((data) => {
-      const newNotifications = [...notifications];
-      if (data) {
-        const temp = {
-          ...data,
-          title: `${data?.name || data?.from}`,
-          text: `${data?.status ? "Like" : "Unlike"} you`,
-          status: false,
-          path: "",
-        };
-        newNotifications?.push(temp);
-      }
-      console.log("xhal m mara");
-
-      return newNotifications;
-    });
+    const newNotifications = [...notifications];
+    const temp = data?.notification;
+    newNotifications?.push(temp);
+    setNotifications(newNotifications);
   };
 
   useEffect(() => {
     //ma3raftx xni dirt
     auth.socket?.on(`${props?.type}`, (data) => {
-      setNotificationState({ ...notificationState, status: true });
+      setStatus(true);
       privateNotification(data);
     });
   }, []);
 
   return (
     <>
-      <RedPoint display={notificationState?.status} />
+      <RedPoint display={status} />
       <Button
         onClick={(e) => {
           if (props?.alt === "Messages") history.push("/messages");
           else if (props?.alt === "Notifications")
-            history.push("/notifications");
+            history.push("/notifications", notifications);
         }}
       >
         <Img src={props.img} alt={props.alt} type={props.type} />

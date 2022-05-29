@@ -20,7 +20,13 @@ export const MiniSection = (props) => {
   const data = { like: userDetails?.likesList, vue: userDetails?.vuesList };
   const rating = calRating(data);
   console.log(id, auth?.userId);
-  const content = { type: "like", from: auth?.userId, to: id || null };
+  const content = {
+    userName: userDetails?.userName,
+    type: "like",
+    status: true,
+    from: auth?.userId,
+    to: id || null,
+  };
   return (
     <Flex
       direction="column"
