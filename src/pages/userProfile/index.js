@@ -30,12 +30,27 @@ export const UserProfile = (props) => {
     getUserImages(urlImages, setImageDetails);
   }, [auth?.userId]);
 
-  useEffect(() => {
+  useEffect(async () => {
     if (id && auth?.userId && id !== auth?.userId) {
-      getLook({
+      await getLook({
         user_id: id,
         looker_user_id: parseInt(auth?.userId),
-      });
+      })
+        .then(async (data) => {
+          const content = {
+            userName: userDetails?.userName || "someone",
+            type: "view",
+            status: true,
+            from: parseInt(auth?.userId),
+            to: id || null,
+          };
+          const NewContent = { ...content, status: false };
+          auth?.socket?.emit("notification", {
+            content: NewContent,
+            to: content?.to,
+          });
+        })
+        .catch(() => {});
     }
   }, [id, auth.userId]);
 
