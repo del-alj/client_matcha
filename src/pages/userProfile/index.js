@@ -31,17 +31,17 @@ export const UserProfile = (props) => {
   }, [auth?.userId]);
 
   useEffect(async () => {
-    if (id && auth?.userId && id !== auth?.userId) {
+    if ( id && auth?.userId && id !== auth?.userId) {
       await getLook({
         user_id: id,
-        looker_user_id: parseInt(auth?.userId),
+        looker_user_id: auth?.userId,
       })
         .then(async (data) => {
           const content = {
-            userName: userDetails?.userName || "someone",
+            userName: "someone",
             type: "view",
             status: true,
-            from: parseInt(auth?.userId),
+            from: auth?.userId ,
             to: id || null,
           };
           const NewContent = { ...content, status: false };
@@ -52,7 +52,7 @@ export const UserProfile = (props) => {
         })
         .catch(() => {});
     }
-  }, [id, auth.userId]);
+  }, [id, auth?.userId]);
 
   // useEffect(() => {
   //   // const socket = io(env, {
