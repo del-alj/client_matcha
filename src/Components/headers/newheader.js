@@ -42,7 +42,7 @@ const NewHeader = ({ display }) => {
         <IconNotification
           img={envelope}
           alt="Messages"
-          type="messages"
+          type="message"
           history={history}
           status={msgStatus}
           setStatus={setMsgStatus}

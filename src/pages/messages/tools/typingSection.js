@@ -16,14 +16,22 @@ export const TypingSectionDiv = (props) => {
     if (newMessage) {
       const message = {
         sender_id: auth?.userId,
-        receiver_id: auth?.userId === "2603" ? 2613 : 2603,
+        receiver_id:
+          auth?.userId == currentConversationDetails?.receiver_id
+            ? currentConversationDetails?.sender_id
+            : currentConversationDetails?.receiver_id,
         message_text: newMessage,
         conversation_id: socket?.auth?.roomName,
       };
       //send message
-      socket?.emit("private message", {
+      auth?.socket?.emit("private message", {
         content: message,
         to: message?.conversation_id,
+      });
+
+      auth?.socket?.emit("message", {
+        content: message,
+        to: message?.receiver_id,
       });
       setMyNewmessage(message);
       setNewMessage("");

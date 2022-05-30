@@ -7,7 +7,6 @@ import { UserContext } from "../../Components/contexts/usercontext";
 import { NotificationsPage } from "../../pages/notifications";
 import { likeThisUser, unLikeThisUser } from "../../api/likes";
 
-
 const Icon = (props) => {
   const { history } = props;
   const [display, setDisplay] = useState(false);
@@ -43,6 +42,7 @@ const IconNotification = (props) => {
   useEffect(() => {
     //ma3raftx xni dirt
     auth.socket?.on(`${props?.type}`, (data) => {
+      console.log(`${props?.type}`, data);
       setStatus(true);
     });
   }, []);

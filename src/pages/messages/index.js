@@ -34,7 +34,7 @@ export const Messages = (props) => {
   }, [currentConversationDetails]);
 
   useEffect(() => {
-    const env = `${process.env.REACT_APP__ENV}:7000`
+    const env = `${process.env.REACT_APP__ENV}:7000`;
     const newSocket = io(env, { autoConnect: false });
     setSocket(newSocket);
     return () => newSocket.close();
@@ -56,6 +56,13 @@ export const Messages = (props) => {
       roomName: currentConversationDetails?.conversation_id,
     };
   }
+
+  useEffect(() => {
+    auth?.socket?.on("message", (data) => {
+      console.log("from message page ", data);
+    });
+  }, [auth]);
+
   return (
     <Layout login={true}>
       <Content>
