@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
 import moment from "moment";
 
 import { Layout } from "../../layouts/signinLayout";
@@ -12,8 +11,6 @@ const getSendingTime = (date) => {
   return moment(date).startOf().fromNow();
 };
 export const NotificationsPage = (props) => {
-  // const location = useLocation();
-  // const notifications = location.state;
   const { auth } = useContext(authentication);
   const url = `/notification/${auth.userId}`;
 
@@ -29,7 +26,7 @@ export const NotificationsPage = (props) => {
         <Box>
           {notifications.map((elem, index) => (
             <NotificationContent key={`span${index}`}>
-              <a href={`/user/${elem?.from}`}>
+              <a href={`/user/${elem?.from_id}`}>
                 {elem?.title} {elem?.text} you on{" "}
                 {getSendingTime(elem?.creat_at)}.
               </a>
