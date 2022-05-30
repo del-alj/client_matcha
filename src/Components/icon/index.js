@@ -6,6 +6,8 @@ import { Menu } from "../headers/tools/menu";
 import { UserContext } from "../../Components/contexts/usercontext";
 import { NotificationsPage } from "../../pages/notifications";
 import { likeThisUser, unLikeThisUser } from "../../api/likes";
+
+
 const Icon = (props) => {
   const { history } = props;
   const [display, setDisplay] = useState(false);
@@ -33,27 +35,15 @@ const temp = [
 ];
 
 const IconNotification = (props) => {
-
-  const { history } = props;
+  const { history, status, setStatus } = props;
   // const [notifications, setNotifications] = useState(temp);
-  const [status, setStatus] = useState(false);
+  // const [status, setStatus] = useState(false);
   const { auth } = useContext(authentication);
-
-  // const privateNotification = (data) => {
-  //   const newNotifications = [...notifications];
-  //   const temp = data?.notification;
-  //   newNotifications?.push(temp);
-  // //   newNotifications.sort((obj1, obj2) => {
-  // //     return obj2.title - obj1.title;
-  // //  });
-  //   setNotifications(newNotifications);
-  // };
 
   useEffect(() => {
     //ma3raftx xni dirt
     auth.socket?.on(`${props?.type}`, (data) => {
       setStatus(true);
-      // privateNotification(data);
     });
   }, []);
 

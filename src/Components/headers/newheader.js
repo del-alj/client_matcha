@@ -14,18 +14,23 @@ import envelope from "../../assets/icons/envelope.png";
 import notif from "../../assets/icons/notification.png";
 import gear from "../../assets/icons/gear.png";
 import { settings } from "./tools/menusList";
-
+import { getNotification } from "../../pages/notifications/tools";
 const NewHeader = ({ display }) => {
   let history = useHistory();
-  const { setAuth } = useContext(authentication);
-
+  const { auth, setAuth } = useContext(authentication);
+  const [notifications, setNotifications] = useState([]);
+  const [status, setStatus] = useState(false);
+  const [msgStatus, setMsgStatus] = useState(false);
   const handleClick = () => {
     Logout(setAuth);
     history.push("/");
   };
 
-   useEffect(() => {
-    // ma3raftx xni dirt
+  useEffect(() => {
+    //ma3raftx xni dirt
+    getNotification(`/notification/${auth.userId}`, setNotifications);
+    if (notifications[0]?.status === true) setStatus(true);
+    console.log("this is first notification", notifications ,auth?.userId,  );
   }, []);
 
   return (
@@ -39,12 +44,16 @@ const NewHeader = ({ display }) => {
           alt="Messages"
           type="messages"
           history={history}
+          status={msgStatus}
+          setStatus={setMsgStatus}
         />
         <IconNotification
           img={notif}
           alt="Notifications"
           type="notification"
           history={history}
+          status={status}
+          setStatus={setStatus}
         />
         <Icon img={gear} alt="Profile" type="profile" listMenu={settings} />
         <StyledLinkLogout onClick={handleClick}>Logout</StyledLinkLogout>
