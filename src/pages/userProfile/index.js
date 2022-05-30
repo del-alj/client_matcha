@@ -38,7 +38,7 @@ export const UserProfile = (props) => {
       })
         .then(async (data) => {
           const content = {
-            userName: "someone",
+            userName:  auth?.userName || "someone",
             type: "view",
             status: true,
             from: auth?.userId ,

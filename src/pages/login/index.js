@@ -27,8 +27,8 @@ const Login = () => {
   });
 
   const param = {
-    user_name: data.userName,
-    password: data.Password,
+    user_name: data?.userName,
+    password: data?.Password,
   };
 
   const submit = (e) => {
@@ -46,6 +46,7 @@ const Login = () => {
           token: res.data.accessToken,
           userId: res.data?.user?.user_id,
           reported: res.data?.user?.reported ?? false,
+          userName: param?.user_name,
         }));
       })
       .catch((err) => {

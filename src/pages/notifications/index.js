@@ -4,7 +4,7 @@ import moment from "moment";
 import { Layout } from "../../layouts/signinLayout";
 import { Content } from "../dashboard/style";
 import { NotificationContent, Box } from "../notifications/style";
-import { getNotification } from "./tools";
+import { getNotification, updateNotificationStatus } from "./tools";
 import { authentication } from "../../Components/contexts/usecontext";
 
 const getSendingTime = (date) => {
@@ -17,8 +17,9 @@ export const NotificationsPage = (props) => {
   const [notifications, setNotifications] = useState([]);
   useEffect(() => {
     getNotification(url, setNotifications);
+    updateNotificationStatus(url, setNotifications);
   }, []);
-
+console.log("notification after update", notifications);
   return (
     <Layout login={true}>
       <Content style={{ flexDirection: "column" }}>
