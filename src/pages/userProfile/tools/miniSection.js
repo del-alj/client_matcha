@@ -20,7 +20,7 @@ export const MiniSection = (props) => {
   const data = { like: userDetails?.likesList, vue: userDetails?.vuesList };
   const rating = calRating(data);
   const content = {
-    userName: auth?.userName || "someone",
+    userName: "someone",
     type: "like",
     status: true,
     from: auth?.userId,
