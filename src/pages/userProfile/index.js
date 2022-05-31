@@ -54,26 +54,6 @@ export const UserProfile = (props) => {
     }
   }, [id, auth?.userId]);
 
-  // useEffect(() => {
-  //   // const socket = io(env, {
-  //   //   extraHeaders: {
-  //   //     Authorization: auth?.userId
-  //   //   }
-  //   // });
-
-  //   // socket?.connect();
-  //   // const socket = auth?.socket;
-
-  //   //get status
-  //   if (id) {
-  //     auth?.socket?.emit("statusUser", { userId: id });
-  //     auth?.socket?.on("statusUser", (data) => {
-  //       console.log("this is status", data);
-  //       data && setstatus(data);
-  //     });
-  //   }
-  // }, [auth, id]);
-
   return (
     <Layout login={true}>
       {userDetails ? (
