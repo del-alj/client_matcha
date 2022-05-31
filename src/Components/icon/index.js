@@ -4,7 +4,6 @@ import { Button, Img, RedPoint } from "./style.js";
 import { authentication } from "../contexts/usecontext";
 import { Menu } from "../headers/tools/menu";
 import { UserContext } from "../../Components/contexts/usercontext";
-import { NotificationsPage } from "../../pages/notifications";
 import { likeThisUser, unLikeThisUser } from "../../api/likes";
 
 const Icon = (props) => {
@@ -25,18 +24,8 @@ const Icon = (props) => {
   );
 };
 
-const temp = [
-  {
-    title: "x title",
-    text: "ok text",
-    status: false,
-  },
-];
-
 const IconNotification = (props) => {
   const { history, status, setStatus } = props;
-  // const [notifications, setNotifications] = useState(temp);
-  // const [status, setStatus] = useState(false);
   const { auth } = useContext(authentication);
 
   useEffect(() => {
@@ -49,7 +38,7 @@ const IconNotification = (props) => {
 
   return (
     <>
-      <RedPoint display={status} />
+      <RedPoint display={status.toString()} />
       <Button
         onClick={(e) => {
           if (props?.alt === "Messages") history.push("/messages");

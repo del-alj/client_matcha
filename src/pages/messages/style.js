@@ -111,20 +111,21 @@ export const ConversationDiv = styled.div`
 `;
 
 export const FriendImg = styled.div`
-  display: ${(props) => (props?.own ? "none" : "block")};
+  display: ${(props) => (props?.display == true ? "block" : "none")};
   margin-right: 20px;
-  border: 1px solid black;
-  width: 40px;
-  height: 40px;
+  /* border: 1px solid black; */
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
-  overflow: hidden;
-  background-image: ${(props) => props?.src ?? `${props?.src}`};
+  /* overflow: hidden; */
+  /* background-image: ${(props) => props?.src ?? `${props?.src}`};
   background-size: cover;
-  background-position: center;
-  @media screen and (max-width: 375px) {
+  background-position: center; */
+  background-color: red;
+  /* @media screen and (max-width: 375px) {
     width: 20px;
     height: 20px;
-  }
+  } */
 `;
 
 export const FriendName = styled.span`

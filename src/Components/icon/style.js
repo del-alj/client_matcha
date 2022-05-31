@@ -19,5 +19,5 @@ export const RedPoint = styled.div`
   position: relative;
   top: 10px;
   right: -30px;
-  display: ${(props) => (props?.display === true ? "block" : "none")};
+  display: ${(props) => (props?.display == true ? "block" : "none")};
 `;
