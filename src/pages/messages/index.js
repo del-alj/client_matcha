@@ -74,7 +74,6 @@ export const Messages = (props) => {
       );
   }, [notification]);
 
-  // console.log("this is message from index", messages);
   return (
     <Layout login={true}>
       <Content>

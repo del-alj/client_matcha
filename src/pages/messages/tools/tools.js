@@ -24,7 +24,6 @@ export const updateSenderConversationStatus = (
 
   const temp =  newConversations?.map((elem) => {
     if (elem?.is_sender == userId) {
-      console.log("3", elem?.conversation_id, userId);
       elem = { ...elem, status: status };
     }
     return elem;

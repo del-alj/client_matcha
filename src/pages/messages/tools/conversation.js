@@ -4,15 +4,15 @@ import { authentication } from "../../../Components/contexts/usecontext";
 import { currentConversation } from "../../../Components/contexts/currentConversation";
 import { conversationsContext } from "../../../Components/contexts/conversationscontext";
 import { updateConversationStatus } from "./tools";
+import { updateListRooms } from "../../../api/chats";
 // import { updateRoomStatus } from "./tools";
-
 export const Conversation = (props) => {
   const { currentUser, status } = props;
   const { auth } = useContext(authentication);
   const [currentConversationDetails, setCurrentConversationDetails] =
-    useContext(currentConversation);
+  useContext(currentConversation);
   const [conversations, setConversations] = useContext(conversationsContext);
-  console.log("currentUser?.status", currentUser?.status)
+  const urlListRooms = `/chat/listRooms/${auth?.userId}/${currentUser?.conversation_id}`;
   return (
     <ConversationDiv
       onClick={(e) => {
@@ -23,6 +23,7 @@ export const Conversation = (props) => {
           currentUser?.conversation_id,
           false
         );
+        updateListRooms(urlListRooms);
       }}
     >
       <FriendImg display={status?.toString() || 'false'} />
