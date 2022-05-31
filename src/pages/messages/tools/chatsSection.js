@@ -1,19 +1,22 @@
 import React, { useContext, useEffect, useRef, useCallback } from "react";
 
-import { UserContext } from "../../../Components/contexts/usercontext";
 import { ChatsSection } from "../style";
+
+import { UserContext } from "../../../Components/contexts/usercontext";
 import { authentication } from "../../../Components/contexts/usecontext";
-import { Message } from "./message";
-import { HeartSymbol } from "./heartSymbol";
 import { currentConversation } from "../../../Components/contexts/currentConversation";
 
+import { Message } from "./message";
+import { HeartSymbol } from "./heartSymbol";
+
 export const ChatsSectionDiv = (props) => {
+  const scroll = useRef();
   const { myNewmessage, messages, setMessages, socket, room } = props;
   const { auth } = useContext(authentication);
-  const scroll = useRef();
   const [userDetails, setUserDetails] = useContext(UserContext);
   const [currentConversationDetails, setCurrentConversationDetails] =
     useContext(currentConversation);
+
   const messageListener = (message) => {
     if (message) {
       setMessages((messages) => {
@@ -38,15 +41,16 @@ export const ChatsSectionDiv = (props) => {
     socket?.on("private message", (message) => {
       if (
         currentConversationDetails?.conversation_id === message?.message?.to
-      ) {
-        privateMessage(message?.message?.content);
-      }
-    });
-  }, [socket, privateMessage, currentConversationDetails]);
+        ) {
+          privateMessage(message?.message?.content);
+        }
+      });
+    }, [socket, privateMessage, currentConversationDetails]);
+    
+    useEffect(() => {
+      messageListener(myNewmessage);
+    }, [myNewmessage]);
 
-  useEffect(() => {
-    messageListener(myNewmessage);
-  }, [myNewmessage]);
   return (
     <ChatsSection ref={scroll}>
       <HeartSymbol />
@@ -58,6 +62,7 @@ export const ChatsSectionDiv = (props) => {
               photoProfile={userDetails?.photoProfile}
               message={m?.message_text}
               own={m?.sender_id == auth?.userId}
+              conversation_id={currentConversationDetails?.conversation_id}
             />
           )}
         </div>

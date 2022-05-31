@@ -2,13 +2,11 @@ import React, { useContext, useState, useEffect } from "react";
 
 import { ListMessages } from "../style";
 
-import { UserContext } from "../../../Components/contexts/usercontext";
 import { conversationsContext } from "../../../Components/contexts/conversationscontext";
 import { Conversation } from "./conversation";
 import { getListRooms } from "../../../api/chats";
 
 export const ListMessagesDiv = (props) => {
-  const [userDetails, setUserDetails] = useContext(UserContext);
   const urlListRooms = `/chat/listRooms/${props.userId}`;
   const [conversations, setConversations] = useContext(conversationsContext);
 
@@ -16,13 +14,11 @@ export const ListMessagesDiv = (props) => {
     getListRooms(urlListRooms, setConversations);
   }, []);
 
+  console.log("this is rooms from list messages div", conversations);
   return (
     <ListMessages>
       {conversations.map((c, index) => (
-        <Conversation
-          key={`Conversation${index}`}
-          currentUser={c}
-        />
+        <Conversation key={`Conversation${index}`} currentUser={c} />
       ))}
     </ListMessages>
   );

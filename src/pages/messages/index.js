@@ -12,7 +12,7 @@ import { StikyUser } from "./tools/stikyUser";
 import { ChatsSectionDiv } from "./tools/chatsSection";
 import { TypingSectionDiv } from "./tools/typingSection";
 import { ListMessagesDiv } from "./tools/listmessages";
-
+import { updateConversationStatus } from "./tools/tools";
 import io from "socket.io-client";
 
 export const Messages = (props) => {
@@ -24,6 +24,7 @@ export const Messages = (props) => {
   const urlMsg = `/chat/${currentConversationDetails?.conversation_id}`;
 
   const [messages, setMessages] = useState([]);
+  const [notification, setNotification] = useState({});
 
   const [socket, setSocket] = useState(null);
   const [myNewmessage, setMyNewmessage] = useState(null);
@@ -59,10 +60,21 @@ export const Messages = (props) => {
 
   useEffect(() => {
     auth?.socket?.on("message", (data) => {
-      console.log("from message page ", data);
+      setNotification(data?.message);
     });
   }, [auth]);
 
+  useEffect(() => {
+    if (currentConversationDetails?.conversation_id != notification?.from)
+      updateConversationStatus(
+        conversations,
+        setConversations,
+        notification?.from,
+        true
+      );
+  }, [notification]);
+
+  console.log("this is message from index", messages);
   return (
     <Layout login={true}>
       <Content>

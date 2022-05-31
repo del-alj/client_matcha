@@ -111,7 +111,7 @@ export const ConversationDiv = styled.div`
 `;
 
 export const FriendImg = styled.div`
-  display: ${(props) => (props?.display == true ? "block" : "none")};
+  display: ${(props) => (props?.display == 'true' ? "block" : "none")};
   margin-right: 20px;
   /* border: 1px solid black; */
   width: 10px;
