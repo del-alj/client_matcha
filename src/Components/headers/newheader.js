@@ -14,7 +14,8 @@ import envelope from "../../assets/icons/envelope.png";
 import notif from "../../assets/icons/notification.png";
 import gear from "../../assets/icons/gear.png";
 import { settings } from "./tools/menusList";
-import { getNotification } from "../../pages/notifications/tools";
+import { getNotification, getIfMsgNotification } from "../../pages/notifications/tools";
+
 const NewHeader = ({ display }) => {
   let history = useHistory();
   const { auth, setAuth } = useContext(authentication);
@@ -30,7 +31,7 @@ const NewHeader = ({ display }) => {
     //ma3raftx xni dirt
     getNotification(`/notification/${auth.userId}`, setNotifications);
     if (notifications[0]?.status === true) setStatus(true);
-    console.log("this is first notification", notifications ,auth?.userId,  );
+    getIfMsgNotification(`/notification/msg/${auth?.userId}`, setMsgStatus);
   }, []);
 
   return (
