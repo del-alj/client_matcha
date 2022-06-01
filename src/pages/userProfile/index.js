@@ -20,7 +20,7 @@ export const UserProfile = (props) => {
   const env = `${process.env.REACT_APP__ENV}:7000`;
 
   let { id } = useParams();
-  const url = `/user/${id ? id : auth.userId}/${auth.userId}`;
+  const url = `/user/${id ? id : auth.userId}`;
   const urlImages = `/picture/${id ? id : auth.userId}`;
   useEffect(() => {
     getUser(url, setUserDetails);
