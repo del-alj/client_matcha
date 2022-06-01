@@ -24,7 +24,7 @@ export const EditProfile = (props) => {
   const [disable, setDisable] = useState(true);
   const [userdetails, setUserDetails] = useContext(UserContext);
   const [imageDetails ,setImageDetails] = useContext(ImageContext);
-  const urlImages = `/picture/${auth.userId}`;
+  const urlImages = `/picture/${auth?.userId}`;
 
   useEffect(() => {
     getUser(url, setUserDetails);

@@ -37,10 +37,10 @@ export const getUser = async (url, setUserDetails) => {
         setUserDetails(null);
       } else
         setUserDetails({
-          userName: res.data?.user_name,
-          firstName: res.data?.first_name,
-          lastName: res.data?.last_name,
-          email: res.data?.email,
+          userName: res?.data?.user_name,
+          firstName: res?.data?.first_name,
+          lastName: res?.data?.last_name,
+          email: res?.data?.email,
           bio: res?.data?.bio,
           age: res?.data?.age,
           gender: res?.data?.gender,

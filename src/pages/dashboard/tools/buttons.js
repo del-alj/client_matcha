@@ -4,7 +4,7 @@ import { ButtonDiv } from "../style";
 import { UserContext } from "../../../Components/contexts/usercontext";
 
 import { Button } from "./style";
-import { likeThisUser } from "../../../api/likes";
+import { likeThisUserDashboard } from "../../../api/likes";
 const handelClick = (setNext, next) => {
   setNext(!next);
 };
@@ -25,7 +25,7 @@ export const Buttons = (props) => {
       <Button
         onClick={(e) => {
           handelClick(setNext, next);
-          likeThisUser(ids, setUserDetails);
+          likeThisUserDashboard(ids, setUserDetails);
         }}
       >
         /3

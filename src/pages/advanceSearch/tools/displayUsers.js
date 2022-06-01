@@ -10,7 +10,7 @@ export const DisplayUsers = (props) => {
     <>
       <DivImg>
         {users.map((elem, index) => (
-          <ContinerCardInfo user={elem} index={index}/>
+          <ContinerCardInfo user={elem} key={`continercard${index}`}  index={index}/>
         ))}
       </DivImg>
     </>

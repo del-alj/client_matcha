@@ -23,6 +23,7 @@ export const Dashboard = (props) => {
   const [user, setUser] = useState(null);
   const url = `/user/${auth.userId}`;
 
+
   useEffect(() => {
     getUser(url, setUserDetails);
     console.log("dashboard", userDetails);
