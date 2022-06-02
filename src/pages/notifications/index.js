@@ -19,13 +19,13 @@ export const NotificationsPage = (props) => {
     getNotification(url, setNotifications);
     updateNotificationStatus(url, setNotifications);
   }, []);
-console.log("notification after update", notifications);
+  
   return (
     <Layout login={true}>
       <Content style={{ flexDirection: "column" }}>
         <h1>Notifications</h1>
         <Box>
-          {notifications.map((elem, index) => (
+          {notifications?.map((elem, index) => (
             <NotificationContent key={`span${index}`}>
               <a href={`/user/${elem?.from_id}`}>
                 {elem?.title} {elem?.text} you on{" "}
