@@ -33,7 +33,6 @@ export const AdvanceSearch = () => {
     axiosInstance
       .put(url, param)
       .then((res) => {
-        console.log(res?.data);
         setusers(res?.data);
       })
       .catch((err) => {
@@ -45,7 +44,6 @@ export const AdvanceSearch = () => {
     const newData = { ...data };
     newData[e.target.id] = e.target.value;
     setData(newData);
-    console.log(newData);
   };
 
   useEffect(() => {}, [users]);

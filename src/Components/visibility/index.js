@@ -18,7 +18,7 @@ const Visibility = (props) => {
         if (data) setStatus("online");
         else {
           getDisconnectAt(`${url}/${id}`, setStatus);
-          console.log("this value disconect ", status);
+          console.log("this value disconect ");
         }
       });
     }

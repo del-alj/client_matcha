@@ -94,8 +94,6 @@ export const EditGallery = (props) => {
     // Request made to the backend api
     // Send formData object
     formData.append("image", files[0], files[0].name);
-    console.log("test1", formData);
-    console.log("test2", formData.get("image"));
 
     await axiosInstance
       .post(url, formData)
@@ -126,9 +124,7 @@ export const EditGallery = (props) => {
       });
   };
   useEffect(() => {
-    console.log("imageDetails", imageDetails);
     pictures?.length < 5 ? setDisplay(true) : setDisplay(false);
-    console.log("tets", display);
   }, [imageDetails]);
 
   return (

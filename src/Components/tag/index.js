@@ -5,8 +5,6 @@ import { tagsContext } from "../../Components/contexts/tagsContext";
 
 const handelClick = (status, setStatus, props) => {
   setStatus(!status);
-
-  // console.log(props);
 };
 
 const Tag = (props) => {

@@ -31,7 +31,7 @@ const IconNotification = (props) => {
   useEffect(() => {
     //ma3raftx xni dirt
     auth.socket?.on(`${props?.type}`, (data) => {
-      console.log(`${props?.type}`, data);
+      console.log(`hadi on socket ${props?.type}`, data);
       setStatus(true);
     });
   }, []);

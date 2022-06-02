@@ -16,7 +16,6 @@ export const TagsBar = (props) => {
     const newData = { ...data };
     newData["tags"] = tagsDetails;
     setData(newData);
-    console.log(newData);
   }, [tagsDetails]);
   return (
     <Div

@@ -3,12 +3,11 @@ import axiosInstance from "../services/AxiosInstance";
 export const blockuser = async (user_id, bloker_id) => {
   const url = "/block";
   const param = { user_id, bloker_id };
-  console.log(user_id, bloker_id)
   if (user_id && bloker_id) {
     axiosInstance
       .put(url, param)
       .then((res) => {
-        console.log("blocked dones", res?.data);
+        console.log("blocked dones");
       })
       .catch((err) => {
         console.log(err);
@@ -37,7 +36,7 @@ export const reportuser = async (user_id, reporter_id) => {
     axiosInstance
       .put(url, param)
       .then((res) => {
-        console.log("reported dones",res?.data);
+        console.log("reported dones");
       })
       .catch((err) => {
         console.log(err);

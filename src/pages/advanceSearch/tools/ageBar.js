@@ -13,7 +13,6 @@ export const AgeBar = (props) => {
   const onChangeMinAge = (e) => {
     setLowerVal(parseInt(lowerSlider?.value));
     setUpperVal(parseInt(upperSlider?.value));
-    // console.log(lowerSlider.value, e.target.value);
     if (e.target.value > maxAge - 1) {
       upperSlider.value = lowerVal + 1;
 
@@ -43,7 +42,6 @@ export const AgeBar = (props) => {
     const newData = { ...data };
     newData["age"] = { min: minAge, max: maxAge };
     setData(newData);
-    console.log(newData);
   }, [minAge, maxAge]);
 
   return (

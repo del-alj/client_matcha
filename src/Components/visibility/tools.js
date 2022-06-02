@@ -2,7 +2,6 @@ import axiosInstance from "../../services/AxiosInstance";
 import moment from "moment";
 
 export const getDisconnectAt = async (url, setStatus) => {
-  console.log(url);
   await axiosInstance
     .get(url)
     .then((res) => {

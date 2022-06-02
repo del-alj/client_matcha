@@ -22,9 +22,6 @@ export const PhotoProfile = (props) => {
 
     // Send formData object
     formData.append("image", files[0], files[0].name);
-    console.log("test1", formData);
-    console.log("test2", formData.get("image"));
-
     await axiosInstance
       .post(url, formData)
       .then((res) => {

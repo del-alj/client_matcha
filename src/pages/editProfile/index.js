@@ -35,7 +35,6 @@ export const EditProfile = (props) => {
   }, [auth?.userId]);
 
   const submit = (e) => {
-    console.log('urledit, userdetails');
     e.preventDefault();
     updateUser(urledit, userdetails);
     history.push('/profile');
@@ -46,7 +45,6 @@ export const EditProfile = (props) => {
     const newData = { ...userdetails };
     newData[e.target.id] = e.target.value;
     setUserDetails(newData);
-    console.log(newData);
   };
   return (
     <Layout login={true}>
@@ -78,7 +76,6 @@ export const EditProfile = (props) => {
               disabled={disable}
               style={{ width: '15rem', margin: 'auto' }}
               onClick={() => {
-                console.log("go to backe end edit profale test gender preference",userdetails);
                 updateUser(urledit, userdetails);
                 history.push('/profile');
               }}

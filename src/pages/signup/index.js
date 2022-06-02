@@ -41,7 +41,6 @@ const Signup = () => {
       .post(url, param)
       .then((res) => {
         history.push("/confirmSignup");
-        console.log("signup", res);
         res.send("ok");
       })
       .catch((err) => {
@@ -53,7 +52,6 @@ const Signup = () => {
     const newData = { ...data };
     newData[e.target.id] = e.target.value;
     setData(newData);
-    console.log(newData);
   };
 
   return (

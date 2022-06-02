@@ -25,7 +25,6 @@ export const AddImageFile = ({ files, setFiles, setDisable }) => {
   // On file select (from the pop up)
   const onFileChange = (e) => {
     // Update the state
-    console.log("this is file :", e.target);
     setFiles(e.target.files);
     setDisable(false);
   };

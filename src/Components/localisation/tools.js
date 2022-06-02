@@ -38,7 +38,6 @@ export const getGeoLocal = async () => {
 
   const success = (pos) => {
     var crd = pos.coords;
-    console.log(crd.latitude, crd.longitude);
     return {
       latitude: crd.latitude,
       longitude: crd.longitude,
@@ -54,7 +53,6 @@ export const getGeoLocal = async () => {
       .query({ name: "geolocation" })
       .then((result) => {
         if (result.state === "granted") {
-          console.log(result.state);
           return navigator.geolocation.getCurrentPosition(success);
         } else if (result.state === "prompt") {
           return navigator.geolocation.getCurrentPosition(
@@ -121,7 +119,6 @@ export const findCoord = async (city) => {
   const api_url_endpoint = `https://documentation-resources.opendatasoft.com/api/records/1.0/search/?dataset=geonames-all-cities-with-a-population-1000&q=${city}`;
 
   const temp = await axios.get(api_url_endpoint);
-  console.log("im here findCoord");
   return temp;
 };
 

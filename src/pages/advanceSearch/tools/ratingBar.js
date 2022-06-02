@@ -8,7 +8,6 @@ export const RatingBar = (props) => {
     const newData = { ...data };
     newData["rating"] = rating;
     setData(newData);
-    console.log(newData);
   }, [rating]);
 
   const { data, setData } = props;

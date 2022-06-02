@@ -46,7 +46,6 @@ export const Localisation = (props) => {
     setDisable(false);
     const newData = { ...city };
     newData[e.target.id] = e.target.value;
-    console.log(newData);
     setCity(newData.addLocalisation);
   };
 

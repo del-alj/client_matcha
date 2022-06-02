@@ -40,7 +40,7 @@ export const unLikeThisUser = async (ids, setUserDetails) => {
     axiosInstance
       .delete(url)
       .then((res) => {
-        console.log("unlike dones", res?.data);
+        console.log("unlike dones");
         setUserDetails((prev) => {
           const newList = prev.likesList.filter((id) => id != ids?.user_id);
 

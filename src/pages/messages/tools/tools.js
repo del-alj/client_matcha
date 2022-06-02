@@ -28,7 +28,5 @@ export const updateSenderConversationStatus = (
     }
     return elem;
   });  
-
-  console.log("<>", temp)
   setConversations(temp);
 };

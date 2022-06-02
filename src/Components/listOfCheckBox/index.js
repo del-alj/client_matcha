@@ -14,7 +14,6 @@ export const ListCheckBox = (props) => {
     const newData = { ...userdetails };
     newData['preference'] = e.target.checked ? e.target.value : '';
     setUserDetails(newData);
-    // console.log(newData);
   };
 
   return (

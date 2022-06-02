@@ -11,7 +11,6 @@ import crown from "../../../assets/icons/crown.png";
 
 export const CartInfoDiv = (props) => {
   const { name, age, city, rating, id } = props;
-  console.log(city);
   return (
     <MiniCartInfo>
       <InfoSection>

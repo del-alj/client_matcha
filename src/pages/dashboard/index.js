@@ -26,7 +26,6 @@ export const Dashboard = (props) => {
 
   useEffect(() => {
     getUser(url, setUserDetails);
-    console.log("dashboard", userDetails);
   }, []);
 
   useEffect(() => {

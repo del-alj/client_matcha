@@ -9,7 +9,6 @@ import { getListRooms } from "../../../api/chats";
 export const ListMessagesDiv = (props) => {
   const urlListRooms = `/chat/listRooms/${props.userId}`;
   const [conversations, setConversations] = useContext(conversationsContext);
-  console.log("conversations", conversations, props.userId);
   useEffect(() => {
     getListRooms(urlListRooms, setConversations);
   }, []);

@@ -32,7 +32,6 @@ export const getUser = async (url, setUserDetails) => {
   await axiosInstance
     .get(url)
     .then((res) => {
-      console.log("get user function", res?.data);
       if (res?.data?.length === 0) {
         setUserDetails(null);
       } else
@@ -78,7 +77,6 @@ export const updateTags = async (url, tagsDetails) => {
   const data = await axiosInstance.post(url, tagsDetails).catch((err) => {
     console.error(err);
   });
-  console.log("test", data);
 };
 
 /* update user */
@@ -89,7 +87,6 @@ export const updateUser = async (url, param, setUserDetails) => {
   await axiosInstance
     .put(url, param)
     .then((res) => {
-      console.log("this is data ", res.data);
       setUserDetails({
         userName: res.data?.user_name,
         firstName: res.data?.first_name,
@@ -111,13 +108,10 @@ export const updateUser = async (url, param, setUserDetails) => {
 export const getLook = async (ids) => {
   const url = "/vue";
   const param = { user_id: ids?.user_id, looker_id: ids?.looker_user_id };
-  console.log("before put req");
 
   return await axiosInstance
     .put(url, param)
     .then((res) => {
-      
-      console.log("this is data ", res.data);
       return res.data;
       // false ma 3raftxi wax khesatkon false awla true
     })

@@ -1,4 +1,4 @@
-import React, { useState, useContext} from "react";
+import React, { useState, useContext } from "react";
 import axios from "axios";
 
 import { validation } from "../../assets/validationSchema/registration";
@@ -58,7 +58,6 @@ const Login = () => {
     const newData = { ...data };
     newData[e.target.id] = e.target.value;
     setData(newData);
-    console.log("loging", newData);
   };
 
   return (

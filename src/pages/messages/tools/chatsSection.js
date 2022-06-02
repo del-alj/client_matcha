@@ -33,7 +33,6 @@ export const ChatsSectionDiv = (props) => {
   }, [messages]);
 
   const privateMessage = useCallback((message) => {
-    // console.log(" call back", message);
     messageListener(message);
   }, []);
 

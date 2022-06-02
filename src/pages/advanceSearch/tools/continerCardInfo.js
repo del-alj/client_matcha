@@ -55,7 +55,7 @@ export const ContinerCardInfo = (props) => {
         key={`div${index}`}
         like={likeStatus}
         onClick={() => {
-          console.log("test", user?.user_id);
+          console.log("thi is blure", user?.user_id);
         }}
       >
         <Img status={true} key={`img${index}`} src={user?.image_path} />

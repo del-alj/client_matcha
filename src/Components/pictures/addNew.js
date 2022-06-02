@@ -18,7 +18,6 @@ export const AddNew = ({ files, setFiles, setDisable }) => {
     const newImagesUrls = [];
 
     if (files?.length > 0) {
-      console.log();
       [...files].forEach((file) =>
         newImagesUrls.push(URL.createObjectURL(file))
       );
@@ -29,7 +28,6 @@ export const AddNew = ({ files, setFiles, setDisable }) => {
   // On file select (from the pop up)
   const onFileChange = (e) => {
     // Update the state
-    console.log("this is file :", e.target);
     setFiles(e.target.files);
     setDisable(false);
   };

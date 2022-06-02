@@ -23,7 +23,6 @@ export const AddPicture = (props) => {
         type="radio"
         name="myRadios"
         onClick={(e) => {
-          console.log("radio", e);
           setDisplay(false);
         }}
       >

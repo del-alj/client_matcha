@@ -20,7 +20,7 @@ export const getIfMsgNotification = async (url, setMsgStatus) => {
   await axiosInstance
     .get(url)
     .then((res) => {
-      console.log("get notification msg", res?.data);
+      console.log("get notification msg");
       if (res?.data?.length === 0) {
         setMsgStatus(false);
       } else {
@@ -39,7 +39,7 @@ export const updateNotificationStatus = async (url, setNotifications) => {
   await axiosInstance
     .put(url)
     .then((res) => {
-      console.log("update notification function", res?.data);
+      console.log("update notification function");
       if (res?.data?.length === 0) {
         setNotifications(null);
       } else setNotifications(res.data);
