@@ -16,17 +16,16 @@ import { updateConversationStatus } from "./tools/tools";
 import io from "socket.io-client";
 
 export const Messages = (props) => {
+  const urlMsg = `/chat/${currentConversationDetails?.conversation_id}`;
+
+  const { auth } = useContext(authentication);
   const [currentConversationDetails, setCurrentConversationDetails] =
     useContext(currentConversation);
   const [conversations, setConversations] = useContext(conversationsContext);
 
-  const { auth } = useContext(authentication);
-  const urlMsg = `/chat/${currentConversationDetails?.conversation_id}`;
-
+  const [socket, setSocket] = useState(null);
   const [messages, setMessages] = useState([]);
   const [notification, setNotification] = useState({});
-
-  const [socket, setSocket] = useState(null);
   const [myNewmessage, setMyNewmessage] = useState(null);
 
   useEffect(() => {

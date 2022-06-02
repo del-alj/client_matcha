@@ -4,7 +4,7 @@ export const getNotification = async (url, setNotifications) => {
   await axiosInstance
     .get(url)
     .then((res) => {
-      console.log("get notification function", res?.data);
+      console.log("get notification function");
       if (res?.data?.length === 0) {
         setNotifications(null);
       } else {
@@ -16,11 +16,29 @@ export const getNotification = async (url, setNotifications) => {
     });
 };
 
+export const getNotificationStatus = async (url, setStatus) => {
+  await axiosInstance
+    .get(url)
+    .then((res) => {
+      if (res?.data?.length > 0 && res?.data[0]?.status === true ){
+        setStatus(true);
+      } else {
+
+        setStatus(false);
+      }
+    })
+    .catch((err) => {
+      console.error(err);
+    });
+};
+
+
+
+
 export const getIfMsgNotification = async (url, setMsgStatus) => {
   await axiosInstance
     .get(url)
     .then((res) => {
-      console.log("get notification msg");
       if (res?.data?.length === 0) {
         setMsgStatus(false);
       } else {

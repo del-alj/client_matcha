@@ -27,7 +27,6 @@ const Icon = (props) => {
 const IconNotification = (props) => {
   const { history, status, setStatus } = props;
   const { auth } = useContext(authentication);
-
   useEffect(() => {
     //ma3raftx xni dirt
     auth.socket?.on(`${props?.type}`, (data) => {
