@@ -31,8 +31,8 @@ export const SliderPicture = styled.div`
   /* width: 100px;
   height: 100px; */
   @media screen and (max-width: 500px) {
-    width: 10em;
-    min-height: 10em;
+    width: 20em;
+    min-height: 20em;
   }
 `;
 

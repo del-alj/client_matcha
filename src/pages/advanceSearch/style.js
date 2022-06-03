@@ -202,8 +202,8 @@ export const Img = styled.img`
   border: 6px solid black;
   @media screen and (max-width: 455px) {
     /* background: transparent; */
-    width: 10em;
-    height: 10em;
+    width: 15em;
+    height: 15em;
     border: 3px solid black;
   }
 `;
@@ -226,6 +226,10 @@ export const Heart = styled.div`
   }
   :hover img {
     opacity: 1;
+  }
+  @media screen and (max-width: 455px) {
+    top: 90px;
+    right: 90px;
   }
 `;
 
