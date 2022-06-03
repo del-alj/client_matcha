@@ -37,7 +37,7 @@ export const Slider = (props) => {
     >
       <SliderPictureDiv order={2}>
         <SliderPicture
-          src={photos[index]?.image_path}
+          src={`url(${photos[index]?.image_path})`}
           alt={photos[index]?.image_name}
         ></SliderPicture>
       </SliderPictureDiv>
