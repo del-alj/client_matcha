@@ -33,6 +33,10 @@ export const Box = styled.div`
     /* background: transparent; */
     padding: 3rem 3rem;
   }
+  @media screen and (max-width: 555px) {
+    /* background: transparent; */
+    padding: 0px;
+  }
 `;
 
 export const SliderPictureDiv = styled.div`

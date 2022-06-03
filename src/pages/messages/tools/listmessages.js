@@ -7,6 +7,7 @@ import { Conversation } from "./conversation";
 import { getListRooms } from "../../../api/chats";
 
 export const ListMessagesDiv = (props) => {
+  const {chatResponsive, setChatResponsive} =props;
   const urlListRooms = `/chat/listRooms/${props.userId}`;
   const [conversations, setConversations] = useContext(conversationsContext);
   useEffect(() => {
@@ -20,12 +21,14 @@ export const ListMessagesDiv = (props) => {
       : true;
   };
   return (
-    <ListMessages>
+    <ListMessages display={chatResponsive}>
       {conversations.map((c, index) => (
         <Conversation
           key={`Conversation${index}`}
           currentUser={c}
           status={getStatus(c)}
+          chatResponsive={chatResponsive}
+           setChatResponsive={setChatResponsive}
         />
       ))}
     </ListMessages>

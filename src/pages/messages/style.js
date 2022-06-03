@@ -7,14 +7,16 @@ export const ChatBox = styled.div`
   height: 40rem;
   box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 13px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
   justify-content: center;
+  @media screen and (max-width: 809px) {
+    height: 30rem;
+  }
+
 `;
 
 export const ListMessages = styled.div`
   flex: 2;
   display: flex;
   flex-direction: column;
-  /* justify-content: center;
-  align-items: center; */
   background: white;
   padding: 1em;
 
@@ -24,7 +26,6 @@ export const ListMessages = styled.div`
   height: 100%;
 
   ::-webkit-scrollbar-track {
-    /* -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); */
     background-color: transparent;
   }
 
@@ -34,11 +35,9 @@ export const ListMessages = styled.div`
   }
 
   ::-webkit-scrollbar-thumb {
-    /* background-color:  #F5F5F5; */
-    /* border: 2px solid #555555; */
   }
   @media screen and (max-width: 809px) {
-    display: none;
+    display: ${(props) => props?.display ? "block" : "none"};
   }
 `;
 
@@ -48,13 +47,14 @@ export const Board = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  /* border: 1px solid black; */
   background: white;
-  /* height: 30em; */
   padding: 1em;
   /* overflow-y: scroll; */
   height: 100%;
   position: relative;
+  @media screen and (max-width: 809px) {
+    display: ${(props) => props?.display ? "block" : "none"};
+  }
 `;
 
 export const Heart = styled.img`
@@ -89,11 +89,13 @@ export const MessageDiv = styled.div`
   height: 60em;
   display: flex;
   flex-direction: column;
-  /* justify-content: space-between; */
   position: relative;
 
   @media screen and (max-width: 425px) {
     font-size: 12px;
+  }
+  @media screen and (max-width: 809px) {
+    display: ${(props) => props?.display ? "block" : "none"};
   }
 `;
 
@@ -111,21 +113,13 @@ export const ConversationDiv = styled.div`
 `;
 
 export const FriendImg = styled.div`
-  display: ${(props) => (props?.display == 'true' ? "block" : "none")};
+  display: ${(props) => (props?.display == "true" ? "block" : "none")};
   margin-right: 20px;
   /* border: 1px solid black; */
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  /* overflow: hidden; */
-  /* background-image: ${(props) => props?.src ?? `${props?.src}`};
-  background-size: cover;
-  background-position: center; */
   background-color: red;
-  /* @media screen and (max-width: 375px) {
-    width: 20px;
-    height: 20px;
-  } */
 `;
 
 export const FriendName = styled.span`
@@ -136,9 +130,6 @@ export const TypingSection = styled.div`
   margin-top: 5px;
   display: flex;
   align-items: center;
-  /* flex: 1; */
-  /* border: solid; */
-  /* justify-content: space-between; */
 `;
 
 export const Button = styled.button`
@@ -162,15 +153,10 @@ export const Button = styled.button`
 `;
 
 export const ChatsSection = styled.div`
-  /* flex: ; */
-  /* flex: 1; */
   height: 60%;
-  min-height: 549px;
+  /* min-height: 549px; */
   overflow-y: scroll;
   padding-right: 10px;
-  /* padding-top: 120px; */
-  /* border: solid; */
-
   ::-webkit-scrollbar-track {
     -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
     background-color: transparent;
@@ -184,6 +170,9 @@ export const ChatsSection = styled.div`
   ::-webkit-scrollbar-thumb {
     background-color: #555555;
     border: 2px solid #555555;
+  }
+  @media screen and (max-width: 809px) {
+    height: 25rem;
   }
 `;
 
@@ -232,10 +221,7 @@ export const MessageBox = styled.div`
 
 export const StikyDiv = styled.div`
   display: flex;
-  /* align-items: center; */
-  /* justify-content: space-between; */
-  width: 100%;
-  /* min-height: 80px; */
+  width: 90%;
   padding: 0px 30px;
   font-size: 1.5em;
   font-family: "Electrolize", sans-serif;
@@ -245,4 +231,18 @@ export const StikyDiv = styled.div`
   border-bottom: 1.5px solid #d1d1d1;
   top: 0px;
   background: #ffffff;
+`;
+
+export const MessageBoxButton = styled.div`
+  display: none;
+  @media screen and (max-width: 800px) {
+    width: 50px;
+    height: 50px;
+    background: white;
+    padding: 3px;
+    display: block;
+  }
+> p {
+
+}
 `;

@@ -7,7 +7,7 @@ import { updateConversationStatus } from "./tools";
 import { updateListRooms } from "../../../api/chats";
 // import { updateRoomStatus } from "./tools";
 export const Conversation = (props) => {
-  const { currentUser, status } = props;
+  const { currentUser, status, chatResponsive, setChatResponsive } = props;
   const { auth } = useContext(authentication);
   const [currentConversationDetails, setCurrentConversationDetails] =
   useContext(currentConversation);
@@ -24,6 +24,8 @@ export const Conversation = (props) => {
           false
         );
         updateListRooms(urlListRooms);
+        setChatResponsive(!chatResponsive)
+
       }}
     >
       <FriendImg display={status?.toString() || 'false'} />

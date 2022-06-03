@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 
 import { Layout } from "../../layouts/signinLayout";
 import { Content, Box } from "../dashboard/style";
-import { Board, MessageDiv, ChatBox } from "./style";
+import { Board, MessageDiv, ChatBox, MessageBoxButton } from "./style";
 
 import { authentication } from "../../Components/contexts/usecontext";
 import { currentConversation } from "../../Components/contexts/currentConversation";
@@ -13,13 +13,14 @@ import { ChatsSectionDiv } from "./tools/chatsSection";
 import { TypingSectionDiv } from "./tools/typingSection";
 import { ListMessagesDiv } from "./tools/listmessages";
 import { updateConversationStatus } from "./tools/tools";
+import {Burger} from "./tools/burger";
+
 import io from "socket.io-client";
 
 export const Messages = (props) => {
-  
   const { auth } = useContext(authentication);
   const [currentConversationDetails, setCurrentConversationDetails] =
-  useContext(currentConversation);
+    useContext(currentConversation);
   const [conversations, setConversations] = useContext(conversationsContext);
   const urlMsg = `/chat/${currentConversationDetails?.conversation_id}`;
 
@@ -27,6 +28,7 @@ export const Messages = (props) => {
   const [messages, setMessages] = useState([]);
   const [notification, setNotification] = useState({});
   const [myNewmessage, setMyNewmessage] = useState(null);
+  const [chatResponsive, setChatResponsive] = useState(true);
 
   useEffect(() => {
     if (currentConversationDetails?.conversation_id)
@@ -78,10 +80,21 @@ export const Messages = (props) => {
       <Content>
         <Box>
           <ChatBox>
-            <ListMessagesDiv userId={auth.userId} />
-            <Board>
+          <MessageBoxButton
+            onClick={() => {
+              setChatResponsive(!chatResponsive);
+            }}
+          >
+            <Burger />
+          </MessageBoxButton>
+            <ListMessagesDiv
+              userId={auth.userId}
+              setChatResponsive={setChatResponsive}
+              chatResponsive={chatResponsive}
+            />
+            <Board display={!chatResponsive}>
               <StikyUser userName={currentConversationDetails?.user_name} />
-              <MessageDiv>
+              <MessageDiv display={!chatResponsive}>
                 {currentConversationDetails?.conversation_id ? (
                   <>
                     <ChatsSectionDiv
