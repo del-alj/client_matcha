@@ -144,12 +144,8 @@ export const EditGallery = (props) => {
               onClick={() => {
                 const param = {
                   image_id: picture?.image_id,
-                  image_name: picture?.image_path.split("/")[7].split(".")[0],
+                  image_name: picture?.image_path?.split("/")[7]?.split(".")[0],
                 };
-                //  const param = {
-                //               image_id: picture?.image_id,
-                //               image_name: picture?.image_path,
-                //             };
                 deleteImg(urldelete, param);
               }}
             >
