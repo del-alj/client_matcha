@@ -13,7 +13,7 @@ export const Content = styled.div`
   align-items: center;
   text-align: center;
   padding: 1rem 0rem;
-  /* height: calc(100vh - 180px - 2rem); */
+  height: calc(100vh - 180px - 2rem);
 `;
 
 export const Box = styled.div`
@@ -73,21 +73,23 @@ export const ButtonDiv = styled.div`
   display: flex;
   padding-top: 0.7rem;
   @media screen and (max-width: 425px) {
+    margin-top: 12px;
     padding-top: 0px;
   }
 `;
 
 export const CartInfo = styled.div`
   width: 100%;
-  height: 10%;
+  /* height: 10%; */
   position: absolute;
   z-index: 9999;
-  top: 89.5%;
+  top: 88.5%;
   background: white;
   opacity: 0.7;
   display: flex;
-  @media screen and (max-width: 375px) {
-    top: 89.5%;
+  @media screen and (max-width: 500px) {
+    /* top: 89.5%; */
+    display: none;
   }
 `;
 
@@ -97,7 +99,7 @@ export const MiniCartInfo = styled.div`
   min-height: 4em;
   /* z-index: 9999; */
   background: black;
-  color: white
+  color: white;
   opacity: 0.7;
   display: flex;
 
@@ -118,21 +120,17 @@ export const InfoSection = styled.div`
   display: flex;
   flex-direction: column;
   text-align: left;
-  justify-content: center;
   padding-left: 1rem;
   line-height: 0px;
   width: 80%;
+  font-size: 10px !important;
   p {
     margin-left: 1rem;
   }
 
-  @media screen and (max-width: 930px) {
-    flex-direction: row;
-    align-items: center;
-    p {
-      margin-left: 0.1rem;
-    }
-  }
+  flex-direction: row;
+  align-items: center;
+
   @media screen and (max-width: 430px) {
     font-size: 9px !important;
   }
@@ -167,9 +165,10 @@ export const Features = styled.div`
   text-align: center;
   h1 {
     margin: 0px;
+    font-size: 16px;
   }
   img {
-    font-size: large;
+    font-size: 16px;
     width: 1.5em;
     height: 1.5em;
   }

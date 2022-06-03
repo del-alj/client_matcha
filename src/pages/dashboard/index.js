@@ -60,7 +60,7 @@ export const Dashboard = (props) => {
                   city={`${user?.distance?.toFixed(1)}Km`}
                   rating={user?.rating || 0}
                 />
-                <SliderPicture src={user?.image_path}></SliderPicture>
+                <SliderPicture src={`url(${user?.image_path})`}></SliderPicture>
               </Card>
               <Buttons setNext={setNext} next={next} ids={ids} />
             </SliderPictureDiv>

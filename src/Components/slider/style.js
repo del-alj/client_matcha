@@ -20,13 +20,19 @@ export const SliderButton = styled.button.attrs((props) => ({
   font-size: 3rem;
 `;
 
-export const SliderPicture = styled.img`
+export const SliderPicture = styled.div`
   outline: black solid 0.2rem;
-  width: 37rem;
-  min-height: 42rem;
+  width: 27em;
+  min-height: 27em;
   position: relative;
-  @media screen and (max-width: 930px) {
-    width: 100%;
+  background-image: ${(props) => props?.src ?? `${props?.src}`};
+  background-size: cover;
+  background-position: center;
+  /* width: 100px;
+  height: 100px; */
+  @media screen and (max-width: 500px) {
+    width: 10em;
+    min-height: 10em;
   }
 `;
 

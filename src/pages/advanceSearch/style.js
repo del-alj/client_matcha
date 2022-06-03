@@ -200,6 +200,12 @@ export const Img = styled.img`
   width: 20em;
   height: 20em;
   border: 6px solid black;
+  @media screen and (max-width: 455px) {
+    /* background: transparent; */
+    width: 10em;
+    height: 10em;
+    border: 3px solid black;
+  }
 `;
 
 export const Blur = styled.div`
