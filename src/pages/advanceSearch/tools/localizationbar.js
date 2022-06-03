@@ -10,7 +10,7 @@ export const LocalizationBar = (props) => {
       <H5>{props.title}</H5>
       <SecDiv>
         <Input
-          style={{ background: "#e6e6e6" }}
+          style={{ background: "#e6e6e6", height:"40px",  width: "200px" }}
           onChange={handelChange}
           placeholder={"City"}
           name={props.name}

@@ -219,6 +219,8 @@ export const Button = styled.button`
     outline-style: solid;
     box-shadow: 0 0 0 1px black;
   }
+  width: 200px;
+  align-self: center;
 `;
 
 export const Homebackground = styled.div`
@@ -240,18 +242,6 @@ export const Homebackground = styled.div`
   p {
     font-size: 2.5em;
   }
-  /* ::after {
-    content: "";
-    background-image: ${(props) =>
-    props.picture ? `url(${props.picture})` : "none"};
-    background-size: cover;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    position: absolute;
-    z-index: -1;
-  } */
   @media screen and (max-width: 425px) {
     h1 {
       font-size: 2.5em;

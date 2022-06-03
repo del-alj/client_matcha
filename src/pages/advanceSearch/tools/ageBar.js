@@ -54,7 +54,7 @@ export const AgeBar = (props) => {
             <p style={{ lineHeight: "0px" }}>{maxAge}</p>
           </NewAgs>
           <Slider>
-            <span className="multi-range">
+            <span className="multi-range" style={{width: "200px"}}>
               <input
                 type="range"
                 min="18"
@@ -63,6 +63,7 @@ export const AgeBar = (props) => {
                 onInput={onChangeMinAge}
                 id="min"
                 name="min"
+                style={{width: "200px"}}
               />
               <input
                 type="range"
@@ -72,6 +73,7 @@ export const AgeBar = (props) => {
                 onInput={onChangeMaxAge}
                 id="max"
                 name="max"
+                style={{width: "200px"}}
               />
             </span>
           </Slider>

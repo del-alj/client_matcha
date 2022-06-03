@@ -59,19 +59,20 @@ export const AdvanceSearch = () => {
 
         {!users ? (
           <Cadre onSubmit={(e) => submit(e)}>
-            <AgeBar data={data} setData={setData} title="Age" />
+             <AgeBar data={data} setData={setData} title="Age" />
             <LocalizationBar
               handelChange={handelChange}
               title="Localization"
               name="localization"
-            />
+              />
             <RatingBar
               data={data}
               setData={setData}
               name="rating"
               title="Rating"
-            />
-            <TagsBar data={data} setData={setData} title="Tags" />
+              />
+              
+            <TagsBar data={data} setData={setData} title="Tags" /> 
             <Button type="submit">Search</Button>
           </Cadre>
         ) : (

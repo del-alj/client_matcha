@@ -8,11 +8,20 @@ export const Cadre = styled.form`
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  align-items: center;
+  /* align-items: center; */
   margin-bottom: 20px;
-  @media screen and (max-width: 425px) {
-    align-items: flex-start;
-    max-width: 200px;
+  display: flex;
+
+  @media screen and (max-width: 700px) {
+    flex-direction: column;
+    /* justify-content: center;
+    align-content: center;
+    align-items: center; */
+
+    font-size: 12px;
+    padding: 3em 2.5em;
+    min-width: 70%;
+    height: auto;
   }
 `;
 
@@ -22,12 +31,18 @@ export const Div = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: center;
-  @media screen and (max-width: 425px) {
+  /* align-items: center; */
+  @media screen and (max-width: 700px) {
+    min-width: 200px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+  }
+  /* @media screen and (max-width: 425px) {
     flex-direction: column;
     align-items: flex-start;
     max-width: 200px;
-  }
+  } */
 `;
 
 export const H5 = styled.h5`
@@ -44,8 +59,8 @@ export const SecDiv = styled.div`
 `;
 
 export const DivButton = styled.div`
-  width: 90px;
-  height: 35px;
+  width: 80px;
+  height: 25px;
   display: flex;
   background: #e6e6e6;
   justify-content: center;
@@ -53,11 +68,12 @@ export const DivButton = styled.div`
 `;
 
 export const Button = styled.div`
-  width: 40px;
-  height: 30px;
+  width: 35px;
+  height: 25px;
   color: white;
   border: none;
   font-family: "Electrolize", sans-serif;
+  align-items: center;
   background: ${(props) => (props.status ? "black" : "#e6e6e6")};
   padding: 0px;
   > p {
@@ -89,12 +105,16 @@ export const SliderRange = styled.div`
   height: auto;
   display: flex;
   flex-direction: column;
+  @media screen and (max-width: 700px) {
+    width: 200px;
+  }
 `;
 
 export const NewAgs = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  width: 200px;
 `;
 
 export const Slider = styled.span`
@@ -163,6 +183,7 @@ export const Slider = styled.span`
       }
     }
   }
+  width: 200px;
 `;
 
 export const DivImg = styled.div`
