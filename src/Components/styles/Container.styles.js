@@ -188,7 +188,8 @@ export const Form = styled.form`
 `;
 
 export const Button = styled.button`
-  padding: 20px 60px;
+  /* padding: 20px 60px; */
+  padding: 16px 50px;
   font-size: 1em;
   display: flex;
   flex-direction: column;
