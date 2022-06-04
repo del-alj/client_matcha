@@ -6,11 +6,12 @@ import { Button } from "../../Components/styles/Container.styles";
 import { tagsContext } from "../../Components/contexts/tagsContext";
 import { authentication } from "../../Components/contexts/usecontext";
 import { UserContext } from "../../Components/contexts/usercontext";
+import {AutocompleterTags} from "../../Components/autocompleter/index";
 
 const url = `/tag`;
 
 const tagsIsDisabel = (tagsDetails) => {
-  return tagsDetails.length >= 3 && tagsDetails.length <= 5 ? false : true;
+  return tagsDetails?.length >= 3 && tagsDetails?.length <= 5 ? false : true;
 };
 
 export const TagsSection = () => {
@@ -39,7 +40,8 @@ export const TagsSection = () => {
     >
       {disabel ? (
         <>
-          <Tags tags={tags} />
+          {/* <Tags tags={tags} /> */}
+          <AutocompleterTags/>
           <Button
             disabled={tagsIsDisabel(tagsDetails)}
             onClick={async () => {
@@ -50,6 +52,7 @@ export const TagsSection = () => {
           >
             Edit
           </Button>
+
         </>
       ) : (
         <>
