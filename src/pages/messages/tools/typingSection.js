@@ -21,7 +21,7 @@ export const TypingSectionDiv = (props) => {
             ? currentConversationDetails?.sender_id
             : currentConversationDetails?.receiver_id,
         message_text: newMessage,
-        conversation_id: socket?.auth?.roomName,
+        conversation_id:auth?.socket?.auth?.roomName,
       };
       //send message
       auth?.socket?.emit("private message", {

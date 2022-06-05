@@ -43,18 +43,18 @@ export const Messages = (props) => {
   }, [setSocket]);
 
   useEffect(() => {
-    socket?.connect();
+    auth?.socket?.connect();
     console.log("socket connect");
-  }, [socket]);
+  }, [auth?.socket]);
 
   useEffect(() => {
-    socket?.emit("connectRoo", {
+    auth?.socket?.emit("connectRoo", {
       conversations,
     });
   }, [conversations]);
 
-  if (socket && currentConversationDetails?.conversation_id) {
-    socket.auth = {
+  if (auth?.socket && currentConversationDetails?.conversation_id) {
+    auth.socket.auth = {
       roomName: currentConversationDetails?.conversation_id,
     };
   }

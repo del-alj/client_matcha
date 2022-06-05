@@ -37,7 +37,7 @@ export const ChatsSectionDiv = (props) => {
   }, []);
 
   useEffect(() => {
-    socket?.on("private message", (message) => {
+    auth?.socket?.on("private message", (message) => {
       if (
         currentConversationDetails?.conversation_id === message?.message?.to
         ) {
