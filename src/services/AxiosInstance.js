@@ -26,14 +26,18 @@ axiosInstance.interceptors.response.use(
     const data = {
       refreshToken: localStorage.getItem("refreshToken"),
     };
-    axios
-      .post(`${process.env.REACT_APP_BASE_URL}/login/refreshtoken`, data)
-      .then((res) => {
-        localStorage.setItem("Token", res.data.accessToken);
-      })
-      .catch((err) => {
-        console.error("err done ");
-      });
+
+    const originalRequest = err.config;
+    if (err.response.status === 401 && !originalRequest._retry) {
+      originalRequest._retry = true;
+      await axios
+        .post(`${process.env.REACT_APP_BASE_URL}/login/refreshtoken`, data)
+        .then((res) => {
+          localStorage.setItem("Token", res.data.accessToken);
+        });
+      return axiosInstance(originalRequest);
+    }
+    return Promise.reject(err);
   }
 );
 
