@@ -5,6 +5,7 @@ const Logout = (setAuth) => {
     localStorage.removeItem("refreshToken");
     localStorage.removeItem("Token");
     localStorage.removeItem("userId");
+    localStorage.removeItem("reported");
 
     setAuth({});
   } else console.log("error: there is no token but connected");

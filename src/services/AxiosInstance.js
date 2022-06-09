@@ -1,4 +1,5 @@
 import axios from "axios";
+import { Routes } from "../routes/routes";
 
 const axiosInstance = axios.create({
   baseURL: process.env.REACT_APP_BASE_URL,
@@ -26,17 +27,23 @@ axiosInstance.interceptors.response.use(
     const data = {
       refreshToken: localStorage.getItem("refreshToken"),
     };
-
     const originalRequest = err.config;
+
     if (err.response.status === 401 && !originalRequest._retry) {
       originalRequest._retry = true;
       await axios
-        .post(`${process.env.REACT_APP_BASE_URL}/login/refreshtoken`, data)
-        .then((res) => {
-          localStorage.setItem("Token", res.data.accessToken);
-        });
+      .post(`${process.env.REACT_APP_BASE_URL}/login/refreshtoken`, data)
+      .then((res) => {
+        localStorage.setItem("Token", res.data.accessToken);
+      }).catch((err)=>{
+        if (err.response.status === 403) {
+          localStorage.clear();
+          window.location.href = "/login";
+         }
+      })
       return axiosInstance(originalRequest);
-    }
+      
+    } 
     return Promise.reject(err);
   }
 );
