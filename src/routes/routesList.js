@@ -42,6 +42,10 @@ const publicRoutes = [
     path: "/error",
     component: Report,
   },
+  {
+    path: "/confirmSignup",
+    component: ConfirmSignup,
+  },
 ];
 
 const privateRoutes = [
@@ -52,10 +56,6 @@ const privateRoutes = [
   {
     path: "/profile/edit",
     component: EditProfile,
-  },
-  {
-    path: "/confirmSignup",
-    component: ConfirmSignup,
   },
   {
     path: "/reset/:token",
