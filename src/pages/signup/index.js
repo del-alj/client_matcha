@@ -41,7 +41,7 @@ const Signup = () => {
       .post(url, param)
       .then((res) => {
         history.push("/confirmSignup");
-        res.send("ok");
+        // res.send("ok");
       })
       .catch((err) => {
         console.log(err);
