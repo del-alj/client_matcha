@@ -16,14 +16,7 @@ export const AddFirstPicture = (props) => {
   return (
     <Box>
       <Tabs>
-        <Title
-          onClick={() => {
-            setChangeStatus(true);
-          }}
-          status={changeStatus}
-        >
-          Add Profile Picture
-        </Title>
+        <Title>Add Profile Picture</Title>
       </Tabs>
       <PhotoProfile
         userdetails={userdetails}

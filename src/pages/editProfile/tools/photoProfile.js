@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axiosInstance from "../../../services/AxiosInstance";
 
 import { AddImageFile } from "./addImageFile";
@@ -15,7 +15,7 @@ export const PhotoProfile = (props) => {
 
   const [files, setFiles] = useState([]);
   const [disable, setDisable] = useState(true);
-
+  const url = `/user/edit/photoprofile/${userdetails?.userId}`;
   const uploadFile = async (url, param) => {
     // Create an object of formData
     let formData = new FormData();
@@ -35,6 +35,15 @@ export const PhotoProfile = (props) => {
       });
   };
 
+  const updateImgProfile = async (url, param) => {
+    await axiosInstance.put(url, param).catch((err) => {
+      console.error(err);
+    });
+    console.log("photo  profile updated !!");
+    // history.push("/profile");
+  };
+
+  useEffect(() => {}, [userdetails]);
   return (
     <>
       <Div style={{ justifyContent: "center" }}>
@@ -47,8 +56,10 @@ export const PhotoProfile = (props) => {
       </Div>
       <PicButton
         disabled={disable}
-        onClick={() => {
-          uploadFile(urladd, files);
+        onClick={async () => {
+          await uploadFile(urladd, files);
+          console.log(userdetails?.photoProfileId);
+          // await updateImgProfile(url, userdetails?.photoProfileId);
         }}
       >
         Submit
