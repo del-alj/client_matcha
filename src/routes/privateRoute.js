@@ -3,7 +3,7 @@ import { Route, Redirect } from "react-router-dom";
 
 import { privateRoutes } from "./routesList.js";
 import { authentication } from "../Components/contexts/usecontext";
-
+import { EditProfile } from "../pages/editProfile/index";
 const PrivateRoute = () => {
   const { auth } = useContext(authentication);
   return (
@@ -12,7 +12,14 @@ const PrivateRoute = () => {
         <Route path={path} key={index} exact>
           {auth?.token ? (
             auth?.reported === false ? (
-              <Component />
+              auth?.profile_status === true ? (
+                <Component />
+              ) : (
+                <>
+                  <Redirect to="/profile/edit" />
+                  <EditProfile />
+                </>
+              )
             ) : (
               <Redirect to="/error" />
             )
