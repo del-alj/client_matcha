@@ -1,49 +1,42 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import axiosInstance from "../../../services/AxiosInstance";
 
 import { AddImageFile } from "./addImageFile";
 import { Div, PicButton } from "../../../Components/pictures/style";
+import { authentication } from "../../../Components/contexts/usecontext";
 
 // On file select (from the pop up)
 
-const user_id = localStorage.getItem("userId");
-
-const urladd = `/picture/upload/${user_id}`;
 
 export const PhotoProfile = (props) => {
+  const { auth } = useContext(authentication);
+  const url = `/picture/upload/${auth?.userId}`;
   const { userdetails, setUserDetails } = props;
-
   const [files, setFiles] = useState([]);
   const [disable, setDisable] = useState(true);
-  const url = `/user/edit/photoprofile/${userdetails?.userId}`;
+
+  useEffect(() => {}, [auth?.userId]);
+
   const uploadFile = async (url, param) => {
     // Create an object of formData
     let formData = new FormData();
-
+    
     // Send formData object
     formData.append("image", files[0], files[0].name);
     await axiosInstance
-      .post(url, formData)
-      .then((res) => {
-        setUserDetails({
-          ...userdetails,
-          photoProfileId: res?.data?.image_id,
-        });
-      })
-      .catch((err) => {
-        console.error(err);
+    .post(url, formData)
+    .then((res) => {
+      setUserDetails({
+        ...userdetails,
+        photoProfileId: res?.data?.image_id,
       });
-  };
-
-  const updateImgProfile = async (url, param) => {
-    await axiosInstance.put(url, param).catch((err) => {
+      return res?.data?.image_id;
+    })
+    .catch((err) => {
       console.error(err);
     });
-    console.log("photo  profile updated !!");
-    // history.push("/profile");
   };
-
-  useEffect(() => {}, [userdetails]);
+  console.log(files);
   return (
     <>
       <Div style={{ justifyContent: "center" }}>
@@ -57,9 +50,7 @@ export const PhotoProfile = (props) => {
       <PicButton
         disabled={disable}
         onClick={async () => {
-          await uploadFile(urladd, files);
-          console.log(userdetails?.photoProfileId);
-          // await updateImgProfile(url, userdetails?.photoProfileId);
+          await uploadFile(url, files);
         }}
       >
         Submit
