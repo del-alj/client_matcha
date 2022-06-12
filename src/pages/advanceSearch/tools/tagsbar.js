@@ -9,14 +9,17 @@ export const TagsBar = (props) => {
   const [tagsDetails] = useContext(tagsContext);
   const [tags, setTags] = useState([]);
   const { data, setData } = props;
+
   useEffect(() => {
     getAllTags(url, setTags);
   }, []);
+
   useEffect(() => {
     const newData = { ...data };
     newData["tags"] = tagsDetails;
     setData(newData);
   }, [tagsDetails]);
+
   return (
     <Div
       style={{

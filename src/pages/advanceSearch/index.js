@@ -9,6 +9,7 @@ import { TagsBar } from "./tools/tagsbar";
 import { RatingBar } from "./tools/ratingBar";
 import { DisplayUsers } from "./tools/displayUsers";
 import axiosInstance from "../../services/AxiosInstance";
+import { Loading } from "../../Components/loading";
 
 export const AdvanceSearch = () => {
   const { auth } = useContext(authentication);
@@ -20,6 +21,7 @@ export const AdvanceSearch = () => {
     rating: false,
     tags: [],
   });
+  const [isLoading, setIsLoading] = useState(true);
 
   const param = {
     age: { min: data?.age?.min || 18, max: data?.age?.max || 60 },
@@ -29,11 +31,13 @@ export const AdvanceSearch = () => {
   };
 
   const submit = (e) => {
+    setIsLoading(false);
     e.preventDefault();
     axiosInstance
       .put(url, param)
       .then((res) => {
         setusers(res?.data);
+        setIsLoading(true);
       })
       .catch((err) => {
         console.log(err);
@@ -49,36 +53,35 @@ export const AdvanceSearch = () => {
   useEffect(() => {}, [users]);
   return (
     <Layout login={true}>
-      <Flex
-        direction="column"
-        justifyContent="center"
-        alignItems="center"
-        height="100vh"
-      >
-        <h5>Advance Search :</h5>
+        <Flex
+          direction="column"
+          justifyContent="center"
+          alignItems="center"
+          height="100vh"
+        >
+          <h5>Advance Search :</h5>
 
-        {!users ? (
-          <Cadre onSubmit={(e) => submit(e)}>
-             <AgeBar data={data} setData={setData} title="Age" />
-            <LocalizationBar
-              handelChange={handelChange}
-              title="Localization"
-              name="localization"
+          {!users ? (
+            <Cadre onSubmit={(e) => submit(e)}>
+              <AgeBar data={data} setData={setData} title="Age" />
+              <LocalizationBar
+                handelChange={handelChange}
+                title="Localization"
+                name="localization"
               />
-            <RatingBar
-              data={data}
-              setData={setData}
-              name="rating"
-              title="Rating"
+              <RatingBar
+                data={data}
+                setData={setData}
+                name="rating"
+                title="Rating"
               />
-              
-            <TagsBar data={data} setData={setData} title="Tags" /> 
-            <Button type="submit">Search</Button>
-          </Cadre>
-        ) : (
-          <DisplayUsers users={users}></DisplayUsers>
-        )}
-      </Flex>
+
+              <TagsBar data={data} setData={setData} title="Tags" />
+              <Button type="submit" disabled={!isLoading}>Search</Button>
+              {!isLoading && <Loading/>}
+            </Cadre>
+          ) : ( <DisplayUsers users={users}></DisplayUsers>)}
+        </Flex>
     </Layout>
   );
 };

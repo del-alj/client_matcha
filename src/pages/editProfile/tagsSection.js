@@ -45,9 +45,9 @@ export const TagsSection = () => {
           <Button
             disabled={tagsIsDisabel(tagsDetails)}
             onClick={async () => {
+              setDisabel(false);
               await updateTags(urledit, tagsDetails);
               setTagsDetails("");
-              setDisabel(false);
             }}
           >
             Edit

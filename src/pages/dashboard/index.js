@@ -11,7 +11,7 @@ import { authentication } from "../../Components/contexts/usecontext";
 import { getListUsers } from "./tools/getusers";
 import { getUser } from "../editProfile/tools";
 import { Buttons } from "./tools/buttons";
-
+import { Loading } from "../../Components/loading";
 export const Dashboard = (props) => {
   const [userDetails, setUserDetails] = useContext(UserContext);
   const [usersList, setUsersList] = useState({});
@@ -23,6 +23,7 @@ export const Dashboard = (props) => {
   const [user, setUser] = useState(null);
   const url = `/user/${auth.userId}`;
 
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     getUser(url, setUserDetails);
@@ -44,31 +45,44 @@ export const Dashboard = (props) => {
       suggestion_user_id: user?.user_id,
     });
   }, [user]);
+
+  useEffect(() => {
+    if (usersList.length > 0 && user && display)
+      setIsLoading(true)
+  }, [usersList, user, display]);
+  
+  console.log(isLoading);
   return (
     <Layout login={true}>
-      <Content>
-        <Box>
-          {display ? (
-            <SliderPictureDiv>
-              <Card>
-                <CartTags>
-                  <Tags tags={user?.tags} />
-                </CartTags>
-                <CartInfoDiv
-                  name={user?.user_name}
-                  age={user?.age}
-                  city={`${user?.distance?.toFixed(1)}Km`}
-                  rating={user?.rating || 0}
-                />
-                <SliderPicture src={`url(${user?.image_path})`}></SliderPicture>
-              </Card>
-              <Buttons setNext={setNext} next={next} ids={ids} />
-            </SliderPictureDiv>
-          ) : (
-            <></>
-          )}
-        </Box>
-      </Content>
+      {isLoading ? (
+        <Content>
+          <Box>
+            {display ? (
+              <SliderPictureDiv>
+                <Card>
+                  <CartTags>
+                    <Tags tags={user?.tags} />
+                  </CartTags>
+                  <CartInfoDiv
+                    name={user?.user_name}
+                    age={user?.age}
+                    city={`${user?.distance?.toFixed(1)}Km`}
+                    rating={user?.rating || 0}
+                  />
+                  <SliderPicture
+                    src={`url(${user?.image_path})`}
+                  ></SliderPicture>
+                </Card>
+                <Buttons setNext={setNext} next={next} ids={ids} />
+              </SliderPictureDiv>
+            ) : (
+              <></>
+            )}
+          </Box>
+        </Content>
+      ) : (
+        <Loading />
+      )}
     </Layout>
   );
 };

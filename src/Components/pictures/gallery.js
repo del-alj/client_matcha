@@ -8,6 +8,7 @@ import { Div, Img, PicButton, DeleteButton, DeleteIcon } from "./style";
 import del from "../../assets/icons/del.png";
 
 import { ImageContext } from "../../Components/contexts/imageContext";
+import { Loading } from "../../Components/loading";
 
 // On file select (from the pop up)
 
@@ -22,10 +23,12 @@ export const Gallery = (props) => {
   const [profilePicture, setprofilePicture] = useState();
   const [disable, setDisable] = useState(true);
   const [border, setBorder] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const { pictures } = props;
 
   const updateImgProfile = async (url, param) => {
+    setIsLoading(true);
     await axiosInstance.put(url, param).catch((err) => {
       console.error(err);
     });
@@ -64,11 +67,13 @@ export const Gallery = (props) => {
       <PicButton
         disabled={disable}
         onClick={(e) => {
+          setDisable(true);
           updateImgProfile(url, profilePicture);
         }}
       >
         Submit
       </PicButton>
+      {isLoading && <Loading height="100px !important" />}
     </>
   );
 };
@@ -84,7 +89,10 @@ export const EditGallery = (props) => {
   const [files, setFiles] = useState([]);
   const [disable, setDisable] = useState(true);
   const [display, setDisplay] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
+
   const uploadFile = async (url, param) => {
+    setIsLoading(true);
     // Create an object of formData
     let formData = new FormData();
 
@@ -167,11 +175,13 @@ export const EditGallery = (props) => {
       <PicButton
         disabled={disable}
         onClick={() => {
+          setDisable(true);
           uploadFile(urladd, files);
         }}
       >
         Submit
       </PicButton>
+      {isLoading && <Loading height="100px !important" />}
     </>
   );
 };

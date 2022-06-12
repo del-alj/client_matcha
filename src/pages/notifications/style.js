@@ -16,6 +16,7 @@ export const NotificationContent = styled.span`
 `;
 
 export const Box = styled.div`
+  height: -webkit-fill-available;
   padding: 20px;
   width: 30rem;
   display: flex;

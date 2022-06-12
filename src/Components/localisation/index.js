@@ -70,6 +70,7 @@ export const Localisation = (props) => {
               disabled={disable}
               style={{ width: "100%", margin: "auto" }}
               onClick={async (e) => {
+                setDisable(true);
                 if (VAlidationCity(city) === true) {
                   const coordinates = await getNewCoord(city);
                   setNewGeolocal(coordinates);

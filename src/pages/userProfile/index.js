@@ -9,6 +9,7 @@ import { UserContext } from "../../Components/contexts/usercontext";
 import { authentication } from "../../Components/contexts/usecontext";
 import { ImageContext } from "../../Components/contexts/imageContext";
 import { getUser, getUserImages, getLook } from "../editProfile/tools";
+import { Loading } from "../../Components/loading";
 
 import io from "socket.io-client";
 
@@ -16,6 +17,7 @@ export const UserProfile = (props) => {
   const [userDetails, setUserDetails] = useContext(UserContext);
   const [imageDetails, setImageDetails] = useContext(ImageContext);
   const { auth } = useContext(authentication);
+  const [isLoading, setIsLoading] = useState(false);
 
   const env = `${process.env.REACT_APP__ENV}:7000`;
 
@@ -31,17 +33,17 @@ export const UserProfile = (props) => {
   }, [auth?.userId]);
 
   useEffect(async () => {
-    if ( id && auth?.userId && id !== auth?.userId) {
+    if (id && auth?.userId && id !== auth?.userId) {
       await getLook({
         user_id: id,
         looker_user_id: auth?.userId,
       })
         .then(async (data) => {
           const content = {
-            userName:  auth?.userName || "someone",
+            userName: auth?.userName || "someone",
             type: "view",
             status: true,
-            from: auth?.userId ,
+            from: auth?.userId,
             to: id || null,
           };
           const NewContent = { ...content, status: false };
@@ -54,17 +56,28 @@ export const UserProfile = (props) => {
     }
   }, [id, auth?.userId]);
 
+  useEffect(() => {
+    if (
+      (userDetails && imageDetails?.length > 0)
+    )
+      setIsLoading(true);
+  }, [userDetails, imageDetails]);
+
   return (
     <Layout login={true}>
-      {userDetails ? (
-        <Content>
-          <FirstSection />
-          <SecondSection />
-        </Content>
+      {isLoading ? (
+        userDetails ? (
+          <Content>
+            <FirstSection />
+            <SecondSection />
+          </Content>
+        ) : (
+          <Content>
+            <h1>error</h1>
+          </Content>
+        )
       ) : (
-        <Content>
-          <h1>error</h1>
-        </Content>
+        <Loading />
       )}
     </Layout>
   );

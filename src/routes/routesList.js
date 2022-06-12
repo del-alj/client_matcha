@@ -13,8 +13,13 @@ import { AdvanceSearch } from "../pages/advanceSearch/index.js";
 import { Messages } from "../pages/messages/index";
 import { NotificationsPage } from "../pages/notifications/index";
 import { Report } from "../pages/report/index";
-
+import { Loading } from "../Components/loading/index";
 const publicRoutes = [
+  {
+    path: "/loading",
+    component: Loading,
+    restricted: true,
+  },
   {
     path: "/",
     component: Home,

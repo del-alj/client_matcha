@@ -6,17 +6,25 @@ import { Flex } from "../../Components/styles/Container.styles";
 import { PhotoProfile } from "../userProfile/style";
 import { TagsSection } from "./tagsSection";
 import { Blurry } from "./style";
+import { Loading } from "../../Components/loading";
 
 export const FirstSection = (props) => {
   const { photoProfile } = props;
   const [display, setDisplay] = useState(false);
-  const [newUser, setNewUser] = useState();
+  const [newUser, setNewUser] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
+
   const handleClick = () => {
     setDisplay(true);
   };
   useEffect(() => {
     setNewUser(photoProfile ? false : true)
   }, [photoProfile]);
+
+  useEffect(() => {
+    if(newUser)
+    setIsLoading(true);
+  }, [newUser]);
   return (
     <Flex justifyContent="center" style={{ padding: "0 2rem" }}>
       <Flex direction="row">
@@ -41,9 +49,10 @@ export const FirstSection = (props) => {
           <TagsSection />
         </Flex>
       </Flex>
-      {display || newUser ? <Blurry /> : <></>}
+      {display || (newUser && !isLoading) ? <Blurry /> : <></>}
+      {isLoading ?? <Loading/>}
       {display && <AddPicture display={display} setDisplay={setDisplay} />}
-      {newUser && <AddFirstPicture setDisplay={setNewUser} />}
+      {newUser && !isLoading && <AddFirstPicture setDisplay={setNewUser} />}
     </Flex>
   );
 };
