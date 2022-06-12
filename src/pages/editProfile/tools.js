@@ -51,6 +51,7 @@ export const getUser = async (url, setUserDetails) => {
           vuesList: res?.data?.vues_list,
           bloked: res?.data?.bloked,
           reported: res?.data?.reported,
+          profile_status: res?.data?.profile_status,
         });
     })
     .catch((err) => {
@@ -98,6 +99,7 @@ export const updateUser = async (url, param, setUserDetails) => {
         preference: res.data?.preference,
         photoProfileId: res.data?.photo_profile_id,
         reported: res?.data?.reported,
+        profile_status: res?.data?.profile_status,
       });
     })
     .catch((err) => {

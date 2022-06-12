@@ -47,6 +47,7 @@ const Login = () => {
           userId: res.data?.user?.user_id,
           reported: res.data?.user?.reported ?? false,
           userName: param?.user_name,
+          profile_status: res?.data?.user?.profile_status || false,
         }));
       })
       .catch((err) => {
