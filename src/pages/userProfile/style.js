@@ -47,6 +47,7 @@ export const PhotoProfile = styled.div`
   border-radius: 50%;
   overflow: hidden;
   background-image: ${(props) => props?.src ?? `${props?.src}`};
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 
   background-size: cover;
   background-position: center;

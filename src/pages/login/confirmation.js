@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 
 import { Layout } from "../../layouts/signinLayout";
 import { Banner } from "../../Components/banner/index.js";
-import { EditProfile } from "../editProfile/index";
+import {CreatProfile} from "../creatProfile/index";
 import { authentication } from "../../Components/contexts/usecontext";
 import { getUserConfirm } from "./tools";
 // import useReqHook from "../../hooks/useReqHook";
@@ -20,7 +20,7 @@ const Confirmation = () => {
   }, []);
 
   return auth?.userId ? (
-    <EditProfile />
+    <CreatProfile />
   ) : (
     <Layout>
       <Banner title="Error" text="you don't have access !" />

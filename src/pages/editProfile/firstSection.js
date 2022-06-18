@@ -52,7 +52,7 @@ export const FirstSection = (props) => {
       {display || (newUser && !isLoading) ? <Blurry /> : <></>}
       {isLoading ?? <Loading/>}
       {display && <AddPicture display={display} setDisplay={setDisplay} />}
-      {newUser && !isLoading && <AddFirstPicture setDisplay={setNewUser} />}
+      {/* {newUser && !isLoading && <AddFirstPicture setDisplay={setNewUser} />} */}
     </Flex>
   );
 };
