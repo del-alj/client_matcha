@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 
 import { EditTags, Tags } from "../../Components/tag";
-import { getAllTags, updateTags } from "./tools";
+import { getAllTags, updateTags } from "../editProfile/tools";
 import { Button } from "../../Components/styles/Container.styles";
 import { tagsContext } from "../../Components/contexts/tagsContext";
 import { authentication } from "../../Components/contexts/usecontext";

@@ -13,20 +13,32 @@ import { ImageContext } from "../../Components/contexts/imageContext";
 import { Loading } from "../../Components/loading";
 import { PhotoProfile } from "../userProfile/style";
 import { TagsSection } from "./tagsSection";
-import { addNewUserInfo, getUser } from "./tools";
+import { getUser } from "../editProfile/tools";
 import { tagsContext } from "../../Components/contexts/tagsContext";
+import { addNewUserInfo } from "../../api/completnewUser";
+import axiosInstance from "../../services/AxiosInstance";
 
 const user_id = localStorage.getItem("userId");
 const url = `/user/${user_id}`;
 const urledit = `/user/edit/${user_id}`;
 const urlAddUserInfo = `/user/addinfo/${user_id}`;
 
-
 // const appendFile = async () => {
 //   let formData = new FormData();
 //   return await formData.append("image", imageDetails[0], imageDetails[0].name);
 // }
 
+const addPicture = async (image, setPhotoId) => {
+  const url = `/picture/upload/${user_id}`;
+  await axiosInstance
+    .post(url, image)
+    .then((res) => {
+      setPhotoId(res?.data?.image_id);
+    })
+    .catch((err) => {
+      console.error(err);
+    });
+};
 export const CreatProfile = (props) => {
   let history = useHistory();
   const { auth } = useContext(authentication);
@@ -34,7 +46,7 @@ export const CreatProfile = (props) => {
   const [userdetails, setUserDetails] = useContext(UserContext);
   const [imageDetails, setImageDetails] = useContext(ImageContext);
   const [tagsDetails, setTagsDetails] = useContext(tagsContext);
-
+  const [photoId, setPhotoId] = useState(null);
   const [imagePath, setImagePath] = useState("");
   const urlImages = `/picture/${auth?.userId}`;
   const [next, setNext] = useState(0);
@@ -44,7 +56,19 @@ export const CreatProfile = (props) => {
   }, [auth?.userId]);
 
   useEffect(() => {}, [next]);
-
+  useEffect(() => {
+    if (photoId) {
+      console.log(photoId)
+      const param = {
+        photo_profile_id: photoId,
+        user: userdetails,
+        tags: tagsDetails
+      };
+      console.log(param);
+      addNewUserInfo(urlAddUserInfo, param);
+    }
+    // history.push("/profile");
+  }, [photoId]);
   // const submit = (e) => {
   //   e.preventDefault();
   //   updateUser(urledit, userdetails);
@@ -56,16 +80,8 @@ export const CreatProfile = (props) => {
     formData?.append("image", imageDetails[0], imageDetails[0].name);
   }
 
-  const addUserInfo = (urlAddUserInfo) => {
-    // hadxi bax nbedel form d image formData hiya li tsared n back
-    const param = {
-      image: formData.get("image"),
-      user: userdetails,
-      tags: tagsDetails,
-    };
-    console.log("******************", param);
-    addNewUserInfo(urlAddUserInfo, param?.image);
-    // history.push("/profile");
+  const addUserInfo = async (urlAddUserInfo) => {
+    await addPicture(formData, setPhotoId);
   };
 
   const handelChange = (e) => {
@@ -89,12 +105,12 @@ export const CreatProfile = (props) => {
             style={{
               display: "block",
               justifyContent: "center",
-              paddingBottom: "9rem",
+              paddingBottom: "9rem"
             }}
           >
             <Content
               style={{
-                display: "flex",
+                display: "flex"
               }}
             >
               {next === 0 ? (
@@ -137,9 +153,9 @@ export const CreatProfile = (props) => {
               <Button
                 disabled={disable}
                 style={{ width: "15rem", margin: "auto" }}
-                onClick={() => {
-                  setDisable(true);
-                  addUserInfo(urlAddUserInfo);
+                onClick={async () => {
+                  // setDisable(true);
+                  await addUserInfo(urlAddUserInfo);
                 }}
               >
                 Sumbit
