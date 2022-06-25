@@ -23,11 +23,6 @@ const url = `/user/${user_id}`;
 const urledit = `/user/edit/${user_id}`;
 const urlAddUserInfo = `/user/addinfo/${user_id}`;
 
-// const appendFile = async () => {
-//   let formData = new FormData();
-//   return await formData.append("image", imageDetails[0], imageDetails[0].name);
-// }
-
 const addPicture = async (image, setPhotoId) => {
   const url = `/picture/upload/${user_id}`;
   await axiosInstance
@@ -65,9 +60,8 @@ export const CreatProfile = (props) => {
         tags: tagsDetails
       };
       console.log(param);
-      addNewUserInfo(urlAddUserInfo, param);
+       addNewUserInfo(urlAddUserInfo, param, history);
     }
-    // history.push("/profile");
   }, [photoId]);
   // const submit = (e) => {
   //   e.preventDefault();
@@ -80,7 +74,7 @@ export const CreatProfile = (props) => {
     formData?.append("image", imageDetails[0], imageDetails[0].name);
   }
 
-  const addUserInfo = async (urlAddUserInfo) => {
+  const addUserInfo = async () => {
     await addPicture(formData, setPhotoId);
   };
 
@@ -155,7 +149,7 @@ export const CreatProfile = (props) => {
                 style={{ width: "15rem", margin: "auto" }}
                 onClick={async () => {
                   // setDisable(true);
-                  await addUserInfo(urlAddUserInfo);
+                  await addUserInfo();
                 }}
               >
                 Sumbit
