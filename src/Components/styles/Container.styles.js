@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
+
 export const Header = styled.header`
   display: flex;
   align-items: center;
@@ -16,7 +17,7 @@ export const Header = styled.header`
   border-bottom: ${(props) =>
     props.backgroundColor ? " 1px solid #535353" : "none"};
   background: ${(props) => (props.backgroundColor ? "white" : "none")};
-`;
+  `;
 
 export const Footer = styled.footer`
   min-height: 100px;
@@ -26,7 +27,7 @@ export const Footer = styled.footer`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-`;
+  `;
 
 export const Menu = styled.div`
   width: 10%;
@@ -41,7 +42,7 @@ export const Menu = styled.div`
     flex-direction: column;
     justify-content: space-around;
   }
-`;
+  `;
 
 export const Content = styled.div`
   text-align: center;
@@ -54,13 +55,13 @@ export const Content = styled.div`
   h1 {
     font-size: 44px;
   }
-
+  
   @media screen and (max-width: 768px) {
     flex-direction: column;
     justify-content: center;
     align-items: center;
   }
-`;
+  `;
 
 export const Block = styled.div`
   display: flex;
@@ -81,6 +82,36 @@ export const Block = styled.div`
     justify-content: center;
     align-items: center;
   }
+  `;
+
+export const Ptyping = styled.div`
+  color:black;
+  width: 37ch;
+  animation: typing 5s steps(37), blink .5s step-end infinite alternate;
+ justify-content: center;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 3px solid;
+  font-size: 2em;
+  @keyframes typing {
+  from {
+    width: 0
+  }
+}
+    
+@keyframes blink {
+  50% {
+    border-color: transparent
+  }
+}
+
+
+  @media screen and (max-width: 768px) {
+    font-size:14px;
+  }
+  @media screen and (max-width: 375px) {
+    font-size:11px;
+  }
 `;
 
 export const Div = styled.div`
@@ -89,10 +120,18 @@ export const Div = styled.div`
   align-items: center;
   justify-content: center;
   align-content: space-around;
-`;
+  `;
+
+  export const Opacity = styled.div`
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    opacity: 0.4;
+    background: white;
+  `;
 
 export const Input = styled.input.attrs((props) => ({
-  ...props,
+  ...props
 }))`
   font-size: 1em;
   font-family: "Electrolize", sans-serif;
@@ -116,10 +155,10 @@ export const Input = styled.input.attrs((props) => ({
   @media screen and (max-width: 768px) {
     width: 100%;
   }
-`;
+  `;
 
 export const Search = styled.input.attrs((props) => ({
-  ...props,
+  ...props
 }))`
   font-size: 0.7em;
   font-family: "Electrolize", sans-serif;
@@ -228,6 +267,7 @@ export const Homebackground = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   width: 100%;
   min-height: 100vh;
   padding: 100px 10px;
