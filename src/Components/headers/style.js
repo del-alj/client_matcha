@@ -13,3 +13,9 @@ export const List = styled.div`
     justify-content: space-around;
   }
 `;
+
+export const Div = styled.div`
+  @media screen and (min-width: 769px) {
+    display:none;
+  }
+`;

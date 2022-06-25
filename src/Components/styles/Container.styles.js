@@ -37,10 +37,11 @@ export const Menu = styled.div`
     width: 20%;
   }
   @media screen and (max-width: 768px) {
-    width: auto;
+    /* width: auto;
     font-size: 0.8em;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: space-around; */
+    display: none;
   }
   `;
 

@@ -12,3 +12,14 @@ export const settings = [
     title: "Dashboard",
   },
 ];
+
+export const connect = [
+  {
+    link: "/login",
+    title: "Login",
+  },
+  {
+    link: "/signup",
+    title: "Sign up",
+  },
+];

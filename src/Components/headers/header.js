@@ -5,7 +5,10 @@ import {
   Menu,
   StyledLink,
 } from "../styles/Container.styles";
-
+import {Div} from "./style";
+import menu from "../../assets/icons/menu.png";
+import { connect } from "./tools/menusList";
+import { Icon } from "../icon";
 const HomeHeader = ({ displayRightSide }) => {
   return (
     <Header>
@@ -22,6 +25,9 @@ const HomeHeader = ({ displayRightSide }) => {
           </StyledLink>
         </Menu>
       )}
+      <Div>
+        <Icon img={menu} alt="Profile" type="profile" listMenu={connect} />
+      </Div>
     </Header>
   );
 };
