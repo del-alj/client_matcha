@@ -60,7 +60,11 @@ export const CreatProfile = (props) => {
         tags: tagsDetails
       };
       console.log(param);
-       addNewUserInfo(urlAddUserInfo, param, history);
+       addNewUserInfo(urlAddUserInfo, param).then((res)=>{
+        history.push("/profile");
+       }).catch((err)=> {
+        history.push("/error");
+       });
     }
   }, [photoId]);
   // const submit = (e) => {
