@@ -9,7 +9,6 @@ import { EditProfile } from "../pages/editProfile/index";
 const PrivateRoute = () => {
   const { auth } = useContext(authentication);
   const [userDetails] = useContext(UserContext);
-  console.log("----------------> ", auth?.profile_status, userDetails?.profile_status);
   return (
     <>
       {privateRoutes.map(({ component: Component, path }, index) => (

@@ -32,26 +32,27 @@ export const Dashboard = (props) => {
   useEffect(() => {
     getListUsers(auth.userId, setUsersList);
   }, [auth]);
-
+  
   useEffect(() => {
-    setUser(usersList?.[index]);
-    setIndex(index + 1);
-    if (index >= usersList?.length - 1) setDisplay(false);
-  }, [next, usersList]);
-  useEffect(() => {
-    setIndex(index + 1);
     setIds({
       user_id: parseInt(auth?.userId),
-      suggestion_user_id: user?.user_id,
+      suggestion_user_id: user?.user_id
     });
   }, [user]);
+  
+  useEffect(() => {
+    if (usersList.length > 0 && user && display) setIsLoading(true);
+  }, [usersList, user, display]);
 
   useEffect(() => {
-    if (usersList.length > 0 && user && display)
-      setIsLoading(true)
-  }, [usersList, user, display]);
-  
-  console.log(isLoading);
+    setIndex(index + 1);
+  },[next])
+
+  useEffect(() => {  
+    if (index > usersList?.length - 1) setDisplay(false);
+    setUser(usersList?.[index]);
+  }, [usersList, index]);
+
   return (
     <Layout login={true}>
       {isLoading ? (
