@@ -13,10 +13,11 @@ export const InitSelect = (props) => {
         id={props.name}
         name={props.name}
         onChange={onChange}
+        defaultValue="hide"
       >
-           {/* <option key={"d0"} selected disabled hidden>
+           <option key={"d0"} value="hide" disabled>
             {"Select a Gender"}
-          </option> */}
+          </option>
         {element.map((elem, index) => (
           <option key={index} value={elem || ""}>
             {elem}
