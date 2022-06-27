@@ -3,7 +3,7 @@
 ##  Introduction
 
 Matcha is a dating web app, 
-This application was made for the sole purpose of learning how to develop a web application without using :
+This application was made for the sole purpose of learning how to develop a web application using :
 
 <p align="center">
 	<a href="https://reactjs.org"><img src="https://img.shields.io/badge/React Js-17.0.2-D0008F.svg" alt="ReactJs"></a>
