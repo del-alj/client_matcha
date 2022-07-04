@@ -9,33 +9,31 @@ import {
   Input,
   Div,
   Form,
-  Button,
+  Button
 } from "../../Components/styles/Container.styles";
 
 //
 import forgot from "../../assets/forgot.jpg";
 
 const ForgotPassword = () => {
+  const [disabel, setDisabel] = useState(false);
   let history = useHistory();
-  const url = `/reset`;
+  const url = `${process.env.REACT_APP_BASE_URL}/reset`;
   const [data, setData] = useState({
-    email: "",
+    email: ""
   });
 
   const param = {
-    email: data.email,
+    email: data.email
   };
 
   const submit = (e) => {
+    setDisabel(true);
     e.preventDefault();
-    axios
-      .post(url, param)
-      .then((res) => {
-        history.push("/reset");
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    axios.post(url, param).catch((err) => {
+      console.log(err);
+    });
+    history.push("/reset");
   };
 
   const handelChange = (e) => {
@@ -59,7 +57,13 @@ const ForgotPassword = () => {
             />
           </Div>
           <Div>
-            <Button type="submit">Submit</Button>
+            <Button
+              disabled={disabel}
+              onChange={(e) => handelChange(e)}
+              type="submit"
+            >
+              Submit
+            </Button>
           </Div>
         </Form>
       </Block>
