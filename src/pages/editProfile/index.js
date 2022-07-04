@@ -83,6 +83,7 @@ export const EditProfile = (props) => {
                 style={{ width: "15rem", margin: "auto" }}
                 onClick={() => {
                   setDisable(true);
+                  // console.log(urledit);
                   updateUser(urledit, userdetails);
                   history.push("/profile");
                 }}

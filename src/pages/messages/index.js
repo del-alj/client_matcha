@@ -92,9 +92,9 @@ export const Messages = (props) => {
               setChatResponsive={setChatResponsive}
               chatResponsive={chatResponsive}
             />
-            <Board display={!chatResponsive}>
+            <Board display={(chatResponsive?.toString() === "true") ? "false" : "true" }>
               <StikyUser userName={currentConversationDetails?.user_name} />
-              <MessageDiv display={!chatResponsive}>
+              <MessageDiv display={(chatResponsive?.toString() === "true") ? "false" : "true"}>
                 {currentConversationDetails?.conversation_id ? (
                   <>
                     <ChatsSectionDiv

@@ -28,7 +28,7 @@ export const Conversation = (props) => {
 
       }}
     >
-      <FriendImg display={status?.toString() || 'false'} />
+      <FriendImg display={status.toString() || "false"} />
       <FriendName>{currentUser?.friend_name[0]}</FriendName>
     </ConversationDiv>
   );

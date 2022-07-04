@@ -53,7 +53,7 @@ export const Board = styled.div`
   height: 100%;
   position: relative;
   @media screen and (max-width: 809px) {
-    display: ${(props) => props?.display ? "block" : "none"};
+    display: ${(props) => props?.display === true ? "block" : "none"};
   }
 `;
 
@@ -95,7 +95,7 @@ export const MessageDiv = styled.div`
     font-size: 12px;
   }
   @media screen and (max-width: 809px) {
-    display: ${(props) => props?.display ? "block" : "none"};
+    display: ${(props) => props?.display === "true" ? "block" : "none"};
   }
 `;
 
@@ -113,7 +113,7 @@ export const ConversationDiv = styled.div`
 `;
 
 export const FriendImg = styled.div`
-  display: ${(props) => (props?.display == "true" ? "block" : "none")};
+  display: ${(props) => (props?.display === "true" ? "block" : "none")};
   margin-right: 20px;
   /* border: 1px solid black; */
   width: 10px;

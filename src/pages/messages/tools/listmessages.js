@@ -15,14 +15,14 @@ export const ListMessagesDiv = (props) => {
   }, []);
 
   const getStatus = (conversation) => {
-    return (conversation?.is_sender == props?.userId ||
-      conversation?.is_sender == 0) || conversation?.status == false
+    return (conversation?.is_sender === props?.userId ||
+      conversation?.is_sender === 0) || conversation?.status == false
       ? false
       : true;
   };
   return (
-    <ListMessages display={chatResponsive}>
-      {conversations.map((c, index) => (
+    <ListMessages display={chatResponsive.toString()}>
+      {conversations && conversations.map((c, index) => (
         <Conversation
           key={`Conversation${index}`}
           currentUser={c}
