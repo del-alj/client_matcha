@@ -15,7 +15,7 @@ This application was made for the sole purpose of learning how to develop a web 
 
 <hr />
 
-Link : [matcha1337app.herokuapp.com](matcha1337app.herokuapp.com)
+Link : [matcha1337app.herokuapp.com](https://matcha1337app.herokuapp.com/)
 
 <!-- ```
 Create your one or test with:
