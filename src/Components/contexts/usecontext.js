@@ -3,7 +3,7 @@ import io from "socket.io-client";
 
 export const authentication = createContext();
 
-const env = `${process.env.REACT_APP__ENV}:7000`;
+const env = `${process.env.REACT_APP__ENV}`;
 const initailValue = {
   token: localStorage.getItem("Token") ?? null,
   refreshToken: localStorage.getItem("refreshToken") ?? null,
