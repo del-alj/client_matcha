@@ -14,7 +14,7 @@ import { Loading } from "../../Components/loading";
 
 const user_id = localStorage.getItem("userId");
 const env = `${process.env.REACT_APP__ENV}`;
-const url = `http://${env}/user/edit/photoprofile/${user_id}`;
+const url = `${env}/user/edit/photoprofile/${user_id}`;
 const urldelete = `/picture/${user_id}`;
 const urladd = `/picture/upload/${user_id}`;
 
